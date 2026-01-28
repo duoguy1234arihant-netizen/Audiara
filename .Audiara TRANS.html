@@ -1,0 +1,2425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audio Transcript Tapper PRO+</title>
+  <meta name="description" content="The ultimate precision timestamping tool for podcasts, lyrics, interviews" />
+  <!-- WaveSurfer.js v7+ with plugins -->
+  <script src="https://unpkg.com/wavesurfer.js@latest/dist/wavesurfer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <style>
+    :root {
+      --bg: #0f172a; --card: #1e293b; --accent: #a78bfa; --accent2: #c084fc;
+      --text: #e2e8f0; --muted: #94a3b8; --glass: rgba(255,255,255,0.05);
+      --border: rgba(255,255,255,0.1); --success: #86efac; --danger: #fca5a5;
+      --warning: #fbbf24;
+    }
+    [data-theme="light"] {
+      --bg: #f8fafc; --card: #ffffff; --accent: #9333ea; --accent2: #c084fc;
+      --text: #1e293b; --muted: #64748b; --glass: rgba(0,0,0,0.05); --border: rgba(0,0,0,0.1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 16px;
+      transition: all 0.3s ease;
+      overflow-x: hidden;
+    }
+    .wrap { max-width: 1400px; margin: 0 auto; }
+    h1 {
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+    }
+    .lead { font-size: 15px; color: var(--muted); margin: 8px 0 24px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      max-width: 1400px;
+    }
+    .btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(167,139,250,0.4); }
+    .btn.ghost { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+    .btn.danger { background: #ef4444; }
+    .btn.success { background: #10b981; }
+    .btn.warning { background: #f59e0b; }
+    .btn.sm { padding: 6px 12px; font-size: 12px; }
+    .flex { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .controls { margin-bottom: 12px; }
+    /* Waveform Container with Zoom Controls */
+    .waveform-container {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 16px 0;
+      background: #1e1b4b;
+      min-height: 120px;
+    }
+    .waveform {
+      height: 120px;
+      width: 100%;
+      cursor: pointer;
+    }
+    .waveform-controls {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 8px;
+      background: rgba(30, 27, 75, 0.8);
+      padding: 8px;
+      border-radius: 8px;
+      z-index: 10;
+    }
+    .zoom-display {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(30, 27, 75, 0.8);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      color: var(--text);
+    }
+    /* Enhanced Timeline */
+    .timeline-container {
+      position: relative;
+      margin: 20px 0;
+    }
+    .timeline {
+      height: 12px;
+      background: #334155;
+      border-radius: 8px;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .timeline-progress {
+      height: 100%;
+      background: var(--accent);
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+    .timeline-cursor {
+      position: absolute;
+      top: 0; bottom: 0; width: 2px;
+      background: white;
+      box-shadow: 0 0 10px white;
+      left: 0;
+      z-index: 2;
+    }
+    .timeline-marks {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+    }
+    .timeline-mark {
+      position: absolute;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.4);
+    }
+    .timeline-time {
+      position: absolute;
+      top: 15px;
+      transform: translateX(-50%);
+      font-size: 11px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    /* Precision Controls */
+    .precision-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      padding: 10px;
+      background: var(--glass);
+      border-radius: 12px;
+    }
+    .micro-seek {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+    .micro-seek-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      transition: all 0.2s;
+    }
+    .micro-seek-btn:hover {
+      background: var(--accent);
+      color: white;
+    }
+    textarea, input, select {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    textarea:focus, input:focus, select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px rgba(167,139,250,0.2);
+    }
+    /* Enhanced Marks Section */
+    .marks-container {
+      max-height: 70vh;
+      overflow-y: auto;
+      padding: 8px;
+      border-radius: 12px;
+      background: rgba(0,0,0,0.1);
+      border: 1px solid var(--border);
+    }
+    .mark {
+      display: flex;
+      gap: 12px;
+      padding: 12px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      transition: all 0.2s;
+      align-items: flex-start;
+      position: relative;
+    }
+    .mark:hover, .mark.active {
+      background: rgba(167,139,250,0.15);
+      border-left: 4px solid var(--accent);
+    }
+    .mark.selected { background: rgba(167,139,250,0.3) !important; }
+    .mark.playing { background: rgba(167,139,250,0.25); }
+    .ts {
+      min-width: 130px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--accent);
+      cursor: pointer;
+      user-select: none;
+    }
+    .ts:hover { text-decoration: underline; }
+    .mark-content {
+      flex: 1;
+      min-width: 0;
+    }
+    .mark-speaker {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 13px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .mark-textarea {
+      width: 100%;
+      min-height: 60px;
+      resize: vertical;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px;
+      color: var(--text);
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .mark-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: rgba(167,139,250,0.05);
+    }
+    .mark-actions {
+      display: flex;
+      gap: 4px;
+      align-self: flex-start;
+    }
+    .mark-time-input {
+      width: 120px;
+      margin-top: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      padding: 4px 8px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .stat {
+      background: var(--glass);
+      padding: 14px;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+    .stat big { font-size: 24px; font-weight: 800; color: var(--accent); display: block; }
+    .shortcuts {
+      font-size: 13px;
+      background: var(--glass);
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+    footer { margin-top: 60px; text-align: center; color: var(--muted); font-size: 14px; }
+    /* Modal for detailed editing */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    @media (max-width: 900px) {
+      .main { grid-template-columns: 1fr !important; }
+      .flex, .controls { flex-direction: column; align-items: stretch; }
+      h1 { font-size: 24px; }
+      .waveform-controls { position: static; margin-top: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="flex" style="justify-content:space-between;margin-bottom:24px">
+      <div>
+        <h1>Audio Transcript Tapper <sup style="font-size:14px;color:var(--accent)">PRO+</sup></h1>
+        <p class="lead">Professional timestamping with scrollable/zoomable waveform • Lyrics, podcasts, interviews & more</p>
+      </div>
+      <div class="flex">
+        <button id="themeToggle" class="btn ghost">Dark Mode</button>
+        <button id="helpBtn" class="btn ghost">? Help</button>
+      </div>
+    </header>
+    <div class="card">
+      <div class="controls flex">
+        <input id="fileInput" type="file" accept="audio/*,video/*" hidden>
+        <button id="loadFile" class="btn">Load Audio/Video</button>
+        <input id="urlInput" type="url" placeholder="Or paste direct audio URL..." style="flex:1;min-width:200px">
+        <button id="loadUrl" class="btn ghost">Load URL</button>
+        <button id="undoBtn" class="btn ghost">Undo (Ctrl+Z)</button>
+        <button id="clearAll" class="btn ghost danger">Clear All</button>
+        <span style="margin-left:auto;font-weight:600">
+          Marks: <span id="marksCount">0</span> • Duration: <span id="totalTime">00:00</span>
+        </span>
+      </div>
+      <div id="dropZone" style="border:2px dashed var(--border);border-radius:16px;padding:50px;text-align:center;color:var(--muted);margin-top:16px;cursor:pointer;font-size:18px">
+        Drop audio or video file here
+      </div>
+    </div>
+    <div class="main" style="display:grid;grid-template-columns:1fr 450px;gap:24px">
+      <div>
+        <!-- Enhanced Waveform Section -->
+        <div class="card">
+          <div class="waveform-container">
+            <div id="waveform" class="waveform"></div>
+            <div class="waveform-controls">
+              <button id="zoomIn" class="btn sm">+</button>
+              <button id="zoomOut" class="btn sm">−</button>
+              <button id="zoomReset" class="btn sm ghost">100%</button>
+              <button id="scrollLock" class="btn sm ghost">🔓 Auto-scroll</button>
+            </div>
+            <div class="zoom-display">Zoom: <span id="zoomLevel">100%</span></div>
+          </div>
+      
+          <div class="timeline-container">
+            <div class="timeline" id="timeline">
+              <div class="timeline-progress"></div>
+              <div class="timeline-cursor"></div>
+              <div class="timeline-marks" id="timelineMarks"></div>
+            </div>
+            <div class="timeline-time" id="timelineTime"></div>
+          </div>
+      
+          <!-- Precision Controls -->
+          <div class="precision-controls">
+            <div style="font-weight:600">Micro-seek:</div>
+            <div class="micro-seek">
+              <button class="micro-seek-btn" data-offset="-1">-1s</button>
+              <button class="micro-seek-btn" data-offset="-0.5">-500ms</button>
+              <button class="micro-seek-btn" data-offset="-0.1">-100ms</button>
+              <button class="micro-seek-btn" data-offset="-0.01">-10ms</button>
+              <span style="margin:0 8px;color:var(--muted)">|</span>
+              <button class="micro-seek-btn" data-offset="0.01">+10ms</button>
+              <button class="micro-seek-btn" data-offset="0.1">+100ms</button>
+              <button class="micro-seek-btn" data-offset="0.5">+500ms</button>
+              <button class="micro-seek-btn" data-offset="1">+1s</button>
+            </div>
+          </div>
+      
+          <div class="flex" style="margin-top:20px;justify-content:space-between">
+            <div class="flex">
+              <button id="rew10" class="btn ghost">-10s</button>
+              <button id="rew5" class="btn ghost">-5s</button>
+              <button id="playPause" class="btn" style="padding:12px 24px;font-size:18px">▶ Play</button>
+              <button id="ff5" class="btn ghost">+5s</button>
+              <button id="ff10" class="btn ghost">+10s</button>
+            </div>
+            <div class="flex">
+              <button id="markBtn" class="btn" style="background:var(--accent2);font-weight:700">MARK (M)</button>
+              <button id="markPause" class="btn ghost sm">Mark+Pause</button>
+              <button id="preciseMarkBtn" class="btn warning sm">Precise Mark</button>
+            </div>
+          </div>
+      
+          <div class="flex" style="margin-top:12px;font-size:15px;font-weight:600">
+            <span id="currentTime">00:00:00.000</span>
+            <span style="color:var(--muted);margin:0 8px">/</span>
+            <span id="duration">00:00:00.000</span>
+            <span style="margin-left:auto;color:var(--muted)">Speed:</span>
+            <input type="range" id="speed" min="0.25" max="3" step="0.05" value="1" style="width:100px">
+            <span id="speedLabel">1.0x</span>
+            <label style="display:flex;align-items:center;gap:4px;margin-left:12px;">
+              <input type="checkbox" id="preservePitch" checked> Preserve Pitch
+            </label>
+          </div>
+        </div>
+    
+        <!-- Input Section -->
+        <div class="card">
+          <div class="flex" style="margin-bottom:12px">
+            <input id="titleInput" placeholder="Project title (optional)" style="flex:1">
+            <select id="speakerSelect">
+              <option value="">No speaker</option>
+              <option>Speaker 1</option>
+              <option>Speaker 2</option>
+              <option>Interviewer</option>
+              <option>Guest</option>
+              <option>Chorus</option>
+              <option>Verse</option>
+              <option>Refrain</option>
+            </select>
+            <input id="customSpeaker" placeholder="Custom speaker">
+          </div>
+          <div style="display:flex;gap:8px">
+            <input id="noteInput" placeholder="Quick note (e.g. 'Verse 1', 'Question about AI')" style="flex:1">
+            <button id="applyToAll" class="btn ghost sm" title="Apply note to all empty marks">Apply All</button>
+          </div>
+          <div style="margin-top:8px;font-size:13px;color:var(--muted)">
+            <label><input type="checkbox" id="autoAdvance" checked> Auto-advance to next line when typing</label>
+          </div>
+        </div>
+    
+        <!-- Marks Section -->
+        <div class="card">
+          <div class="flex" style="margin-bottom:12px">
+            <input id="searchInput" placeholder="Search marks..." style="flex:1">
+            <select id="filterSpeaker" style="width:150px">
+              <option value="">All Speakers</option>
+            </select>
+            <button id="deleteSelected" class="btn ghost danger sm">Delete Selected</button>
+            <button id="selectAll" class="btn ghost sm">Select All</button>
+          </div>
+          <div class="marks-container" id="marksList"></div>
+          <div style="margin-top:12px;font-size:13px;color:var(--muted);text-align:center">
+            Tip: Hold Shift/Ctrl + Click to select multiple marks
+          </div>
+        </div>
+    
+        <!-- Stats -->
+        <div class="stats">
+          <div class="stat"><big id="wordCount">0</big> words</div>
+          <div class="stat"><big id="charCount">0</big> chars</div>
+          <div class="stat"><big id="estMinutes">--</big> min read</div>
+          <div class="stat"><big id="wpm">--</big> WPM</div>
+          <div class="stat"><big id="markDensity">--</big> marks/min</div>
+        </div>
+    
+        <!-- Export -->
+        <div class="card">
+          <strong>Export & Import</strong>
+          <div class="flex" style="margin-top:12px;gap:10px;flex-wrap:wrap">
+            <button id="exportTxt" class="btn">📄 TXT</button>
+            <button id="exportSrt" class="btn">🎬 SRT</button>
+            <button id="exportVtt" class="btn ghost">📺 VTT</button>
+            <button id="exportJson" class="btn ghost">🔧 JSON</button>
+            <button id="exportCsv" class="btn ghost">📊 CSV</button>
+            <button id="copyAll" class="btn success">📋 Copy All</button>
+            <input id="importFile" type="file" accept=".txt,.srt,.json,.csv,.vtt" style="display:none">
+            <button id="importBtn" class="btn ghost">📥 Import</button>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Sidebar -->
+      <aside>
+        <div class="card">
+          <strong>Quick Labels & Actions</strong>
+          <div class="flex" style="margin-top:12px;gap:8px;flex-wrap:wrap">
+            <button class="btn ghost sm" data-note="Intro">Intro</button>
+            <button class="btn ghost sm" data-note="Verse 1">Verse 1</button>
+            <button class="btn ghost sm" data-note="Chorus">Chorus</button>
+            <button class="btn ghost sm" data-note="Bridge">Bridge</button>
+            <button class="btn ghost sm" data-note="Outro">Outro</button>
+            <button class="btn ghost sm" data-note="Instrumental">Instrumental</button>
+            <button class="btn ghost sm" data-note="Hook">Hook</button>
+            <button class="btn ghost sm" data-note="Drop">Drop</button>
+          </div>
+          <div class="flex" style="margin-top:12px;gap:8px;flex-wrap:wrap">
+            <button id="adjustAllTimes" class="btn warning sm">Adjust All Times</button>
+            <button id="mergeSelected" class="btn ghost sm">Merge Selected</button>
+            <button id="splitMark" class="btn ghost sm">Split Mark</button>
+            <button id="pasteLyrics" class="btn success sm">📋 Paste Lyrics</button>
+          </div>
+        </div>
+    
+        <div class="card">
+          <strong>Audio Analysis</strong>
+          <div style="margin-top:12px">
+            <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+              <span>Silence Detection:</span>
+              <button id="detectSilence" class="btn sm">Detect</button>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+              <span>Beat Detection:</span>
+              <button id="detectBeats" class="btn sm">Detect</button>
+            </div>
+            <div style="display:flex;justify-content:space-between">
+              <span>Auto-transcribe (beta):</span>
+              <button id="autoTranscribe" class="btn sm warning">Try</button>
+            </div>
+          </div>
+        </div>
+    
+        <div class="card shortcuts" id="helpPanel" style="display:none">
+          <strong>Keyboard Shortcuts</strong><br><br>
+          <strong>M</strong> → Add mark  <strong>Space</strong> → Play/Pause<br>
+          <strong>J/K/L</strong> → -10s / Pause / +10s<br>
+          <strong>← →</strong> → -5s / +5s  <strong>Ctrl+Z</strong> → Undo<br>
+          <strong>Shift+M</strong> → Mark + Pause<br>
+          <strong>Ctrl+↑/↓</strong> → Navigate marks<br>
+          <strong>Ctrl+S</strong> → Save project<br>
+          <strong>Enter</strong> in textarea → Auto-next
+        </div>
+    
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <strong>Live Preview</strong>
+            <select id="previewFormat" style="width:120px">
+              <option value="simple">Simple</option>
+              <option value="srt">SRT Format</option>
+              <option value="vtt">VTT Format</option>
+              <option value="json">JSON</option>
+            </select>
+          </div>
+          <textarea id="preview" readonly style="width:100%;min-height:300px;margin-top:12px;font-size:13px;font-family:'JetBrains Mono',monospace"></textarea>
+          <div style="text-align:right;margin-top:8px">
+            <button id="copyPreview" class="btn sm ghost">Copy Preview</button>
+          </div>
+        </div>
+    
+        <div class="card">
+          <strong>Project Autosave</strong>
+          <div style="margin-top:12px">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <span>Status: <span id="autosaveStatus">Ready</span></span>
+              <button id="saveProject" class="btn sm">💾 Save Now</button>
+            </div>
+            <div style="margin-top:8px;font-size:13px;color:var(--muted)">
+              Project auto-saves every 30 seconds
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <!-- Modal for precise editing -->
+    <div class="modal" id="preciseEditModal">
+      <div class="modal-content">
+        <h3 style="margin-bottom:16px">Precise Time Editing</h3>
+        <div style="margin-bottom:16px">
+          <label style="display:block;margin-bottom:8px">Current time: <span id="modalCurrentTime">00:00:00.000</span></label>
+          <input type="text" id="modalTimeInput" placeholder="HH:MM:SS.mmm" style="width:100%;margin-bottom:16px">
+          <div class="micro-seek" style="justify-content:center">
+            <button class="micro-seek-btn" data-offset="-0.001">-1ms</button>
+            <button class="micro-seek-btn" data-offset="-0.01">-10ms</button>
+            <button class="micro-seek-btn" data-offset="-0.1">-100ms</button>
+            <button class="micro-seek-btn" data-offset="0.1">+100ms</button>
+            <button class="micro-seek-btn" data-offset="0.01">+10ms</button>
+            <button class="micro-seek-btn" data-offset="0.001">+1ms</button>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;justify-content:flex-end">
+          <button id="modalCancel" class="btn ghost">Cancel</button>
+          <button id="modalApply" class="btn">Apply</button>
+        </div>
+      </div>
+    </div>
+    <footer>
+      Made with ❤️ for creators • Audio Transcript Tapper PRO+ v2.1 •
+      <a href="https://github.com" style="color:var(--accent)">Open Source</a>
+    </footer>
+  </div>
+  <script>
+    // === CORE STATE ===
+    let marks = [];
+    let history = [];
+    let historyIndex = -1;
+    let wavesurfer = null;
+    let selectedMarks = new Set();
+    let lastMarkTime = 0;
+    let currentZoom = 100;
+    let scrollLock = true;
+    let autoSaveInterval;
+    let currentEditingMarkId = null;
+    let preservePitch = true;
+    // === UTILITIES ===
+    function fmt(sec, includeMs = true) {
+      if (sec === null || sec === undefined || isNaN(sec)) return includeMs ? "00:00:00.000" : "00:00:00";
+      sec = Math.max(0, Number(sec));
+      const h = Math.floor(sec / 3600).toString().padStart(2, '0');
+      const m = Math.floor((sec % 3600) / 60).toString().padStart(2, '0');
+      const s = Math.floor(sec % 60).toString().padStart(2, '0');
+      if (!includeMs) return `${h}:${m}:${s}`;
+      const ms = Math.floor((sec % 1) * 1000).toString().padStart(3, '0');
+      return `${h}:${m}:${s}.${ms}`;
+    }
+    function fmtSrt(sec) {
+      const h = Math.floor(sec / 3600).toString().padStart(2, '0');
+      const m = Math.floor((sec % 3600) / 60).toString().padStart(2, '0');
+      const s = Math.floor(sec % 60).toString().padStart(2, '0');
+      const ms = Math.floor((sec % 1) * 1000).toString().padStart(3, '0');
+      return `${h}:${m}:${s},${ms}`;
+    }
+    function parseTime(str) {
+      if (!str) return 0;
+      const cleaned = str.trim().replace(',', '.');
+      const parts = cleaned.split(':').map(p => parseFloat(p) || 0);
+      if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+      if (parts.length === 2) return parts[0] * 60 + parts[1];
+      return parseFloat(cleaned) || 0;
+    }
+    function saveToHistory() {
+      const snapshot = JSON.parse(JSON.stringify(marks));
+      history = history.slice(0, historyIndex + 1);
+      history.push(snapshot);
+      historyIndex = history.length - 1;
+      if (history.length > 100) {
+        history.shift();
+        historyIndex--;
+      }
+    }
+    function undo() {
+      if (historyIndex > 0) {
+        historyIndex--;
+        marks = JSON.parse(JSON.stringify(history[historyIndex]));
+        selectedMarks.clear();
+        renderMarks();
+        updateStats();
+        updatePreview();
+        updateMarksCount();
+        updateTimelineMarks();
+      }
+    }
+    // === WAVESURFER INITIALIZATION ===
+    function initWaveSurfer() {
+      if (wavesurfer) {
+        wavesurfer.destroy();
+      }
+  
+      wavesurfer = WaveSurfer.create({
+        container: '#waveform',
+        waveColor: '#818cf8',
+        progressColor: '#c084fc',
+        cursorColor: '#ffffff',
+        cursorWidth: 2,
+        barWidth: 3,
+        barRadius: 4,
+        barGap: 1,
+        height: 120,
+        normalize: true,
+        backend: 'MediaElement',
+        responsive: true,
+        minPxPerSec: 100,
+        fillParent: false,
+        autoScroll: scrollLock,
+        autoCenter: scrollLock,
+        dragToSeek: true,
+        scrollParent: true
+      });
+  
+      wavesurfer.isReady = false;
+  
+      wavesurfer.on('ready', () => {
+        wavesurfer.isReady = true;
+        const dur = wavesurfer.getDuration();
+        document.getElementById('duration').textContent = fmt(dur);
+        document.getElementById('totalTime').textContent = fmt(dur, false);
+        updateTimeline();
+        updateTimelineMarks();
+        renderMarks();
+        updateStats();
+        updatePreview();
+        updateMarksCount();
+        updateSpeakerFilter();
+        startAutoSave();
+      });
+  
+      wavesurfer.on('audioprocess', () => {
+        if (!wavesurfer.isReady) return;
+        const current = wavesurfer.getCurrentTime();
+        document.getElementById('currentTime').textContent = fmt(current);
+        highlightActiveMark();
+        updateTimeline();
+        if (wavesurfer.isPlaying()) {
+          const progress = (current / wavesurfer.getDuration()) * 100;
+          const progressBar = document.querySelector('.timeline-progress');
+          const cursor = document.querySelector('.timeline-cursor');
+          if (progressBar) progressBar.style.width = progress + '%';
+          if (cursor) cursor.style.left = progress + '%';
+        }
+      });
+  
+      wavesurfer.on('seek', () => {
+        const current = wavesurfer.getCurrentTime();
+        document.getElementById('currentTime').textContent = fmt(current);
+        updateTimeline();
+        highlightActiveMark();
+      });
+  
+      wavesurfer.on('error', (e) => {
+        console.error('WaveSurfer error:', e);
+        alert('Audio playback error. Please check the file format or URL.');
+      });
+  
+      wavesurfer.on('play', () => {
+        document.getElementById('playPause').textContent = '⏸ Pause';
+      });
+  
+      wavesurfer.on('pause', () => {
+        document.getElementById('playPause').textContent = '▶ Play';
+      });
+    }
+    // === PITCH PRESERVATION FUNCTION ===
+    function updatePlaybackRate(rate) {
+      if (!wavesurfer || !wavesurfer.isReady) return;
+    
+      // Use WaveSurfer's built-in method (handles backend differences)
+      wavesurfer.setPlaybackRate(rate);
+      // Explicitly lock pitch if enabled (only effective on MediaElement)
+      const mediaElement = wavesurfer.getMediaElement();
+      if (mediaElement && preservePitch) {
+        mediaElement.preservesPitch = true;
+        // Vendor prefixes for broader support
+        if ('webkitPreservesPitch' in mediaElement) {
+          mediaElement.webkitPreservesPitch = true;
+        }
+        if ('mozPreservesPitch' in mediaElement) {
+          mediaElement.mozPreservesPitch = true;
+        }
+      } else if (mediaElement && !preservePitch) {
+        mediaElement.preservesPitch = false;
+        if ('webkitPreservesPitch' in mediaElement) {
+          mediaElement.webkitPreservesPitch = false;
+        }
+        if ('mozPreservesPitch' in mediaElement) {
+          mediaElement.mozPreservesPitch = false;
+        }
+      }
+      // Update label if available
+      const speedLabel = document.getElementById('speedLabel');
+      if (speedLabel) {
+        speedLabel.textContent = rate.toFixed(1) + 'x';
+      }
+    }
+    // === ZOOM CONTROLS ===
+    function zoomWaveform(factor) {
+      if (!wavesurfer || !wavesurfer.isReady) return;
+  
+      const minPxPerSec = 100;
+      let newPxPerSec = minPxPerSec * (factor / 100);
+      newPxPerSec = Math.max(10, Math.min(5000, newPxPerSec));
+  
+      wavesurfer.zoom(newPxPerSec);
+      currentZoom = Math.round((newPxPerSec / minPxPerSec) * 100);
+      updateZoomDisplay();
+    }
+    function updateZoomDisplay() {
+      const zoomLevel = document.getElementById('zoomLevel');
+      const zoomReset = document.getElementById('zoomReset');
+      if (zoomLevel) zoomLevel.textContent = `${currentZoom}%`;
+      if (zoomReset) zoomReset.textContent = `${currentZoom}%`;
+    }
+    // === PRECISE SEEKING ===
+    function microSeek(offset) {
+      if (!wavesurfer || !wavesurfer.isReady) return;
+      const current = wavesurfer.getCurrentTime();
+      const newTime = Math.max(0, Math.min(wavesurfer.getDuration(), current + offset));
+      wavesurfer.setCurrentTime(newTime);
+    }
+    // === MARKS MANAGEMENT ===
+    function addMark(time = null) {
+      if (!wavesurfer || !wavesurfer.isReady) {
+        alert('Please load audio first');
+        return;
+      }
+  
+      saveToHistory();
+      const speaker = document.getElementById('customSpeaker').value.trim() ||
+                     document.getElementById('speakerSelect').value;
+      const note = document.getElementById('noteInput').value.trim();
+      const id = Date.now().toString(36) + Math.random().toString(36).slice(2, 9);
+      const t = time !== null ? time : wavesurfer.getCurrentTime();
+  
+      marks.push({
+        id,
+        time: Number(t.toFixed(3)),
+        text: '',
+        note,
+        speaker,
+        color: getSpeakerColor(speaker)
+      });
+  
+      marks.sort((a, b) => a.time - b.time);
+      renderMarks();
+      updateStats();
+      updatePreview();
+      updateMarksCount();
+      updateTimelineMarks();
+      updateSpeakerFilter();
+  
+      // Double-tap detection
+      const now = Date.now();
+      if (now - lastMarkTime < 300) {
+        wavesurfer.pause();
+      }
+      lastMarkTime = now;
+  
+      // Confetti celebration
+      if (marks.length === 50) {
+        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+      }
+  
+      // Auto-focus the new mark's textarea
+      setTimeout(() => {
+        const newMark = document.querySelector(`[data-id="${id}"] textarea`);
+        if (newMark) newMark.focus();
+      }, 10);
+    
+      return id;
+    }
+    function getSpeakerColor(speaker) {
+      if (!speaker) return '#a78bfa';
+      const colors = ['#a78bfa', '#c084fc', '#f472b6', '#60a5fa', '#34d399', '#fbbf24'];
+      let hash = 0;
+      for (let i = 0; i < speaker.length; i++) {
+        hash = speaker.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      return colors[Math.abs(hash) % colors.length];
+    }
+    function deleteMarkById(id) {
+      const idx = marks.findIndex(m => m.id === id);
+      if (idx !== -1) {
+        saveToHistory();
+        marks.splice(idx, 1);
+        selectedMarks.delete(id);
+        renderMarks();
+        updateStats();
+        updatePreview();
+        updateMarksCount();
+        updateTimelineMarks();
+        updateSpeakerFilter();
+      }
+    }
+    function updateMarkTime(id, newTime) {
+      const mark = marks.find(m => m.id === id);
+      if (mark) {
+        saveToHistory();
+        mark.time = Number(newTime.toFixed(3));
+        marks.sort((a, b) => a.time - b.time);
+        renderMarks();
+        updatePreview();
+        updateTimelineMarks();
+      }
+    }
+    // === ENHANCED MARKS RENDERING ===
+    function renderMarks(filterText = '', filterSpeaker = '') {
+      const container = document.getElementById('marksList');
+      if (!container) return;
+    
+      container.innerHTML = '';
+  
+      const q = filterText.toLowerCase();
+      const speakerFilter = filterSpeaker.toLowerCase();
+  
+      marks.forEach((mark, index) => {
+        const textToSearch = ((mark.text || '') + ' ' + (mark.note || '') + ' ' + (mark.speaker || '')).toLowerCase();
+    
+        if (q && !textToSearch.includes(q)) return;
+        if (speakerFilter && !(mark.speaker || '').toLowerCase().includes(speakerFilter)) return;
+    
+        const div = document.createElement('div');
+        div.className = 'mark';
+        if (selectedMarks.has(mark.id)) div.classList.add('selected');
+        div.dataset.id = mark.id;
+    
+        // Time display - FIXED: Now properly seeks to the mark time
+        const ts = document.createElement('div');
+        ts.className = 'ts';
+        ts.textContent = fmt(mark.time);
+        ts.title = 'Click to seek, double-click to edit';
+        ts.onclick = (e) => {
+          e.stopPropagation();
+          if (wavesurfer && wavesurfer.isReady) {
+            wavesurfer.setCurrentTime(mark.time);
+            wavesurfer.play();
+          }
+        };
+        ts.ondblclick = (e) => {
+          e.stopPropagation();
+          openPreciseEdit(mark.id);
+        };
+    
+        // Content area
+        const content = document.createElement('div');
+        content.className = 'mark-content';
+    
+        if (mark.speaker) {
+          const sp = document.createElement('div');
+          sp.className = 'mark-speaker';
+          sp.style.color = mark.color;
+          sp.innerHTML = `
+            ${mark.speaker}
+            <span style="font-size:11px;color:var(--muted);font-weight:normal">
+              #${index + 1}
+            </span>
+          `;
+          content.appendChild(sp);
+        }
+    
+        const ta = document.createElement('textarea');
+        ta.className = 'mark-textarea';
+        ta.placeholder = mark.note || 'Start typing transcript or lyrics...';
+        ta.value = mark.text || '';
+        ta.dataset.markId = mark.id;
+    
+        // Enhanced textarea behavior - FIXED: Proper paste handling
+        ta.oninput = (e) => {
+          mark.text = e.target.value;
+          updateStats();
+          updatePreview();
+          autoSaveProject();
+        };
+    
+        ta.onkeydown = (e) => {
+          if (e.key === 'Enter' && document.getElementById('autoAdvance').checked && !e.shiftKey) {
+            e.preventDefault();
+        
+            // Find next mark
+            const currentIndex = marks.findIndex(m => m.id === mark.id);
+            if (currentIndex < marks.length - 1) {
+              const nextMark = marks[currentIndex + 1];
+              setTimeout(() => {
+                const nextTa = document.querySelector(`textarea[data-mark-id="${nextMark.id}"]`);
+                if (nextTa) {
+                  nextTa.focus();
+                  nextTa.selectionStart = nextTa.selectionEnd = nextTa.value.length;
+                }
+              }, 10);
+            } else {
+              // If this is the last mark, add a new one
+              setTimeout(() => {
+                const currentTime = wavesurfer.getCurrentTime();
+                const nextTime = currentTime + 1;
+                wavesurfer.setCurrentTime(nextTime);
+                addMark(nextTime);
+              }, 10);
+            }
+          }
+        };
+    
+        content.appendChild(ta);
+    
+        // Time input for precise editing
+        const timeInput = document.createElement('input');
+        timeInput.className = 'mark-time-input';
+        timeInput.type = 'text';
+        timeInput.value = fmt(mark.time);
+        timeInput.onchange = (e) => {
+          const newTime = parseTime(e.target.value);
+          if (!isNaN(newTime)) {
+            updateMarkTime(mark.id, newTime);
+          }
+        };
+        content.appendChild(timeInput);
+    
+        // Actions
+        const actions = document.createElement('div');
+        actions.className = 'mark-actions';
+    
+        const playBtn = document.createElement('button');
+        playBtn.className = 'btn ghost sm';
+        playBtn.textContent = '▶';
+        playBtn.title = 'Play from here';
+        playBtn.onclick = (e) => {
+          e.stopPropagation();
+          if (wavesurfer && wavesurfer.isReady) {
+            wavesurfer.setCurrentTime(mark.time);
+            wavesurfer.play();
+          }
+        };
+    
+        const delBtn = document.createElement('button');
+        delBtn.className = 'btn ghost sm danger';
+        delBtn.textContent = '×';
+        delBtn.title = 'Delete';
+        delBtn.onclick = (e) => {
+          e.stopPropagation();
+          if (confirm('Delete this mark?')) deleteMarkById(mark.id);
+        };
+    
+        actions.appendChild(playBtn);
+        actions.appendChild(delBtn);
+    
+        div.appendChild(ts);
+        div.appendChild(content);
+        div.appendChild(actions);
+    
+        // Selection logic
+        div.onclick = (e) => {
+          if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') return;
+      
+          if (e.shiftKey || e.ctrlKey || e.metaKey) {
+            toggleSelect(mark.id);
+          } else {
+            if (wavesurfer && wavesurfer.isReady) {
+              wavesurfer.setCurrentTime(mark.time);
+              wavesurfer.play();
+            }
+          }
+        };
+    
+        container.appendChild(div);
+      });
+  
+      highlightActiveMark();
+    }
+    function toggleSelect(id) {
+      if (selectedMarks.has(id)) {
+        selectedMarks.delete(id);
+      } else {
+        selectedMarks.add(id);
+      }
+      renderMarks();
+    }
+    function highlightActiveMark() {
+      if (!wavesurfer || !wavesurfer.isReady) return;
+      const current = wavesurfer.getCurrentTime();
+  
+      document.querySelectorAll('.mark').forEach(el => {
+        el.classList.remove('playing');
+      });
+  
+      // Find the active mark
+      for (let i = 0; i < marks.length; i++) {
+        const mark = marks[i];
+        const nextMark = marks[i + 1];
+        const endTime = nextMark ? nextMark.time : wavesurfer.getDuration();
+    
+        if (current >= mark.time && current < endTime) {
+          const el = document.querySelector(`[data-id="${mark.id}"]`);
+          if (el) el.classList.add('playing');
+          break;
+        }
+      }
+    }
+    // === TIMELINE MARKS ===
+    function updateTimelineMarks() {
+      const container = document.getElementById('timelineMarks');
+      if (!container) return;
+    
+      container.innerHTML = '';
+  
+      if (!wavesurfer || !wavesurfer.isReady) return;
+  
+      const duration = wavesurfer.getDuration();
+  
+      marks.forEach((mark, index) => {
+        const percent = (mark.time / duration) * 100;
+        const markEl = document.createElement('div');
+        markEl.className = 'timeline-mark';
+        markEl.style.left = `${percent}%`;
+        markEl.style.backgroundColor = mark.color || '#a78bfa';
+        markEl.title = `${fmt(mark.time)} - ${mark.note || mark.text?.substring(0, 20) || 'Mark ' + (index + 1)}`;
+    
+        markEl.onclick = (e) => {
+          e.stopPropagation();
+          if (wavesurfer) {
+            wavesurfer.setCurrentTime(mark.time);
+            wavesurfer.play();
+          }
+        };
+    
+        container.appendChild(markEl);
+      });
+    }
+    // === STATS & PREVIEW ===
+    function updateStats() {
+      const text = marks.map(m => m.text || m.note || '').join(' ').trim();
+      const words = text ? text.split(/\s+/).filter(Boolean).length : 0;
+      const chars = text.length;
+      const minutes = words ? (words / 150).toFixed(1) : '--';
+      const wpm = (words && wavesurfer && wavesurfer.isReady) ?
+                  Math.round(words / (wavesurfer.getDuration() / 60)) : '--';
+      const markDensity = (marks.length && wavesurfer && wavesurfer.isReady) ?
+                         (marks.length / (wavesurfer.getDuration() / 60)).toFixed(1) : '--';
+  
+      const wordCount = document.getElementById('wordCount');
+      const charCount = document.getElementById('charCount');
+      const estMinutes = document.getElementById('estMinutes');
+      const wpmEl = document.getElementById('wpm');
+      const markDensityEl = document.getElementById('markDensity');
+    
+      if (wordCount) wordCount.textContent = words;
+      if (charCount) charCount.textContent = chars;
+      if (estMinutes) estMinutes.textContent = minutes;
+      if (wpmEl) wpmEl.textContent = wpm;
+      if (markDensityEl) markDensityEl.textContent = markDensity;
+    }
+    function updatePreview() {
+      const format = document.getElementById('previewFormat').value;
+      let previewText = '';
+  
+      switch (format) {
+        case 'srt':
+          marks.forEach((m, i) => {
+            const start = fmtSrt(m.time);
+            const end = i < marks.length - 1 ? fmtSrt(marks[i + 1].time) : fmtSrt(wavesurfer?.getDuration() || m.time + 3);
+            previewText += `${i + 1}\n${start} --> ${end}\n${m.speaker ? m.speaker + ': ' : ''}${m.text || m.note || ''}\n\n`;
+          });
+          break;
+      
+        case 'vtt':
+          previewText = 'WEBVTT\n\n';
+          marks.forEach((m, i) => {
+            const start = fmt(m.time).replace('.', ',');
+            const end = i < marks.length - 1 ? fmt(marks[i + 1].time).replace('.', ',') :
+                       fmt(wavesurfer?.getDuration() || m.time + 3).replace('.', ',');
+            previewText += `${start} --> ${end}\n${m.speaker ? m.speaker + ': ' : ''}${m.text || m.note || ''}\n\n`;
+          });
+          break;
+      
+        case 'json':
+          previewText = JSON.stringify({
+            title: document.getElementById('titleInput').value,
+            duration: wavesurfer?.getDuration(),
+            marks: marks
+          }, null, 2);
+          break;
+      
+        default:
+          previewText = marks.map(m =>
+            `[${fmt(m.time)}] ${m.speaker ? m.speaker + ': ' : ''}${m.text || m.note || ''}`
+          ).join('\n\n');
+      }
+  
+      const preview = document.getElementById('preview');
+      if (preview) preview.value = previewText;
+    }
+    function updateMarksCount() {
+      const marksCount = document.getElementById('marksCount');
+      if (marksCount) marksCount.textContent = marks.length;
+    }
+    function updateSpeakerFilter() {
+      const select = document.getElementById('filterSpeaker');
+      if (!select) return;
+    
+      const currentValue = select.value;
+      select.innerHTML = '<option value="">All Speakers</option>';
+  
+      const speakers = new Set();
+      marks.forEach(mark => {
+        if (mark.speaker) speakers.add(mark.speaker);
+      });
+  
+      speakers.forEach(speaker => {
+        const option = document.createElement('option');
+        option.value = speaker;
+        option.textContent = speaker;
+        select.appendChild(option);
+      });
+  
+      select.value = currentValue;
+    }
+    // === TIMELINE INTERACTION ===
+    function updateTimeline() {
+      if (!wavesurfer || !wavesurfer.isReady) return;
+  
+      const timeline = document.getElementById('timeline');
+      const timelineTime = document.getElementById('timelineTime');
+    
+      if (!timeline || !timelineTime) return;
+  
+      timeline.onmousemove = (e) => {
+        const rect = timeline.getBoundingClientRect();
+        const percent = (e.clientX - rect.left) / rect.width;
+        const time = percent * wavesurfer.getDuration();
+        timelineTime.textContent = fmt(time);
+        timelineTime.style.left = `${percent * 100}%`;
+      };
+  
+      timeline.onclick = (e) => {
+        const rect = timeline.getBoundingClientRect();
+        const percent = (e.clientX - rect.left) / rect.width;
+        wavesurfer.seekTo(Math.max(0, Math.min(1, percent)));
+      };
+  
+      timeline.onmouseleave = () => {
+        timelineTime.style.opacity = '0';
+      };
+  
+      timeline.onmouseenter = () => {
+        timelineTime.style.opacity = '1';
+      };
+    }
+    // === PRECISE EDIT MODAL ===
+    function openPreciseEdit(markId) {
+      if (!markId) {
+        // Create a new mark at current time
+        if (wavesurfer && wavesurfer.isReady) {
+          const newId = addMark(wavesurfer.getCurrentTime());
+          markId = newId;
+        } else {
+          return;
+        }
+      }
+    
+      const mark = marks.find(m => m.id === markId);
+      if (!mark) return;
+  
+      currentEditingMarkId = markId;
+      const modalCurrentTime = document.getElementById('modalCurrentTime');
+      const modalTimeInput = document.getElementById('modalTimeInput');
+    
+      if (modalCurrentTime) modalCurrentTime.textContent = fmt(mark.time);
+      if (modalTimeInput) modalTimeInput.value = fmt(mark.time);
+  
+      const modal = document.getElementById('preciseEditModal');
+      if (modal) modal.style.display = 'flex';
+    }
+    function closePreciseEdit() {
+      const modal = document.getElementById('preciseEditModal');
+      if (modal) modal.style.display = 'none';
+      currentEditingMarkId = null;
+    }
+    // === AUTO-SAVE ===
+    function startAutoSave() {
+      if (autoSaveInterval) clearInterval(autoSaveInterval);
+  
+      autoSaveInterval = setInterval(() => {
+        autoSaveProject();
+      }, 30000);
+    }
+    function autoSaveProject() {
+      try {
+        const project = {
+          title: document.getElementById('titleInput')?.value || '',
+          audioUrl: wavesurfer?.getMediaElement()?.src || '',
+          marks: marks,
+          timestamp: new Date().toISOString()
+        };
+    
+        localStorage.setItem('audioTranscriptTapper_autosave', JSON.stringify(project));
+        const status = document.getElementById('autosaveStatus');
+        if (status) {
+          status.textContent = 'Saved ' + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+          status.style.color = 'var(--success)';
+        }
+    
+        setTimeout(() => {
+          if (status) {
+            status.textContent = 'Ready';
+            status.style.color = '';
+          }
+        }, 2000);
+      } catch (e) {
+        console.error('Auto-save failed:', e);
+      }
+    }
+    function loadAutoSave() {
+      try {
+        const saved = localStorage.getItem('audioTranscriptTapper_autosave');
+        if (saved) {
+          const project = JSON.parse(saved);
+          if (confirm('Load auto-saved project from ' + new Date(project.timestamp).toLocaleString() + '?')) {
+            marks = project.marks || [];
+            const titleInput = document.getElementById('titleInput');
+            if (titleInput) titleInput.value = project.title || '';
+            renderMarks();
+            updateStats();
+            updatePreview();
+            updateMarksCount();
+            updateTimelineMarks();
+            updateSpeakerFilter();
+          }
+        }
+      } catch (e) {
+        console.error('Load auto-save failed:', e);
+      }
+    }
+    // === LYRICS PASTE HANDLING ===
+    function handleLyricsPaste(startMarkId, pastedText) {
+      const lines = pastedText.split('\n').filter(line => line.trim());
+      if (lines.length <= 1) return; // Not multiple lines
+      const startIndex = marks.findIndex(m => m.id === startMarkId);
+      if (startIndex === -1) return;
+      const availableMarks = marks.length - startIndex;
+      if (lines.length > availableMarks) {
+        alert(`Only ${availableMarks} existing marks available from this point. Filling them; extra lines discarded.`);
+      }
+      saveToHistory();
+      // Distribute lines to existing subsequent marks (including start mark)
+      for (let i = 0; i < lines.length && (startIndex + i) < marks.length; i++) {
+        const targetMark = marks[startIndex + i];
+        targetMark.text = lines[i].trim();
+        // Preserve speaker/note if not set
+        if (!targetMark.speaker && document.getElementById('speakerSelect').value) {
+          targetMark.speaker = document.getElementById('speakerSelect').value;
+          targetMark.color = getSpeakerColor(targetMark.speaker);
+        }
+        if (!targetMark.note && document.getElementById('noteInput').value.trim()) {
+          targetMark.note = document.getElementById('noteInput').value.trim();
+        }
+      }
+      // No new marks created; just update
+      renderMarks();
+      updateStats();
+      updatePreview();
+      updateMarksCount();
+      updateTimelineMarks();
+      updateSpeakerFilter();
+      // Auto-focus the next mark after the last filled one (or last if at end)
+      const lastFilledIndex = Math.min(startIndex + lines.length - 1, marks.length - 1);
+      if (lastFilledIndex < marks.length - 1) {
+        const nextMark = marks[lastFilledIndex + 1];
+        setTimeout(() => {
+          const nextTa = document.querySelector(`textarea[data-mark-id="${nextMark.id}"]`);
+          if (nextTa) {
+            nextTa.focus();
+            nextTa.selectionStart = nextTa.selectionEnd = nextTa.value.length;
+          }
+        }, 50);
+      }
+      alert(`Distributed ${Math.min(lines.length, availableMarks)} lines across existing marks`);
+    }
+    function pasteLyrics() {
+      const lyrics = prompt('Paste lyrics (each line will become a separate mark starting from current time):');
+      if (!lyrics) return;
+    
+      const lines = lyrics.split('\n').filter(line => line.trim());
+      if (lines.length === 0) return;
+    
+      if (!wavesurfer || !wavesurfer.isReady) {
+        alert('Please load audio first');
+        return;
+      }
+    
+      const startTime = wavesurfer.getCurrentTime();
+      const timePerLine = parseFloat(prompt('Seconds per line?', '2')) || 2;
+      const speaker = document.getElementById('customSpeaker').value.trim() ||
+                     document.getElementById('speakerSelect').value;
+      const note = document.getElementById('noteInput').value.trim();
+    
+      saveToHistory();
+    
+      // Create marks for each line
+      lines.forEach((line, index) => {
+        const newTime = startTime + (index * timePerLine);
+        const id = Date.now().toString(36) + Math.random().toString(36).slice(2, 9);
+      
+        marks.push({
+          id,
+          time: Number(newTime.toFixed(3)),
+          text: line.trim(),
+          note: index === 0 ? note : '',
+          speaker,
+          color: getSpeakerColor(speaker)
+        });
+      });
+    
+      marks.sort((a, b) => a.time - b.time);
+      renderMarks();
+      updateStats();
+      updatePreview();
+      updateMarksCount();
+      updateTimelineMarks();
+      updateSpeakerFilter();
+    
+      alert(`Created ${lines.length} marks from lyrics`);
+    }
+    // === TIME SEEK FUNCTIONS (FIXED) ===
+    function skip(offset) {
+      if (!wavesurfer || !wavesurfer.isReady) return;
+      const t = wavesurfer.getCurrentTime() + offset;
+      wavesurfer.setCurrentTime(Math.max(0, Math.min(wavesurfer.getDuration(), t)));
+    }
+    // === INITIALIZATION ===
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        // Override for pitch preservation
+        const originalCreate = WaveSurfer.create;
+        WaveSurfer.create = function(options) {
+          options.backend = 'MediaElement';
+          return originalCreate.apply(WaveSurfer, [options]);
+        };
+        // Enhanced updatePlaybackRate (overrides existing)
+        updatePlaybackRate = function(rate) {
+          if (!wavesurfer || !wavesurfer.isReady) return;
+        
+          // Use WaveSurfer's built-in method (handles backend differences)
+          wavesurfer.setPlaybackRate(rate);
+          // Explicitly lock pitch if enabled (only effective on MediaElement)
+          const mediaElement = wavesurfer.getMediaElement();
+          if (mediaElement && preservePitch) {
+            mediaElement.preservesPitch = true;
+            // Vendor prefixes for broader support
+            if ('webkitPreservesPitch' in mediaElement) {
+              mediaElement.webkitPreservesPitch = true;
+            }
+            if ('mozPreservesPitch' in mediaElement) {
+              mediaElement.mozPreservesPitch = true;
+            }
+          } else if (mediaElement && !preservePitch) {
+            mediaElement.preservesPitch = false;
+            if ('webkitPreservesPitch' in mediaElement) {
+              mediaElement.webkitPreservesPitch = false;
+            }
+            if ('mozPreservesPitch' in mediaElement) {
+              mediaElement.mozPreservesPitch = false;
+            }
+          }
+          // Update label if available
+          const speedLabel = document.getElementById('speedLabel');
+          if (speedLabel) {
+            speedLabel.textContent = rate.toFixed(1) + 'x';
+          }
+        };
+        initWaveSurfer();
+        loadAutoSave();
+    
+        // Paste event listener for lyrics handling
+        document.addEventListener('paste', (e) => {
+          if (e.target.matches('textarea.mark-textarea')) {
+            const ta = e.target;
+            const markId = ta.dataset.markId;
+            setTimeout(() => {
+              handleLyricsPaste(markId, ta.value);
+            }, 10);
+          }
+        });
+    
+        // File loading
+        const loadFileBtn = document.getElementById('loadFile');
+        const fileInput = document.getElementById('fileInput');
+        if (loadFileBtn && fileInput) {
+          loadFileBtn.onclick = () => fileInput.click();
+        }
+      
+        if (fileInput) {
+          fileInput.onchange = (e) => {
+            const file = e.target.files[0];
+            if (file) {
+              const url = URL.createObjectURL(file);
+              wavesurfer.load(url);
+              const dropZone = document.getElementById('dropZone');
+              if (dropZone) dropZone.textContent = `Loaded: ${file.name}`;
+            }
+          };
+        }
+    
+        // URL loading
+        const loadUrlBtn = document.getElementById('loadUrl');
+        const urlInput = document.getElementById('urlInput');
+        if (loadUrlBtn && urlInput) {
+          loadUrlBtn.onclick = () => {
+            const url = urlInput.value.trim();
+            if (url) {
+              wavesurfer.load(url);
+              const dropZone = document.getElementById('dropZone');
+              if (dropZone) dropZone.textContent = 'Loading URL...';
+            }
+          };
+        }
+    
+        // Drop zone
+        const dropZone = document.getElementById('dropZone');
+        if (dropZone) {
+          ['dragover', 'dragenter'].forEach(ev => {
+            dropZone.addEventListener(ev, e => {
+              e.preventDefault();
+              dropZone.style.borderColor = 'var(--accent)';
+              dropZone.style.background = 'rgba(167,139,250,0.1)';
+            });
+          });
+      
+          ['dragleave', 'dragend'].forEach(ev => {
+            dropZone.addEventListener(ev, e => {
+              e.preventDefault();
+              dropZone.style.borderColor = 'var(--border)';
+              dropZone.style.background = '';
+            });
+          });
+      
+          dropZone.addEventListener('drop', e => {
+            e.preventDefault();
+            dropZone.style.borderColor = 'var(--border)';
+            dropZone.style.background = '';
+        
+            if (e.dataTransfer.files.length) {
+              const file = e.dataTransfer.files[0];
+              if (file.type.startsWith('audio/') || file.type.startsWith('video/')) {
+                const url = URL.createObjectURL(file);
+                wavesurfer.load(url);
+                dropZone.textContent = `Loaded: ${file.name}`;
+              } else {
+                alert('Please drop an audio or video file');
+              }
+            }
+          });
+        }
+    
+        // Zoom controls
+        const zoomIn = document.getElementById('zoomIn');
+        const zoomOut = document.getElementById('zoomOut');
+        const zoomReset = document.getElementById('zoomReset');
+        const scrollLockBtn = document.getElementById('scrollLock');
+      
+        if (zoomIn) zoomIn.onclick = () => zoomWaveform(currentZoom * 1.5);
+        if (zoomOut) zoomOut.onclick = () => zoomWaveform(currentZoom * 0.67);
+        if (zoomReset) zoomReset.onclick = () => zoomWaveform(100);
+        if (scrollLockBtn) {
+          scrollLockBtn.onclick = () => {
+            scrollLock = !scrollLock;
+            if (wavesurfer) {
+              wavesurfer.options.autoScroll = scrollLock;
+              wavesurfer.options.autoCenter = scrollLock;
+            }
+            scrollLockBtn.textContent = scrollLock ? '🔓 Auto-scroll' : '🔒 Manual';
+          };
+        }
+    
+        // Micro-seek buttons
+        document.querySelectorAll('.micro-seek-btn').forEach(btn => {
+          btn.onclick = (e) => {
+            const offset = parseFloat(btn.dataset.offset);
+            microSeek(offset);
+          };
+        });
+    
+        // Modal controls
+        const modalCancel = document.getElementById('modalCancel');
+        const modalApply = document.getElementById('modalApply');
+      
+        if (modalCancel) modalCancel.onclick = closePreciseEdit;
+        if (modalApply) {
+          modalApply.onclick = () => {
+            const input = document.getElementById('modalTimeInput');
+            if (input) {
+              const newTime = parseTime(input.value);
+              if (!isNaN(newTime) && currentEditingMarkId) {
+                updateMarkTime(currentEditingMarkId, newTime);
+              }
+            }
+            closePreciseEdit();
+          };
+        }
+    
+        // Modal micro-seek
+        document.querySelectorAll('#preciseEditModal .micro-seek-btn').forEach(btn => {
+          btn.onclick = () => {
+            const offset = parseFloat(btn.dataset.offset);
+            const input = document.getElementById('modalTimeInput');
+            if (input) {
+              const currentTime = parseTime(input.value);
+              const newTime = currentTime + offset;
+              input.value = fmt(newTime);
+            }
+          };
+        });
+    
+        // Basic controls - FIXED: Proper button handlers
+        const playPause = document.getElementById('playPause');
+        if (playPause) {
+          playPause.onclick = () => {
+            if (wavesurfer && wavesurfer.isReady) {
+              wavesurfer.playPause();
+            }
+          };
+        }
+    
+        // Time seek buttons - FIXED
+        const rew10 = document.getElementById('rew10');
+        const rew5 = document.getElementById('rew5');
+        const ff5 = document.getElementById('ff5');
+        const ff10 = document.getElementById('ff10');
+      
+        if (rew10) rew10.onclick = () => skip(-10);
+        if (rew5) rew5.onclick = () => skip(-5);
+        if (ff5) ff5.onclick = () => skip(5);
+        if (ff10) ff10.onclick = () => skip(10);
+    
+        // Mark buttons
+        const markBtn = document.getElementById('markBtn');
+        const markPauseBtn = document.getElementById('markPause');
+        const preciseMarkBtn = document.getElementById('preciseMarkBtn');
+      
+        if (markBtn) markBtn.onclick = () => addMark();
+        if (markPauseBtn) {
+          markPauseBtn.onclick = () => {
+            addMark();
+            if (wavesurfer) wavesurfer.pause();
+          };
+        }
+        if (preciseMarkBtn) preciseMarkBtn.onclick = () => openPreciseEdit(null);
+    
+        // Undo and Clear
+        const undoBtn = document.getElementById('undoBtn');
+        const clearAll = document.getElementById('clearAll');
+      
+        if (undoBtn) undoBtn.onclick = undo;
+        if (clearAll) {
+          clearAll.onclick = () => {
+            if (marks.length && confirm('Clear all marks?')) {
+              saveToHistory();
+              marks = [];
+              selectedMarks.clear();
+              renderMarks();
+              updateStats();
+              updatePreview();
+              updateMarksCount();
+              updateTimelineMarks();
+            }
+          };
+        }
+    
+        // Speed control with pitch preservation
+        const speedSlider = document.getElementById('speed');
+        const speedLabel = document.getElementById('speedLabel');
+        const preservePitchCheckbox = document.getElementById('preservePitch');
+      
+        if (speedSlider && speedLabel) {
+          speedSlider.oninput = (e) => {
+            const val = Number(e.target.value);
+            updatePlaybackRate(val);
+          };
+        }
+      
+        if (preservePitchCheckbox) {
+          preservePitchCheckbox.onchange = (e) => {
+            preservePitch = e.target.checked;
+            if (wavesurfer && wavesurfer.isReady) {
+              updatePlaybackRate(wavesurfer.getPlaybackRate());
+            }
+          };
+        }
+    
+        // Quick labels
+        document.querySelectorAll('[data-note]').forEach(btn => {
+          btn.onclick = () => {
+            const noteInput = document.getElementById('noteInput');
+            if (noteInput) {
+              noteInput.value = btn.dataset.note;
+              noteInput.focus();
+            }
+          };
+        });
+    
+        // Theme & Help
+        const themeToggle = document.getElementById('themeToggle');
+        const helpBtn = document.getElementById('helpBtn');
+      
+        if (themeToggle) {
+          themeToggle.onclick = () => {
+            const isLight = document.body.getAttribute('data-theme') === 'light';
+            document.body.setAttribute('data-theme', isLight ? 'dark' : 'light');
+            themeToggle.textContent = isLight ? 'Dark Mode' : 'Light Mode';
+          };
+        }
+      
+        if (helpBtn) {
+          helpBtn.onclick = () => {
+            const panel = document.getElementById('helpPanel');
+            if (panel) {
+              panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+            }
+          };
+        }
+    
+        // Search and filter
+        const searchInput = document.getElementById('searchInput');
+        const filterSpeaker = document.getElementById('filterSpeaker');
+      
+        if (searchInput) {
+          searchInput.addEventListener('input', (e) => {
+            renderMarks(e.target.value, filterSpeaker?.value || '');
+          });
+        }
+      
+        if (filterSpeaker) {
+          filterSpeaker.addEventListener('change', (e) => {
+            renderMarks(searchInput?.value || '', e.target.value);
+          });
+        }
+    
+        // Selection
+        const selectAll = document.getElementById('selectAll');
+        const deleteSelected = document.getElementById('deleteSelected');
+      
+        if (selectAll) {
+          selectAll.onclick = () => {
+            marks.forEach(mark => selectedMarks.add(mark.id));
+            renderMarks();
+          };
+        }
+      
+        if (deleteSelected) {
+          deleteSelected.onclick = () => {
+            if (selectedMarks.size === 0) {
+              alert('No marks selected.');
+              return;
+            }
+            if (confirm(`Delete ${selectedMarks.size} selected mark(s)?`)) {
+              saveToHistory();
+              marks = marks.filter(m => !selectedMarks.has(m.id));
+              selectedMarks.clear();
+              renderMarks();
+              updateStats();
+              updatePreview();
+              updateMarksCount();
+              updateTimelineMarks();
+            }
+          };
+        }
+    
+        // Export functions
+        const exportTxt = document.getElementById('exportTxt');
+        const exportSrt = document.getElementById('exportSrt');
+        const exportVtt = document.getElementById('exportVtt');
+        const exportJson = document.getElementById('exportJson');
+        const exportCsv = document.getElementById('exportCsv');
+        const copyAll = document.getElementById('copyAll');
+      
+        if (exportTxt) exportTxt.onclick = () => {
+          const text = marks.map(m => `[${fmt(m.time)}] ${m.speaker ? m.speaker + ': ' : ''}${m.text || m.note || ''}`).join('\n\n');
+          download('transcript.txt', text);
+        };
+      
+        if (exportSrt) exportSrt.onclick = exportSrtFunc;
+        if (exportVtt) exportVtt.onclick = exportVttFunc;
+        if (exportJson) exportJson.onclick = exportJsonFunc;
+        if (exportCsv) exportCsv.onclick = exportCsvFunc;
+        if (copyAll) copyAll.onclick = copyAllFunc;
+    
+        // Import
+        const importBtn = document.getElementById('importBtn');
+        const importFile = document.getElementById('importFile');
+      
+        if (importBtn && importFile) {
+          importBtn.onclick = () => importFile.click();
+        }
+      
+        if (importFile) {
+          importFile.onchange = (e) => {
+            if (e.target.files[0]) {
+              importFileFunc(e.target.files[0]);
+            }
+          };
+        }
+    
+        // New feature handlers
+        const applyToAll = document.getElementById('applyToAll');
+        const adjustAllTimes = document.getElementById('adjustAllTimes');
+        const mergeSelectedBtn = document.getElementById('mergeSelected');
+        const splitMarkBtn = document.getElementById('splitMark');
+        const pasteLyricsBtn = document.getElementById('pasteLyrics');
+        const detectSilence = document.getElementById('detectSilence');
+        const detectBeats = document.getElementById('detectBeats');
+        const autoTranscribe = document.getElementById('autoTranscribe');
+      
+        if (applyToAll) applyToAll.onclick = applyNoteToAllEmptyFunc;
+        if (adjustAllTimes) adjustAllTimes.onclick = adjustAllTimesFunc;
+        if (mergeSelectedBtn) mergeSelectedBtn.onclick = mergeSelectedFunc;
+        if (splitMarkBtn) splitMarkBtn.onclick = splitMarkFunc;
+        if (pasteLyricsBtn) pasteLyricsBtn.onclick = pasteLyrics;
+        if (detectSilence) detectSilence.onclick = () => alert('Silence detection requires advanced audio analysis. For now, use the "Mark" button to manually mark segments.');
+        if (detectBeats) detectBeats.onclick = () => alert('Beat detection requires advanced audio analysis. For now, use the "Mark" button to manually tap along with the beat.');
+        if (autoTranscribe) autoTranscribe.onclick = () => alert('Auto-transcription requires server-side speech-to-text API integration.');
+    
+        // Preview format change
+        const previewFormat = document.getElementById('previewFormat');
+        const copyPreview = document.getElementById('copyPreview');
+      
+        if (previewFormat) previewFormat.onchange = updatePreview;
+        if (copyPreview) {
+          copyPreview.onclick = () => {
+            const preview = document.getElementById('preview');
+            if (preview) {
+              navigator.clipboard.writeText(preview.value)
+                .then(() => alert('Preview copied to clipboard!'))
+                .catch(() => alert('Failed to copy'));
+            }
+          };
+        }
+    
+        // Save project
+        const saveProject = document.getElementById('saveProject');
+        if (saveProject) {
+          saveProject.onclick = () => {
+            autoSaveProject();
+            const status = document.getElementById('autosaveStatus');
+            if (status) {
+              status.textContent = 'Saved manually!';
+              status.style.color = 'var(--success)';
+              setTimeout(() => {
+                status.textContent = 'Ready';
+                status.style.color = '';
+              }, 3000);
+            }
+          };
+        }
+    
+        // Keyboard shortcuts
+        document.addEventListener('keydown', e => {
+          // Don't interfere with form inputs
+          if (e.target.matches('input, textarea, select')) {
+            if (e.key === 'Enter' && e.target.tagName === 'INPUT' &&
+                !e.target.type.includes('range') && !e.target.type.includes('checkbox')) {
+              e.preventDefault();
+              addMark();
+            }
+            return;
+          }
+      
+          switch (e.key.toLowerCase()) {
+            case 'm':
+              e.preventDefault();
+              if (e.shiftKey) {
+                addMark();
+                if (wavesurfer) wavesurfer.pause();
+              } else {
+                addMark();
+              }
+              break;
+            case ' ':
+              e.preventDefault();
+              if (wavesurfer) wavesurfer.playPause();
+              break;
+            case 'arrowleft':
+              e.preventDefault();
+              skip(-5);
+              break;
+            case 'arrowright':
+              e.preventDefault();
+              skip(5);
+              break;
+            case 'j':
+              e.preventDefault();
+              skip(-10);
+              break;
+            case 'k':
+              e.preventDefault();
+              if (wavesurfer) wavesurfer.pause();
+              break;
+            case 'l':
+              e.preventDefault();
+              skip(10);
+              break;
+            case 'z':
+              if (e.ctrlKey || e.metaKey) {
+                e.preventDefault();
+                undo();
+              }
+              break;
+            case 's':
+              if (e.ctrlKey || e.metaKey) {
+                e.preventDefault();
+                autoSaveProject();
+              }
+              break;
+            case 'a':
+              if (e.ctrlKey || e.metaKey) {
+                e.preventDefault();
+                marks.forEach(m => selectedMarks.add(m.id));
+                renderMarks();
+              }
+              break;
+            case '?':
+              e.preventDefault();
+              if (helpBtn) helpBtn.click();
+              break;
+            case 'escape':
+              closePreciseEdit();
+              break;
+          }
+        });
+    
+        // Initialize
+        updatePreview();
+      
+      } catch (error) {
+        console.error('Initialization error:', error);
+        alert('There was an error initializing the application. Please refresh the page.');
+      }
+    });
+    // === EXPORT FUNCTIONS ===
+    function download(filename, text) {
+      try {
+        const el = document.createElement('a');
+        el.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        el.setAttribute('download', filename);
+        document.body.appendChild(el);
+        el.click();
+        document.body.removeChild(el);
+      } catch (error) {
+        console.error('Download error:', error);
+        alert('Failed to download file. Please try again.');
+      }
+    }
+    function exportSrtFunc() {
+      try {
+        let srt = '';
+        marks.forEach((m, i) => {
+          if (!m.text?.trim()) return;
+          const start = fmtSrt(m.time);
+          const end = i < marks.length - 1 ? fmtSrt(marks[i + 1].time) :
+                     fmtSrt(wavesurfer?.getDuration() || m.time + 3);
+          srt += `${i + 1}\n${start} --> ${end}\n${m.speaker ? m.speaker + ': ' : ''}${m.text}\n\n`;
+        });
+        download('subtitles.srt', srt.trim());
+      } catch (error) {
+        console.error('Export SRT error:', error);
+        alert('Failed to export SRT file.');
+      }
+    }
+    function exportVttFunc() {
+      try {
+        let vtt = 'WEBVTT\n\n';
+        marks.forEach((m, i) => {
+          if (!m.text?.trim()) return;
+          const start = fmt(m.time).replace('.', ',');
+          const end = i < marks.length - 1 ? fmt(marks[i + 1].time).replace('.', ',') :
+                     fmt(wavesurfer?.getDuration() || m.time + 3).replace('.', ',');
+          vtt += `${start} --> ${end}\n${m.speaker ? m.speaker + ': ' : ''}${m.text}\n\n`;
+        });
+        download('captions.vtt', vtt.trim());
+      } catch (error) {
+        console.error('Export VTT error:', error);
+        alert('Failed to export VTT file.');
+      }
+    }
+    function exportJsonFunc() {
+      try {
+        const payload = {
+          title: document.getElementById('titleInput')?.value || '',
+          duration: wavesurfer?.getDuration(),
+          marks: marks,
+          exportDate: new Date().toISOString(),
+          version: '2.1'
+        };
+        download('marks.json', JSON.stringify(payload, null, 2));
+      } catch (error) {
+        console.error('Export JSON error:', error);
+        alert('Failed to export JSON file.');
+      }
+    }
+    function exportCsvFunc() {
+      try {
+        let csv = 'Time,Speaker,Text,Note\n';
+        marks.forEach(mark => {
+          const time = fmt(mark.time);
+          const speaker = mark.speaker || '';
+          const text = (mark.text || '').replace(/"/g, '""');
+          const note = (mark.note || '').replace(/"/g, '""');
+          csv += `"${time}","${speaker}","${text}","${note}"\n`;
+        });
+        download('marks.csv', csv);
+      } catch (error) {
+        console.error('Export CSV error:', error);
+        alert('Failed to export CSV file.');
+      }
+    }
+    function copyAllFunc() {
+      try {
+        const text = marks.map(m => `[${fmt(m.time)}] ${m.speaker ? m.speaker + ': ' : ''}${m.text || m.note || ''}`).join('\n\n');
+        navigator.clipboard.writeText(text)
+          .then(() => alert('All marks copied to clipboard!'))
+          .catch(() => alert('Copy failed — try exporting instead.'));
+      } catch (error) {
+        console.error('Copy all error:', error);
+        alert('Failed to copy to clipboard.');
+      }
+    }
+    // === IMPORT FUNCTION ===
+    function importFileFunc(file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const content = e.target.result;
+        const extension = file.name.split('.').pop().toLowerCase();
+    
+        saveToHistory();
+        marks = [];
+    
+        try {
+          if (extension === 'json') {
+            const data = JSON.parse(content);
+            marks = data.marks || [];
+            const titleInput = document.getElementById('titleInput');
+            if (titleInput && data.title) titleInput.value = data.title;
+          } else if (extension === 'srt') {
+            parseSrt(content);
+          } else if (extension === 'txt') {
+            parseTxt(content);
+          } else if (extension === 'csv') {
+            parseCsv(content);
+          } else if (extension === 'vtt') {
+            parseVtt(content);
+          }
+      
+          marks.sort((a, b) => a.time - b.time);
+          renderMarks();
+          updateStats();
+          updatePreview();
+          updateMarksCount();
+          updateTimelineMarks();
+          updateSpeakerFilter();
+      
+          alert(`Imported ${marks.length} marks from ${file.name}`);
+        } catch (err) {
+          console.error('Import error:', err);
+          alert('Error importing file: ' + err.message);
+        }
+      };
+      reader.onerror = function() {
+        alert('Error reading file');
+      };
+      reader.readAsText(file);
+    }
+    function parseSrt(content) {
+      const blocks = content.split(/\n\s*\n/);
+      blocks.forEach(block => {
+        const lines = block.trim().split('\n');
+        if (lines.length >= 3) {
+          const timeMatch = lines[1].match(/(\d{2}:\d{2}:\d{2}[,.]\d{3})\s*-->\s*(\d{2}:\d{2}:\d{2}[,.]\d{3})/);
+          if (timeMatch) {
+            const time = parseTime(timeMatch[1]);
+            const text = lines.slice(2).join('\n').trim();
+            marks.push({
+              id: Date.now().toString(36) + Math.random().toString(36).slice(2, 9),
+              time: time,
+              text: text,
+              note: '',
+              speaker: '',
+              color: getSpeakerColor('')
+            });
+          }
+        }
+      });
+    }
+    function parseVtt(content) {
+      const lines = content.split('\n');
+      let inCue = false;
+      let currentText = [];
+      let currentTime = 0;
+    
+      for (let line of lines) {
+        line = line.trim();
+        if (line === 'WEBVTT' || line === '') continue;
+      
+        const timeMatch = line.match(/(\d{2}:\d{2}:\d{2}[.,]\d{3})\s*-->\s*(\d{2}:\d{2}:\d{2}[.,]\d{3})/);
+        if (timeMatch) {
+          if (inCue && currentText.length > 0) {
+            marks.push({
+              id: Date.now().toString(36) + Math.random().toString(36).slice(2, 9),
+              time: currentTime,
+              text: currentText.join('\n'),
+              note: '',
+              speaker: '',
+              color: getSpeakerColor('')
+            });
+          }
+          currentTime = parseTime(timeMatch[1]);
+          currentText = [];
+          inCue = true;
+        } else if (inCue) {
+          currentText.push(line);
+        }
+      }
+    
+      // Add last cue
+      if (inCue && currentText.length > 0) {
+        marks.push({
+          id: Date.now().toString(36) + Math.random().toString(36).slice(2, 9),
+          time: currentTime,
+          text: currentText.join('\n'),
+          note: '',
+          speaker: '',
+          color: getSpeakerColor('')
+        });
+      }
+    }
+    function parseTxt(content) {
+      const lines = content.split('\n');
+      lines.forEach(line => {
+        const match = line.match(/\[(\d{2}:\d{2}:\d{2}\.\d{3})\]\s*(.*?):?\s*(.*)/);
+        if (match) {
+          const time = parseTime(match[1]);
+          const speaker = match[2].trim();
+          const text = match[3].trim();
+          marks.push({
+            id: Date.now().toString(36) + Math.random().toString(36).slice(2, 9),
+            time: time,
+            text: text,
+            note: '',
+            speaker: speaker,
+            color: getSpeakerColor(speaker)
+          });
+        }
+      });
+    }
+    function parseCsv(content) {
+      const lines = content.split('\n');
+      lines.slice(1).forEach(line => {
+        if (line.trim()) {
+          const parts = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+          if (parts.length >= 4) {
+            const time = parseTime(parts[0].replace(/"/g, ''));
+            const speaker = parts[1].replace(/"/g, '');
+            const text = parts[2].replace(/"/g, '');
+            const note = parts[3].replace(/"/g, '');
+            marks.push({
+              id: Date.now().toString(36) + Math.random().toString(36).slice(2, 9),
+              time: time,
+              text: text,
+              note: note,
+              speaker: speaker,
+              color: getSpeakerColor(speaker)
+            });
+          }
+        }
+      });
+    }
+   
+    // === HELPER FUNCTIONS ===
+    function applyNoteToAllEmptyFunc() {
+      const noteInput = document.getElementById('noteInput');
+      if (!noteInput) return;
+    
+      const note = noteInput.value.trim();
+      if (!note) {
+        alert('Please enter a note first');
+        return;
+      }
+  
+      saveToHistory();
+      let count = 0;
+      marks.forEach(mark => {
+        if (!mark.note && !mark.text) {
+          mark.note = note;
+          count++;
+        }
+      });
+  
+      renderMarks();
+      updatePreview();
+      alert(`Applied note to ${count} empty marks`);
+    }
+    function adjustAllTimesFunc() {
+      const adjustment = prompt('Enter time adjustment in seconds (e.g., -2.5 or +1.3):', '0');
+      if (adjustment === null) return;
+  
+      const adjustValue = parseFloat(adjustment);
+      if (isNaN(adjustValue)) {
+        alert('Invalid number');
+        return;
+      }
+  
+      saveToHistory();
+      marks.forEach(mark => {
+        mark.time = Math.max(0, mark.time + adjustValue);
+      });
+  
+      marks.sort((a, b) => a.time - b.time);
+      renderMarks();
+      updatePreview();
+      updateTimelineMarks();
+      alert(`Adjusted all times by ${adjustValue} seconds`);
+    }
+    function mergeSelectedFunc() {
+      if (selectedMarks.size < 2) {
+        alert('Please select at least 2 marks to merge');
+        return;
+      }
+  
+      const selected = Array.from(selectedMarks);
+      const selectedMarksData = marks.filter(m => selectedMarks.has(m.id));
+      selectedMarksData.sort((a, b) => a.time - b.time);
+  
+      const firstTime = selectedMarksData[0].time;
+      const texts = selectedMarksData.map(m => m.text).filter(t => t).join(' ');
+      const notes = selectedMarksData.map(m => m.note).filter(n => n).join('; ');
+      const speakers = [...new Set(selectedMarksData.map(m => m.speaker).filter(s => s))].join(', ');
+  
+      saveToHistory();
+  
+      const keepId = selectedMarksData[0].id;
+      marks = marks.filter(m => !selectedMarks.has(m.id) || m.id === keepId);
+  
+      const keptMark = marks.find(m => m.id === keepId);
+      if (keptMark) {
+        keptMark.time = firstTime;
+        keptMark.text = texts || keptMark.text;
+        keptMark.note = notes || keptMark.note;
+        keptMark.speaker = speakers || keptMark.speaker;
+      }
+  
+      selectedMarks.clear();
+      selectedMarks.add(keepId);
+  
+      renderMarks();
+      updateStats();
+      updatePreview();
+      updateMarksCount();
+      updateTimelineMarks();
+      alert(`Merged ${selectedMarksData.length} marks into one`);
+    }
+    function splitMarkFunc() {
+      if (!wavesurfer || !wavesurfer.isReady) {
+        alert('Please load audio first');
+        return;
+      }
+  
+      const activeMark = marks.find(m => {
+        const current = wavesurfer.getCurrentTime();
+        const nextMark = marks[marks.findIndex(mm => mm.id === m.id) + 1];
+        const endTime = nextMark ? nextMark.time : wavesurfer.getDuration();
+        return current >= m.time && current < endTime;
+      });
+  
+      if (!activeMark) {
+        alert('Please position the playhead within a mark segment to split');
+        return;
+      }
+  
+      const splitTime = wavesurfer.getCurrentTime();
+      if (splitTime <= activeMark.time) {
+        alert('Split time must be after the start of the mark');
+        return;
+      }
+  
+      const nextMark = marks[marks.findIndex(m => m.id === activeMark.id) + 1];
+      if (nextMark && splitTime >= nextMark.time) {
+        alert('Split time must be before the next mark');
+        return;
+      }
+  
+      saveToHistory();
+  
+      // Split the text roughly at a space near split time (simple heuristic)
+      const words = activeMark.text.split(' ');
+      const charPerSec = activeMark.text.length / (nextMark ? nextMark.time - activeMark.time : 3);
+      const splitChar = Math.floor((splitTime - activeMark.time) * charPerSec);
+      let splitIndex = words.findIndex((_, i) => words.slice(0, i + 1).join(' ').length > splitChar);
+      if (splitIndex === -1) splitIndex = words.length;
+  
+      const firstText = words.slice(0, splitIndex).join(' ');
+      const secondText = words.slice(splitIndex).join(' ');
+  
+      const newMark = {
+        id: Date.now().toString(36) + Math.random().toString(36).slice(2, 9),
+        time: splitTime,
+        text: secondText.trim(),
+        note: activeMark.note + ' (split)',
+        speaker: activeMark.speaker,
+        color: activeMark.color
+      };
+  
+      activeMark.text = firstText.trim();
+      marks.push(newMark);
+      marks.sort((a, b) => a.time - b.time);
+  
+      selectedMarks.clear();
+      selectedMarks.add(newMark.id);
+  
+      renderMarks();
+      updatePreview();
+      updateMarksCount();
+      updateTimelineMarks();
+      alert('Mark split at current time');
+    }
+
+
+
+
+    // Modified fmt function to omit hours if under 1 hour (h === '00')
+function fmt(sec, includeMs = true) {
+  if (sec === null || sec === undefined || isNaN(sec)) return includeMs ? "00:00:00.000" : "00:00:00";
+  sec = Math.max(0, Number(sec));
+  const h = Math.floor(sec / 3600).toString().padStart(2, '0');
+  const m = Math.floor((sec % 3600) / 60).toString().padStart(2, '0');
+  const s = Math.floor(sec % 60).toString().padStart(2, '0');
+  const ms = Math.floor((sec % 1) * 1000).toString().padStart(3, '0');
+  
+  const timeStr = includeMs ? `${m}:${s}.${ms}` : `${m}:${s}`;
+  return h === '00' ? timeStr : `${h}:${timeStr}`;
+}
+
+// Modified fmtSrt function to omit hours if under 1 hour (h === '00') and use comma for ms
+function fmtSrt(sec) {
+  if (sec === null || sec === undefined || isNaN(sec)) return "00:00:00,000";
+  sec = Math.max(0, Number(sec));
+  const h = Math.floor(sec / 3600).toString().padStart(2, '0');
+  const m = Math.floor((sec % 3600) / 60).toString().padStart(2, '0');
+  const s = Math.floor(sec % 60).toString().padStart(2, '0');
+  const ms = Math.floor((sec % 1) * 1000).toString().padStart(3, '0');
+  
+  const timeStr = `${m}:${s},${ms}`;
+  return h === '00' ? timeStr : `${h}:${timeStr}`;
+}
+
+
+
+
+// Add this code inside the DOMContentLoaded event listener, right after initWaveSurfer(); and loadAutoSave();
+
+// Create and insert the current lyrics display element above the waveform
+function createLyricsDisplay() {
+  const waveformContainer = document.querySelector('.waveform-container');
+  if (!waveformContainer || document.getElementById('currentLyrics')) return; // Avoid duplicates
+
+  const lyricsDisplay = document.createElement('div');
+  lyricsDisplay.id = 'currentLyrics';
+  lyricsDisplay.style.cssText = `
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    background: rgba(30, 27, 75, 0.9);
+    backdrop-filter: blur(10px);
+    color: var(--text);
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
+    z-index: 5;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    transform: translateY(-10px);
+    border: 1px solid var(--border);
+    max-height: 80px;
+    overflow: hidden;
+    font-family: 'Inter', system-ui, sans-serif;
+  `;
+  waveformContainer.appendChild(lyricsDisplay);
+}
+
+// Call to create the display
+createLyricsDisplay();
+
+// Modify the existing highlightActiveMark function (replace the entire function with this updated version)
+function highlightActiveMark() {
+  if (!wavesurfer || !wavesurfer.isReady) return;
+  const current = wavesurfer.getCurrentTime();
+  document.querySelectorAll('.mark').forEach(el => {
+    el.classList.remove('playing');
+  });
+  // Find the active mark
+  let activeText = '';
+  for (let i = 0; i < marks.length; i++) {
+    const mark = marks[i];
+    const nextMark = marks[i + 1];
+    const endTime = nextMark ? nextMark.time : wavesurfer.getDuration();
+
+    if (current >= mark.time && current < endTime) {
+      const el = document.querySelector(`[data-id="${mark.id}"]`);
+      if (el) el.classList.add('playing');
+
+      // Updated: Extract and display the current lyric/text (prefer text, fallback to note)
+      activeText = mark.text?.trim() || mark.note?.trim() || '';
+      
+      // Also show speaker if available
+      if (mark.speaker && activeText) {
+        activeText = `${mark.speaker}: ${activeText}`;
+      }
+
+      break;
+    }
+  }
+
+  // Update lyrics display
+  const lyricsDisplay = document.getElementById('currentLyrics');
+  if (lyricsDisplay) {
+    if (activeText && wavesurfer.isPlaying()) {
+      lyricsDisplay.textContent = activeText;
+      lyricsDisplay.style.opacity = '1';
+      lyricsDisplay.style.transform = 'translateY(0)';
+    } else {
+      lyricsDisplay.style.opacity = '0';
+      lyricsDisplay.style.transform = 'translateY(-10px)';
+    }
+  }
+}
+
+// Ensure the display updates on pause/play/seek (already handled via audiprocess and seek events)
+// No further changes needed, as highlightActiveMark is called in 'audioprocess', 'seek', 'play', and 'pause' events
+
+
+
+
+  </script>
+</body>
+</html>

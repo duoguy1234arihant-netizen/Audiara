@@ -1,0 +1,8373 @@
+
+    const DEFAULT_FOLDERS = [
+   {
+        id: 'f_eng',
+        name: 'Universal Rhythms',
+        playlists: [
+            {
+            id: 'p_liked',
+            name: 'All songs',
+            cover: 'https://www.tokyoweekender.com/wp-content/uploads/2019/11/7MostInfluential-fin-1100x825.jpg',
+            trackIds: ['mockingbird', 'blue','hasi', 'tumhiho','refrain','shinunogaewa','findingher','kamadotanjirounouta','8letters','theflameoflove','あやふや','wxy','7years','像晴天像雨天','飛鳥和蟬','星になる','sadsong','free','undertheinfluence','ひまわりの約束','すれ違い','nightchanges','kiminisaigonokuchizukewo','withoutyou','staywithmekorean','onevoice','likeadream','anotherlove','tomyyouth','sayyes','nobodyelse','不忘','dandelions','炎','uchiagehanabi','callofsilence','seasons','whydoi','harukamirai','naked','youreyes','gul','jotummereho','godzilla','notafraid','fallinglikethestars','irony','storyofmylife','theflameofloveins','silence','如願','atlantis','golden','水平線','burnitalldown','gods','mightu','imdone','fiqrnakaro','bye','peeloonlofimix','当流星洒落时','yoakashi','iwillgotoyoulikethefirstsnow','温柔风向标','youcanbekingagain','agartumsathho','attention','choolo','苦茶-心動版','godsins','nobodyelseins','freeins','goldenins','fragranceins','fragrance','cheatingonyou','flower','thisiswhatheartbreakfeelslike','spicains','tomyyouthins','ひまわりの約束ins','你的答案', '虹','でもins','でも','twinkletwinkle','ponponpon',]
+          },
+          {
+            id: 'p_eng1',
+            name: 'English Grooves',
+            cover: 'https://www.azlyrics.com/images/albums/133/6382d5f21a2f98154d5348aa90d2d749.jpg',
+            trackIds: ['mockingbird', 'blue','8letters','7years','sadsong','free','nightchanges','nobodyelse','anotherlove','dandelions','callofsilence','seasons','whydoi','naked','fallinglikethestars','youreyes','storyofmylife','atlantis','silence','godzilla','notafraid','mightu','burnitalldown','gods','youcanbekingagain','attention','burnitalldownins','cheatingonyou','thisiswhatheartbreakfeelslike','twinkletwinkle',]
+          },
+             {
+            id: 'p_hin1',
+            name: 'Indian  Rhythms',
+            cover: 'https://www.thefirsttimes.jp/admin/wp-content/uploads/2022/05/20220512-st-203301.jpg',
+            trackIds: ['hasi','findingher','youreyes', 'gul','jotummereho','bye','imdone','fiqrnakaro','peeloonlofimix','tumhiho','agartumsathho','choolo',]
+          },
+             {
+            id: 'p_jap1',
+            name: 'Nihon notes',
+            cover: 'https://i1.sndcdn.com/artworks-000161381573-affals-t500x500.jpg',
+            trackIds: ['refrain', 'shinunogaewa','kamadotanjirounouta','theflameoflove','あやふや','炎','wxy','星になる','callofsilence','free','undertheinfluence','onevoice','ひまわりの約束','すれ違い','uchiagehanabi','harukamirai','kiminisaigonokuchizukewo','irony','水平線','mightu','yoakashi','fragrance', '虹','でも','ponponpon',]
+          },
+           {
+            id: 'p_chi1',
+            name: 'Mandarin Melodies',
+            cover: 'https://lineimg.omusic.com.tw/img/album/2490439.jpg?v=20230930211956',
+            trackIds: ['像晴天像雨天', '飛鳥和蟬','不忘','如願','withoutyou','当流星洒落时','温柔风向标','苦茶-心動版','你的答案',]
+          },
+          {
+            id: 'p_kor1',
+            name: 'Korean Rhyms',
+            cover: 'https://ichef.bbci.co.uk/images/ic/480xn/p0lp2496.jpg.webp',
+            trackIds: ['staywithmekorean','likeadream','tomyyouth','sayyes','golden','burnitalldown','gods','iwillgotoyoulikethefirstsnow','flower']
+          },
+        ]
+      },   
+         {
+        id: 'f_emojapengchi',
+        name: '3 realms of Music',
+        playlists: [
+          {
+            id: 'p_emoeng&japandchi',
+            name: 'East Asia Realm',
+            cover: 'https://i.redd.it/4qqzj71skn0b1.jpg',
+            trackIds: ['refrain', 'shinunogaewa','kamadotanjirounouta','theflameoflove','像晴天像雨天', '飛鳥和蟬','あやふや','wxy','星になる','free','undertheinfluence','ひまわりの約束','すれ違い','withoutyou','staywithmekorean','kiminisaigonokuchizukewo','uchiagehanabi','onevoice','不忘','likeadream','tomyyouth','sayyes','炎','callofsilence','harukamirai','irony','如願','golden','水平線','mightu','当流星洒落时','iwillgotoyoulikethefirstsnow','yoakashi','温柔风向标','苦茶-心動版','fragrance','flower','你的答案', '虹','でも','ponponpon',]
+          }
+        ]
+      },
+      // new category
+      {
+        id: 'f_emojapeng',
+        name: 'Quiet Hearts',
+        playlists: [
+          {
+            id: 'p_emoeng&jap',
+            name: 'Soulful Dawn',
+            cover: 'https://i1.sndcdn.com/artworks-SzrCLykOBNrd41Me-IP2Vng-t500x500.jpg',
+            trackIds: ['refrain', 'tumhiho','kamadotanjirounouta','8letters','theflameoflove','あやふや','wxy','7years','飛鳥和蟬','星になる','sadsong','ひまわりの約束','onevoice','nightchanges','staywithmekorean','tomyyouth','nobodyelse','uchiagehanabi','dandelions','炎','不忘','callofsilence','naked','fallinglikethestars','irony','findingher','storyofmylife','kiminisaigonokuchizukewo','silence','peeloonlofimix','如願','gul','atlantis','jotummereho','imdone','mightu','当流星洒落时','iwillgotoyoulikethefirstsnow','yoakashi','温柔风向标','youcanbekingagain','agartumsathho','attention','choolo','苦茶-心動版','flower','thisiswhatheartbreakfeelslike','你的答案', '虹','ponponpon',]
+          },
+           {
+            id: 'p_emoengvib',
+            name: 'English Emotional Vibes',
+            cover: 'https://w0.peakpx.com/wallpaper/332/627/HD-wallpaper-let-the-sky-fall-i-will-survive-purple-anime-surreal-sky-night.jpg',
+            trackIds: ['8letters','7years','sadsong','nightchanges','nobodyelse','dandelions','callofsilence','naked','fallinglikethestars','storyofmylife','silence','atlantis','mightu','youcanbekingagain','attention','thisiswhatheartbreakfeelslike',]
+          },
+              {
+            id: 'p_emoeng&japaest',
+            name: 'Aesthetic Emotional Vibes',
+            cover: 'https://images.stockcake.com/public/5/0/5/505a2989-2e14-4f7b-9bfe-26071dfc4469_large/starry-night-magic-stockcake.jpg',
+            trackIds: ['あやふや','星になる','refrain','すれ違い','kiminisaigonokuchizukewo','炎','irony','golden','水平線','当流星洒落时','yoakashi','iwillgotoyoulikethefirstsnow','fragrance','你的答案', '虹','ponponpon',]
+          },
+        ]
+      },
+
+         {
+        id: 'f_ins',
+        name: 'Silent Voices',
+        playlists: [
+          {
+            id: 'insemokar',
+            name: 'Instrumentals',
+            cover: 'https://www.lyrical-nonsense.com/wp-content/uploads/2024/05/Natsunose-Ittai-Dou-Shichatta-no.jpg',
+            trackIds: ['theflameofloveins','当流星洒落时','godsins','burnitalldownins','nobodyelseins','freeins','goldenins','fragranceins','spicains','tomyyouthins','ひまわりの約束ins','でもins',]
+          },
+           {
+            id: 'insemo',
+            name: 'Music Without Words',
+            cover: 'https://wallpaperswide.com/download/anime_original_5-wallpaper-1024x1024.jpg',
+            trackIds: ['当流星洒落时',]
+          },
+        ]
+      },
+    ];
+    /* ------------- DEFAULT_TRACKS ------------- */
+    /* Add `keywords: ['tag1','tag2']` to any track to expose advanced keyword searching.
+       Example:
+       keywords: ['hiphop','emo','uplifting']
+    */
+
+  const id = (p='') => `${Date.now().toString(36)}_${Math.random().toString(36).slice(2,8)}${p}`;
+    // Custom artist images map - add your own here!
+    const artistImages = {
+      'Eminem': 'https://www.stoked.de/cdn/shop/files/stoked_eminem_header_mobile_428x320_f6532d24-0154-4b49-961b-db2f84930567.jpg?v=1745335123', // Replace with actual URL
+
+       'Rokudenashi': 'https://rokudenashi-official.com/static/fcopen/contents/top_image/1705/2a926c7091703c5466e15ae48639a017.jpeg', 
+'Islet':'https://i.scdn.co/image/ab6761610000e5eba3934e38a75bde3417a058b6',
+'Isui': 'https://rokudenashi-official.com/static/fcopen/contents/top_image/1705/2a926c7091703c5466e15ae48639a017.jpeg',
+'Shayne Orok':'https://i.scdn.co/image/ab6761610000e5eb8f78bc82dc43c9ebf895af78',
+'Ren Ran':'https://i.scdn.co/image/ab67616100005174f275b5cd5f576cf23bad5f94',
+ '高爾宣 OSN':   'https://i.scdn.co/image/ab6761610000e5eb4d833125cdb31b9110a95e01',
+ 'Chanyeol':'https://i.scdn.co/image/ab6761610000e5ebf3efaf8ac07ad9073aa49200',
+ 'Punch':'https://i.scdn.co/image/ab6761610000e5eb065608c797a38d142082fc8a',
+ 'Loco':'https://i.scdn.co/image/ab67616d00001e02d56f3f4fc8f0e6b7dcd88900',
+'Cole Norton':'https://cdn-images.dzcdn.net/images/cover/20c530c8abddc0934e091037fde9333d/1900x1900-000000-80-0-0.jpg',
+ 'BOL4':'https://www.theticketmerchant.com.au/media/catalog/category/ab6761610000e5ebfdb9292f006730a215b7bfcc.jpg',
+ 'Ruth B.':'https://i.scdn.co/image/ab6761610000e5eb1da7ba1c178ab9f68d065197',
+ 'LiSA':'https://a.storyblok.com/f/178900/640x360/9722034d2c/8f12fc91bf67c38477e3568759b2cb241602553293_main.jpg/m/filters:quality(95)format(webp)',
+ 'Unknown Brains':'https://i.scdn.co/image/ab676161000051746a1fbe842b26c53d8ada53da',
+ 'Rival':'https://i.scdn.co/image/ab6761610000517457adf89ecede255149f43ef5',
+ 'Cadmium':'https://i.scdn.co/image/ab676161000051742f93926f02cf82da39dc2619',
+ 'James Arthur':'https://i.scdn.co/image/ab6761610000e5eb5a55e66595e80fb12dc5f5fa',
+'One Direction': 'https://i.scdn.co/image/289c7f686f5b78ceeb224453cf9a15697a678a79',
+'Majiko':'https://i.scdn.co/image/ab6761610000e5eb104122b2329ceb97099880eb',
+'米津玄':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRemq5Ex2LrEre2ylvWfyFJtv3jqi-M_uRQw&s',
+'DAOKO':'https://m.media-amazon.com/images/I/81WGI00wmrL._UF1000,1000_QL80_.jpg',
+'Jin Wenqi':'https://viberate-upload.ams3.cdn.digitaloceanspaces.com/prod/entity/artist/jin-wenqi-jin-wen-qi-WPYO1',
+'Ami mishra':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYaEn6NRXuJOvhB1cZ0j51RPWJveAOdJjVwg&s',
+'Kushagra':'https://i.scdn.co/image/ab6761610000e5eb36727564ac48444dd9dfcb3b',
+'Arijit Singh':'https://a10.gaanacdn.com/gn_img/artists/Dk9KNk23Bx/k9KNqJJbBx/size_m_1739172212.jpg',
+'Marshmello':'https://i.scdn.co/image/ab67706f00000002a1189b4d2b3a6b335ae6ac25',
+'Khalid':'https://i.scdn.co/image/ab67616d0000b273988ede5e1276e758b5f9e577',
+'Anuv Jain':'https://i.scdn.co/image/ab6761610000e5eba837a6cb82dd949d5e1f9b53',
+'KPop Demon Hunters':'https://pbs.twimg.com/media/GuJiUXhXsAAANUM.jpg',
+ 'Seafret':'https://i.scdn.co/image/ab676161000051748063d8fa2d0fd4f409b9144a',
+ 'Faye Wong':'https://i.scdn.co/image/fef7a7ef0ff113f4b08dbdf12493a7d902c8440d',
+ 'Barney Sku':'https://i.scdn.co/image/ab67616d00001e02cea08b781795b1989bbc5465',
+ 'Back Number':'https://i.scdn.co/image/ab676161000051743f895ff0b36b97f6aba648a7',
+ 'Yuki Hayashi':'https://i.scdn.co/image/ab6761610000e5eb2446b3fc23566403acc9c576',
+'Pritam':'https://i.scdn.co/image/ab6761610000e5ebcb6926f44f620555ba444fca',
+'Mohit Chauhan':'https://i.scdn.co/image/ab6761610000517416691117e2ba803946b203ba',
+'Aditya Bhardwaj':'https://i.scdn.co/image/ab6761610000e5ebed3c8b90f72fb66b4816cb1f',
+'Omar Mukhtar':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNMzMLoQwUgsHWuk8N6v4VmEj9b1M8DYLzyIZr32RgqT_18PvWU9YiUcG2HTpu9VffrFw&usqp=CAU',
+'Maan Panu':'https://i.scdn.co/image/ab6761610000e5ebbe046c2439f4d9fe75e01a98',
+'League of Legends':'https://www.imymac.com/images/mac/how-to-uninstall-league-of-legends-on-mac.jpg',
+'杨秉音':'https://i.scdn.co/image/ab67616d0000b273830c865c42f1440ce4bdaec7',
+'AILEE':'https://i.scdn.co/image/ab6761610000e5ebd6887eb794fa40b953e39ecf',
+'Matsuri':'https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/3e/b7/6a/3eb76abf-38ec-5a45-0418-f95cf340d4f1/pr_source.png/486x486bb.png',
+'Lauren Aquilina':'https://yt3.googleusercontent.com/6WdYPgHInXu8vIN0eXuveREpn9WBdAPW5BqRcVkIVgSApJE9c14sYRBCKbKKCSOEVDJFWg4twQ=s900-c-k-c0x00ffffff-no-rj',
+'Alka Yagnik':'https://indianewengland.com/wp-content/uploads/2019/05/Alka-Yagnik.jpg',
+'Charlie Puth':'https://media.newyorker.com/photos/5b16cfe87018915289e3cb28/master/w_1920,c_limit/StFelix-Charlie-Puth.jpg',
+'The Local Train':'https://cdn-images.dzcdn.net/images/artist/57826ed4eb4c69f2574493274711faa8/1900x1900-000000-80-0-0.jpg',
+'yihuik苡慧':'https://i.scdn.co/image/ab67616d0000b2731bbb8ea9fba5d566511f97db',
+'JVKE':'https://cloudfront-us-east-1.images.arcpublishing.com/uscannenberg/LK5RIHV7VRCQFKARQIDQANDKVA.jpg',
+'JISOO':'https://i.scdn.co/image/ab6761610000e5ebcb6017286dd64ca6b77c879f',
+ '茉ひる':'https://i.scdn.co/image/ab6761610000e5eb07eb84b7a358991905c0f005', 
+ '阿冗':'https://cdn-images.dzcdn.net/images/cover/671bee7f3c021fae914476adfd46860f/0x1900-000000-80-0-0.jpg', 
+ 'SUDA MASAKI':'https://i.scdn.co/image/ab6761610000e5ebda512e7eb85751f92e9b6f7f',
+ 'TakaseToya':'https://i.scdn.co/image/ab6761610000e5ebc89e24841fd3f5cc9a8ce9d1',   
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    const DEFAULT_TRACKS = [
+       {
+            id: 'mockingbird',
+            title: 'MOCKINGBIRD',
+            artist: 'Eminem',
+      
+            src: 'MOCKINGBIRD.mp3',
+            cover: "https://source.boomplaymusic.com/group10/M00/08/27/b229ba0ef51547b389fbc61e7cdc799c_464_464.jpg",
+            isVideo: false,
+            duration: undefined,
+            keywords: ['english','mockingbird','eminem','raps','energetic'],
+            lrcText:
+`[00:02.64]Yeah
+[00:04.89]I know sometimes things may not always make sense to you right now
+[00:10.89]But hey, what daddy always tell you?
+[00:14.38]Straighten up little soldier
+[00:16.64]Stiffen up that upper lip
+[00:19.64]What you crying about?
+[00:21.38]You got me.
+[00:22.88]Hailie, I know you miss your mom, and I know you miss your dad
+[00:25.89]When I'm gone but I'm trying to give you the life that I never had
+[00:28.88]I can see you're sad, even when you smile, even when you laugh
+[00:32.14]I can see it in your eyes, deep inside you want to cry
+[00:34.64]'Cause you're scared, I ain't there?
+[00:36.14]Daddy's with you in your prayers
+[00:37.38]No more crying, wipe them tears
+[00:38.89]Daddy's here, no more nightmares
+[00:40.13]We gon' pull together through it, we gon' do it
+[00:42.39]Lainie Uncle's crazy, ain't he?
+[00:44.14]Yeah, but he loves you girl and you better know it
+[00:46.13]We're all we got in this world
+[00:47.63]When it spins, when it swirls
+[00:48.89]When it whirls, when it twirls
+[00:50.39]Two little beautiful girls
+[00:51.88]Lookin' puzzled, in a daze
+[00:53.13]I know it's confusing you
+[00:54.63]Daddy's always on the move, mamma's always on the news
+[00:57.38]I try to keep you sheltered from it but somehow it seems
+[00:59.88]The harder that I try to do that, the more it backfires on me
+[01:02.89]All the things growing up as daddy, that he had to see
+[01:05.39]Daddy don't want you to see but you see just as much as he did
+[01:08.38]We did not plan it to be this way, your mother and me
+[01:11.13]But things have got so bad between us
+[01:12.88]I don't see us ever being together ever again
+[01:15.38]Like we used to be when we was teenagers
+[01:17.39]But then of course everything always happens for a reason
+[01:20.39]I guess it was never meant to be
+[01:22.14]But it's just something we have no control over and that's what destiny is
+[01:26.64]But no more worries, rest your head and go to sleep
+[01:28.38]Maybe one day we'll wake up and this will all just be a dream
+[01:31.13]Now hush little baby, don't you cry
+[01:33.89]Everything's gonna be alright
+[01:36.14]Stiffen that upper lip up, little lady, I told ya
+[01:39.39]Daddy's here to hold ya through the night
+[01:42.13]I know mommy's not here right now and we don't know why
+[01:45.38]We fear how we feel inside
+[01:47.63]It may seem a little crazy, pretty baby
+[01:50.38]But I promise mama's gon' be alright
+[01:52.64](Ha)
+[01:53.38]It's funny
+[01:54.14]I remember back one year when daddy had no money
+[01:56.39]Mommy wrapped the Christmas presents up
+[01:58.14]And stuck 'em under the tree and said some of 'em were from me
+[02:00.88]'Cause daddy couldn't buy 'em
+[02:02.14]I'll never forget that Christmas I sat up the whole night crying
+[02:06.14]'Cause daddy felt like a bum, see daddy had a job
+[02:07.88]But his job was to keep the food on the table for you and mom
+[02:10.63]And at the time every house that we lived in
+[02:13.14]Either kept getting broken into and robbed
+[02:15.38]Or shot up on the block and your mom was saving money for you in a jar
+[02:19.39]Tryna start a piggy bank for you so you could go to college
+[02:22.38]Almost had a thousand dollars 'til someone broke in and stole it
+[02:25.39]And I know it hurts so bad it broke your mamma's heart
+[02:27.89]And it seemed like everything was just startin' to fall apart
+[02:30.64]Mom and dad was arguin' a lot so momma moved back
+[02:33.89]On the Chalmers in the flat one bedroom apartment
+[02:36.38]And dad moved back to the other side of 8 Mile on Novara
+[02:39.39]And that's when daddy went to California with his CD and met Dr. Dre
+[02:42.86]And flew you and momma out to see me
+[02:44.85]But daddy had to work, you and momma had to leave me
+[02:47.61]Then you started seeing daddy on the T.V. and momma didn't like it
+[02:51.36]And you and Lainnie were too young to understand it
+[02:53.62]Papa was a rollin' stone, momma developed a habit
+[02:56.36]And it all happened too fast for either one of us to grab it
+[02:59.36]I'm just sorry you were there and had to witness it first hand
+[03:02.11]'Cause all I ever wanted to do was just make you proud
+[03:05.12]Now I'm sitting in this empty house, just reminiscing
+[03:07.61]Lookin' at your baby pictures, it just trips me out
+[03:10.37]To see how much you both have grown, it's almost like you're sisters now
+[03:13.37]Wow, I guess you pretty much are and daddy's still here
+[03:16.86]Lainnie I'm talkin' to you too, daddy's still here
+[03:19.37]I like the sound of that, yeah
+[03:21.11]It's got a ring to it don't it?
+[03:22.35]Shh, mama's only gone for the moment
+[03:24.61]Now hush little baby, don't you cry
+[03:27.37]Everything's gonna be alright
+[03:29.61]Stiffen that upper lip up, little lady, I told ya
+[03:32.61]Daddy's here to hold ya through the night
+[03:34.86]I know mommy's not here right now and we don't know why
+[03:38.81]We fear how we feel inside
+[03:40.81]It may seem a little crazy, pretty baby
+[03:43.56]But I promise mama's gon' be alright
+[03:46.56]And if you ask me to
+[03:47.56]Daddy's gonna buy you a mockingbird
+[03:50.06]I'mma give you the world
+[03:52.06]I'mma buy a diamond ring for you
+[03:54.31]I'mma sing for you
+[03:55.31]I'll do anything for you to see you smile
+[03:57.81]And if that mockingbird don't sing and that ring don't shine
+[04:01.31]I'mma break that birdie's neck
+[04:03.56]I'll go back to the jeweler who sold it to ya
+[04:06.32]And make him eat every carat don't fuck with dad (ha ha)
+`,
+          },
+ {
+            id: 'refrain',
+            title: 'Ref:rain',
+            artist: 'Aimer',
+             artistImage: 'https://static.jmusicitalia.com/artisti/aimer/aimer.webp',
+            src: 'Ref Rain.mp3',
+            cover: "https://images.genius.com/610ae2c683cb942675961c27b2fd4d28.1000x1000x1.jpg",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['japanese','refrain','aimer','morning','emotional'],
+            lrcText: `
+0:07  Raining　夏の午後に　通り雨　傘の下
+0:13  Kissing　濡れた頬に　そっと口づけた
+0:20  あの季節に　まだ焦がれている
+0:32  Miss you 窓の外に　遠ざかる景色たち
+0:38  Breezing 虹が見えた　すぐに消えそうで
+0:45  雨　明日は降らなければいい
+0:55  何も手に着かずに　上の空の日々
+1:01  Nothing but you’re the part of me
+1:06  まだ　足りなくて
+1:09  まだ　消えなくて
+1:12  重ねた手のひらから幼さが
+1:18  What a good thing we lose?
+1:21  What a bad thing we knew.
+1:25  そんなフレーズに濡れてく　雨の中
+1:31  ただ　足りなくて
+1:34  まだ　言えなくて
+1:37  数えた日の夢からさよならが
+1:43  What a good thing we lose?
+1:46  What a bad thing we knew.
+1:49  触れられずにいれたら　笑えたかな？
+1:58  Calling 白い息が　舞いあがる　空の下
+2:04  Freezing　強い風に　少しかじかんだ手と
+2:12  弱さをポケットの中に
+2:21  どこを見渡しても　通り過ぎた日々
+2:27  Nothing but you’re the part of me
+2:32  また　触れたくて
+2:35  ただ　眩しくて
+2:39  思わず目をそらした優しさに
+2:45  I wanna sleep in your feel.
+2:48  I wanna see you in the deep
+2:51  そんなフレーズを並べた詩を　今
+2:57  あの帰り道　バスに揺られて
+3:03  叶うはずもない様な夢を見た
+3:09  I wanna sleep in your feel.
+3:12  I wanna see you in the deep
+3:15  繰りかえす季節に　慣れないまま
+3:23  もう少しくらい大人でいれたら　何て言えただろう？
+3:38  まだ　足りなくて
+3:41  まだ　消えなくて
+3:45  重ねた手のひらから幼さが
+3:51  What a good thing we lose?
+3:54  What a bad thing we knew.
+3:57  そんなフレーズに濡れてく　雨の中
+4:03  ただ　足りなくて
+4:06  まだ　言えなくて
+4:09  数えた日の夢からさよならが
+4:15  What a good thing we lose?
+4:18  What a bad thing we knew.
+4:22  触れられずにいれたら　笑えたかな？
+
+`, lrcAlt1Text:`
+
+0:07 
+      Raining - In a summer afternoon, in a passing shower, under the umbrella
+
+0:13 
+      Kissing - I lightly pressed my mouth on a wet cheek
+
+0:20
+      I still yearn for that season
+
+0:32 
+      Miss you - View drifting away outside the window
+
+0:38 
+      Breezing - I saw a rainbow, seemingly fleeting
+
+0:45  
+      Rain - I hope it won't fall tomorrow
+
+0:55 
+      Can't get down to anything and absent-mindedly, days go by
+
+1:01  
+      Nothing but you’re the part of me
+
+1:06
+      Still not enough
+
+1:09 
+      Still not gone
+
+1:12
+      is the innocence from the palms put together
+
+1:18 
+      What a good thing we lose?
+
+1:21 
+      What a bad thing we knew.
+
+1:25 
+      Pondering such phrases, I'm getting wet in the rain
+
+1:31 
+      Just not enough
+
+1:34 
+      Just can't say
+
+1:37 
+      goodbye from the dreams of the days I counted
+
+1:43  
+      What a good thing we lose?
+
+1:46 
+      What a bad thing we knew.
+
+1:49  
+      Could I have smiled if I didn't mention it?
+
+1:58  
+      Calling - A white plume of breath under the sky
+
+2:04  
+      Freezing - I put my hands, a little numb from cold wind
+
+2:12  
+      and my fragility in my pocket
+
+2:21 
+      Wherever I look around, there are the days gone by
+
+2:27 
+      Nothing but you’re the part of me
+
+2:32  
+      Still wanting to touch
+
+2:35  
+      Still dazzling
+
+2:39 
+      was your kindness that I unwillingly looked away
+
+2:45
+      I wanna sleep in your feel.
+
+2:48 
+      I wanna see you in the deep
+
+2:51  
+      A poem with such phrases, I'm dedicating it to you now
+
+2:57 
+      On the way back that day, swaying on the bus
+
+3:03 
+      I saw a dream mostly impossible to come true
+
+3:09 
+      I wanna sleep in your feel.
+
+3:12 
+      I wanna see you in the deep
+
+3:15
+      I'm still not used to the recurrence of seasons
+
+3:23 
+      If I had been a little more mature, what could have I said?
+
+3:38 
+      Still not enough
+
+3:41 
+      Still not gone
+
+3:45 
+      is the innocence from the palms put together
+
+3:51 
+      What a good thing we lose?
+
+3:54  
+      What a bad thing we knew.
+
+3:57  
+      Pondering such phrases, I'm getting wet in the rain
+
+4:03  
+      Just not enough
+
+4:06 
+      Just can't say
+
+4:09
+      goodbye from the dreams of the days I counted
+
+4:15  
+      What a good thing we lose?
+
+4:18 
+      What a bad thing we knew.
+
+4:22 
+      Could I have smiled if I didn't mention it?
+
+`,
+lrcAlt2Text:`
+
+0:07  Raining natsu no gogo ni tooriame kasa no shita
+
+0:13  Kissing nureta hoho ni sotto kuchidzuketa
+    
+
+0:20  Ano kisetsu ni mada kogarete iru
+    
+
+0:32  Miss you mado no soto ni toozakaru keshiki-tachi
+
+
+0:38  Breezing niji ga mieta sugu ni kiesou de
+ 
+
+0:45  Ame ashita wa oranakereba ii
+     
+
+0:55  Nani mo te ni tsukazu ni uwa no sora no hibi
+      
+
+1:01  Nothing but you’re the part of me
+
+
+1:06  Mada tarinakute
+      
+
+1:09  Mada kienakute
+  
+
+1:12  Kasaneta tenohira kara osanasa ga
+      
+1:18  What a good thing we lose?
+1:21  What a bad thing we knew.
+
+
+1:25  Sonna fureezu ni nureteku ame no naka
+   
+
+1:31  Tada tarinakute
+   
+
+1:34  Mada ienakute
+ 
+
+1:37  Kazoeta hi no yume kara sayonara ga
+
+
+1:43  What a good thing we lose?
+    
+
+1:46  What a bad thing we knew.
+
+
+1:49  Furerarezu ni iretara waraeta kana?
+  
+
+1:58  Calling shiroi iki ga maiagaru sora no shita
+     
+
+2:04  Freezing tsuyoi kaze ni sukoshi kajikanda te to
+
+
+2:12  Yowasa o poketto no naka ni
+   
+
+2:21  Doko o miwatashitemo toorisugita hibi
+    
+
+2:27  Nothing but you’re the part of me
+    
+
+2:32  Mata furetakute
+   
+
+2:35  Tada mabushikute
+  
+
+2:39  Omowazu me o sorashita yasashisa ni
+   
+
+2:45  I wanna sleep in your feel.
+
+
+2:48  I wanna see you in the deep
+ 
+
+2:51  Sonna fureezu o narabeta uta o ima
+     
+
+2:57  Ano kaerimichi basu ni yura rete
+3:03  Kanau hazu mo nai you na yume o mita
+
+
+3:09  I wanna sleep in your feel.
+
+3:12  I wanna see you in the deep
+
+3:15  Kurikaesu kisetsu ni narenai mama
+
+3:23  Mou sukoshi kurai otona de iretara nante ieta darou?
+
+3:38  Mada tarinakute
+
+3:41  Mada kienakute
+
+3:45  Kasaneta tenohira kara osanasa ga
+
+3:51  What a good thing we lose?
+
+3:54  What a bad thing we knew.
+
+3:57  Sonna fureezu ni nureteku ame no naka
+
+4:03  Tada tarinakute
+
+4:06  Mada ienakute
+  
+
+4:09  Kazoeta hi no yume kara sayonara ga
+4:15  What a good thing we lose?
+    
+
+4:18  What a bad thing we knew.
+
+
+4:22  Furerarezu ni iretara waraeta kana?
+ 
+
+      `
+          },
+       
+          
+          {
+            id: 'blue',
+            title: 'blue',
+            artist: 'Yung kai',
+             artistImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrHTCM56AneqWdJdtsHLxp2GacpvXayj0ylw&s',
+            src: 'blue.mp3',
+            cover: "https://images.genius.com/96fab843dc59f3be9ec6e577de8552fa.1000x1000x1.png",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','blue','yung kai','morning','emotional', 'romantic','korean'],
+            lrcText: `
+       0:01 🎶🎵
+0:15 🎶🎵
+0:19 Your morning eyes I could stare like watching stars
+0:25 I could walk you by and I'll tell
+0:30 Without a thought you'd be mine, would you
+0:35 Mind if I took your hand
+0:39 Tonight? Know you're all that I
+0:43 Want this life
+0:47 I'll imagine fallin' in love, I'll nap under moonlit skies with
+0:53 You I think I'll picture us, you with the
+0:57 Waves, the ocean's colors
+1:00 On your face I'll leave my heart with
+1:04 Your air, so let me fly with you, will you
+1:10 Be
+1:12 Forever with me?
+1:15 🎶🎵
+1:31 🎶🎵
+1:47 My love will always stay by
+1:52 You I'll keep it safe so don't you worry
+1:57 A thing, I'll tell you I love you more
+2:02 It's stuck with you
+2:04 Forever so promise you won't let it go
+2:08 I'll trust the
+2:10 Universe will always bring me to
+2:16 You imagine we fell in love, I'll nap under moonlight
+2:21 Skies with you I think I'll picture us,
+2:25 You with the waves, the ocean's colors on your face
+2:30 I'll leave my heart with your air so let
+2:36 Me fly with you, will you be
+2:41 Forever with me
+2:48 🎶🎵
+`,
+          },
+     
+
+   {
+            id: 'hasi',
+            title: 'Hasi',
+            artist: 'Ami mishra',
+            src: 'Hasi.mp3',
+                  videoSrc: 'Hasi Ban Gaye (Lyrics) - Ami Mishra, Kunaal Vermaa.mp4',
+          
+            cover: "https://c.saavncdn.com/412/Ha-Hasi-Ban-Gaye-Hindi-2022-20221108021700-500x500.jpg",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['hindi','hasi','ami mishra','romantic','morning'],
+            lrcText: `0:28 yee
+0:32 Haan hansi ban gaye, haan nami ban gaye tum mere
+0:41 Aasma meri zameen ban gaye, haan hansi ban gaye, haan
+0:49 Nami ban gaye tum mere
+0:54 Aasma meri zameen ban gaye ho
+1:10 Jar na haan hum badalne lage, girne sambhalne lage
+1:18 Jab se hai jaana tumhe, teri or chalne lage
+1:24 Haan hum badalne lage, girne sambhalne lage lage jab
+1:31 Se hai jaana tumhe, teri or chalne lage har
+1:38 Safar, har jagah, har kahin ban gaye
+1:44 Maante the Khuda aur haan wahi ban gaye, haan hansi
+1:51 Ban gaye, haan nami ban gaye tum mere aasma
+2:00 Meri zameen ban
+2:15 Gaye pehchaante hi nahin ab log tanha mujhe
+2:23 Meri nigaahon mein bhi hai dhoondhte woh tujhe
+2:30 Jaante hi nahin ab log tanha mujhe, meri
+2:36 Nigaahon mein bhi hai dhoondhte woh tujhe hum the
+2:43 Dhoondhte jise woh kami ban gaye tum mere ishq
+2:50 Ki
+2:53 Sarzameen ban gaye, haan hansi ban gaye, haan nami ban gaye
+3:01 Tum mere
+3:04 Aasma meri zameen ban gaye rana
+
+`,
+          },
+      {
+        id: 'tumhiho',
+        title: 'Tum Hi Ho',
+        artist: 'Arijit Singh',
+        src: 'Tum Hi Ho.mp3',
+        cover: "https://c.saavncdn.com/830/Tum-Hi-ho-Slowed-Reverb-English-2023-20230908205000-500x500.jpg",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['hindi','tum hi ho','arijit singh','romantic','morning'],
+        lrcText: `
+        
+        `
+      },
+      {
+        id: 'shinunogaewa',
+        title: 'Shinunoga E-Wa',
+        artist: 'Fuji kaji',
+                artistImage: 'https://cdn-images.dzcdn.net/images/artist/16cbd84f0e0300725b734980f42112b6/1900x1900-000000-81-0-0.jpg',
+        src: 'Shinunoga-E-Wa.mp3',
+        cover: "https://cdn-images.dzcdn.net/images/cover/1ba8da040827c13b2a7429bad4d7f159/0x1900-000000-80-0-0.jpg",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['japanese','shinunoga','fuji kaji','romantic','popular'],
+        lrcText: `0:24 指切りげんまん ほらでも吹いたら  
+0:27 針でも何でも飲ませていただき Monday  
+0:32 It doesn't matter if it's Sunday  
+0:37 鏡よ鏡よ この世で一番  
+0:39 変わることのない愛をくれるのは誰  
+0:45 No need to ask 'cause it's my darling  
+
+0:49 私の最後はあなたがいい  
+0:52 あなたとこのままお別れするより  
+0:55 死ぬのがいいわ  
+0:57 死ぬのがいいわ  
+
+1:01 三度の飯よりあんたがいいのよ  
+1:04 あんたとこのままお別れするよか  
+1:07 死ぬのがいいわ  
+1:10 死ぬのがいいわ  
+
+1:13 それでも時々 浮気する my heart  
+1:16 死んでも直らな 治してみせます baby  
+1:21 Yeah I ain't nothin' but ya baby  
+
+1:25 失って初めて気がつくなんて  
+1:28 そんなダサいこと もうしたくないのよ goodbye  
+1:33 Oh don't you ever say ByeBye  
+1:36 Eh  
+
+1:37 私の最後はあなたがいい  
+1:40 あなたとこのままお別れするより  
+1:43 死ぬのがいいわ  
+1:46 死ぬのがいいわ  
+
+1:50 三度の飯よりあんたがいいのよ  
+1:52 あんたとこのままお別れするよか  
+1:56 死ぬのがいいわ  
+1:59 死ぬのがいいわ  
+2:01 🎵🎵
+2:08 🎵🎵
+2:26 私の最後はあなたがいい  
+2:29 あなたとこのままお別れするより  
+2:32 死ぬのがいいわ  
+2:35 死ぬのがいいわ  
+
+2:38 三度の飯よりあんたがいいのよ  
+2:41 あんたとこのままお別れするよか  
+2:44 死ぬのがいいわ  
+2:47 死ぬのがいいわ  
+
+2:50 それでも時々 浮気する my heart  
+2:53 そんなダサいのはもういらないのよ ByeBye  
+2:58 I'll always stick with ya my baby
+`,
+lrcAlt1Text:`
+0:24 Pinky swear, if I do tell a lie  
+0:27 I'm willing to swallow needles or anything Monday  
+0:32 It doesn't matter if it's Sunday  
+0:37 Mirror mirror on the wall  
+0:39 Who would give me the fairest love of them all?  
+0:45 No need to ask 'cause it's my darling  
+
+0:49 I want you to be my last  
+0:52 If I had to keep being separated from you like this  
+0:55 I'd rather die  
+0:57 I'd rather die  
+
+1:01 I choose you over three meals a day  
+1:04 If I had to keep being separated from you like this  
+1:07 I'd rather die  
+1:10 I'd rather die  
+
+1:13 Still, sometimes my heart is being unfaithful  
+1:16 Even if it’ll never be cured, I’m gonna cure it anyway, baby  
+1:21 Yeah I ain't nothin' but ya baby  
+
+1:25 "You don't know what you got till it's gone"  
+1:28 I'm sick and tired of repeating that same old cliché Goodbye  
+1:33 Oh don't you ever say ByeBye  
+1:36 Eh  
+
+1:37 I want you to be my last  
+1:40 If I had to keep being separated from you like this  
+1:43 I'd rather die  
+1:46 I'd rather die  
+
+1:50 I choose you over three meals a day  
+1:52 If I had to keep being separated from you like this  
+1:56 I'd rather die  
+1:59 I'd rather die  
+2:01 🎵🎵
+2:08 🎵🎵
+2:26 I want you to be my last  
+2:29 If I had to keep being separated from you like this  
+2:32 I'd rather die  
+2:35 I'd rather die  
+
+2:38 I choose you over three meals a day  
+2:41 If I had to keep being separated from you like this  
+2:44 I'd rather die  
+2:47 I'd rather die  
+
+2:50 Still, sometimes my heart is being unfaithful  
+2:53 I don't need that corny shit anymore ByeBye  
+2:58 I'll always stick with ya my baby
+`,
+lrcAlt2Text:`
+0:24 Yubikiri genman hora demo fuitara  
+0:27 Hari demo nan demo nomasete itadaki Monday  
+0:32 It doesn't matter if it's Sunday  
+0:37 Kagami yo kagami yo kono yo de ichiban  
+0:39 Kawaru koto no nai ai wo kureru no wa dare  
+0:45 No need to ask 'cause it's my darling  
+
+0:49 Watashi no saigo wa anata ga ii  
+0:52 Anata to kono mama osaraba suru yori  
+0:55 Shinu no ga ii wa  
+0:57 Shinu no ga ii wa  
+
+1:01 Sando no meshi yori anta ga ii no yo  
+1:04 Anta to kono mama osaraba suru yori ka  
+1:07 Shinu no ga ii wa  
+1:10 Shinu no ga ii wa  
+
+1:13 Soredemo tokidoki uwatsuku my heart  
+1:16 Shindemo naorana naoshite misemasu baby  
+1:21 Yeah I ain't nothin' but ya baby  
+
+1:25 Ushinatte hajimete kigatsuku nante  
+1:28 Sonna dasai koto mou shita nai no yo goodbye  
+1:33 Oh don't you ever say ByeBye  
+1:36 Eh  
+
+1:37 Watashi no saigo wa anata ga ii  
+1:40 Anata to kono mama osaraba suru yori  
+1:43 Shinu no ga ii wa  
+1:46 Shinu no ga ii wa  
+
+1:50 Sando no meshi yori anta ga ii no yo  
+1:52 Anta to kono mama osaraba suru yori ka  
+1:56 Shinu no ga ii wa  
+1:59 Shinu no ga ii wa  
+2:01 🎵🎵
+2:08 🎵🎵
+
+2:26 Watashi no saigo wa anata ga ii  
+2:29 Anata to kono mama osaraba suru yori  
+2:32 Shinu no ga ii wa  
+2:35 Shinu no ga ii wa  
+
+2:38 Sando no meshi yori anta ga ii no yo  
+2:41 Anta to kono mama osaraba suru yori ka  
+2:44 Shinu no ga ii wa  
+2:47 Shinu no ga ii wa  
+
+2:50 Soredemo tokidoki uwatsuku my heart  
+2:53 Sonna dasai no wa mou iranai no yo ByeBye  
+2:58 I'll always stick with ya my baby
+
+`
+      },
+       {
+        id: 'kamadotanjirounouta',
+        title: 'Kamado Tanjirou No Uta',
+        artist: 'Akano',
+                artistImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHZbMXv239bI3XLBnFEAt0dj9Q8OcSUNKO0A&s',
+        src: 'Kamado Tanjirou No Uta.mp3',
+        cover: "https://i.ytimg.com/vi/QnkqCv0dZTk/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDeITqOAlAwAiTWf4q3TzSEZTFEvQ",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['japanese','akano','tanjiro','demon slayer','anime'],
+        lrcText: `
+  00:18 目を閉じて思い出す  
+00:24 過ぎ去りしあの頃を  
+00:30 戻れない帰れない  
+00:37 広がった深い闇  
+
+01:37 戻れない帰れない  
+01:43 広がった深い闇  
+01:51 泣きたくなるような  
+01:57 優しい音  
+02:03 どんなに苦しくても  
+02:09 前へ進め絶望たち  
+02:21 失っても生きていくしかない  
+02:35 どんなに打ちのめされても  
+02:41 守るものがある  
+
+03:15 失っても失っても生きていくしかない  
+03:28 どんなに打ちのめされても  
+03:35 守るものがある  
+
+03:53 我に課す一択の  
+03:59 運命と覚悟する  
+04:06 泥を舐め足掻いても  
+04:12 目に見えぬ細い糸  
+
+04:19 泣きたくなるような優しい音  
+04:32 どんなに悔しくても  
+04:37 前へ（前へ）、前へ（前へ）向かえ（向かえ）  
+04:43 絶望たち  
+
+04:50 傷ついても傷ついても  
+04:56 立ち上がるしかない  
+
+05:04 どんなに打ちのめされても  
+05:10 守るものがある  
+05:16 守るものがある  
+
+`,
+lrcAlt1Text:`
+00:18 I close my eyes and remember  
+00:24 Those days long gone  
+00:30 I can’t return, I can’t go back  
+00:37 The deep darkness spreads  
+
+01:37 I can’t return, I can’t go back  
+01:43 The deep darkness spreads  
+01:51 A sound so gentle, it makes me want to cry  
+01:57 That tender sound  
+02:03 No matter how painful it is  
+02:09 Move forward — despair surrounds me  
+02:21 Even if I lose everything, I have to live on  
+02:35 No matter how many times I’m beaten down  
+02:41 There’s still something I must protect  
+
+03:15 Even if I lose and lose again, I must go on living  
+03:28 No matter how many times I’m broken  
+03:35 There’s something I have to protect  
+
+03:53 I take upon myself  
+03:59 A single chosen fate and resolve  
+04:06 Even if I lick the mud and struggle  
+04:12 There’s an unseen, fragile thread  
+
+04:19 A gentle sound that makes me want to cry  
+04:32 No matter how much it hurts my pride  
+04:37 Forward (forward), forward (forward), face it (face it)  
+04:43 O despair  
+
+04:50 Even if I’m hurt again and again  
+04:56 There’s nothing to do but stand again  
+
+05:04 No matter how many times I’m defeated  
+05:10 There’s something I have to protect  
+05:16 There’s something I have to protect  
+
+
+`,
+lrcAlt2Text:`
+00:18 Me o tojite omoidasu  
+00:24 Sugisarishi ano koro o  
+00:30 Modorenai kaerenai  
+00:37 Hirogatta fukai yami  
+ 
+01:37 Modorenai kaerenai  
+01:43 Hirogatta fukai yami  
+01:51 Nakitaku naru you na  
+01:57 Yasashii oto  
+02:03 Donna ni kurushikutemo  
+02:09 Mae e susume zetsubou-tachi  
+02:21 Ushinatte mo ikite iku shika nai  
+02:35 Donna ni uchinomesarete mo  
+02:41 Mamoru mono ga aru  
+
+03:15 Ushinatte mo ushinatte mo ikite iku shika nai
+03:28 Donna ni uchinomesarete mo
+03:35 Mamoru mono ga aru
+
+03:53 Ware ni kasu ittaku no
+03:59 Unmei to kakugo suru
+04:06 Doro wo name agaitemo
+04:12 Me ni mienu hosoi ito
+
+04:19 Nakitaku naru you na yasashii oto
+04:32 Donna ni kuyashikute mo
+04:37 Mae e (Mae e), mae e (Mae e) mukae (Mukae)
+04:43 Zetsubou tachi
+
+04:50 Kizutsuite mo kizutsuite mo
+04:56 Tachiagaru shika nai
+
+
+05:04 Don’na ni uchinomesarete mo  
+05:10 Mamoru mono ga aru  
+05:16 Mamoru mono ga aru  
+
+
+`
+      },
+        {
+            id: '8letters',
+            title: '8 Letters',
+            artist: 'Why Dont We',  
+            src: '8 letters.mp3',
+                    artistImage: 'https://www.rollingstone.com/wp-content/uploads/2022/07/WDW-credit-Brandon-Phillips-2c.jpg?w=1581&h=1054&crop=1',
+            cover: "https://a10.gaanacdn.com/gn_img/albums/dwN398KDPa/N39MoAJN3D/size_m_1749022526.jpg",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','sad','emotional','morning','modern', 'romantic','clean'],
+            lrcText: `
+     
+0:11
+you know me the best, you know my worst
+
+0:14
+see me hurt, but you don't judge
+
+0:17
+that, right there, is the scariest feeling
+
+0:21
+opening and closing up again
+
+0:25
+i've been hurt so i don't trust
+
+0:28
+now here we are, staring at the ceiling
+
+0:32
+i've said those words before, but it was a lie
+
+0:37
+and you deserve to hear them a thousand times
+
+0:42
+if all it is is eight letters
+
+0:46
+why is it so hard to say?
+
+0:50
+if all it is is eight letters
+
+0:53
+why am i in my own way?
+
+0:56
+why do i pull you close and then ask you for space?
+
+1:00
+if all it is is eight letters, why is it so hard to say?
+
+1:13
+[Music]
+
+1:14
+isn't it amazing how almost every line on our hands align
+
+1:18
+when your hands are mine
+
+1:20
+it's like i'm whole again — isn't that a sign
+
+1:23
+i should speak my mind
+
+1:25
+i've said those words before, but it was a lie
+
+1:29
+and you deserve to hear them a thousand times
+
+1:31
+(if you want this to show as a single line, keep as above)
+
+1:35
+if all it is is eight letters
+
+1:40
+why is it so hard to say?
+
+1:44
+if all it is is eight letters
+
+1:46
+why am i in my own way?
+
+1:50
+why do i pull you close and then ask you for space?
+
+1:54
+if all it is is eight letters, why is it so hard to say? whoa, oh—yeah
+
+2:10
+when i close my eyes, it's you there in my mind
+
+2:15
+when i close my eyes
+
+2:18
+if all it is is eight letters, why is it so hard to say?
+
+2:23
+if all it is is eight letters, why am i in my own way?
+
+2:28
+why do i pull you close and then ask you for space?
+
+2:31
+if all it is is eight letters, why is it so hard to say?
+
+2:34
+when i close my eyes, it's you there in my mind
+
+2:38
+when i close my eyes
+
+2:42
+if all it is is eight letters
+
+2:47
+when i close my eyes, it's you there in my mind
+
+2:51
+when i close my eyes
+
+2:56
+if all it is is eight letters — when i close my eyes
+
+3:02
+it's you there in my mind
+`,
+
+          },
+      {
+        id: 'theflameoflove',
+        title: 'The Flame of Love',
+        artist: 'Rokudenashi',
+
+        src: 'The Flame of Love.mp3',
+        cover: "https://i1.sndcdn.com/artworks-SzrCLykOBNrd41Me-IP2Vng-t500x500.jpg",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['japanese','emotional','sad','romantic','anime'],
+        lrcText: `0:20 ただいつもより寂しくなって
+0:25 ぽつりぽつりこぼれる言葉
+0:30 僕には何も無いようだから
+0:35 涙くらい流させてくれ
+0:41 そうやって過ごした日々に
+0:46 いつかいつか意味はできるの？
+0:52 こうやって傷つく夜に
+0:56 ひとつ光の音が
+1:01 嗚呼
+1:02 やがて来る明日の前で
+1:07 もう怖くないって言えるように
+1:12 ただ愛が灯る 優しく灯る
+1:17 今日は今日は笑えるように
+1:33 そうやって苦しい日々を
+1:38 いつかいつか抱きしめられる？
+1:44 こうやって泣いちゃう夜に
+1:48 どうか導いてくれ
+1:57 知ってゆく大人になるの
+2:01 その度に空っぽな心だけ
+2:07 でもさ 忘れてはいないんだ
+2:12 微かに残る 温もりの音
+2:17 嗚呼
+2:18 やがて来る明日の前で
+2:22 今描く過去の夜(よ)も夢の中
+2:28 ただ愛が灯る 優しく灯る
+2:33 今日は今日は笑えるように
+2:39 独りが独りが怖くって
+2:41 心にちょっぴり隠してた
+2:44 しんどい感情それすらも抱きしめるの
+2:49 嗚呼
+2:49 追いつかないまま消えてった
+2:51 ならそれでもそれでもいいんじゃない？
+2:54 怖くないって言えるのなら 今日は
+`,
+lrcAlt1Text:`
+0:20 Just feeling lonelier than usual
+0:25 Uttering fragments of sentences
+0:30 I have nothing, so it seems
+0:35 So crying is the least I can do
+0:41 That’s how the days go by
+0:46 Will they come to mean something?
+0:52 On heartbreaking nights like these
+0:56 I hear the sound of a single light
+1:01 Ah
+1:02 Tomorrow will eventually come
+1:07 So I will no longer be afraid
+1:12 The flame of love gently lights the way
+1:17 Today… today I can smile
+1:33 Will a time eventually come
+1:38 When I’ll embrace these hurtful days?
+1:44 On nights like these when I end up crying
+1:48 Please guide me / Lead me
+1:57 I will become wiser as I grow
+2:01 Although it empties my heart each time
+2:07 But I will never forget
+2:12 The faint sound of warmth that remains
+2:17 Ah
+2:18 Tomorrow will eventually come
+2:22 Nights from the past are now in my dreams
+2:28 The flame of love gently lights the way
+2:33 Today… today I can smile
+2:39 I am frightened of loneliness
+2:41 So, I embrace even my fears
+2:44 I hold even those painful feelings
+2:49 Ah
+2:49 It disappeared before I could catch up
+2:51 But if that’s the case, it’s OK, right?
+2:54 If I can say I’m not afraid today
+`,
+lrcAlt2Text:`
+0:20 Tada itsumo yori samishiku natte
+0:25 Potsuri potsuri koboreru kotoba
+0:30 Boku niwa nani mo nai you dakara
+0:35 Namida kurai naga sasete kure
+0:41 Souyatte sugo shita hibi ni
+0:46 Itsuka itsuka imi wa dekiruno?
+0:52 Kou yatte kizu tsuku yoru ni
+0:56 Hitotsu hikari no oto ga
+1:01 Ah
+1:02 Yagate kuru ashita no maede
+1:07 Mou kowaku nai tte ieru you ni
+1:12 Tada ai ga tomoru, yasashiku tomoru
+1:17 Kyo wa kyo wa waraeru youni
+1:33 Souyatte kurushii hibi wo
+1:38 Itsuka itsuka daki shime rareru?
+1:44 Kouyatte naichau yoru ni
+1:48 Douka michibiite kure
+1:57 Shitteyuku otona ni naruno
+2:01 Sonotabi ni karappo na kokoro dake
+2:07 Demosa wasurete ha inainda
+2:12 Kasuka ni nokoru nukumori no oto
+2:17 Ah
+2:18 Yagate kuru ashita no maede
+2:22 Ima egaku kako no yo mo yume no naka
+2:28 Tada ai ga tomoru, yasashiku tomoru
+2:33 Kyo wa kyo wa waraeru youni
+2:39 Hitori ga hitori ga kowakutte
+2:41 Kokoro ni choppiri kakushiteta
+2:44 Shindoi kanjou sore suramo daki shime runo
+2:49 Ah
+2:49 Oitsukanai mama kietetta
+2:51 Nara sore demo sore demo iinja nai?
+2:54 Kowaku nai tte ieru no nara, Kyo wa
+`
+      },
+       {
+        id: 'あやふや',
+        title: 'あやふや',
+        artist: 'Rokudenashi',
+        src: 'あやふや.mp3',
+        cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPa-M_hxrEYwlfm1Uz0-Vtj43_ZljHYd_NcA&s",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['japanese','emotional','sad','romantic','anime','Ambiguous'],
+        lrcText: `0:12
+月明かり 1人で歩く
+0:17
+言いたいことも 言えないままで
+0:22
+ホントの気持ち ホントの感情
+0:28
+も知らないまま 時計は進む
+0:34
+貴方の優しさが遠くで
+0:42
+ありふれた日常に　君が居たから
+0:47
+何も無い僕もここまで歩けたの
+0:52
+あやふやな 言葉が 夜に舞う
+0:58
+変わらない温度を思い出す
+1:03
+覚えてる君のその不器用なとこも
+1:09
+つらいってさ言わずに静かに泣いてるのも
+1:14
+あやふやなこの感情 愛しさも 夢の中
+1:21
+いつか 綺麗な記憶になる
+1:47
+嗚呼 いつしか何もかもが人生
+1:50
+君の色に染まってく題名
+1:53
+これ以上何も求めないよ
+1:55
+変わらぬままで
+1:58
+だけど時計の針は残酷でさ
+2:01
+世界は僕を急かし続けてる
+2:03
+いやそう言うとこが弱いのかな
+2:06
+って思う度に
+2:09
+君をただ 抱きしめていた
+2:17
+ありふれた日常に 君が居たから
+2:22
+何も無い僕もここまで歩けたの
+2:28
+あやふやな 言葉が 夜に舞う
+2:33
+変わらない温度を思い出す
+2:39
+覚えてる君のその不器用なとこも
+2:44
+つらいってさ言わずに静かに泣いてるのも
+2:50
+あやふやなこの感情 愛しさも 夢の中
+2:56
+いつか 綺麗な記憶になる
+3:01
+いつか遠くで君の声が
+3:03
+そこにあるって思えたんだ
+3:06
+温もりを満たしてくれたの
+3:09
+本当だったよ
+3:12
+答えのない夜にさ
+3:14
+また問いかけてしまう こうやって
+3:17
+君は綺麗だよ
+3:19
+そのままで笑っていてよ
+`,
+lrcAlt1Text:`
+0:12 In the light of the moon, I walk alone
+0:17 Not able to say what I want
+0:22 Real feelings, such real feelings
+0:28 Without knowing them, time marches on
+0:34 Your gentleness seems so far away
+0:42 You were there in everyday life
+0:47 Even though I have nothing, I walked this far
+0:52 Ambiguous words dance in the night
+0:58 Remembering the unchanging temperature
+1:03 I remember your awkwardness, too
+1:09 You’d cry without speaking of your pain
+1:14 These ambiguous feelings, I adore you in my dreams
+1:21 One day, this will become a beautiful memory
+1:47 Ah, unknowingly everything is life
+1:50 That title is soaked in your color
+1:53 I can’t ask for anything more
+1:55 Never change
+1:58 But the hands of the clock are cruel
+2:01 The world continues to rush me
+2:03 But I guess it’s weak to say that
+2:06 Every time I think it
+2:09 I was just holding you
+2:17 You were there in everyday life
+2:22 Even though I have nothing, I walked this far
+2:28 Ambiguous words dance in the night
+2:33 Remembering the unchanging temperature
+2:39 I remember your awkwardness, too
+2:44 You’d cry without speaking of your pain
+2:50 These ambiguous feelings, I adore you in my dreams
+2:56 One day, this will become a beautiful memory
+3:01 One day I heard your voice in the distance
+3:03 I thought it’d be there
+3:06 It filled me with warmth
+3:09 It’s true
+3:12 In a night with no answers
+3:14 Once again, like this, I end up asking
+3:17 You’re so beautiful
+3:19 Just keep on smiling
+`,
+lrcAlt2Text:`
+0:12 Tsuki akari hitori de aruku
+0:17 Iitai koto mo ienai mama de
+0:22 Honto no kimochi honto no kanjyo
+0:28 Honto no kimochi honto no kanjyo
+0:34 Anata no yasashisa ga tooku de
+0:42 Arifureta nichijou ni kimi ga ita kara
+0:47 Nanimo nai boku mo kokomade aruketa no
+0:52 Ayafuya na kotoba ga yoru ni mau
+0:58 Kawaranai ondo wo omoidasu
+1:03 Oboeteru kimi no sono bukiyou na toko mo
+1:09 Tsurai tte sa iwazuni shizuka ni naiteru nomo
+1:14 Ayafuya na kono kanjyo itoshisa mo yume no naka
+1:21 Itsuka kirei na kioku ni naru
+1:47 Aa itsuka nanimo kamo ga jinsei
+1:50 Kimi no iro ni somatteku daimei
+1:53 Kore ijou nani mo motomenai yo
+1:55 Kawaranu mama de
+1:58 Dakedo tokei no hari wa zankoku desu
+2:01 Sekai wa boku wo sekashi tsuzuketeru
+2:03 Iya sou iu toko ga yowai no kana
+2:06 Tte omou tabi ni
+2:09 Kimi wo tada dakishimete ita
+2:17 Arifureta nichijou ni kimi ga ita kara
+2:22 Nanimo nai boku mo kokomade aruketa no
+2:28 Ayafuya na kotoba ga yoru ni mau
+2:33 Kawaranai ondo wo omoidasu
+2:39 Oboeteru kimi no sono bukiyou na toko mo
+2:44 Tsurai tte sa iwazuni shizuka ni naiteru nomo
+2:50 Ayafuya na kono kanjyo itoshisa mo yume no naka
+2:56 Itsuka kirei na kioku ni naru
+3:01 Itsuka tooku de kimi no koe ga
+3:03 Soko ni aru tte omoetanda
+3:06 Nukumori wo mitashite kureta no
+3:09 Hontou datta yo
+3:12 Kotae no nai yoru ni sa
+3:14 Mata toikakete shimau kou yatte
+3:17 Kimi wa kirei dayo
+3:19 Sonomama de waratte iteyo
+`
+      },
+
+       {
+        id: 'wxy',
+        title: 'W/X/Y',
+        artist: 'Tani yuuki',
+        src: 'W X Y.mp3',
+         artistImage: 'https://tokytunes.com/wp-content/uploads/2024/12/Tani-Yuukis-new-song-Many-Christmas-released-MV-released.jpg',
+        cover: "https://i.scdn.co/image/ab67616d0000b27383298b2cf7172608f01c9c00",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['japanese','emotional','sad','romantic','anime','wxy'],
+        lrcText: `0:15
+垂れ流したテレビの音
+0:21
+溜めてしまった洗濯物は今日こそ
+0:28
+晴れでもあえて外には出ないでいよう
+0:35
+映えないスナックとアルコールで乾杯をしよう
+0:42
+2人酸いも甘いも
+0:43
+噛み合わないとしても
+0:45
+お互い寄り添うように
+0:47
+少しずらしてみようよ
+0:49
+君がくれた太陽
+0:51
+月で隠れないよう
+0:52
+輝き弛まぬように歌うメロディ
+0:56
+戯れる Slowly flowing day
+0:59
+愛してるも通り越して
+1:03
+似た者同士こうして
+1:06
+年老いるまで笑っていたいね
+1:10
+君がいなきゃ lonely lonely day
+1:13
+夢の中 Fall asleep in bed.
+1:16
+起こすから morning call で
+1:20
+I'll protect you from nightmares, Baby
+1:38
+脱ぎっぱなしの足跡辿ると
+1:44
+不意をついて後ろから抱きつくの
+1:51
+つい、繰り返すと忘れてしまいそうになるよ
+1:58
+振り返ると日々が当たり前じゃないこと
+2:05
+2人対の細胞
+2:06
+絡み合う特別を
+2:08
+噛み締めて生きたいと思ったまどろみ抱く正午
+2:12
+吐息、漏れた体温
+2:13
+微塵も逃さないよう
+2:15
+頭の中刻む甘いメモリー
+2:19
+戯れる Slowly flowing day
+2:22
+愛してるも通り越して
+2:26
+違う者同士こうして
+2:29
+年老いるまで笑っていたいね
+2:33
+君がいなきゃ lonely lonely day
+2:36
+夢の中 Fall asleep in bed
+2:39
+起こすから morning call で
+2:43
+I'll protect you from nightmares, Baby
+2:46
+重ねた手はね離さないでいて
+2:51
+ごめん、これそばに居たいだけだね
+2:55
+抱えた想いはお互い様でしょ
+2:58
+ほら、おあいこでしょ
+3:00
+すれ違い、間違いもあるし
+3:04
+筋書き通り行かない打診、悲しみだって
+3:10
+半分こにしよう
+3:12
+別れじゃない希望
+3:14
+独りよがりにならないように、いつも
+3:22
+君がいなきゃ今もどこかで
+3:25
+動けないままの僕で
+3:28
+ありがとうを伝えたいのです
+3:32
+これからは僕が支えてくって
+3:35
+呆れてしまうくらいにね
+3:38
+愛が増していく day by day
+3:42
+面と向かうとどうしても
+3:45
+素直になれないな、ごめんね
+3:50
+戯れる Slowly flowing day
+3:54
+愛してるも通り越して
+3:57
+似た者同士こうして
+4:00
+年老いるまで笑っていたいね
+4:04
+君がいなきゃ lonely lonely day
+4:07
+夢の中 Fall asleep in bed.
+4:11
+起こすから morning call で
+4:14
+I'll protect you from nightmares, Baby
+`,
+lrcAlt1Text:`
+0:15
+Passing the time leaving the TV on,
+0:21
+I finally decide to do the laundry today
+0:28
+Sunny outside, but I dare to stay at home
+0:35
+Let's make a toast with some ordinary snacks and alcohol
+0:42
+Our "better & sweet"
+0:43
+are not on the same wavelength
+0:45
+Like us staying together,
+0:47
+we can adjust them to be harmonious
+0:49
+The sun you gave me
+0:51
+should not to be hidden by the moon
+0:52
+So I sing this melody to the eternal shine
+0:56
+Playing with Slowly flowing days
+0:59
+Our feeling is now beyond "loving you"
+1:03
+We're two of a kind and so
+1:06
+Let's live together laughing until we get older
+1:10
+Without you, I might just spend lonely lonely days
+1:13
+To dream a dream, you fall asleep in bed
+1:16
+I wake you up by a "mornig call"
+1:20
+I'll protect you from night mares, Baby
+1:38
+your footprints made by clothes you removed,
+1:44
+Suddenly you come and hug me from behind
+1:51
+I tend to forget such a little happiness in everyday life
+1:58
+Now I notice nothing should be taken for granted
+2:05
+We are the paired
+2:06
+cells relating each other so specially
+2:08
+I wanted to take it all in at this sleepy noon
+2:12
+Your sigh, your warmth, your everything,
+2:13
+I don't want to forget
+2:15
+So I engrave our sweet memories in my heart
+2:19
+Playing with Slowly flowing days
+2:22
+Our feeling is now beyond "loving you"
+2:26
+We're diffrent from each other and so
+2:29
+Let's live together laughing until we get older
+2:33
+Without you, I might just spend lonely lonely days
+2:36
+To dream a dream, you fall asleep in bed
+2:39
+I wake you up by a "mornig call"
+2:43
+I'll protect you from night mares, Baby
+2:46
+Don't let go of my hand you hold
+2:51
+My bad That just means I want to be with you
+2:55
+Our concerns seem to be similar
+2:58
+We are even, aren't we ?
+3:00
+Misunderstandings, mistakes
+3:04
+and misplans are there
+3:10
+But we can share even sadness
+3:12
+So let's pick tomorrow of being together
+3:14
+Let's be careful not to be self-satisfied always
+3:22
+Without you, I might get stuck now
+3:25
+somewhere in this world
+3:28
+So I want to say "Thank you" and
+3:32
+"I will support you from now on"
+3:35
+I never imagined it would happen to me
+3:38
+My love for you is overflowing day by day
+3:42
+But it's hard to be honest
+3:45
+with my feeling when I see your face My bad
+3:50
+Playing with Slowly flowing days
+3:54
+Our feeling is now beyond "loving you"
+3:57
+We're two of a kind and so
+4:00
+Let's live together laughing until we get older
+4:04
+Without you, I might just spend lonely lonely days
+4:07
+To dream a dream, you fall asleep in bed
+4:11
+I wake you up by a "mornig call"
+4:14
+I'll protect you from night mares, Baby
+`,
+lrcAlt2Text:`
+0:15 Tarenagashita terebi no oto
+0:21 Tamete shimatta sentakumono wa kyou koso
+0:28 Hare demo aete soto ni wa denai de iyou
+0:35 Haenai sunakku to arukooru de kanpai o shiyou
+0:42 Futari sui mo amai mo
+0:43 Kami awanai to shite mo
+0:45 Otagai yorisou you ni
+0:47 Sukoshi zurashite miyou yo
+0:49 Kimi ga kureta taiyou
+0:51 Tsuki de kakurenai you
+0:52 Kagayaki tarimanu you ni utau merodi
+0:56 Tawamureru — Slowly flowing day
+0:59 Aishiteru mo toori koshite
+1:03 Nita mono doushi koushite
+1:06 Toshi oiru made waratte itai ne
+1:10 Kimi ga inakya lonely lonely day
+1:13 Yume no naka — Fall asleep in bed.
+1:16 Okosu kara morning call de
+1:20 I'll protect you from nightmares, Baby
+1:38 Nugippanashi no ashiato tadoru to
+1:44 Fuio wo tsuite ushiro kara dakitsuku no
+1:51 Tsui, kurikaesu to wasurete shimaisou ni naru yo
+1:58 Furikaeru to hibi ga atarimae ja nai koto
+2:05 Futari tsui no saibou
+2:06 Karami au tokubetsu o
+2:08 Kamishimete ikitai to omotta madoromi daku shougo
+2:12 Toiki, moreta taion
+2:13 Mijin mo nogasanai you
+2:15 Atama no naka kizamu amai memory
+2:19 Tawamureru — Slowly flowing day
+2:22 Aishiteru mo toori koshite
+2:26 Chigau mono doushi koushite
+2:29 Toshi oiru made waratte itai ne
+2:33 Kimi ga inakya lonely lonely day
+2:36 Yume no naka — Fall asleep in bed
+2:39 Okosu kara morning call de
+2:43 I'll protect you from nightmares, Baby
+2:46 Kasaneta te wa ne hanasanaide ite
+2:51 Gomen, kore soba ni itai dake da ne
+2:55 Kakaeta omoi wa otagai sama desho
+2:58 Hora, oaiko desho
+3:00 Surechigai, machigai mo aru shi
+3:04 Sjukaki doori ikanai dashi, kanashimi datte
+3:10 Hanbun ko ni shiyou
+3:12 Wakare janai kibou
+3:14 Hitoriyogari ni naranai you ni, itsumo
+3:22 Kimi ga inakya ima mo doko ka de
+3:25 Ugokenai mama no boku de
+3:28 Arigatou o tsutaetai no desu
+3:32 Korekara wa boku ga sasaeteku tte
+3:35 Akirete shimau kurai ni ne
+3:38 Ai ga mashite iku day by day
+3:42 Men to muku to doushite mo
+3:45 Sunao ni narenai na, gomen ne
+3:50 Tawamureru — Slowly flowing day
+3:54 Aishiteru mo toori koshite
+3:57 Nita mono doushi koushite
+4:00 Toshi oiru made waratte itai ne
+4:04 Kimi ga inakya lonely lonely day
+4:07 Yume no naka — Fall asleep in bed.
+4:11 Okosu kara morning call de
+4:14 I'll protect you from nightmares, Baby
+`
+      },
+      
+      {
+        id: '7years',
+        title: '7 Years',
+        artist: 'Lukas Graham',
+        src: '7 Years.mp3',
+        cover: "https://i.scdn.co/image/ab67616d0000b2732d94d0f04e9a58d1654b760b",
+         artistImage: 'https://pmstudio.com/pmstudio/images/Lukas-Graham39.jpg',
+        isVideo: false,
+        duration: undefined,
+        keywords: ['english','emotional','sad','romantic','story'],
+        lrcText: `0:21
+Once I was seven years old
+0:23
+my momma told me
+0:25
+Go make yourself some friends or you'll be lonely
+0:28
+Once I was seven years old
+0:37
+It was a big big world, but we thought we were bigger
+0:41
+Pushing each other to the limits, we were learning quicker
+0:45
+By eleven smoking herb and drinking burning liquor
+0:49
+Never rich so we were out to make that steady figure
+0:52
+Once I was eleven years old
+0:55
+My daddy told me
+0:57
+Go get yourself a wife or you'll be lonely
+1:01
+Once I was eleven years old
+1:09
+I always had that dream like my daddy before me
+1:13
+So I started writing songs, I started writing stories
+1:17
+Something about that glory
+1:19
+Just always seemed to bore me
+1:21
+'Cause only those I really love will ever really know me
+1:25
+Once I was twenty years old,
+1:27
+My story got told
+1:29
+Before the morning sun, when life was lonely
+1:33
+Once I was twenty years old
+1:41
+I only see my goals, I don't believe in failure
+1:45
+'Cause, I know the smallest voices, they can make it major
+1:49
+I got my boys with me at least those in favor
+1:53
+And if we don't meet before I leave, I hope I'll see you later
+1:57
+Once I was twenty years old
+1:59
+My story got told
+2:01
+I was writing about everything, I saw before me
+2:05
+Once I was twenty years old
+2:13
+Soon we'll be thirty years old,
+2:15
+Our songs have been sold
+2:17
+We've traveled around the world and we're still roaming
+2:20
+Soon we'll be thirty years old
+2:29
+I'm still learning about life My woman brought children for me
+2:33
+So I can sing them all my songs And I can tell them stories
+2:37
+Most of my boys are with me Some are still out seeking glory
+2:41
+And some I had to leave behind My brother I'm still sorry
+2:45
+Soon I'll be sixty years old
+2:47
+My daddy got sixty-one
+2:49
+Remember life and then your life becomes a better one
+2:53
+I made a man so happy when I wrote a letter once
+2:57
+I hope my children come and visit, once or twice a month
+3:01
+Soon I'll be sixty years old
+3:03
+Will I think the world is cold
+3:05
+Or will I have a lot of children who can warm me
+3:09
+Soon I'll be sixty years old
+3:17
+Soon I'll be sixty years old
+3:19
+Will I
+3:20
+Think the world is cold
+3:21
+Or will I
+3:22
+Have a lot of children who can warm me
+3:25
+Soon I'll be sixty years old
+3:33
+Once I was seven years old
+3:35
+My momma told me
+3:37
+Go make yourself some friends or you'll be lonely
+3:41
+Once I was seven years old
+3:49
+Once I was seven years old
+`,
+      },
+        {
+        id: '像晴天像雨天',
+        title: '像晴天像雨天',
+        artist: 'Silence Wang',
+        src: '像晴天像雨天.mp3',
+        cover: "https://i1.sndcdn.com/artworks-ZD3lVe9HWhRv-0-t500x500.jpg",
+          artistImage: 'https://i.scdn.co/image/ab67616100005174e031c2c433fefe3fd10f5caa',
+        isVideo: false,
+        duration: undefined,
+        keywords: ['chinese','emotional','sad','romantic','cpop','rap','mandarin','Like Sunny Days Like Rainy Days'],
+        lrcText: `0:13
+措手不及
+0:16
+遇見你我開始變得不太聰明
+0:20
+心跳加速 有時候呼吸也暫停
+0:23
+身體
+0:25
+無法控制向你靠近
+0:28
+步步為營
+0:31
+人物關係走向不可控的劇情
+0:35
+窗外飛過著宣告戀愛的蜻蜓
+0:39
+想你
+0:40
+我的心事變得透明
+0:45
+一意孤行 汲汲營營 寸步難行
+0:53
+慢慢累積 拼湊不完整的旋律
+0:58
+我一貫的小心翼翼
+1:02
+現在卻想要告訴你
+1:08
+好喜歡你
+1:10
+像春天的花朵盛開在夏夜裡
+1:14
+像微風吹過雨後泥土的香氣
+1:18
+像迷途的旅人到達了目的地
+1:21
+像飛舞蝴蝶被絢爛色彩吸引
+1:25
+像流傳許久神秘的愛情咒語
+1:29
+像喧囂的午後突然變的安靜
+1:33
+像眼淚落入海底逃離了孤寂
+1:37
+如果我能給你短暫的開心
+1:42
+步步為營
+1:44
+人物關係走向不可控的劇情
+1:48
+窗外飛過著宣告戀愛的蜻蜓
+1:52
+想你
+1:54
+我的心事變得透明
+1:58
+猜你話語 猜你表情 猜你歡喜
+2:06
+猜不出你 猜不出我們的結局
+2:11
+能不能這次不冷靜
+2:15
+能不能大聲告訴你
+2:21
+好喜歡你
+2:23
+像春天的花朵盛開在夏夜裡
+2:27
+像微風吹過雨後泥土的香氣
+2:31
+像迷途的旅人到達了目的地
+2:35
+像飛舞蝴蝶被絢爛色彩吸引
+2:38
+像流傳許久神秘的愛情咒語
+2:42
+像喧囂的午後突然變的安靜
+2:46
+像眼淚落入海底逃離了孤寂
+2:50
+如果我能給你短暫的開心
+2:53
+花朵盛開夏夜裡
+2:55
+雨後泥土的香氣
+2:56
+旅人到了目的地
+2:58
+像蝴蝶被色彩吸引
+3:00
+神秘的愛情咒語
+3:02
+午後突然變安靜
+3:04
+眼淚逃離了孤寂
+3:06
+好喜歡你
+3:08
+像春天的花朵盛開在夏夜裡
+3:12
+像微風吹過雨後泥土的香氣
+3:16
+像迷途的旅人到達了目的地
+3:20
+像飛舞蝴蝶被絢爛色彩吸引
+3:23
+像流傳許久神秘的愛情咒語
+3:27
+像喧囂的午後突然變的安靜
+3:31
+像眼淚落入海底逃離了孤寂
+3:35
+像現在的我決定不再問結局
+`,
+lrcAlt1Text:`
+0:13 Caught off guard
+0:16 Since meeting you I’ve started getting a little less clever
+0:20 Heart racing — sometimes my breath even stops
+0:23 My body
+0:25 Can’t help but move closer to you
+0:28 Treading carefully, step by step
+0:31 The relationships between people head into an uncontrollable plot
+0:35 Outside the window a dragonfly flies by, announcing love
+0:39 I miss you
+0:40 My thoughts have turned transparent
+0:45 Headstrong, striving, barely able to take a step
+0:53 Slowly accumulating, piecing together an incomplete melody
+0:58 My usual cautiousness
+1:02 Now I want to tell you
+1:08 I really like you
+1:10 Like a spring flower blooming in a summer night
+1:14 Like the scent of earth after rain carried by a breeze
+1:18 Like a lost traveler finally reaching their destination
+1:21 Like a butterfly drawn to brilliant colors
+1:25 Like an age-old, mysterious love spell
+1:29 Like a noisy afternoon suddenly becoming quiet
+1:33 Like tears falling into the sea, escaping loneliness
+1:37 If I can give you a moment of happiness
+1:42 Treading carefully, step by step
+1:44 The relationships between people head into an uncontrollable plot
+1:48 Outside the window a dragonfly flies by, announcing love
+1:52 I miss you
+1:54 My thoughts have turned transparent
+1:58 Guess your words, guess your expression, guess your joy
+2:06 Can’t guess you, can’t guess the ending for us
+2:11 Can I not be calm this time?
+2:15 Can I shout it out to you?
+2:21 I really like you
+2:23 Like a spring flower blooming in a summer night
+2:27 Like the scent of earth after rain carried by a breeze
+2:31 Like a lost traveler finally reaching their destination
+2:35 Like a butterfly drawn to brilliant colors
+2:38 Like an age-old, mysterious love spell
+2:42 Like a noisy afternoon suddenly becoming quiet
+2:46 Like tears falling into the sea, escaping loneliness
+2:50 If I can give you a moment of happiness
+2:53 Flowers blooming in a summer night
+2:55 The scent of earth after rain
+2:56 The traveler reaching the destination
+2:58 Like a butterfly drawn to colors
+3:00 A mysterious love spell
+3:02 The afternoon suddenly turning quiet
+3:04 Tears escaping loneliness
+3:06 I really like you
+3:08 Like a spring flower blooming in a summer night
+3:12 Like the scent of earth after rain carried by a breeze
+3:16 Like a lost traveler finally reaching their destination
+3:20 Like a butterfly drawn to brilliant colors
+3:23 Like an age-old, mysterious love spell
+3:27 Like a noisy afternoon suddenly becoming quiet
+3:31 Like tears falling into the sea, escaping loneliness
+3:35 Like now — I’ve decided not to ask about the ending anymore
+`,
+lrcAlt2Text:`
+0:13 cuò shǒu bù jí
+0:16 yùjiàn nǐ wǒ kāishǐ biàn dé bù tài cōngmíng
+0:20 xīntiào jiāsù yǒu shíhòu hūxī yě zàntíng
+0:23 shēntǐ
+0:25 wúfǎ kòngzhì xiàng nǐ kàojìn
+0:28 bùbù wéi yíng
+0:31 rénwù guānxì zǒuxiàng bùkě kòng de jùqíng
+0:35 chuāngwài fēiguò zhe xuāngào liàn'ài de qīngtíng
+0:39 xiǎng nǐ
+0:40 wǒ de xīnshì biàn dé tòumíng
+0:45 yìyì gūxíng jíjí yíngyíng cùnbù nánxíng
+0:53 mànmàn lěijī pīncòu bù wánzhěng de xuànlǜ
+0:58 wǒ yīguàn de xiǎoxīnyìyì
+1:02 xiànzài què xiǎng yào gàosù nǐ
+1:08 hǎo xǐhuan nǐ
+1:10 xiàng chūntiān de huāduǒ shèngkāi zài xiàyè lǐ
+1:14 xiàng wēifēng chuīguò yǔhòu nítǔ de xiāngqì
+1:18 xiàng mítú de lǚrén dàodále mùdì dì
+1:21 xiàng fēiwǔ húdié bèi xuànràn sècǎi xīyǐn
+1:25 xiàng liúchuán xǔjiǔ shénmì de àiqíng zhòuyǔ
+1:29 xiàng xuānxiāo de wǔhòu túrán biàn de ānjìng
+1:33 xiàng yǎnlèi luò rù hǎidǐ táolí le gūjì
+1:37 rúguǒ wǒ néng gěi nǐ duǎnzàn de kāixīn
+1:42 bùbù wéi yíng
+1:44 rénwù guānxì zǒuxiàng bùkě kòng de jùqíng
+1:48 chuāngwài fēiguò zhe xuāngào liàn'ài de qīngtíng
+1:52 xiǎng nǐ
+1:54 wǒ de xīnshì biàn dé tòumíng
+1:58 cāi nǐ huàyǔ cāi nǐ biǎoqíng cāi nǐ huānxǐ
+2:06 cāi bù chū nǐ cāi bù chū wǒmen de jiéjú
+2:11 néng bù néng zhè cì bù lěngjìng
+2:15 néng bù néng dàshēng gàosù nǐ
+2:21 hǎo xǐhuan nǐ
+2:23 xiàng chūntiān de huāduǒ shèngkāi zài xiàyè lǐ
+2:27 xiàng wēifēng chuīguò yǔhòu nítǔ de xiāngqì
+2:31 xiàng mítú de lǚrén dàodále mùdì dì
+2:35 xiàng fēiwǔ húdié bèi xuànràn sècǎi xīyǐn
+2:38 xiàng liúchuán xǔjiǔ shénmì de àiqíng zhòuyǔ
+2:42 xiàng xuānxiāo de wǔhòu túrán biàn de ānjìng
+2:46 xiàng yǎnlèi luò rù hǎidǐ táolí le gūjì
+2:50 rúguǒ wǒ néng gěi nǐ duǎnzàn de kāixīn
+2:53 huāduǒ shèngkāi xiàyè lǐ
+2:55 yǔhòu nítǔ de xiāngqì
+2:56 lǚrén dàole mùdì dì
+2:58 xiàng húdié bèi sècǎi xīyǐn
+3:00 shénmì de àiqíng zhòuyǔ
+3:02 wǔhòu túrán zhuǎn ānjìng
+3:04 yǎnlèi táolí le gūjì
+3:06 hǎo xǐhuan nǐ
+3:08 xiàng chūntiān de huāduǒ shèngkāi zài xiàyè lǐ
+3:12 xiàng wēifēng chuīguò yǔhòu nítǔ de xiāngqì
+3:16 xiàng mítú de lǚrén dàodále mùdì dì
+3:20 xiàng fēiwǔ húdié bèi xuànràn sècǎi xīyǐn
+3:23 xiàng liúchuán xǔjiǔ shénmì de àiqíng zhòuyǔ
+3:27 xiàng xuānxiāo de wǔhòu túrán biàn de ānjìng
+3:31 xiàng yǎnlèi luò rù hǎidǐ táolí le gūjì
+3:35 xiàng xiànzài de wǒ juédìng bù zài wèn jiéjú
+`
+      },
+        {
+        id: '飛鳥和蟬',
+        title: ' 飞鸟和蝉',
+        artist: 'Ren Ran',
+        src: '飛鳥和蟬.mp3',
+        cover: "https://i1.sndcdn.com/artworks-qZXp9YqGRlnTgAvH-PkGWhQ-t500x500.jpg",
+     
+        isVideo: false,
+        duration: undefined,
+        keywords: ['chinese','emotional','sad','romantic','cpop','mandarin','Fei Niao He Chan','飛鳥和蟬'],
+        lrcText: `00:27 你说青涩最搭初恋
+00:34 如小雪落下海岸线
+00:40 第五个季节某一天上演
+00:46 我们有相遇的时间
+
+00:53 你说空瓶适合许愿
+01:00 在风暖月光的地点
+01:06 第十三月你就如期出现
+01:13 海之角也不再遥远
+
+01:21 你骄傲的飞远 我栖息的夏天
+01:27 听不见的宣言 重复过很多年
+01:34 北纬线的思念被季风吹远
+01:38 吹远默念的侧脸
+01:42 吹远鸣唱的诗篇
+
+01:47 你骄傲的飞远 我栖息的叶片
+01:53 去不同的世界 却从不曾告别
+02:00 沧海月的想念羽化我昨天
+02:05 在我成熟的笑脸
+02:08 你却未看过一眼
+
+02:27 你说空瓶适合许愿
+02:34 在风暖月光的地点
+02:41 第十三月你就如期出现
+02:47 海之角也不再遥远
+
+02:52 你骄傲的飞远 我栖息的夏天
+02:58 听不见的宣言 重复过很多年
+03:04 北纬线的思念被季风吹远
+03:09 吹远默念的侧脸
+03:13 吹远鸣唱的诗篇
+
+03:18 你骄傲的飞远 我栖息的叶片
+03:24 去不同的世界 却从不曾告别
+03:30 沧海月的想念羽化我昨天
+03:35 在我成熟的笑脸
+03:39 你却未看过一眼
+
+03:44 你骄傲的飞远 我栖息的夏天
+03:50 听不见的宣言 重复过很多年
+03:56 北纬线的思念被季风吹远
+04:01 吹远默念的侧脸
+04:05 吹远鸣唱的诗篇
+
+04:10 你骄傲的飞远 我栖息的叶片
+04:16 去不同的世界 却从不曾告别
+04:22 沧海月的想念羽化我昨天
+04:26 在我成熟的笑脸
+04:30 你却未看过一眼
+`,
+lrcAlt1Text:`
+00:27 You said innocence suits first love the best
+00:34 Like light snow falling along the coastline
+00:40 One day in the fifth season, it was performed again
+00:46 We had the time to meet
+
+00:53 You said an empty bottle is perfect for making wishes
+01:00 At a place where the wind is warm and the moonlight shines
+01:06 In the thirteenth month, you appeared as promised
+01:13 Even the edge of the sea was no longer far away
+
+01:21 You proudly flew far away, while I rested in my summer
+01:27 The unheard declarations repeated for many years
+01:34 The longing along the northern latitude was blown away by the monsoon
+01:38 It carried away the face I silently remembered
+01:42 It carried away the poems once sung aloud
+
+01:47 You proudly flew far away, I rested on my leaf
+01:53 You went to a different world, yet never said goodbye
+02:00 The longing of the sea and moon transformed my yesterday
+02:05 On my mature smile
+02:08 You never looked at it, not even once
+
+02:27 You said an empty bottle is perfect for making wishes
+02:34 At a place where the wind is warm and the moonlight shines
+02:41 In the thirteenth month, you appeared as promised
+02:47 Even the edge of the sea was no longer far away
+
+02:52 You proudly flew far away, while I rested in my summer
+02:58 The unheard declarations repeated for many years
+03:04 The longing along the northern latitude was blown away by the monsoon
+03:09 It carried away the face I silently remembered
+03:13 It carried away the poems once sung aloud
+
+03:18 You proudly flew far away, I rested on my leaf
+03:24 You went to a different world, yet never said goodbye
+03:30 The longing of the sea and moon transformed my yesterday
+03:35 On my mature smile
+03:39 You never looked at it, not even once
+
+03:44 You proudly flew far away, while I rested in my summer
+03:50 The unheard declarations repeated for many years
+03:56 The longing along the northern latitude was blown away by the monsoon
+04:01 It carried away the face I silently remembered
+04:05 It carried away the poems once sung aloud
+
+04:10 You proudly flew far away, I rested on my leaf
+04:16 You went to a different world, yet never said goodbye
+04:22 The longing of the sea and moon transformed my yesterday
+04:26 On my mature smile
+04:30 You never looked at it, not even once
+`,
+lrcAlt2Text:`
+00:27 nǐ shuō qīng sè zuì dā chūliàn
+00:34 rú xiǎoxuě luòxià hǎi'ànxiàn
+00:40 dì wǔ gè jìjié mǒu yītiān shàngyǎn
+00:46 wǒmen yǒu xiāngyù de shíjiān
+
+00:53 nǐ shuō kōng píng shìhé xǔyuàn
+1:00 zài fēng nuǎn yuèguāng dì dìdiǎn
+1:06 dì shísān yuè nǐ jiù rúqí chūxiàn
+1:13 hǎi zhī jiǎo yě bù zài yáoyuǎn
+
+1:21 nǐ jiāo'ào de fēi yuǎn wǒ qīxī de xiàtiān
+1:27 tīng bùjiàn de xuānyán chóngfùguò hěnduō nián
+1:34 běiwěi xiàn de sīniàn bèi jìfēng chuī yuǎn
+1:38 chuī yuǎn mòniàn de cè liǎn
+1:42 chuī yuǎn míng chàng de shīpiān
+
+1:47 nǐ jiāo'ào de fēi yuǎn wǒ qīxī de yèpiàn
+1:53 qù bùtóng de shìjiè què cóng bùcéng gàobié
+2:00 cānghǎi yuè de xiǎngniàn yǔhuà wǒ zuótiān
+2:05 zài wǒ chéngshú de xiàoliǎn
+2:08 nǐ què wèi kànguò yīyǎn
+
+2:27 nǐ shuō kōng píng shìhé xǔyuàn
+2:34 zài fēng nuǎn yuèguāng dì dìdiǎn
+2:41 dì shísān yuè nǐ jiù rúqí chūxiàn
+2:47 hǎi zhī jiǎo yě bù zài yáoyuǎn
+
+2:52 nǐ jiāo'ào de fēi yuǎn wǒ qīxī de xiàtiān
+2:58 tīng bùjiàn de xuānyán chóngfùguò hěnduō nián
+3:04 běiwěi xiàn de sīniàn bèi jìfēng chuī yuǎn
+3:09 chuī yuǎn mòniàn de cè liǎn
+3:13 chuī yuǎn míng chàng de shīpiān
+
+3:18 nǐ jiāo'ào de fēi yuǎn wǒ qīxī de yèpiàn
+3:24 qù bùtóng de shìjiè què cóng bùcéng gàobié
+3:30 cānghǎi yuè de xiǎngniàn yǔhuà wǒ zuótiān
+3:35 zài wǒ chéngshú de xiàoliǎn
+3:39 nǐ què wèi kànguò yīyǎn
+
+3:44 nǐ jiāo'ào de fēi yuǎn wǒ qīxī de xiàtiān
+3:50 tīng bùjiàn de xuānyán chóngfùguò hěnduō nián
+3:56 běiwěi xiàn de sīniàn bèi jìfēng chuī yuǎn
+4:01 chuī yuǎn mòniàn de cè liǎn
+4:05 chuī yuǎn míng chàng de shīpiān
+
+4:10 nǐ jiāo'ào de fēi yuǎn wǒ qīxī de yèpiàn
+4:16 qù bùtóng de shìjiè què cóng bùcéng gàobié
+4:22 cānghǎi yuè de xiǎngniàn yǔhuà wǒ zuótiān
+4:26 zài wǒ chéngshú de xiàoliǎn
+4:30 nǐ què wèi kànguò yīyǎn
+`
+      },
+      {
+        id: '星になる',
+        title: 'Hoshi Ni Naru (星になる)',
+        artist: 'Islet & Isui',
+        src: '星になる.mp3',
+
+        cover: "https://www.lyrical-nonsense.com/wp-content/uploads/2022/12/Islet-Hoshi-ni-Naru-feat-isui.jpg",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['japanese','emotional','sad','romantic','nihon','authentic'],
+        lrcText: `0:15 ふと見上げたあの夜空が
+0:21 いつもより近く感じた気がしたんだ
+0:29 鬱いだ日々に
+0:32 さよならを告げるように
+0:35 傷付いた
+0:37 翼を広げた
+0:42 駆け出して
+0:44 飛び立って
+0:46 夜空を游ぐ光のように
+0:49 羽ばたいて
+0:51 高鳴って
+0:53 この鼓動響かせたら
+0:57 一番光る星が
+1:00 僕の道しるべだ
+1:04 彼方まで
+1:06 連れ去って
+1:12 満点の空に埋もれそうな
+1:15 小さな星が瞬く
+1:18 懸命なその姿に
+1:22 なれたならって思うんだ
+1:26 打ちのめされた現状に
+1:27 生きる意味も理由もなくなって
+1:29 でも確かにこの胸は
+1:31 脈打っている
+1:32 消えかかっていた心に
+1:36 火を灯した
+1:39 輝いて
+1:46 彩って
+1:50 ほら
+1:54 痛みや苦しみだって
+1:57 力に変えるような
+2:01 この翼なら
+2:04 翔べるから
+2:19 朝になって 光が差して
+2:22 また世界に期待をして
+2:26 夜になって 孤独を知って
+2:29 意味のない繰り返しだった
+2:33 だけどやっと見つけたんだ
+2:36 この命輝く場所
+2:40 どこまでもゆこう
+2:43 空の果てまで
+2:46 駆け出して
+2:48 飛び立って
+2:50 夜空を游ぐ光のように
+2:53 羽ばたいて
+2:55 高鳴って
+2:57 この身が燃え尽きたって
+3:02 いつかこの軌跡が
+3:05 誰かを照らせたなら
+3:08 今僕は
+3:11 星になる
+3:18 夜をも越えてゆけ
+`,
+lrcAlt1Text:`
+0:15
+Suddenly I looked up the night sky
+0:21
+and it felt closer than usual.
+0:29
+Like I'm saying goodbye to the gloomy days,
+0:35
+I spread my wounded wings widely.
+0:42
+Running out,
+0:44
+flying away,
+0:46
+like a starlight swimming in the night sky.
+0:49
+Fluttering,
+0:51
+throbbing,
+0:53
+and beating my heartbeat.
+0:57
+The brightest star
+1:01
+will lead my way.
+1:04
+Take me away
+1:07
+beyond the sky.
+1:11
+A small star hidden in the starry sky
+1:15
+is blinking brightly.
+1:18
+I thought that if I could be
+1:22
+earnest like that star.
+1:26
+Even when I lost the reason and the meaning of life
+1:29
+my heart is beating certainly.
+1:32
+I lit a fire on my vanishing heart.
+1:39
+Sparkling,
+1:46
+colorizing,
+1:50
+go ahead.
+1:54
+Cause I have wings
+1:57
+changes pain and agony into power,
+2:01
+I feel like
+2:04
+I can fly.
+2:19
+When the morning comes and
+2:21
+the rays of light shines through
+2:22
+again I embrace hope for this world.
+2:26
+Then the night falls and I feel lonely,
+2:29
+it was all a meaningless cycle.
+2:33
+But I've finally found the place
+2:36
+where my life sparkles.
+2:40
+Let's fly forever
+2:43
+to the end of the sky.
+2:46
+Running out,
+2:48
+flying away,
+2:50
+like a starlight swimming in the night sky.
+2:53
+Fluttering,
+2:55
+throbbing,
+2:57
+even if my body burns out.
+3:02
+If one day my trajectory
+3:05
+shines on someone else,
+3:08
+then now I will become
+3:11
+a star.
+3:18
+Going over the night itself.
+`,
+lrcAlt2Text:`
+0:15 Futo miageta ano yozora ga
+0:21 Itsumo yori chikaku kanjita ki ga shitanda
+0:29 Fusaida hibi ni
+0:32 Sayonara wo tsugeru you ni
+0:35 Kizu tsuita
+0:37 Tsubasa wo hirogeta
+0:42 Kakedashite
+0:44 Tobitatte
+0:46 Yozora wo oyogu hikari no youni
+0:49 Habataite
+0:51 Takanatte
+0:53 Kono kodou hibikase tara
+0:57 Ichiban hikaru hoshi ga
+1:00 Boku no michishirube da
+1:04 Kanata made
+1:06 Tsuresatte
+1:12 Manten no sora ni umoresou na
+1:15 Chiisana hoshi ga matataku
+1:18 Kenmei na sono sugata ni
+1:22 Naretanara tte omounda
+1:26 Uchinomesareta genjou ni
+1:27 Ikiru imi mo riyuu mo nakunatte
+1:29 Demo tashikani kono mune ha
+1:31 Myaku utte iru
+1:32 Kiekakatteita kokoro ni
+1:36 Hi wo tomoshita
+1:39 Kagayaite
+1:46 Irodotte
+1:50 Hora
+1:54 Itami ya kurushimi datte
+1:57 Chikara ni kaeru youna
+2:01 Kono tsubasa nara
+2:04 Toberu kara
+2:19 Asa ni natte hikari ga sashite
+2:22 Mata sekai ni kitai wo shite
+2:26 Yoru ni natte kodoku wo shitte
+2:29 Imi no nai kurikaeshi datta
+2:33 Dakedo yatto mitsuketanda
+2:36 Kono inochi kagayaku basho
+2:40 Dokomademo yukou
+2:43 Sora no hate made
+2:46 Kakedashite
+2:48 Tobitatte
+2:50 Yozora wo oyogu hikari no youni
+2:53 Habataite
+2:55 Takanatte
+2:57 Kono mi ga moetsukitatte
+3:02 Itsuka kono kiseki ga
+3:05 Dareka wo teraseta nara
+3:08 Ima bokuwa
+3:11 Hoshi ni naru
+3:18 Yoru wo mo koeteyuke
+`
+      },
+        {
+        id: 'sadsong',
+        title: 'Sad Song',
+        artist: 'We The Kings',
+        src: 'Sad Song.mp3',
+           artistImage: 'https://i.scdn.co/image/ab67616d00001e0228b45bfdfd877c8040de8f36',
+        cover: "https://i1.sndcdn.com/artworks-000133898282-udv51p-t500x500.jpg",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['english','emotional','sad','romantic','sadsong','you and i'],
+        lrcText: `
+You and I
+We're like fireworks and symphonies exploding in the sky
+With you, I'm alive
+Like all the missing pieces of my heart
+They finally collide
+
+So stop time right here in the moonlight
+'Cause I don't ever wanna close my eyes
+
+Without you, I feel broke
+Like I'm half of a whole
+Without you, I've got no hand to hold
+Without you, I feel torn
+Like a sail in a storm
+Without you, I'm just a sad song
+I'm just a sad song
+
+With you I fall
+It's like I'm leaving all my past in silhouettes upon the wall
+With you I'm a beautiful mess
+It's like we're standing hand in hand
+With all our fears upon the edge
+
+So stop time right here in the moonlight
+'Cause I don't ever wanna close my eyes
+
+Without you, I feel broke
+Like I'm half of a whole
+Without you, I've got no hand to hold
+Without you, I feel torn
+Like a sail in a storm
+Without you, I'm just a sad song
+
+You're the perfect melody
+The only harmony
+I wanna hear
+You're my favorite part of me
+With you standing next to me
+I've got nothing to fear
+
+Without you, I feel broke
+Like I'm half of a whole
+Without you, I've got no hand to hold
+Without you, I feel torn
+Like a sail in a storm
+Without you, I'm just a sad song
+
+Without you, I feel broke
+Like I'm half of a whole
+Without you, I've got no hand to hold
+Without you, I feel torn
+Like a sail in a storm
+Without you, I'm just a sad song
+I'm just a sad song
+`
+      },
+       {
+        id: 'free',
+        title: 'Free',
+        artist: 'Shayne Orok',
+        src: 'Free.mp3',
+     
+        cover: "https://images.genius.com/57141f0da19e8e07e7eac9bbdff8fb27.225x225x1.jpg",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['english','japanese','sad','romantic','sadsong','cover'],
+        lrcText: `
+        00:14.000 I try to hide, but something broke 
+       00:17.800 I try to sing, couldn't hit the notes,
+         00:20.500 the words kept catching in my throat  
+00:24.000 I try to smile, I was suffocated though but 
+00:27.700 Here with you I can finally breathe,
+ 00:31.500 you say you're no good but you're good for me  
+00:34.000 I've been hoping to change and I know we could change
+ 00:38.800 But I won't if you're not by my side  
+00:43.200 Why does it feel right?
+ 00:45.000 Every time I let you in 
+ 00:46.800 Why does it feel right? 
+ 00:48.290 I could tell you anything 
+ 00:50.480 All the secrets that keep me enchanted
+  00:54.280 All the damage that might make me dangerous 
+
+00:57.000 You've got a dark side
+ 00:58.800 Yes, you're not the only one What if we both try?
+ 01:01.800 Fighting what we're running from
+  01:04.250 We can't fix it if we never face it
+  01:07.700  What if we find a way to escape it? 
+ 01:10.500  We could be free, free  
+01:18.000 We can't fix it if we never face it 
+
+01:21.540 Let the past be the past till it's weightless 
+01:24.700 All time goes by and I lose perspective 
+01:28.800 Your hope only hurts so why just forget it?  
+01:32.000 But you're breaking through all the dark in me
+ when I thought that nobody could
+  01:35.300 And you're waking up all these parts of me
+   that I 
+   01:37.040 thought were buried for good  
+01:38.700 Between ambassador and this monster 
+01:40.000 I've been lost inside my head 
+01:42.000 Ain't no choice but all these voices keep me burning towards knowing  
+01:45.000 It's just easy when I'm with you 
+01:47.100 No one sees me the way you do I don't trust it but I want it 
+01:50.600 I keep coming back to Why does it feel right? 
+01:53.700 Every time I let you in 
+01:55.000 Why does it feel right?
+ 01:57.000 I could tell you anything  
+01:58.900 We can't fix it if we never face it 
+02:02.400 What if we find a way to escape it? We could be free, free  
+02:12.800 We can't fix it if we never face it 
+02:16.200 Let the past be the past till it's weightless  
+02:20.800 So take my hand, it's over Free, free  
+02:34.800 What if we hear what's broken? Free, free  
+02:47.700 I try to hide but something broke
+ 02:52.000 I couldn't sing but you give me hope  
+02:54.000 We can't fix it if we never face it 
+02:57.500 Let the past be the past till it's weightless  
+
+       
+`
+      },
+             {
+        id: 'freeins',
+        title: 'Free Karaoke',
+        artist: 'KPop Demon Hunters',
+        src: 'Free ins.mp3',
+     
+        cover: "https://images.steamusercontent.com/ugc/17078222817317704984/7C18A6838E8456CC1D3D5C02E8640EA2BE64F590/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['english','japanese','sad','romantic','sadsong','instrumental'],
+        lrcText: `
+        00:14.000 I try to hide, but something broke 
+       00:17.800 I try to sing, couldn't hit the notes,
+         00:20.500 the words kept catching in my throat  
+00:24.000 I try to smile, I was suffocated though but 
+00:27.700 Here with you I can finally breathe,
+ 00:31.500 you say you're no good but you're good for me  
+00:34.000 I've been hoping to change and I know we could change
+ 00:38.800 But I won't if you're not by my side  
+00:43.200 Why does it feel right?
+ 00:45.000 Every time I let you in 
+ 00:46.800 Why does it feel right? 
+ 00:48.290 I could tell you anything 
+ 00:50.480 All the secrets that keep me enchanted
+  00:54.280 All the damage that might make me dangerous 
+
+00:57.000 You've got a dark side
+ 00:58.800 Yes, you're not the only one What if we both try?
+ 01:01.800 Fighting what we're running from
+  01:04.250 We can't fix it if we never face it
+  01:07.700  What if we find a way to escape it? 
+ 01:10.500  We could be free, free  
+01:18.000 We can't fix it if we never face it 
+
+01:21.540 Let the past be the past till it's weightless 
+01:24.700 All time goes by and I lose perspective 
+01:28.800 Your hope only hurts so why just forget it?  
+01:32.000 But you're breaking through all the dark in me
+ when I thought that nobody could
+  01:35.300 And you're waking up all these parts of me
+   that I 
+   01:37.040 thought were buried for good  
+01:38.700 Between ambassador and this monster 
+01:40.000 I've been lost inside my head 
+01:42.000 Ain't no choice but all these voices keep me burning towards knowing  
+01:45.000 It's just easy when I'm with you 
+01:47.100 No one sees me the way you do I don't trust it but I want it 
+01:50.600 I keep coming back to Why does it feel right? 
+01:53.700 Every time I let you in 
+01:55.000 Why does it feel right?
+ 01:57.000 I could tell you anything  
+01:58.900 We can't fix it if we never face it 
+02:02.400 What if we find a way to escape it? We could be free, free  
+02:12.800 We can't fix it if we never face it 
+02:16.200 Let the past be the past till it's weightless  
+02:20.800 So take my hand, it's over Free, free  
+02:34.800 What if we hear what's broken? Free, free  
+02:47.700 I try to hide but something broke
+ 02:52.000 I couldn't sing but you give me hope  
+02:54.000 We can't fix it if we never face it 
+02:57.500 Let the past be the past till it's weightless  
+
+       
+`
+      },
+       {
+        id: 'undertheinfluence',
+        title: 'Under The Influence',
+        artist: 'Shayne Orok',
+        src: 'Under The Influence.mp3',
+           
+        cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPBTX2SQPPSpMomtCl1b_deDXDOhdAUL1XiQ&s",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['cover','emotional','romantic','sadsong','japanese'],
+          lrcText: `寝返りを打って
+まだ眠れない夜みたいだぜ Yeah
+そばにいてほしい
+ひとりでベッドにいたく
+ない ない ない
+
+Baby もし今 君も暇だったら
+マジで
+すぐに会いたいんだから
+俺んちに来て
+
+君はどんなことを俺に
+したかわからないんだろ
+その身体の誘惑は
+想像できないほどやばいよ
+
+君にあげたい愛は
+いちばん優しい嵐
+俺の名前は君の
+心に刺青を入れて Oh
+
+ちっとも君を泣かせたくないよ
+ちっとも君を泣かせたくないよ
+Oh yeah yeah〜
+
+Baby もし今 君も暇だったら
+マジで
+すぐに会いたいんだから
+俺んちに来て
+
+君はどんなことを俺に
+したかわからないんだろ
+その身体の誘惑は
+想像できないほどやばいよ
+
+Baby もし今 君も
+マジで
+すぐに会いたいんだから
+`,
+lrcAlt1Text:`
+Throw a return,
+It’s like a night I still can’t sleep, yeah
+I want you to come close
+I don’t want to be in bed alone
+NAI NAI NAI
+Baby, if you have free time now
+Really
+Because I want to see you right away
+Come to my place
+You probably don’t know what kinds of things
+You’ve done to me
+That physical temptation of yours
+Is so dangerous it’s beyond imagination
+The love I want to give you
+Is the gentlest storm
+My name, in your heart
+I want to implant posture (my presence) oh
+I don’t want at all to make you cry
+I don’t want at all to make you cry
+Oh yeah yeah ~
+Baby, if you have free time now
+Really
+Because I want to see you right away
+Come to my place
+You probably don’t know what kinds of things
+You’ve done to me
+That body temptation
+Is so dangerous it’s beyond imagination
+Baby, if it’s now
+Really
+Because I want to see you right away
+`,
+lrcAlt2Text:`
+Negaeri o utte
+Mada nemurenai yoru mitaidaze yeah
+Soba ni itte hoshii
+Hitori de beddo ni itaku
+NAI NAI NAI
+Baby moshi ima kimi
+Mo himadattara
+Maji de
+Sugu ni aitain dakara
+Ore n chi ni kite
+Kimi wa donna koto o ore ni
+Shita ka wakaranai ndarou
+Sono karada no yūwaku wa
+Sōzō dekinai hodo yabai yo
+Kimi ni agetai ai wa
+Ichiban yasashii arashi
+Ore no namae wa kimi no
+Kokoro ni shisei o irete oh
+Chittomo kimi o nakasasetakunai yo
+Chittomo kimi o nakasasetakunai yo
+Oh yeah yeah ~
+Baby moshi ima kimi
+Mo himadattara
+Maji de
+Sugu ni aitain dakara
+Ore n chi ni kite
+Kimi wa donna koto o ore ni
+Shita ka wakaranai ndarou
+Sono karada yūwaku wa
+Sōzō dekinai hodo yabai yo
+Baby moshi ima kimi
+Maji de
+Sugu ni aitain dakara
+`
+      },
+
+
+       {
+        id: 'ひまわりの約束',
+        title: 'ひまわりの約束',
+        artist: 'Motohiro Hata',
+        src: 'ひまわりの約束.mp3',
+                artistImage: 'https://i.scdn.co/image/ab6761610000e5eb6f6868ccbecfc1ebf10f1633',
+        cover: "https://i.scdn.co/image/ab67616d0000b2732625f528f450f0a57feca986",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['japanese','emotional','sad','romantic','nihon','authentic','himawari no yokusoku'],
+        lrcText: `0:20
+どうして君が泣くの
+0:25
+まだ僕も泣いていないのに
+0:33
+自分より　悲しむから
+0:38
+つらいのがどっちか　わからなくなるよ
+0:46
+ガラクタだったはずの今日が
+0:52
+ふたりなら　宝物になる
+1:00
+そばにいたいよ
+1:03
+君のために出来ることが僕にあるかな
+1:13
+いつも君に　ずっと君に 笑っていてほしくて
+1:25
+ひまわりのような　まっすぐなその優しさを 温もりを　全部
+1:37
+これからは僕も　届けていきたい
+1:43
+ここにある幸せに　気づいたから
+2:02
+遠くで　ともる未来
+2:07
+もしも　僕らが　離れても
+2:14
+それぞれ歩いていく
+2:19
+その先で　また　出会えると信じて
+2:27
+ちぐはぐだったはずの歩幅
+2:34
+ひとつのように　今　重なる
+2:43
+そばにいること
+2:45
+なにげないこの瞬間も　忘れはしないよ
+2:55
+旅立ちの日　手を振る時 笑顔でいられるように
+3:07
+ひまわりのような　まっすぐなその優しさを 温もりを　全部
+3:19
+返したいけれど　君のことだから もう充分だよって　きっと言うかな
+3:59
+そばにいたいよ
+4:01
+君のために出来ることが僕にあるかな
+4:10
+いつも君に　ずっと君に 笑っていてほしくて
+4:23
+ひまわりのような　まっすぐなその優しさを 温もりを　全部
+4:35
+これからは僕も　届けていきたい
+4:41
+本当の幸せの意味を見つけたから
+`,
+lrcAlt1Text:`
+0:20
+Why are you crying
+0:25
+when I haven't even started crying yet
+0:33
+You take it worse than me,
+0:38
+and now I don't know who’s the one to be hurt anymore
+0:46
+Today was meant to be junk,
+0:52
+but it turns to treasure when you are around
+1:00
+I want to stay by your side
+1:03
+I wonder if there is something I can do for you
+1:13
+So you can always be smiling, now and forevermore
+1:25
+Everything about your sincere kindness, welcoming heart, just like a sunflower
+1:37
+From now on, I wish to be the one to provide too,
+1:43
+because now I see the true happiness that is here
+2:02
+The future glows in the distance,
+2:07
+even if we part ways
+2:14
+We will walk each other's paths,
+2:19
+believing that we will meet again along the way
+2:27
+Steps that were out of sync,
+2:34
+now finding their way to become one
+2:43
+To be by your side
+2:45
+I will never forget even these ordinary moments
+2:55
+So that on the day when we say goodbye and part ways, we can still be smiling
+3:07
+Everything about your sincere kindness, welcoming heart, just like a sunflower
+3:19
+I want to return to you, but knowing you, you would probably say that I have already given you enough
+3:59
+I want to stay by your side
+4:01
+I wonder if there is something I can do for you
+4:10
+So you can always be smiling, now and forevermore
+4:23
+Everything about your sincere kindness, welcoming heart, just like a sunflower
+4:35
+From now on, I wish to be the one to provide too,
+4:41
+because now I have found the meaning of true happiness
+`,
+lrcAlt2Text:`
+0:20 Doushite kimi ga naku no
+0:25 Mada boku mo naite inai noni
+0:33 Jibun yori kanashimu kara
+0:38 Tsurai no ga docchi ka wakaranaku naru yo
+0:46 Garakuta datta hazu no kyou ga
+0:52 Futari nara takaramono ni naru
+1:00 Soba ni itai yo
+1:03 Kimi no tame ni dekiru koto ga boku ni aru kana
+1:13 Itsumo kimi ni zutto kimi ni waratte ite hoshikute
+1:25 Himawari no you na massuguna sono yasashisa wo nukumori wo zenbu
+1:37 Korekara wa boku mo todokete ikitai
+1:43 Koko ni aru shiawase ni kidzuita kara
+2:02 Tooku de tomoru mirai
+2:07 Moshimo bokura ga hanarete mo
+2:14 Sorezore aruite iku
+2:19 Sono saki de mata deaeru to shinjite
+2:27 Chiguhagu datta hazu no hohaba
+2:34 Hitotsu no you ni ima kasanaru
+2:43 Soba ni iru koto
+2:45 Nanigenai kono shunkan mo wasure wa shinai yo
+2:55 Tabidachi no hi te wo furu toki egao de irareru you ni
+3:07 Himawari no you na massuguna sono yasashisa wo nukumori wo zenbu
+3:19 Kaeshitai keredo kimi no koto dakara mou juubun da yo tte kitto iu kana
+3:59 Soba ni itai yo
+4:01 Kimi no tame ni dekiru koto ga boku ni aru kana
+4:10 Itsumo kimi ni zutto kimi ni waratte ite hoshikute
+4:23 Himawari no you na massuguna sono yasashisa wo nukumori wo zenbu
+4:35 Korekara wa boku mo todokete ikitai
+4:41 Hontou no shiawase no imi wo mitsuketa kara
+`
+      },
+       {
+        id: 'すれ違い',
+        title: 'すれ違い',
+        artist: 'Soala',
+        src: 'すれ違い.mp3',
+         artistImage: 'https://i.scdn.co/image/ab6761610000e5ebb623d4b3622d327d70a23673',
+        cover: "https://cdn-images.dzcdn.net/images/cover/869925d59fe9815b87af387b1d265bcc/1900x1900-000000-80-0-0.jpg",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['japanese','emotional','sad','romantic','nihon','authentic','suretigai'],
+        lrcText: `0:16
+"もう終わりにしよう"って
+0:18
+君からの言葉に
+0:21
+頷く事さえも出来ずに
+0:24
+ただ黙るだけの私
+0:27
+最後まで困らせてばっかで
+0:30
+ウザイよね
+0:32
+ずっと縛り付けてしまった
+0:35
+私のせいで
+0:37
+"どうしてなの？"なんて
+0:40
+引き止めることも出来ない
+0:43
+理由なんて分かっているから
+0:48
+ただ君が好き過ぎたから
+0:53
+どうしても離したくなかったの
+0:58
+ずっと"ごめんね"ばっかで
+1:01
+もう聞きたくないよね
+1:04
+自分の事しか考えられてなかった
+1:09
+愛のすれ違いってこんなに辛いのね
+1:15
+もう二度と君には会えない
+1:21
+何度もやめようと
+1:23
+心では思ってみても
+1:26
+勝手に縛りつけてしまう弱い私で
+1:31
+少しでもよそ見してたら
+1:34
+どこかに行っちゃいそうで
+1:37
+痛くて怖くて苦しかったの
+1:41
+おそろいで買ったあの服も
+1:44
+一緒に選んだこのリングも
+1:47
+全部君を思い出してしまうよ
+1:53
+君の残り香だけが
+1:57
+この部屋に染み付いている
+2:02
+ずっと"ごめんね"ばっかで
+2:05
+もう聞きたくないよね
+2:08
+自分の事しか考えられてなかった
+2:13
+愛のすれ違いってこんなに辛いのね
+2:20
+もう二度と君には会えない
+2:24
+ずっと
+2:25
+感情隠したままでいたらよかった？
+2:29
+素直に言葉にしたら離れていく
+2:34
+もうどうしたら良かったの
+2:37
+愛が産んだ見えない鎖のせいなのに
+2:45
+ずっと"ごめんね"ばっかで
+2:48
+ダメな私で
+2:50
+この先幸せになんてなれるのかな
+2:56
+"愛のすれ違い"って。
+2:59
+君が思ってる以上に
+3:02
+心から愛していたんだよ
+3:26
+愛してたんだよ
+`,
+lrcAlt1Text:`
+0:16 “Let’s end this,” you said
+0:18 From your words
+0:21 I couldn’t even nod in reply
+0:24 I only stayed silent
+0:27 Until the end, I only troubled you
+0:30 So annoying, right?
+0:32 I kept binding you all this time
+0:35 It’s my fault
+0:37 “Why?” — I couldn’t even ask to stop you
+0:43 Because I know the reason
+0:48 Simply because I loved you too much
+0:53 I couldn’t let you go, no matter what
+0:58 Always saying “I’m sorry”
+1:01 You don’t want to hear it anymore, right?
+1:04 I could only think about myself
+1:09 Love gone astray… it hurts this much
+1:15 I’ll never see you again
+1:21 So many times I thought of ending it
+1:23 In my heart
+1:26 But my weakness kept binding you
+1:31 Even if you looked away a little
+1:34 I was scared you’d disappear somewhere
+1:37 It hurt, I was afraid, I was suffocating
+1:41 The clothes we bought together
+1:44 The rings we chose together
+1:47 Everything reminds me of you
+1:53 Only your lingering scent
+1:57 Still clings to this room
+2:02 Always saying “I’m sorry”
+2:05 You don’t want to hear it anymore, right?
+2:08 I could only think about myself
+2:13 Love gone astray… it hurts this much
+2:20 I’ll never see you again
+2:24 Always…
+2:25 Would it have been better if I kept hiding my feelings?
+2:29 When I put them into words, you drifted away
+2:34 What should I have done?
+2:37 It was the invisible chains born from love
+2:45 Always saying “I’m sorry”
+2:48 A useless me
+2:50 Can I really be happy from now on?
+2:56 “Love gone astray”
+2:59 More than you ever knew
+3:02 I truly loved you
+3:26 I loved you
+`,
+lrcAlt2Text:`
+0:16 “Mou owari ni shiyou” tte
+0:18 Kimi kara no kotoba ni
+0:21 Unazuku koto sae mo dekinakute
+0:24 Tada damaru dake no watashi
+0:27 Saigo made komarasete bakka de
+0:30 Uzai yo ne
+0:32 Zutto shibaritsukete shimatta
+0:35 Watashi no sei de
+0:37 “Doushite na no?” nante
+0:40 Hikitomeru koto mo dekinai
+0:43 Riyuu nante wakatte iru kara
+0:48 Tada kimi ga suki sugita kara
+0:53 Doushitemo hanashitaku nakatta no
+0:58 Zutto “gomen ne” bakka de
+1:01 Mou kikitakunai yo ne
+1:04 Jibun no koto shika kangaerarete nakatta
+1:09 Ai no surechigai tte konna ni tsurai no ne
+1:15 Mou nidoto kimi ni wa aenai
+1:21 Nando mo yameyou to
+1:23 Kokoro de wa omotte mite mo
+1:26 Katte ni shibaritsukete shimau yowai watashi de
+1:31 Sukoshi demo yosomi shitara
+1:34 Dokoka ni icchai sou de
+1:37 Itakute kowakute kurushikatta no
+1:41 Osoroi de katta ano fuku mo
+1:44 Issho ni eranda kono ringu mo
+1:47 Zenbu kimi wo omoidasete shimau yo
+1:53 Kimi no nokoriga dake ga
+1:57 Kono heya ni shimitsuite iru
+2:02 Zutto “gomen ne” bakka de
+2:05 Mou kikitakunai yo ne
+2:08 Jibun no koto shika kangaerarete nakatta
+2:13 Ai no surechigai tte konna ni tsurai no ne
+2:20 Mou nidoto kimi ni wa aenai
+2:24 Zutto
+2:25 Kanjou kakushita mama de itara yokatta?
+2:29 Sunao ni kotoba ni shitara hanarete iku
+2:34 Mou dou shitara yokatta no
+2:37 Ai ga unda mienai kusari no sei na no ni
+2:45 Zutto “gomen ne” bakka de
+2:48 Dame na watashi de
+2:50 Kono saki shiawase ni nante nareru no kana
+2:56 “Ai no surechigai” tte
+2:59 Kimi ga omotteru ijou ni
+3:02 Kokoro kara aishite itan da yo
+3:26 Aishiteta n da yo
+`
+      },
+      
+       {
+        id: 'withoutyou',
+        title: 'Without You',
+        artist: '高爾宣 OSN',
+        src: 'Without You.mp3',
+        
+        cover: "https://i.scdn.co/image/ab67616d00001e02e82c5ef367a634205161cb93",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['mandarin','emotional','sad','romantic','chin','authentic','raps','chinese raps'],
+        lrcText: `
+00:11.80 I’m still the same 
+00:14.15 dōu hǎoxiàng méiyǒu biàn
+00:16.00 Nothing changed 
+00:16.90 háishi tǎoyàn xiàyǔ tiān
+00:18.70 Hái shì bù ài rèncuò
+00:20.31 Píqi shì yìng le diǎn
+00:21.70 Zhè wǒ dōu qīngchǔ dàn wǒ méiyǒu bànfǎ gǎibiàn
+00:24.80 Wǒ hòuhuǐ gāozhōng huā qián zhuāng hěn chǎo de páiqìguǎn
+00:27.90 Xiǎng nǔlì zhuànqián yǎng nǐ què yǎng chéngle huài xíguàn
+00:30.50 Wǒ hái xiǎng dài nǐ dàochù huǎnghuǎng dàochù dài nǐ wán
+00:33.80 Cuz me without you it feels like
+00:37.10 Qíngrén jié méiyǒu àirén
+00:39.80 Xiàng tái xiàngjī méiyǒu kuàimén
+00:42.87 Xiàng zhāng shūzhuō méiyǒu táidēng
+00:45.88 Cuz me without you it feels like
+00:48.89 A sentence without no spaces
+00:51.55 It be like YouTube without no playlist
+00:54.55 Or a chapter without no pages
+00:57.89 Cuz me without you it feels just wrong
+01:01.30 I don’t wanna live without you
+01:04.10 I don’t wanna be alone and
+01:06.85 Xiǎngniàn nǐ de měi gè jiǎodù
+01:10.11 Rúguǒ wǒmen hái nénggòu chóng lái
+01:13.40 Oh
+01:14.90 You don’t know how I feel inside
+01:17.82 So…
+01:19.40 I don’t wanna live without you
+01:23.10 Wǒ méiyǒu bànfǎ
+01:24.60 Cuz I’ve been through that
+01:25.00 Chóngdǎo fùchè I can’t do that
+01:26.60 Méi dé fùzé oh damn too bad
+01:27.93 I need you right now yo where you at?
+01:29.80 Xiān bǎ wǒ de miànzi fàng liǎng biān
+01:31.50 Zhà gān wǒ jiù xiàng qiǎngjié
+01:33.00 Goddamn I got nothing left
+01:34.58 Diào jìnqù no fun down here
+01:35.42 Jiùjiù wǒ I call my friends
+01:37.00 Sùkǔ shuōle hǎojǐ biàn
+01:38.60 Tāmen jiào wǒ zhènzuó diǎn
+01:39.90 I know man but I fuckin can’t
+01:41.59 Bāng wǒ shān le Instagram
+01:43.00 Your post I don’t wanna see
+01:44.20 Xiǎngdào nǐ céng promise me
+01:46.20 Wǒ gàn diào yī zhī Hennessy
+01:47.60 I just wanna know baby why you gonna go
+01:50.30 Wǒmen zhī jiān tài duō de wǒ shěbude fàngshǒu yeah
+01:53.70 Shīqù nǐ jiù xiàng shīqù wǒ de màikèfēng
+01:56.30 Wǒ bù yào wǒ de fans bù yào IG de followers cuz
+02:01.10 I don’t wanna live without you
+02:04.10 I don’t wanna be alone and
+02:07.10 Xiǎngniàn nǐ de měi gè jiǎodù
+02:10.37 Rúguǒ wǒmen hái nénggòu chóng lái
+02:13.82 Oh
+02:14.48 You don’t know how I feel inside
+02:18.30 So
+02:19.40 I don’t wanna live without you
+02:23.30 Wǒ méiyǒu bànfǎ
+02:24.80 I don’t wanna live without you
+02:28.40 I don’t wanna be alone and
+02:31.10 Xiǎngniàn nǐ de měi gè jiǎodù
+02:34.17 Rúguǒ wǒmen hái nénggòu chóng lái
+02:37.42 Oh
+02:38.98 You don’t know how I feel inside
+02:42.10 So
+02:43.10 I don’t wanna live without you
+02:47.30 Wǒ méiyǒu bànfǎ
+
+
+
+`
+      },
+       {
+        id: 'onevoice',
+        title: 'One Voice',
+        artist: 'Rokudenashi',
+
+        src: 'One Voice.mp3',
+        cover: "https://i.scdn.co/image/ab67616d00001e02dabda3186be969dbdd218d98",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['jap','emotional','tada koe hitotsu','romantic','authentic','clean','modern','morning'],
+        lrcText: `0:15
+♪ 続く時間の欠片を集めている
+
+0:19
+♪ 終わりのない時をただ集めている
+
+0:22
+♪ ただ過ぎるノートの余白に書く
+
+0:27
+♪ 答えはいつ
+
+0:30
+♪ ほんのり小さな感情へ
+
+0:34
+♪ 愛をひとつ またね またね
+
+0:37
+♪ 夜に咲く温度と灯るまで
+
+0:41
+♪ 呼吸ひとつ 生きる 生きる
+
+0:44
+♪ 優しい日々の横で 泣かぬように ああ
+
+0:55
+♪ 泣かぬように
+
+1:03
+♪ ちっちゃな言葉 チクチクしたの
+
+1:08
+♪ きりがないけどさ
+
+1:10
+♪ それを忘れたふり 疲れたよ
+
+1:15
+♪ 夜よ 抱きしめて
+
+1:33
+♪ 今日だって 笑う 笑う
+
+1:36
+♪ 泣いちゃう僕を隠すために笑う
+
+1:40
+♪ 言えないことは 言えないでいい
+
+1:43
+♪ って思えたら 軽くはなれるのかな
+
+1:48
+♪ 愛をひとつ またね またね
+
+1:51
+♪ 夜に咲く温度と灯るまで
+
+1:54
+♪ 呼吸ひとつ 生きる 生きる
+
+1:58
+♪ 優しい日々の横で 泣かぬように
+
+2:02
+♪ 愛をひとつ またね またね ああ
+
+2:10
+♪ 愛をひとつ またね またね
+
+2:13
+♪ 優しい日々の横で 笑うように ああ
+
+2:17
+♪ 吐き出す気持ちは簡単で
+
+2:19
+♪ でも生きるの難度 高すぎて
+
+2:21
+♪ どうにも解けない問いだらけ ああ
+
+2:24
+♪ さっぱり きっぱり 前向いて
+
+2:26
+♪ なんてしなくていいから 抱きしめて
+
+2:28
+♪ 愛をひとつ またね またね
+`,
+lrcAlt1Text:`
+0:15
+♪ I’m only collecting fragments of time
+
+0:19
+♪ That go by endlessly
+
+0:22
+♪ I write in the margins of my notebook
+
+0:27
+♪ “When will the answer come?”
+
+0:30
+♪ It’s just a small, faint feeling
+
+0:34
+♪ Just one love, see you again, see you again
+
+0:37
+♪ Until it lights up with a warmth that blooms in the night
+
+0:41
+♪ Just one breath — I’ll live, I’ll live
+
+0:44
+♪ So I don’t have to cry beside these gentle days, ah
+
+0:55
+♪ So I don’t have to cry
+
+1:03
+♪ Little words somehow stung me
+
+1:08
+♪ The list goes on and on
+
+1:10
+♪ I’m tired of pretending I forgot them
+
+1:15
+♪ Oh night, please hold me
+
+1:33
+♪ Today again, I laugh, I laugh
+
+1:36
+♪ I laugh to hide the me who wants to cry
+
+1:40
+♪ It’s okay if there are things you can’t say
+
+1:43
+♪ If I could believe that, maybe I could feel lighter
+
+1:48
+♪ Just one love, see you again, see you again
+
+1:51
+♪ Until it lights up with a warmth that blooms in the night
+
+1:54
+♪ Just one breath — I’ll live, I’ll live
+
+1:58
+♪ So I don’t have to cry beside these gentle days
+
+2:02
+♪ Just one love, see you again, see you again, ah
+
+2:10
+♪ Just one love, see you again, see you again
+
+2:13
+♪ So I can smile beside these gentle days, ah
+
+2:17
+♪ Letting out my simple feelings
+
+2:19
+♪ But living is just too hard
+
+2:21
+♪ Too many questions I can’t solve, ah
+
+2:24
+♪ I don’t have to force myself to move on cleanly
+
+2:26
+♪ Just hold me, that’s enough
+
+2:28
+♪ Just one love, see you again, see you again
+`,
+lrcAlt2Text:`
+0:15
+♪ Tsuzuku jikan no kakera wo atsumete iru
+
+0:19
+♪ Owari no nai toki wo tada atsumete iru
+
+0:22
+♪ Tada sugiru no-to no yohaku ni kaku
+
+0:27
+♪ Kotae wa itsu
+
+0:30
+♪ Honnori chiisana kanjō e
+
+0:34
+♪ Ai wo hitotsu mata ne mata ne
+
+0:37
+♪ Yoru ni saku ondo to tomoru made
+
+0:41
+♪ Kokyuu hitotsu ikiru ikiru
+
+0:44
+♪ Yasashii hibi no yoko de nakanu you ni aa
+
+0:55
+♪ Nakanu you ni
+
+1:03
+♪ Chiccha na kotoba chikuchiku shita no
+
+1:08
+♪ Kiri ga nai kedo sa
+
+1:10
+♪ Sore wo wasureta furi tsukareta yo
+
+1:15
+♪ Yoru yo dakishimete
+
+1:33
+♪ Kyou datte warau warau
+
+1:36
+♪ Naichau boku wo kakusu tame ni warau
+
+1:40
+♪ Ienai koto wa ienai de ii
+
+1:43
+♪ Tte omoetara karuku wa nareru no kana
+
+1:48
+♪ Ai wo hitotsu mata ne mata ne
+
+1:51
+♪ Yoru ni saku ondo to tomoru made
+
+1:54
+♪ Kokyuu hitotsu ikiru ikiru
+
+1:58
+♪ Yasashii hibi no yoko de nakanu you ni
+
+2:02
+♪ Ai wo hitotsu mata ne mata ne aa
+
+2:10
+♪ Ai wo hitotsu mata ne mata ne
+
+2:13
+♪ Yasashii hibi no yoko de warau you ni aa
+
+2:17
+♪ Hakidasu kimochi wa kantan de
+
+2:19
+♪ Demo ikiru no nando takasugite
+
+2:21
+♪ Dounimo tokenai toi darake aa
+
+2:24
+♪ Sappari kikkari mae muite
+
+2:26
+♪ Nante shinakute iikara dakishimete
+
+2:28
+♪ Ai wo hitotsu mata ne mata ne
+`
+      },
+       {
+        id: 'nightchanges',
+        title: 'Night Changes',
+        artist: 'One Direction',
+        src: 'Night Changes.mp3',
+          
+        cover: "https://www.onedirectionmusic.com/onedirectionmusiccom-ukprod/media/article-images/square-med/0d24755b6e86a039549f3837b2f39b24.jpg",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['english','emotional','sad','romantic','just how fast','going out tonight'],
+        lrcText: `0:08
+♪ Going out tonight, changes into something red ♪
+0:13
+♪ Her mother doesn't like that kind of dress ♪
+0:16
+♪ Everything she never had, she's showing off ♪
+0:24
+♪ Driving too fast, moon is breaking through her hair ♪
+0:28
+♪ She's heading for something that she won't forget ♪
+0:32
+♪ Having no regrets is all that she really wants ♪
+0:40
+♪ We're only getting older, baby ♪
+0:44
+♪ And I've been thinking about it lately ♪
+0:49
+♪ Does it ever drive you crazy ♪
+0:52
+♪ Just how fast the night changes ♪
+0:57
+♪ Everything that you've ever dreamed of ♪
+1:01
+♪ Disappearing when you wake up ♪
+1:05
+♪ But there's nothing to be afraid of ♪
+1:08
+♪ Even when the night changes ♪
+1:13
+♪ It will never change me and you ♪
+1:20
+♪ Chasing it tonight, doubts are running 'round her head ♪
+1:24
+♪ He's waiting, hides behind a cigarette ♪
+1:28
+♪ Heart is beating loud and she doesn't want it to stop ♪
+1:36
+♪ Moving too fast, moon is lighting up her skin ♪
+1:40
+♪ She's falling, doesn't even know it yet ♪
+1:44
+♪ Having no regrets is all that she really wants ♪
+1:52
+♪ We're only getting older, baby ♪
+1:56
+♪ And I've been thinking about it lately ♪
+2:00
+♪ Does it ever drive you crazy ♪
+2:04
+♪ Just how fast the night changes ♪
+2:08
+♪ Everything that you've ever dreamed of ♪
+2:12
+♪ Disappearing when you wake up ♪
+2:17
+♪ But there's nothing to be afraid of ♪
+2:20
+♪ Even when the night changes ♪
+2:25
+♪ It will never change me and you ♪
+2:28
+(soft music)
+2:40
+♪ Going out tonight, changes into something red ♪
+2:45
+♪ Her mother doesn't like that kind of dress ♪
+2:48
+♪ Reminds her of the missing piece of innocence she lost ♪
+2:54
+♪ We're only getting older, baby ♪
+2:58
+♪ And I've been thinking about it lately ♪
+3:03
+♪ Does it ever drive you crazy ♪
+3:06
+♪ Just how fast the night changes ♪
+3:11
+♪ Everything that you've ever dreamed of ♪
+3:14
+♪ Disappearing when you wake up ♪
+3:18
+♪ But there's nothing to be afraid of ♪
+3:22
+♪ Even when the night changes ♪
+3:27
+♪ Everything that you've ever dreamed of ♪
+3:30
+♪ Disappearing when you wake up ♪
+3:35
+♪ But there's nothing to be afraid of ♪
+3:38
+♪ Even when the night changes ♪
+3:43
+♪ It will never change, baby ♪
+3:47
+♪ It will never change, baby ♪
+3:51
+♪ It will never change me and you ♪
+`,
+      },
+       {
+        id: 'staywithmekorean',
+        title: 'Stay With Me goblin',
+        artist: 'Chanyeol & Punch',
+        src: 'Stay With Me goblin.mp3',
+
+        cover: "https://upload.wikimedia.org/wikipedia/en/5/52/Chanyeol-Punch-Goblin-OST-Part-1.jpg",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['korea','emotional','sad','romantic','drama'],
+        lrcText: `0:15 나의 두 눈을 감으면
+0:19 떠오르는 그 눈동자
+0:23 자꾸 가슴이 시려서
+0:26 잊혀지길 바랬어
+0:30 꿈이라면 제발 깨어나
+0:38 정말 네가 운명일까
+0:44 Falling You
+0:48 운명처럼 너를 Falling
+0:50 떠나를 부르는 Calling
+0:51 헤어날 수 없어
+0:53 제발 Hold me
+0:55 내 인연일 거니 넌지
+0:57 기다린 네가 맞는지
+0:59 가슴이 멈춰 내려앉는지
+1:06 내 마음 속
+1:08 깊은 곳에 네가 사는지
+1:14 내 안에 숨겨왔던 진실
+1:18 나의 두 눈을 감으면
+1:22 떠오르는 그 눈동자
+1:26 자꾸 가슴이 시려서
+1:29 잊혀지길 바랬어
+1:33 꿈이라면 제발 깨어나
+1:41 정말 네가 운명일까
+1:47 Falling You
+2:04 가슴이 두근거려
+2:06 여전히 널 보고 있어
+2:08 자꾸만 숨이 막혀서
+2:12 멀리서 널 지켜보고 있어
+2:14 왜 난 이런 걸까
+2:16 처음 널 본 순간과 달라서
+2:20 운명의 시간이 흘러가도
+2:22 내 마음은 너를 향하고
+2:24 내 심장은 다시 뛰고
+2:25 꺼져버린 희미한 불빛
+2:27 너로 인해 다시 타올라
+2:30 마치 오래전부터 널 사랑한 것 같아
+2:31 끌려가듯 너에게 다가가
+2:33 나의 두 눈을 감으면
+2:36 떠오르는 그 눈동자
+2:39 자꾸 가슴이 시려서
+2:42 잊혀지길 바랬어
+2:46 꿈이라면 제발 깨어나
+2:50 정말 네가 운명일까
+2:58 Falling You
+3:04 Falling You
+
+`,
+lrcAlt1Text:`
+0:15
+When I close my eyes
+0:19
+I see those eyes
+0:23
+My heart kept aching
+0:26
+So, I wanted to forget
+0:30
+If this is a dream, please wake me up
+0:38
+Are you really my destiny?
+0:44
+Falling you
+0:48
+Like destiny, falling
+0:50
+You're calling out to me, calling
+0:51
+I can't escape
+0:53
+Please hold me
+0:55
+Are you the line of my fate?
+0:57
+Are you the one I've been waiting for?
+0:59
+Why is my heart sinking?
+1:06
+Are you living
+1:08
+Deep in my heart?
+1:14
+The truth hidden on me
+1:18
+When I close my eyes
+1:22
+I see those eyes
+1:26
+My heart kept aching
+1:29
+So, I wanted to forget
+1:33
+If this is a dream, please wake me up
+1:41
+Are you really my destiny?
+1:47
+Falling you
+2:04
+My heart is racing
+2:06
+I'm still looking at you
+2:08
+Because I keep running out of breath
+2:12
+I'm still watching over you
+2:14
+From far away
+2:16
+Why am I being like this?
+2:20
+Different from the moment I first saw you
+2:22
+This time of fate is passing slowly
+2:24
+My heart was heading towards you
+2:25
+My heart was racing again
+2:27
+The faint light was turned off
+2:30
+But my eyes are lighting up again because of you
+2:31
+Feels like I've loved you from a long time ago
+2:33
+Feels like I'm being pulled by something
+2:36
+When I close my eyes
+2:39
+I see those eyes
+2:42
+My heart kept aching
+2:46
+So, I wanted to forget
+2:50
+If this is a dream, please wake me up
+2:58
+Are you really my destiny?
+3:04
+Falling you
+`,
+lrcAlt2Text:`
+0:15 na-ye du nu-neul ga-mu-myeon
+0:19 tteo-o-reuneun geu nun-dong-ja
+0:23 jak-ku ga-seu-mi shi-ryeo-seo
+0:26 it-hyeo-ji-gil ba-raesseo
+0:30 kkum-i-ramyeon je-bal kkae-eo-na
+0:38 jeong-mal ne-ga un-myeong-il-kka
+0:44 Falling You
+0:48 un-myeong-cheo-reom neo-reul Falling
+0:50 tteo-na-reul bu-reu-neun Calling
+0:51 he-eo-nal su eop-seo
+0:53 je-bal Hold me
+0:55 nae in-nyeon-il geo-ni neon-ji
+0:57 gi-da-rin ne-ga mat-neun-ji
+0:59 ga-seu-mi meom-chweo nae-ryeo-ann-neun-ji
+1:06 nae ma-eum sok
+1:08 gi-peun go-se ne-ga sa-neun-ji
+1:14 nae a-ne sum-gyeo-wat-teon jin-shil
+1:18 na-ye du nu-neul ga-mu-myeon
+1:22 tteo-o-reuneun geu nun-dong-ja
+1:26 jak-ku ga-seu-mi shi-ryeo-seo
+1:29 it-hyeo-ji-gil ba-raesseo
+1:33 kkum-i-ramyeon je-bal kkae-eo-na
+1:41 jeong-mal ne-ga un-myeong-il-kka
+1:47 Falling You
+2:04 ga-seu-mi du-geun-geo-ryeo
+2:06 yeo-jeo-ni neol bo-go i-sseo
+2:08 jak-ku-man su-mi mak-hyeo-seo
+2:12 meol-li-seo neol ji-kyeo-bo-go i-sseo
+2:14 wae nan i-reon geol-kka
+2:16 cheo-eum neol bon sun-gan-gwa dal-la-seo
+2:20 un-myeong-ui shi-ga-ni heul-leo-ga-do
+2:22 nae ma-eum-eun neo-reul hyang-ha-go
+2:24 nae shim-jang-eun da-shi ttwi-go
+2:25 kkeo-jyeo-beo-rin hui-mi-han bul-bit
+2:27 neo-ro in-hae da-shi ta-ol-la
+2:30 ma-chi o-rae-jeon-bu-to neol sa-rang-han geot gat-ta
+2:31 kkeul-lyeo-ga-deut neo-e-ge da-ga-ga
+2:33 na-ye du nu-neul ga-mu-myeon
+2:36 tteo-o-reuneun geu nun-dong-ja
+2:39 jak-ku ga-seu-mi shi-ryeo-seo
+2:42 it-hyeo-ji-gil ba-raesseo
+2:46 kkum-i-ramyeon je-bal kkae-eo-na
+2:50 jeong-mal ne-ga un-myeong-il-kka
+2:58 Falling You
+3:04 Falling You
+
+`
+      },
+       {
+        id: 'likeadream',
+        title: 'Like A Dream',
+        artist: 'MINNIE',
+        src: 'Like A Dream.mp3',
+             artistImage: 'https://i.scdn.co/image/ab6761610000e5eba6fa07ec146611b95e58cbc8',
+        cover: "https://a10.gaanacdn.com/gn_img/albums/mGjKrP1W6z/jKrrYY6RK6/size_m.jpg",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['korean','emotional','sad','romantic','drama','ost'],
+        lrcText: `0:13
+♪ 내 맘과 같지 않아서 ♪
+0:18
+♪ 결국 놓아버렸던 ♪
+0:21
+♪ 그때 그날 우리의 밤이 떠오르고 ♪
+0:28
+♪ 기억의 계단을 걸어 ♪
+0:32
+♪ 네 이름을 부르면 ♪
+0:35
+♪ 다시 선명해지나 봐 ♪
+0:42
+♪ 기다린 걸까 흩어진 시간 속에 ♪
+0:49
+♪ 어느샌가 내 곁에 다가온 그대 향기가 ♪
+0:57
+♪ 사라지지 않게 멀리 가지 않을게 ♪
+1:03
+♪ 꼭 잡은 두 손을 놓지 마 ♪
+1:08
+♪ 지금 이 순간 everything ♪
+1:16
+♪ With you ♪
+1:18
+♪ 널 안을지도 몰라 (be with you) ♪
+1:26
+♪ 모든 게 꿈결 같아서 ♪
+1:30
+♪ 조금 그리워했던 ♪
+1:34
+♪ 짙은 새벽공기와 우리의 이야기 ♪
+1:40
+♪ 기억하고 있을까 ♪
+1:45
+♪ 너를 떠올릴 때면 ♪
+1:48
+♪ 점점 선명해지는 you are my ♪
+1:55
+♪ Everything to me ♪
+1:58
+♪ 흩어진 시간 속에 ♪
+2:01
+♪ 어느샌가 내 곁에 다가온 그대 향기가 ♪
+2:10
+♪ 사라지지 않게 ♪
+2:12
+♪ 멀리 가지 않을게 ♪
+2:16
+♪ 꼭 잡은 두 손을 놓지 마 ♪
+2:21
+♪ 지금 이 순간 everything ♪
+2:28
+♪ 달이 뜨고 지는 지친 하루의 끝에 ♪
+2:39
+♪ 나를 잡아줘 나를 채워줘 ♪
+2:47
+♪ 춤을 추듯이 그대 ♪
+2:57
+♪ 기다린 걸까 흩어진 시간 속에 ♪
+3:03
+♪ 어느샌가 내 곁에 다가온 그대 향기가 ♪
+3:11
+♪ 사라지지 않게 ♪
+3:14
+♪ 멀리 가지 않을게 ♪
+3:18
+♪ 꼭 잡은 두 손을 놓지 마 ♪
+3:23
+♪ 지금 이 순간 everything ♪
+3:30
+♪ With you ♪
+3:33
+♪ 널 안을지도 몰라 (be with you) ♪
+3:40
+♪ My everything, ooh, ooh ♪
+`,
+lrcAlt1Text:`
+0:13 ♪ Because your heart wasn’t like mine ♪
+0:18 ♪ I ended up letting go ♪
+0:21 ♪ That night we shared keeps coming back to me ♪
+0:28 ♪ Walking down the stairs of memory ♪
+0:32 ♪ When I call your name ♪
+0:35 ♪ It all becomes vivid again ♪
+0:42 ♪ Was I waiting in the scattered time? ♪
+0:49 ♪ Suddenly your scent came closer to me ♪
+0:57 ♪ I won’t let it fade, I won’t go far away ♪
+1:03 ♪ Don’t let go of the hands we’re holding ♪
+1:08 ♪ In this very moment, everything ♪
+1:16 ♪ With you ♪
+1:18 ♪ Maybe I’ll hold you (be with you) ♪
+1:26 ♪ Everything feels like a dream ♪
+1:30 ♪ Something I missed a little ♪
+1:34 ♪ The deep dawn air and our story ♪
+1:40 ♪ Do you still remember? ♪
+1:45 ♪ When I think of you ♪
+1:48 ♪ You become clearer, you are my ♪
+1:55 ♪ Everything to me ♪
+1:58 ♪ In the scattered time ♪
+2:01 ♪ Suddenly your scent came closer to me ♪
+2:10 ♪ Don’t let it fade ♪
+2:12 ♪ I won’t go far away ♪
+2:16 ♪ Don’t let go of the hands we’re holding ♪
+2:21 ♪ In this very moment, everything ♪
+2:28 ♪ At the end of a long tiring day ♪
+2:39 ♪ Hold me, fill me up ♪
+2:47 ♪ Like dancing, my love ♪
+2:57 ♪ Was I waiting in the scattered time? ♪
+3:03 ♪ Suddenly your scent came closer to me ♪
+3:11 ♪ Don’t let it fade ♪
+3:14 ♪ I won’t go far away ♪
+3:18 ♪ Don’t let go of the hands we’re holding ♪
+3:23 ♪ In this very moment, everything ♪
+3:30 ♪ With you ♪
+3:33 ♪ Maybe I’ll hold you (be with you) ♪
+3:40 ♪ My everything, ooh, ooh ♪
+
+`,
+lrcAlt2Text:`
+0:13 ♪ nae mam-gwa gat-ji an-a-seo ♪
+0:18 ♪ gyeol-guk no-a-beo-ryeot-deon ♪
+0:21 ♪ geu-ttae geu-nal u-ri-ui bam-i tteo-o-reu-go ♪
+0:28 ♪ gi-eok-ui gye-dan-eul geo-reo ♪
+0:32 ♪ ne i-reum-eul bu-reu-myeon ♪
+0:35 ♪ da-shi seon-myeong-hae-ji-na bwa ♪
+0:42 ♪ gi-da-rin geol-kka heut-eo-jin shi-gan sok-e ♪
+0:49 ♪ eo-neu-saen-ga nae gyeot-e da-ga-on geu-dae hyang-gi-ga ♪
+0:57 ♪ sa-ra-ji-ji an-ge meol-li ga-ji an-heul-ge ♪
+1:03 ♪ kkok ja-beun du son-eul no-chi ma ♪
+1:08 ♪ ji-geum i sun-gan everything ♪
+1:16 ♪ With you ♪
+1:18 ♪ neol an-eul-ji-do mol-la (be with you) ♪
+1:26 ♪ mo-deun ge kkum-gyeol gat-a-seo ♪
+1:30 ♪ jo-geum geu-ri-wo-haet-deon ♪
+1:34 ♪ ji-teun sae-byeok-gong-gi-wa u-ri-ui i-ya-gi ♪
+1:40 ♪ gi-eok-ha-go i-sseul-kka ♪
+1:45 ♪ neo-reul tteo-ol-ril ttae-myeon ♪
+1:48 ♪ jeom-jeom seon-myeong-hae-ji-neun you are my ♪
+1:55 ♪ Everything to me ♪
+1:58 ♪ heut-eo-jin shi-gan sok-e ♪
+2:01 ♪ eo-neu-saen-ga nae gyeot-e da-ga-on geu-dae hyang-gi-ga ♪
+2:10 ♪ sa-ra-ji-ji an-ge ♪
+2:12 ♪ meol-li ga-ji an-heul-ge ♪
+2:16 ♪ kkok ja-beun du son-eul no-chi ma ♪
+2:21 ♪ ji-geum i sun-gan everything ♪
+2:28 ♪ dal-i tteu-go ji-neun ji-chin ha-ru-ui kkeut-e ♪
+2:39 ♪ na-reul ja-ba-jwo na-reul chae-wo-jwo ♪
+2:47 ♪ chum-eul chu-deu-shi geu-dae ♪
+2:57 ♪ gi-da-rin geol-kka heut-eo-jin shi-gan sok-e ♪
+3:03 ♪ eo-neu-saen-ga nae gyeot-e da-ga-on geu-dae hyang-gi-ga ♪
+3:11 ♪ sa-ra-ji-ji an-ge ♪
+3:14 ♪ meol-li ga-ji an-heul-ge ♪
+3:18 ♪ kkok ja-beun du son-eul no-chi ma ♪
+3:23 ♪ ji-geum i sun-gan everything ♪
+3:30 ♪ With you ♪
+3:33 ♪ neol an-eul-ji-do mol-la (be with you) ♪
+3:40 ♪ My everything, ooh, ooh ♪
+
+`
+      },
+       {
+        id: 'anotherlove',
+        title: 'Another Love',
+        artist: 'Tom Odell',
+        src: 'Another Love.mp3',
+             artistImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ6GR8d7WaUGjdAoorChEdDSjyrH-mvFMXVFpehur4t120Esx2ZWgBmKlu1oz2myBTKHQ&usqp=CAU',
+        cover: "https://cdn-images.dzcdn.net/images/cover/23d34526dc6ef2073bb854fc91a25112/1900x1900-000000-80-0-0.jpg",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['english','emotional','sad','romantic','has been used up'],
+        lrcText: `0:20
+♪ I wanna take you somewhere ♪
+0:23
+♪ so you know I care ♪
+0:25
+♪ But it's so cold ♪
+0:27
+♪ and I don't know where ♪
+0:29
+♪ I brought you daffodils ♪
+0:31
+♪ in a pretty string ♪
+0:34
+♪ But they won't flower ♪
+0:35
+♪ like they did last spring ♪
+0:39
+♪
+0:41
+♪ And I wanna kiss you, ♪
+0:43
+♪ make you feel all right ♪
+0:46
+♪ I'm just so tired ♪
+0:48
+♪ to share my nights ♪
+0:50
+♪ I wanna cry ♪
+0:52
+♪ and I wanna love ♪
+0:54
+♪ But all my tears ♪
+0:56
+♪ have been used up ♪
+1:02
+♪ On another love, ♪
+1:04
+♪ another love ♪
+1:07
+♪ All my tears ♪
+1:08
+♪ have been used up ♪
+1:10
+♪ On another love, ♪
+1:13
+♪ another love ♪
+1:15
+♪ All my tears ♪
+1:16
+♪ have been used up ♪
+1:18
+♪ On another love, ♪
+1:21
+♪ another love ♪
+1:23
+♪ All my tears ♪
+1:25
+♪ have been used up ♪
+1:30
+♪ Oh, oh ♪
+1:35
+♪
+1:36
+[chorus vocalizing]
+1:43
+♪
+1:54
+♪ And if somebody hurts you, ♪
+1:56
+♪ I wanna fight ♪
+1:58
+♪ But my hand's been broken ♪
+2:00
+♪ one too many times ♪
+2:02
+♪ So I use my voice, ♪
+2:04
+♪ I'll be so fucking rude ♪
+2:06
+♪ Words, they always win, ♪
+2:08
+♪ but I know I'll lose ♪
+2:10
+♪ And I'd sing a song ♪
+2:12
+♪ that'll be just ours ♪
+2:14
+♪ But I sang 'em all ♪
+2:16
+♪ to another heart ♪
+2:18
+♪ And I wanna cry, ♪
+2:20
+♪ I want to learn to love ♪
+2:22
+♪ But all my tears ♪
+2:24
+♪ have been used up ♪
+2:26
+♪ On another love, ♪
+2:28
+♪ another love ♪
+2:30
+♪ All my tears ♪
+2:32
+♪ have been used up ♪
+2:34
+♪ On another love, ♪
+2:36
+♪ another love ♪
+2:38
+♪ All my tears ♪
+2:40
+♪ have been used up ♪
+2:42
+♪ On another love, ♪
+2:44
+♪ another love ♪
+2:46
+♪ All my tears ♪
+2:48
+♪ have been used up ♪
+2:50
+♪ Oh, oh ♪
+2:52
+♪ Oh, oh, oh ♪
+2:57
+♪
+2:59
+[chorus vocalizing]
+3:05
+♪
+3:07
+[indistinct shouting]
+3:08
+♪
+3:12
+♪ I want to sing a song ♪
+3:15
+♪ that'd be just ours ♪
+3:17
+♪ But I sang them all ♪
+3:18
+♪ to another heart ♪
+3:20
+♪ And I wanna cry, ♪
+3:22
+♪ I wanna fall in love ♪
+3:25
+♪ But all my tears ♪
+3:26
+♪ have been used up ♪
+3:28
+♪ On another love, ♪
+3:30
+♪ another love ♪
+3:33
+♪ All my tears ♪
+3:34
+♪ have been used up ♪
+3:36
+♪ On another love, ♪
+3:38
+♪ another love ♪
+3:40
+♪ All my tears ♪
+3:42
+♪ have been used up ♪
+3:44
+♪ On another love, ♪
+3:46
+♪ another love ♪
+3:48
+♪ All my tears ♪
+3:50
+♪ have been used up ♪
+3:55
+♪ Oh, oh ♪
+`,
+
+      },
+       {
+        id: 'tomyyouth',
+        title: 'To My Youth',
+        artist: 'BOL4',
+        src: 'To My Youth.mp3',
+        cover: "https://i.scdn.co/image/ab67616d0000b2732cfb66b63fe85ccfff4109b1",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['korean','emotional','sad','romantic','bolbbalgan4'],
+        lrcText: `
+`
+      },
+          {
+        id: 'sayyes',
+        title: 'Say Yes',
+        artist: 'Punch & Loco',
+        src: 'Say Yes.mp3',
+        cover: "https://i.scdn.co/image/ab67616d0000b273cb95963709806e12d93128d4",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['korean','emotional','sad','romantic','ost','drama'],
+        lrcText: `0:02
+니 눈앞에 왔잖아  
+0:04
+내가 여기 있잖아  
+0:07
+너의 입술로 말을 해줘 say yes, say yes  
+0:13
+나도 모르게 너에게 가고 있나봐  
+0:15
+부는 바람에 내 맘 전할래 love is true  
+0:22
+간지럽게만 느껴지던 눈빛이  
+0:25
+이제는 익숙하단 듯이 웃음 짓지  
+0:27
+그 쪽으로 걸어가기만 하면 돼  
+0:30
+라고 친구들은 계속해서 날 부추기지만  
+0:33
+아직은 무거운 구두의 뒷굽  
+0:35
+차라리 벗어버리고 싶은 이 밤의 끝  
+0:38
+손을 내밀어 줬으면 해  
+0:40
+맨발로 너에게 뛰어갈 수 있게끔  
+0:43
+복잡하기만한 하루에  
+0:45
+매 시간 머리를 굴리지만 난 hey  
+0:48
+지금에서야 깨달은 건데  
+0:50
+결국 다 버려지고 너만 남아  
+0:53
+지난 봄에는 널 우연히 봤고  
+0:55
+더 이상은 우연이 아니였으면 해  
+0:58
+스치기만 했던 너의 손을 잡고  
+1:00
+어떤 길이라도 같이 걸었으면 해  
+1:02
+니 눈앞에 왔잖아  
+1:05
+내가 여기 있잖아  
+1:07
+너의 입술로 말을 해줘 say yes, say yes  
+1:13
+나도 모르게 너에게 가고 있나봐  
+1:15
+부는 바람에 내 맘 전할래 love is true  
+1:23
+우우우우우우우  
+I need you 우우우우우  
+1:32
+Baby 너에게 하고 픈 말  
+1:35
+내가 못다한 말  
+1:38
+Baby baby baby boy love is true  
+1:44
+어디든 갈 수 있어  
+1:49
+이건 거짓말이 아니야  
+1:53
+이제부터는 나의 옆이 제일 편한 자리야  
+1:56
+입술을 오므리고 내는 소리와 같이  
+1:58
+내 이름을 불러줬음 좋겠어  
+2:01
+내가 뒤로 떨어져서 걷더라도  
+2:03
+이 목소리를 들어줬음 좋겠어  
+2:05
+니 눈앞에 왔잖아  
+2:08
+내가 여기 있잖아  
+2:14
+너의 입술로 말을 해줘 say yes, say yes  
+2:16
+나도 모르게 너에게 가고 있나봐  
+2:19
+부는 바람에 내 맘 전할래 love is true  
+2:25
+내가 바라는 단 한가지  
+2:28
+니가 내 곁에 있어주는 것  
+2:33
+니가 날 보며 웃어주는 것도  
+2:39
+내 얘길 들어주는 것도  
+2:42
+난 그걸로도 충분한데 you  
+2:47
+너를 보며 웃잖아  
+2:50
+두 눈이 말하잖아  
+2:55
+너도 이렇게 대답해줘 say yes, say yes  
+3:00
+너라서 좋아  
+3:06
+니가 날 울려도 좋아  
+3:11
+너는 나의 모든 전부니까 love is true  
+3:16
+우우우우우우우  
+I need you 우우우우우  
+3:24
+Baby 너에게 하고 픈 말  
+3:28
+내가 못다한 말  
+3:31
+Baby baby baby boy love is true
+
+`,
+lrcAlt1Text:`
+0:02
+I'm in front of you  
+0:04
+I'm right here  
+0:07
+Tell me with your lips, say yes, say yes  
+0:13
+I didn't even realize  
+0:15
+That I was going towards you  
+0:17
+I'll let you know along with the wind, love is true  
+0:22
+The stare that felt ticklish  
+0:25
+You smile, like you're used to it now  
+0:27
+You just have to walk towards that direction  
+0:30
+That's what my friends have been telling me but  
+0:33
+My shoes feel still too heavy  
+0:35
+Just wanna take off the end of this night  
+0:38
+I want you to reach your hands to me  
+0:40
+So I can run to you barefooted  
+0:43
+In a complicated day  
+0:45
+I think about it every hour  
+0:48
+I've only realized it now  
+0:50
+Everything but you will be thrown away  
+0:53
+I saw you last spring in a coincidence  
+0:55
+I don't want it to be a coincidence any more  
+0:58
+Hold your hand that I've only grazed before  
+1:00
+Wanna walk the same way, no matter where it leads  
+1:02
+I'm in front of you  
+1:05
+I'm right here  
+1:07
+Tell me with your lips, say yes, say yes  
+1:13
+I didn't even realize  
+1:15
+That I was going towards you  
+1:18
+I'll let you know along with the wind, love is true  
+1:23
+Ooooh... I need you  
+1:32
+Baby, things I wanna say to you  
+1:35
+Things I haven't said yet  
+1:38
+Baby baby baby boy love is true  
+1:44
+We could go anywhere, this is not a lie (promise me)  
+1:49
+Next to me is the most comfortable spot for you  
+1:53
+With the sound from puckered lips  
+1:56
+I want you to say my name  
+1:58
+Even when I walk a few steps behind you  
+2:01
+I just want you to listen to this voice  
+2:03
+I'm in front of you  
+2:05
+I'm right here  
+2:08
+Tell me with your lips, say yes, say yes  
+2:14
+I didn't even realize  
+2:16
+That I was going towards you  
+2:19
+I'll let you know along with the wind, love is true  
+2:25
+There is only one thing I want  
+2:28
+That you'll be by my side  
+2:33
+That you'll smile at me, listen to my stories  
+2:39
+That is enough for me, you  
+2:42
+That kid, is mine.  
+2:47
+Don't call me 'mine' again.  
+2:50
+Then, how about 'my girl'?  
+2:55
+I'm smiling at you  
+2:57
+My eyes are doing all the talking  
+3:00
+Would you please answer me, say yes, say yes  
+3:06
+I like you because of who you are  
+3:08
+I'll like it even when you make me cry  
+3:11
+You're my everything, love is true  
+3:16
+Oooooh... I need you  
+3:24
+Baby, things I wanna say to you  
+3:28
+Things I haven't said yet  
+3:31
+Baby baby baby boy love is true
+
+`,
+lrcAlt2Text:`
+0:02
+Ni nunape watjanha  
+0:04
+Nega yeogi itjanha  
+0:07
+Neoui ipsullo mareul haejo say yes, say yes  
+0:13
+Nado moreuge neoege gago innabwa  
+0:15
+Buneun barame nae mam jeonhallae love is true  
+0:22
+Ganjireopgeman neukkyeojideon nunbichi  
+0:25
+Ijeneun iksukadan deusi useum jitji  
+0:27
+Geu jjogeuro georeogagiman hamyeon dwae  
+0:30
+Rago chingudeureun gyesokhaeseo nal buchugijiman  
+0:33
+Ajigeun mugeoun guduui dwitgup  
+0:35
+Charari beoseobeorigo sipeun i bamui kkeut  
+0:38
+Soneul naemireo jwosseumyeon hae  
+0:40
+Maenballo neoege ttwieogal su itgekkkeum  
+0:43
+Bokjaphagimanhan harue  
+0:45
+Mae sigan meorireul gullijiman nan hey  
+0:48
+Jigeumeseoya kkaedareun geonde  
+0:50
+Gyeolguk da beoryeojigo neoman nama  
+0:53
+Jinan bomeneun neol uyeonhi bwatgo  
+0:55
+Deo isangeun uyeoni anieosseumyeon hae  
+0:58
+Seuchigiman haetdeon neoui soneul japgo  
+1:00
+Eotteon girirado gachi georeosseumyeon hae  
+1:02
+Ni nunape watjanha  
+1:05
+Nega yeogi itjanha  
+1:07
+Neoui ipsullo mareul haejo say yes, say yes  
+1:13
+Nado moreuge neoege gago innabwa  
+1:15
+Buneun barame nae mam jeonhallae love is true  
+1:23
+Uuuuuuu I need you uuuuuuuu  
+1:32
+Baby neoege hago peun mal  
+1:35
+Naega motdahan mal  
+1:38
+Baby baby baby boy love is true  
+1:44
+Eodideun gal su isseo  
+1:49
+Igeon geojinmari aniya yeah yeah yeah  
+1:53
+Ijebuteoneun naui yeopi jeil pyeonhan jariya yeah yeah  
+1:56
+Ipsureul omurigo naeneun soriwa gachi  
+1:58
+Nae ireumeul bulleojwosseum jokesseo  
+2:01
+Naega dwiro tteoreojyeoseo geotdeorado  
+2:03
+I moksorireul deureojwosseum jokesseo  
+2:05
+Ni nunape watjanha  
+2:08
+Nega yeogi itjanha  
+2:14
+Neoui ipsullo mareul haejo say yes, say yes  
+2:16
+Nado moreuge neoege gago innabwa  
+2:19
+Buneun barame nae mam jeonhallae love is true  
+2:25
+Naega baraneun dan hangaji  
+2:28
+Niga nae gyeote isseojuneun geot  
+2:33
+Niga nal bomyeo useojuneungeotdo  
+2:39
+Nae yaegil deureojuneungeotdo  
+2:42
+Nan geugeollo-do chungbunhande you  
+2:47
+Neoreul bomyeo utjanha  
+2:50
+Du nuni malhajanha  
+2:55
+Neodo ireoke daedaphaejo say yes, say yes  
+3:00
+Neoraseo joha  
+3:06
+Niga nal ullyeodo joha  
+3:11
+Neoneun naui modeun jeonbunikka love is true  
+3:16
+Uuuuuuu I need you uuuuuuuu  
+3:24
+Baby neoege hago peun mal  
+3:28
+Naega motdahan mal  
+3:31
+Baby baby baby boy love is true
+
+`
+      },
+      {
+            id: 'nobodyelse',
+            title: 'Nobody Else',
+            artist: 'Cole Norton',  
+            src: 'Nobody Else.mp3',
+                    
+            cover: "https://cdn-images.dzcdn.net/images/cover/798b6ce00849dd8d7add6fd7a452de6f/0x1900-000000-80-0-0.jpg",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','sad','emotional','morning','modern', 'romantic','clean'],
+            lrcText: `
+
+
+   [00:17.899] Can't seem to shake these voices in my head
+
+[00:21.756] They just remind me everything she said
+
+[00:25.033] She said baby, I'm sorry, you're just not the one I need
+
+[00:33.296] I looked around for someone else to save me
+
+[00:37.463] And all it did was driving me fucking crazy
+
+[00:40.795] But I think I found someone who I can rely upon
+
+[00:50.070] And now I finally feel like smiling
+
+[00:54.289] Because you gave me a life worth trying
+
+[00:57.887] I should've known it all along
+
+[01:06.007] With you it's never hard to breathe and
+
+[01:09.212] I'm high on the way I'm feeling
+
+[01:13.436] I'm addicted to you, don't wanna love nobody else
+
+[01:24.037] You found a side of I've never known
+
+[01:28.135] I coulda used you many years ago
+
+[01:31.307] Yeah there's something about you that no one has ever shown
+
+[01:39.813] I'm not too worried bout those wasted times
+
+[01:43.712] Cause now I'm careful who I let inside
+
+[01:46.870] And I think you're the one who I trust to hold the key
+
+[01:56.638] And now I finally feel like smiling
+
+[02:00.513] Because you gave me a life worth trying
+
+[02:04.349] I should've known it all along
+
+[02:12.270] With you it's never hard to breathe and
+
+[02:15.980] I'm high on the way I'm feeling
+
+[02:19.860] I'm addicted to you, don't wanna love nobody else
+
+[02:26.645] I finally found a reason
+
+[02:28.438] I made it through the pain
+
+[02:30.468] Got up when I was bleeding
+
+[02:32.200] Found beauty in the rain
+
+[02:34.151] I almost stopped believing
+
+[02:36.411] No strength in me remained
+
+[02:37.961] But I found someone, someone who could help
+
+[02:42.298] I finally found a reason
+
+[02:44.251] I made it through the pain
+
+[02:46.225] Got up when I was bleeding
+
+[02:48.135] Found beauty in the rain
+
+[02:50.092] I almost stopped believing
+
+[02:52.087] No strength in me remained
+
+[02:53.633] But I found someone, someone for myself
+
+[02:59.098] And now I finally feel like smiling
+
+[03:02.656] Because you gave me a life worth trying
+
+[03:06.718] I should've known it all along
+
+[03:14.518] With you it's never hard to breathe and
+
+[03:18.461] I'm high on the way I'm feeling
+
+[03:22.330] I'm addicted to you, don't wanna love nobody else
+
+`,
+
+          },
+          
+      {
+            id: 'nobodyelseins',
+            title: 'Nobody Else Karaoke',
+            artist: 'Cole Norton',  
+            src: 'Nobody Else ins.mp3',
+                    
+            cover: "https://cdn-images.dzcdn.net/images/cover/798b6ce00849dd8d7add6fd7a452de6f/0x1900-000000-80-0-0.jpg",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','sad','emotional','morning','modern', 'romantic','clean','instrumental'],
+            lrcText: `
+
+
+   [00:17.899] Can't seem to shake these voices in my head
+
+[00:21.756] They just remind me everything she said
+
+[00:25.033] She said baby, I'm sorry, you're just not the one I need
+
+[00:33.296] I looked around for someone else to save me
+
+[00:37.463] And all it did was driving me fucking crazy
+
+[00:40.795] But I think I found someone who I can rely upon
+
+[00:50.070] And now I finally feel like smiling
+
+[00:54.289] Because you gave me a life worth trying
+
+[00:57.887] I should've known it all along
+
+[01:06.007] With you it's never hard to breathe and
+
+[01:09.212] I'm high on the way I'm feeling
+
+[01:13.436] I'm addicted to you, don't wanna love nobody else
+
+[01:24.037] You found a side of I've never known
+
+[01:28.135] I coulda used you many years ago
+
+[01:31.307] Yeah there's something about you that no one has ever shown
+
+[01:39.813] I'm not too worried bout those wasted times
+
+[01:43.712] Cause now I'm careful who I let inside
+
+[01:46.870] And I think you're the one who I trust to hold the key
+
+[01:56.638] And now I finally feel like smiling
+
+[02:00.513] Because you gave me a life worth trying
+
+[02:04.349] I should've known it all along
+
+[02:12.270] With you it's never hard to breathe and
+
+[02:15.980] I'm high on the way I'm feeling
+
+[02:19.860] I'm addicted to you, don't wanna love nobody else
+
+[02:26.645] I finally found a reason
+
+[02:28.438] I made it through the pain
+
+[02:30.468] Got up when I was bleeding
+
+[02:32.200] Found beauty in the rain
+
+[02:34.151] I almost stopped believing
+
+[02:36.411] No strength in me remained
+
+[02:37.961] But I found someone, someone who could help
+
+[02:42.298] I finally found a reason
+
+[02:44.251] I made it through the pain
+
+[02:46.225] Got up when I was bleeding
+
+[02:48.135] Found beauty in the rain
+
+[02:50.092] I almost stopped believing
+
+[02:52.087] No strength in me remained
+
+[02:53.633] But I found someone, someone for myself
+
+[02:59.098] And now I finally feel like smiling
+
+[03:02.656] Because you gave me a life worth trying
+
+[03:06.718] I should've known it all along
+
+[03:14.518] With you it's never hard to breathe and
+
+[03:18.461] I'm high on the way I'm feeling
+
+[03:22.330] I'm addicted to you, don't wanna love nobody else
+
+`,
+
+          },
+           {
+            id: 'dandelions',
+            title: 'Dandelions',
+            artist: 'Ruth B.',  
+            src: 'Dandelions.mp3',
+                    
+            cover: "https://radioguntur.com/administrator/audio-file/img/ruth%20b.jpg",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','sad','emotional','morning','modern', 'romantic','clean'],
+            lrcText: `
+   Maybe it's the way you say my name
+Maybe it's the way you play your game
+But it's so good, I've never known anybody like you
+But it's so good, I've never dreamed of nobody like you
+And I've heard of a love that comes once in a lifetime
+And I'm pretty sure that you are that love of mine
+'Cause I'm in a field of dandelions
+Wishing on every one that you'd be mine, mine
+And I see forever in your eyes
+I feel okay when I see you smile, smile
+Wishing on dandelions all of the time
+Praying to God that one day you'll be mine
+Wishing on dandelions all of the time, all of the time
+I think that you are the one for me
+'Cause it gets so hard to breathe
+When you're looking at me, I've never felt so alive and free
+When you're looking at me, I've never felt so happy
+And I've heard of a love that comes once in a lifetime
+And I'm pretty sure that you are that love of mine
+'Cause I'm in a field of dandelions
+Wishing on every one that you'd be mine, mine
+And I see forever in your eyes
+I feel okay when I see you smile, smile
+Wishing on dandelions all of the time
+Praying to God that one day you'll be mine
+Wishing on dandelions all of the time
+All of the time
+Dandelion, into the wind you go
+Won't you let my darling know?
+Dandelion, into the wind you go
+Won't you let my darling know that?
+I'm in a field of dandelions
+Wishing on every one that you'd be mine, mine
+Oh, and I see forever in your eyes
+I feel okay when I see you smile, smile
+Wishing on dandelions all of the time
+Praying to God that one day you'll be mine
+Wishing on dandelions all of the time, all of the time
+I'm in a field of dandelions
+Wishing on every one that you'd be mine, mine
+`,
+
+          },
+            {
+        id: '炎',
+        title: '炎',
+        artist: 'LiSA',
+      
+        src: '炎.mp3',
+        cover: "https://i.scdn.co/image/ab67616d0000b27312fed9282cd368a7e0a5e9e3",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['japanese','homura','tanjiro','demon slayer','anime','mugen train'],
+        lrcText: `0:26  
+さよなら　ありがとう　声の限り  
+0:32  
+悲しみより　もっと大事なこと  
+0:38  
+去りゆく背中に　伝えたくて  
+0:44  
+ぬくもりと痛みに　間に合うように  
+0:50  
+このまま続くと　思っていた  
+0:56  
+僕らの明日を　描いていた  
+1:03  
+呼び合っていた　光がまだ  
+1:10  
+胸の奥に　熱いのに  
+1:16  
+僕たちは　燃え盛る　旅の中で出会い  
+1:23  
+手を取り　そして離した　未来のために  
+1:28  
+夢がひとつ叶うたび　僕は君を想うだろう  
+1:36  
+強くなりたいと　思い泣いた　決意を餞に  
+2:01  
+懐かしい想いに　囚われたり  
+2:07  
+残酷な世界に　泣き叫んで  
+2:13  
+大人になるほど　増えていく  
+2:20  
+もう何ひとつだって　失いたくない  
+2:25  
+悲しみに呑まれ　落ちてしまえば  
+2:30  
+痛みを感じなくなるけれど  
+2:38  
+君の言葉　君の願い  
+2:44  
+僕は守り抜くと　誓ったんだ  
+3:04  
+音を立てて　崩れ落ちていく  
+3:10  
+ひとつだけの　かけがえのない世界  
+3:32  
+手を伸ばし　抱きとめた　激しい光の束  
+3:38  
+輝いて消えてった　未来のために  
+3:44  
+託された幸せと　約束を超えていく  
+3:52  
+振り返らずに　進むから  
+3:58  
+前だけ向いて　叫ぶから  
+4:04  
+心に炎を灯して  
+4:10  
+遠い未来まで
+
+`,
+lrcAlt1Text:`
+0:26
+”Goodbye” and ”Thank you” at the top of my voice
+0:32
+What's more important than grief
+0:38
+Hoping that they reach you as we part
+0:44
+In time for the warmth and pain
+0:50
+I thought it would always be like this
+0:56
+I envisioned our days to come
+1:03
+Why, when our lights calling out to each other
+1:10
+Still burn deep in our hearts?
+1:16
+We met amidst a blazing journey
+1:23
+Coming together, then letting go for the sake of the future
+1:28
+Every time a dream comes true, I’ll remember you
+1:36
+Wishing to become stronger, I cried with my resolve as the parting gift
+2:01
+Held captive by nostalgic memories
+2:07
+Wailing at the cruelty of this world
+2:13
+There will be even more as I grow older
+2:20
+I never want to lose anything again
+2:25
+By succumbing to the grief
+2:30
+I might not feel pain anymore
+2:38
+But your words, your wishes
+2:44
+I swore to protect them to the end
+3:04
+With a roar, it's crumbling down
+3:10
+Our one and only, irreplaceable world
+3:32
+The bundle of bursting light that I reached out for and held so close
+3:38
+Shimmered, then disappeared for the sake of the future
+3:44
+Going beyond the happiness and promises I've been entrusted
+3:52
+I’ll keep moving forward without glancing behind
+3:58
+Looking straight ahead, I’m going to cry out
+4:04
+Lighting the flames in my heart
+4:10
+Until I reach that distant future…
+`,
+lrcAlt2Text:`
+0:26
+sayonara arigatou koe no kagiri
+0:32
+kanashimi yori motto daijina koto
+0:38
+sariyuku senaka ni tsutaetakute
+0:44
+nukumori to itami ni maniau youni
+0:50
+konomama tsuzukuto omotteita
+0:56
+bokura no ashita wo egaiteita
+1:03
+yobiatteita hikari ga mada
+1:10
+mune no oku ni atsuinoni
+1:16
+bokutachi wa moesakaru tabi no nakade deai
+1:23
+te wo tori soshite hanashita mirai no tameni
+1:28
+yume ga hitotsu kanautabi boku wa kimi wo omoudarou
+1:36
+tsuyoku naritaito omoi naita ketsui wo hanamukeni
+2:01
+natsukashii omoi ni torawaretari
+2:07
+zankokuna sekai ni nakisakende
+2:13
+otona ni naruhodo fueteiku
+2:20
+mou nani hitotsudatte ushinaitakunai
+2:25
+kanashimi ni nomare ochiteshimaeba
+2:30
+itami wo kanjinaku narukeredo
+2:38
+kimi no kotoba kimi no negai
+2:44
+boku wa mamorinukuto chikattanda
+3:04
+oto wo tatete kuzureochiteiku
+3:10
+hitotsudakeno kakegaenonai sekai
+3:32
+te wo nobashi dakitometa hageshii hikari no taba
+3:38
+kagayaite kietetta mirai no tameni
+3:44
+takusareta shiawase to yakusoku wo koete yuku
+3:52
+furikaerazu ni susumukara
+3:58
+mae dake muite sakebukara
+4:04
+kokoro ni homura wo tomoshite
+4:10
+tooi mirai made
+`
+      },
+       {
+            id: 'callofsilence',
+            title: 'Call of Silence',
+            artist: 'Hiroyuki Sawano',  
+            src: 'Call of Silence.mp3',
+              artistImage:'https://cdn-images.dzcdn.net/images/artist/e00822bee264f4888fb7e069eaa45967/1900x1900-000000-81-0-0.jpg',      
+            cover: "https://i.scdn.co/image/ab67616d0000b2739c44e39f1b6aafe87a6db356",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','japan','sad','emotional','morning','anime', 'romantic','clean','attack on titan','ost'],
+            lrcText: `
+     0:38
+Don't you think of me enough?
+0:46
+I've been burning my heart out
+0:54
+I've got to face, need to tell you
+1:01
+I won't run cause I'm reticent
+1:44
+You will know you're reborn tonight
+1:52
+Must be ragged, but I stay by your side
+1:59
+Even if my body's bleached to the bones
+2:07
+I don't want to go through that ever again
+2:14
+So cry no more, oh my beloved
+2:22
+Go ahead, be proud and fight it out
+2:30
+You are the one, our rising star
+2:37
+You guide us far to home yet girt
+`,
+
+          },
+           {
+            id: 'whydoi',
+            title: 'Why Do I',
+            artist: 'Unknown Brains',  
+            src: 'Why Do I.mp3',
+                  
+            cover: "https://i.scdn.co/image/ab67616d0000b273c1d2f3c457d0ae59a7d7e4ce",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','sad','emotional','morning', 'romantic','clean'],
+            lrcText: `
+     0:23
+Messing with my head again You had your heart set on me
+0:24
+But these feelings they come and go And they come so easily
+0:25
+Tell me what it is About you that I can't forget
+0:26
+But you're breaking down my walls again Just to set me free
+0:27
+Why do I, baby, why do I Love the way you only always leave me
+0:28
+Why do I, baby, why do I Love the touch but never love the feeling
+0:29
+Why do I, baby, why do I Love the way you only always leave me
+0:35
+Why do I, baby, why do I Love the touch but never love the feeling
+0:49
+Staying up when I go out You gotta know I'm all yours
+0:59
+But when I say what's that about You start slurring your words
+1:08
+Tell me why you have to seem so Distant when I'm holding you
+1:19
+Your fingertips are drifting away And I f*cking love how it hurts
+1:29
+Why do I, baby, why do I Love the way you only always leave me
+1:41
+Why do I, baby, why do I Love the touch but never love the feeling
+1:52
+Why do I, baby, why do I Love the way you only always leave me
+2:05
+Why do I, baby, why do I Love the touch but never love the feeling
+2:07
+Why do I, baby, why do I Why do I, baby, why do I
+2:09
+Why do I, baby, why do I Love the touch but never love the feeling
+`,
+
+          },
+           {
+            id: 'seasons',
+            title: 'Seasons',
+            artist: 'Rival & Cadmium',  
+            src: 'Seasons.mp3',
+             
+            cover: "https://i.scdn.co/image/ab67616d0000b273d108774a74f5141b034c14fb",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','electric','sad','emotional','morning', 'romantic','clean'],
+            lrcText: `
+    3:47
+Just like another season
+3:40
+Just like another season
+3:34
+Just like another season
+3:31
+Not for long, just a time
+3:27
+Just like another season
+3:24
+You came into my life
+3:15
+Ohhh this season
+3:11
+DonÕt want another day without you by my side
+3:07
+Just like another season
+3:03
+Yeah we will keep on changing
+2:57
+Oh we will keep on changing all over again
+2:50
+Like an ever fading whisper in the breeze
+2:44
+Each time of year carries memories
+2:35
+Ohhh this season
+2:29
+Ohhh this season
+2:14
+till you come my way this season
+2:11
+But I'll cherish everyday
+2:07
+you'll reappear for no reason
+2:04
+Maybe this time next year
+2:01
+Just like another season
+1:58
+Not for long, just a time
+1:54
+Just like another season
+1:51
+You came into my life
+1:44
+With each new one starting I recall
+1:38
+Time continues marching It slowly crawls
+1:30
+Like the sun gives into the moon Into the night
+1:24
+The seasons turn and change just like your mind
+0:55
+till you come my way this season
+0:52
+But I'll cherish everyday
+0:48
+you'll reappear for no reason
+0:45
+Maybe this time next year
+0:42
+Just like another season
+0:38
+Not for long, just a time
+0:35
+Just like another season
+0:32
+You came into my life
+0:24
+Each painful but delightful to live through
+0:18
+They change but in a cycle that I can't lose
+0:11
+Like a wave returns to the sea into the blue
+0:05
+The seasons come and go like thoughts of you
+`,
+
+          },
+
+            {
+        id: 'harukamirai',
+        title: 'Haruka Mirai Remix',
+        artist: 'Rainych & JackonTC',
+      
+        src: 'Haruka Mirai Remix.mp3',
+        cover: "https://i1.sndcdn.com/artworks-WR4YdjksUDP1NDCP-EdUddw-t500x500.jpg",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['japanese','ost','black clover','opening','anime','movie'],
+        lrcText: `
+       
+
+00:12.100 曖昧な言葉なんかじゃなに
+00:15.100 一つ叶わない
+00:17.400 わかってる わかってるんだ
+00:20.300 順番は無人にどこまでも
+00:23.500 幅だけ足らない
+00:25.700 いつの日も夢見てた
+00:28.300 それでも一歩 今不確かな世界でも
+00:31.960 何度も倒れた鉄層
+00:34.080 反応のまま 諦めたいからさ
+00:39.100 遥か未来へ 今駆け出したんだ
+00:44.600 まだ見ぬ不安すら
+00:47.140 全て超えて
+00:50.300 あの日描いた 僕が僕であるために
+00:55.700 いつの日か ページの続きが今日
+01:01.500 君とよ 希望とよ
+01:26.700 まるでいつかのワンページのような
+01:29.700 君と僕が出会えた
+01:32.700 これを奇跡って言おうか
+01:37.700 まるでいつかのワンページのような
+01:40.700 君と僕が出会えた
+01:43.700 これを奇跡って言おうか
+01:48.700 遥か未来へ 今駆け出したんだ
+01:53.700 まだ見ぬ不安すら
+01:56.700 全て超えて
+01:59.700 あの日描いた 僕が僕であるために
+02:04.700 いつの日か ページの続きが今日
+02:10.700 君とよ 希望とよ
+02:24.700 甘いか苦いかは君が決めろよ
+02:28.700 嫌いなのは嫌い
+02:30.700 許せ黙れ
+02:31.700 それただ本当に勝ち抜けない
+
+
+`,
+lrcAlt1Text:`
+
+
+00:12.100 Vague words won’t make anything come true
+00:15.100 Not even a single one
+00:17.400 I know, I really do know
+00:20.300 The order stretches endlessly, mercilessly
+00:23.500 Yet still, it’s never quite enough
+00:25.700 I was always dreaming, every day
+00:28.300 And still I take one step, even in this uncertain world
+00:31.960 Countless times I’ve fallen, like layers of steel
+00:34.080 Still I react, wanting to give up
+00:39.100 Toward a distant future, I’ve started running now
+00:44.600 Even unseen fears,
+00:47.140 I’ll overcome them all
+00:50.300 So that I can be the me I once imagined that day
+00:55.700 Someday, the next page will turn today
+01:01.500 With you, with hope
+01:26.700 Like a page from some story long ago
+01:29.700 You and I met each other
+01:32.700 Should we call that a miracle?
+01:37.700 Like a page from some story long ago
+01:40.700 You and I met each other
+01:43.700 Should we call that a miracle?
+01:48.700 Toward a distant future, I’ve started running now
+01:53.700 Even unseen fears,
+01:56.700 I’ll overcome them all
+01:59.700 So that I can be the me I once imagined that day
+02:04.700 Someday, the next page will turn today
+02:10.700 With you, with hope
+02:24.700 Whether it’s sweet or bitter, you decide
+02:28.700 What I hate, I just hate
+02:30.700 Forgive me, be silent
+02:31.700 I just can’t really win
+
+
+`,
+lrcAlt2Text:`
+
+00:12.100 Aimai na kotoba nanka janani
+00:15.100 Hitotsu kanawanai
+00:17.400 Wakatteru wakatterun da
+00:20.300 Junban wa mujin ni dokomademo
+00:23.500 Haba dake taranai
+00:25.700 Itsu no hi mo yumemiteta
+00:28.300 Soredemo ippo, ima futashikana sekai demo
+00:31.960 Nando mo taoreta tessou
+00:34.080 Hannou no mama, akirametai kara sa
+00:39.100 Haruka mirai e, ima kakedashitan da
+00:44.600 Mada minu fuan sura
+00:47.140 Subete koete
+00:50.300 Ano hi egaita, boku ga boku de aru tame ni
+00:55.700 Itsu no hi ka, pēji no tsudzuki ga kyou
+01:01.500 Kimi to yo, kibou to yo
+01:26.700 Marude itsuka no wan pēji no you na
+01:29.700 Kimi to boku ga deaeta
+01:32.700 Kore o kiseki tte iou ka
+01:37.700 Marude itsuka no wan pēji no you na
+01:40.700 Kimi to boku ga deaeta
+01:43.700 Kore o kiseki tte iou ka
+01:48.700 Haruka mirai e, ima kakedashitan da
+01:53.700 Mada minu fuan sura
+01:56.700 Subete koete
+01:59.700 Ano hi egaita, boku ga boku de aru tame ni
+02:04.700 Itsu no hi ka, pēji no tsudzuki ga kyou
+02:10.700 Kimi to yo, kibou to yo
+02:24.700 Amai ka nigai ka wa kimi ga kimero yo
+02:28.700 Kirai na no wa kirai
+02:30.700 Yuruse, damare
+02:31.700 Sore tada hontou ni kachinukenai
+
+`
+      },
+
+
+      {
+        id: 'uchiagehanabi',
+        title: '打上花火',
+        artist: 'DAOKO & 米津玄',
+        src: '打上花火.mp3',
+        
+        cover: "https://i1.sndcdn.com/artworks-000578994410-3xcrr8-t500x500.jpg",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['japanese','emotional','sad','romantic','anime','uchiage hanabi'],
+        lrcText: `
+`
+      },
+       {
+        id: 'irony',
+        title: 'Irony',
+        artist: 'Majiko',
+        src: 'Irony.mp3',
+           
+        cover: "https://i.scdn.co/image/ab67616d0000b273f672cfe50a513713ea7cdc85",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['japanese','emotional','sad','romantic','rap'],
+        lrcText: `0:00 少し歩き疲れたんだ
+0:02 少し歩き疲れたんだ
+0:05 月並みな表現だけど
+0:08 人生とかいう長い道を
+0:11 少し休みたいんだ
+0:13 少し休みたいんだけど
+0:16 時間は刻一刻残酷と
+0:19 私を引っ張っていくんだ
+0:38 うまく行きそうなんだけど
+0:40 上手くいかないことばかりで
+0:43 うかつにも泣いてしまいそうになる
+0:45 情けない 本当にな
+0:48 惨めな気持ちなんか
+0:50 嫌と言うほど味わってきたし
+0:53 とっくに悔しさなんてものは
+0:56 捨ててきたはずなのに
+0:59 絶望抱くほど
+1:00 悪いわけじゃないけど
+1:02 欲しい物は
+1:03 いつも少し手には届かない
+1:04 そんな 半端 だとね なんか
+1:06 期待してしまうから
+1:11 それならもういっそのこと
+1:14 どん底まで突き落としてよ
+1:20 答えなんて言われたって
+1:23 人によってはすり替わってって
+1:26 だから絶対なんて絶対
+1:28 信じらんないよ
+1:31 ねぇ 苦しみって誰にでもあるって
+1:33 そんなの分かってるからなんだって？
+1:36 なら笑って済ませればいいの？
+1:38 もうわかんないよ
+1:40 バカ！
+1:52 散々言われてきたくせに
+1:55 なんだ まんざらでもないんだ
+1:57 簡単に考えたら楽なことも
+2:01 難関に考えてたんだ
+2:03 だんだんと色々めんどくなって
+2:06 もう淡々と終わらせちゃおうか
+2:08 「病んだ？」とかもう嫌になったから
+2:11 やんわりと終わればもういいじゃんか
+2:14 夢だとか希望とか
+2:16 生きてる意味とか
+2:18 別にそんなものはさして
+2:19 必要ないから
+2:21 具体的で
+2:22 わかりやすい
+2:23 機会を下さい
+2:25 泣き場所探すうちに
+2:29 もう 泣き 疲れちゃったよ
+2:35 綺麗ごとって嫌い だって
+2:37 期待しちゃっても形になんなくて
+2:40 「星が僕ら見守って」って
+2:43 夜しかないじゃん
+2:45 ねぇ 君のその優しいとこ
+2:48 不覚にも求めちゃうから
+2:51 この心やらかいとこ
+2:53 もう触んないで
+2:55 ヤダ！
+3:17 もうほっといて
+3:20 もうおいてって
+3:23 汚れきったこの道は
+3:25 もう変わんないよ嗚呼
+3:29 疲れちゃって 弱気になって
+3:32 逃げ出したって
+3:34 無駄なんだって
+3:35 だから内面耳ふさいで
+3:37 もう最低だって泣いて
+3:40 人生ってなんなのって
+3:42 わかんなくても生きてるだけで
+3:45 幸せって思えばいいの？
+3:48 もうわかんないよ バカ！
+
+`,
+lrcAlt1Text:`0:00 I'm a little tired of walking
+0:02 I'm a little tired of walking
+0:05 Forgive the trite expression,
+0:08 But I'm tired on life's long road
+0:11 I want to take a little break
+0:13 I want to take a little break, but...
+0:16 Time cruelly goes, hour by hour,
+0:19 And so... drags me right along
+0:38 It seems like things are going well,
+0:40 But in the end, they never really are,
+0:43 So in my carelessness, I'm brought to tears;
+0:45 It's shameful, it's true...
+0:48 These feelings of misery,
+0:50 I've tasted more than I'd like to admit
+0:53 And yet, I should've long ago
+0:56 Left behind all my regret...
+0:59 It's not quite so bad
+1:00 As to bring me to despair,
+1:02 But the things I want are always just out of reach...
+1:04 Really, it's silly, isn't it?
+1:06 But I just keep foolishly hoping...
+1:11 In that case, just get it over with—
+1:14 Just drop me into the depths already...
+1:20 You say to ask for an answer,
+1:23 But it would depend on the person
+1:26 So I could never, no, never,
+1:28 Believe in anyone... right?
+1:31 Everyone has hardships—
+1:33 Yes, of course I understand that
+1:36 But is it right to just laugh them off?
+1:38 I don't know anymore... Stupid!
+1:52 Even though I'm told so harshly,
+1:55 I still don't have everything together
+1:57 Thinking simply on even the easy things,
+2:01 I keep overthinking
+2:03 Everything's getting more troublesome,
+2:06 So should I casually put an end to it?
+2:08 "Are you sick?" Well, I'm sick of hearing it;
+2:11 Can't I just have things end in peace?
+2:14 My dreams, my aspirations, my reasons for living?
+2:16 It's not like there's any real need
+2:18 To have such things...
+2:19 If it were tangible, it'd be easy to tell...
+2:21 Give me an opportunity...
+2:25 While looking for a place to cry,
+2:29 I'd already gotten tired of crying
+2:35 I hate to just gloss over things;
+2:37 I keep hoping, but nothing takes form
+2:40 "The stars watch over us," you say,
+2:43 But aren't they only at night? Hey...
+2:45 You show such kindness,
+2:48 But I demand it in every failure
+2:51 My heart is too frail;
+2:53 Don't touch it... No more!
+3:17 Just back off
+3:20 Just leave me be
+3:23 This road I walk has become dirty,
+3:25 And isn't going to change
+3:29 I'm worn out, I've turned timid,
+3:32 And running away would be futile
+3:35 So I block up my ears;
+3:37 "This is awful," I cry
+3:40 What is life, anyway?
+3:42 Not even knowing, I just keep living
+3:45 But can I call that happiness?
+3:48 I don't know anymore... Stupid!
+
+
+`,
+lrcAlt2Text:`0:00 Sukoshi aruki tsukaretanda
+0:02 Sukoshi aruki tsukaretanda
+0:05 Tsukinami na hyougen dakedo
+0:08 Jinsei toka iu nagai michi wo
+0:11 Sukoshi yasumitain da
+0:13 Sukoshi yasumitain dakedo
+0:16 Jikan wa koku ikkoku zankoku to
+0:19 Watashi wo hipparatte iku nda
+0:38 Umaku ikisou nan dakedo
+0:40 Umaku ikanai koto bakari de
+0:43 Ukatsuni mo naite shimai sou ni naru
+0:45 Nasakenai hontou ni na
+0:48 Mijime na kimochi nanka
+0:50 Iya to iu hodo ajiwatte kitashi
+0:53 Tokkuni kuyashisa nante mono wa
+0:56 Sutete kita hazu nanoni
+0:59 Zetsubou idaku hodo
+1:00 Warui wake janai kedo
+1:02 Hoshii mono wa
+1:03 Itsumo sukoshi te ni wa todokanai
+1:04 Sonna hanpa da to ne nanka
+1:06 Kitai shiteshimau kara
+1:11 Sorenara mou isso no koto
+1:14 Donzoko made tsukio toshite yo
+1:20 Kotae nante iwaretatte
+1:23 Hito ni yotte wa surikawatette
+1:26 Dakara zettai nante zettai
+1:28 Shinjiran nai yo
+1:31 Nee kurushimi tte dare ni demo aru tte
+1:33 Sonna no wakatteru kara nandatte?
+1:36 Nara waratte sumasereba ii no?
+1:38 Mou wakannai yo
+1:40 Baka!
+1:52 Sanzan iwarete kita kuse ni
+1:55 Nanda manzara demo nain da
+1:57 Kantan ni kangaetara raku na koto mo
+2:01 Nankan ni kangaetetan da
+2:03 Dandan to iroiro mendoku natte
+2:06 Mou tantan to owarasechaou ka
+2:08 "Yanda?" toka mou iya ni nattakara
+2:11 Yanwari to owareba mou ii jan ka
+2:14 Yume da toka kibou toka
+2:16 Ikiteru imi toka
+2:18 Betsu ni sonna mono wa sashite
+2:19 Hitsuyou nai kara
+2:21 Gutaiteki de
+2:22 Wakari yasui
+2:23 Kikai wo kudasai
+2:25 Nakibasho sagasu uchi ni
+2:29 Mou naki tsukarechatta yo
+2:35 Kireigoto tte kirai datte
+2:37 Kitai shichatte mo katachi ni nannakute
+2:40 "Hoshi ga bokura mimamotte" tte
+2:43 Yoru shika naijan
+2:45 Nee kimi no sono yasashii toko
+2:48 Fukakuni mo motomechau kara
+2:51 Kono kokoro yarakai toko
+2:53 Mou sawannai de
+2:55 Yada!
+3:17 Mou hottoite
+3:20 Mou oitette
+3:23 Yogorekitta kono michi wa
+3:25 Mou kawannai yo aa
+3:29 Tsukarechatte yowaki ni natte
+3:32 Nigedashitatte
+3:34 Muda nan datte
+3:35 Dakara naimen mimi fusaide
+3:37 Mou saitei datte naite
+3:40 Jinsei tte nan nano tte
+3:42 Wakannakutemo ikiteru dake de
+3:45 Shiawase tte omoeba ii no?
+3:48 Mou wakannai yo Baka!
+
+`
+      },
+       {
+        id: 'naked',
+        title: 'Naked',
+        artist: 'James Arthur',
+        src: 'Naked.mp3',
+          
+        cover: "https://upload.wikimedia.org/wikipedia/en/0/04/JamesArthurNaked.jpg",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['english','emotional','sad','romantic','sadsong','you and i'],
+        lrcText: `
+[00:10.500]  Hey, you there
+[00:14.120]  Can we take it to the next level, baby?
+[00:18.620]  Do you dare?
+[00:20.600]  Don't be scared
+[00:23.580]  Cause if you can say the words
+[00:26.780]  I don't know why I should care
+[00:29.120]  Cause here I am, I'm giving all I can
+[00:33.500]  But all you ever do is mess it up
+[00:38.440]  Yeah, I'm right here
+[00:40.540]  I'm trying to make it clear
+[00:42.840]  That getting high for you just ain't enough
+[00:46.740]  I'm not gonna wait until you're done
+[00:51.300]  Pretending you don't need anyone
+[00:55.880]  I'm standing here naked
+[01:01.000]  I'm standing here naked
+[01:05.560]  I'm not gonna trade till you decide
+[01:10.080]  You're ready to swallow all your pride
+[01:14.920]  I'm standing here naked
+[01:20.160]  I'm standing here naked
+[01:25.960]  Hey, get out
+[01:29.980]  I've got nothing left to give
+[01:32.620]  And you give me nothing now
+[01:34.920]  Read my mouth
+[01:38.720]  If you ever want me back
+[01:42.000]  Then your walls need breaking down
+[01:44.400]  Cause here I am, I'm giving all I can
+[01:48.820]  But all you ever do is mess it up
+[01:52.260]  All you ever done
+[01:53.760]  Yeah, I'm right here
+[01:55.880]  I'm trying to make it clear
+
+
+[01:58.000]  getting half of you just ain't enough
+[02:02.000]  I'm not going to wait until you're done
+[02:07.080]  Pretending you don't need anyone
+[02:11.000]  I'm standing here naked (naked, naked)
+[02:16.580]  I'm standing here naked (naked, naked)
+[02:20.880]  I'm not gonna try 'til you decide
+[02:25.280]  You're ready to swallow all your pride
+[02:30.480]  I'm standing here naked (naked, naked)
+[02:35.200]  I'm standing here naked (naked, naked)
+[02:41.580]  I wanna give you everything
+[02:44.880]  I wanna give you everything
+[02:51.080]  I wanna give you everything
+[02:53.580]  I wanna give you everything
+[02:59.280]  I'm not going to wait until you're done
+[03:03.880]  'Cause you pretended you don't need anyone
+[03:07.880]  'Cause you see that I'm naked (naked, naked)
+[03:13.880]  Oh, you see that I'm naked (naked, naked)
+[03:17.880]  I'm not going to try 'til you decide
+[03:22.180]  You're ready to swallow all your pride
+[03:27.280]  I'm standing here naked (naked, naked)
+[03:31.880]  I'm standing here naked (I'm standing) (naked, naked)
+[03:39.880]  I'm standing
+[03:41.880]  I'm standing here
+
+`
+      },
+       {
+        id: 'fallinglikethestars',
+        title: 'Falling Like The Stars',
+        artist: 'James Arthur',
+        src: 'Falling Like The Stars.mp3',
+          
+        cover: "https://i.scdn.co/image/ab67616d0000b273dc16d839ab77c64bdbeb3660",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['english','emotional','sad','romantic','sadsong','you and i'],
+        lrcText: `
+00:47.000 I swear to God when I come home I'm gonna hold you so close  
+00:56.400 I swear to God when I come home I'll never let go  
+01:04.400 Like a river I flow to the ocean I know  
+01:13.400 You pull me close, guiding me home  
+01:18.400 And I need you to know that we're falling so fast  
+01:28.400 We're falling like the stars falling in love  
+01:36.400 And I'm not scared to say those words  
+01:42.400 With you I was saved  
+01:45.400 We're falling like the stars, we're falling in love  
+01:54.400 I swear to God I can see  
+01:58.400 Four kids and no sleep  
+02:03.400 Well I've warmed on each knee, you and me  
+02:07.400 And when they've grown up  
+02:15.400 You're still the girl in the club  
+02:19.400 When I held your hair up, cause you had too much  
+02:27.400 And I need you to know that we're falling so fast  
+02:35.400 We're falling like the stars falling in love  
+02:44.400 And I'm not scared to say those words  
+02:49.400 With you I was saved  
+02:52.400 We're falling like the stars, we're falling in love  
+02:58.400 I swear to God every day  
+03:05.400 He won't take you away  
+03:10.400 Cause without you babe, I lose my way  
+03:17.400 Oh I'm in love, oh I'm in love, oh I'm in love  
+03:24.400 Oh I'm in love, oh I'm in love, oh I'm in love  
+03:34.400 And I need you to know that we're falling so fast  
+03:42.400 We're falling like the stars falling in love  
+03:48.400 And I'm not scared to say those words  
+03:56.400 With you I was saved  
+03:59.400 We're falling like the stars, we're falling in love  
+
+
+`
+      },
+       {
+        id: 'storyofmylife',
+        title: 'Story of My Life',
+        artist: 'One Direction',
+        src: 'Story of My Life.mp3',
+          
+        cover: "https://f4.bcbits.com/img/a1866701999_16.jpg",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['english','emotional','sad','romantic','just how fast','going out tonight'],
+        lrcText: `0:20
+♪ Written in these walls ♪
+0:21
+♪ Are the stories that I can't explain ♪
+0:28
+♪ I leave my heart open but it stays ♪
+0:30
+♪ Right here empty for days ♪
+0:36
+♪ She told me in the morning ♪
+0:37
+♪ She don't feel the same about us in her bones ♪
+0:43
+♪ It seems to me that when I die ♪
+0:45
+♪ These words will be written on my stone ♪
+0:51
+♪ And I'll be gone, gone tonight ♪
+0:54
+♪ The ground beneath my feet is open wide ♪
+0:59
+♪ The way that I been holdin' on too tight ♪
+1:02
+♪ With nothin' in between ♪
+1:07
+♪ The story of my life, I take her home ♪
+1:11
+♪ I drive all night to keep her warm ♪
+1:15
+♪ And time ♪
+1:17
+♪ Is frozen ♪
+1:21
+♪ The story of, the story of ♪
+1:23
+♪ The story of my life, I give her hope ♪
+1:27
+♪ I spend her love until she's broke inside ♪
+1:34
+♪ The story of my life the story of, the story of ♪
+1:39
+♪ Written on these walls are the colors that I can't change ♪
+1:47
+♪ Leave my heart open, but it stays right here in its cage ♪
+1:55
+♪ I know that in the morning ♪
+1:57
+♪ I'll see us in the light up on the hill ♪
+2:03
+♪ Although I am broken, my heart is untamed still ♪
+2:10
+♪ And I'll be gone, gone tonight ♪
+2:14
+♪ The fire beneath my feet is burnin' bright ♪
+2:18
+♪ The way that I've been holdin' on so tight ♪
+2:22
+♪ With nothin' in between ♪
+2:27
+♪ The story of my life, I take her home ♪
+2:31
+♪ I drive all night to keep her warm ♪
+2:34
+♪ And time ♪
+2:37
+♪ Is frozen the story of, the story of ♪
+2:43
+♪ The story of my life, I give her hope ♪
+2:46
+♪ I spend her love until she's broke inside ♪
+2:53
+♪ The story of my life the story of, the story of ♪
+2:58
+♪ And I've been waiting for this time to come around ♪
+3:06
+♪ But, baby, runnin' after you is like chasin' the clouds ♪
+3:14
+♪ The story of my life, I take her home ♪
+3:18
+♪ I drive all night to keep her warm ♪
+3:22
+♪ And time ♪
+3:24
+♪ Is frozen ♪
+3:30
+♪ The story of my life, I give her hope, give her hope ♪
+3:34
+♪ I spend her love until she's broke inside ♪
+3:41
+♪ The story of my life, the story of ♪
+3:45
+♪ The story of my life ♪
+3:53
+♪ The story of my life, the story of, the story of ♪
+4:00
+♪ The story of my life ♪
+`,
+      },
+        {
+        id: 'theflameofloveins',
+        title: 'The Flame of Love Karaoke',
+        artist: 'Rokudenashi',
+
+        src: 'The Flame of Love ins..mp3',
+        cover: "https://i1.sndcdn.com/artworks-SzrCLykOBNrd41Me-IP2Vng-t500x500.jpg",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['japanese','emotional','sad','romantic','anime'],
+        lrcText: `0:20 ただいつもより寂しくなって
+0:25 ぽつりぽつりこぼれる言葉
+0:30 僕には何も無いようだから
+0:35 涙くらい流させてくれ
+0:41 そうやって過ごした日々に
+0:46 いつかいつか意味はできるの？
+0:52 こうやって傷つく夜に
+0:56 ひとつ光の音が
+1:01 嗚呼
+1:02 やがて来る明日の前で
+1:07 もう怖くないって言えるように
+1:12 ただ愛が灯る 優しく灯る
+1:17 今日は今日は笑えるように
+1:33 そうやって苦しい日々を
+1:38 いつかいつか抱きしめられる？
+1:44 こうやって泣いちゃう夜に
+1:48 どうか導いてくれ
+1:57 知ってゆく大人になるの
+2:01 その度に空っぽな心だけ
+2:07 でもさ 忘れてはいないんだ
+2:12 微かに残る 温もりの音
+2:17 嗚呼
+2:18 やがて来る明日の前で
+2:22 今描く過去の夜(よ)も夢の中
+2:28 ただ愛が灯る 優しく灯る
+2:33 今日は今日は笑えるように
+2:39 独りが独りが怖くって
+2:41 心にちょっぴり隠してた
+2:44 しんどい感情それすらも抱きしめるの
+2:49 嗚呼
+2:49 追いつかないまま消えてった
+2:51 ならそれでもそれでもいいんじゃない？
+2:54 怖くないって言えるのなら 今日は
+`,
+lrcAlt1Text:`
+0:20 Just feeling lonelier than usual
+0:25 Uttering fragments of sentences
+0:30 I have nothing, so it seems
+0:35 So crying is the least I can do
+0:41 That’s how the days go by
+0:46 Will they come to mean something?
+0:52 On heartbreaking nights like these
+0:56 I hear the sound of a single light
+1:01 Ah
+1:02 Tomorrow will eventually come
+1:07 So I will no longer be afraid
+1:12 The flame of love gently lights the way
+1:17 Today… today I can smile
+1:33 Will a time eventually come
+1:38 When I’ll embrace these hurtful days?
+1:44 On nights like these when I end up crying
+1:48 Please guide me / Lead me
+1:57 I will become wiser as I grow
+2:01 Although it empties my heart each time
+2:07 But I will never forget
+2:12 The faint sound of warmth that remains
+2:17 Ah
+2:18 Tomorrow will eventually come
+2:22 Nights from the past are now in my dreams
+2:28 The flame of love gently lights the way
+2:33 Today… today I can smile
+2:39 I am frightened of loneliness
+2:41 So, I embrace even my fears
+2:44 I hold even those painful feelings
+2:49 Ah
+2:49 It disappeared before I could catch up
+2:51 But if that’s the case, it’s OK, right?
+2:54 If I can say I’m not afraid today
+`,
+lrcAlt2Text:`
+0:20 Tada itsumo yori samishiku natte
+0:25 Potsuri potsuri koboreru kotoba
+0:30 Boku niwa nani mo nai you dakara
+0:35 Namida kurai naga sasete kure
+0:41 Souyatte sugo shita hibi ni
+0:46 Itsuka itsuka imi wa dekiruno?
+0:52 Kou yatte kizu tsuku yoru ni
+0:56 Hitotsu hikari no oto ga
+1:01 Ah
+1:02 Yagate kuru ashita no maede
+1:07 Mou kowaku nai tte ieru you ni
+1:12 Tada ai ga tomoru, yasashiku tomoru
+1:17 Kyo wa kyo wa waraeru youni
+1:33 Souyatte kurushii hibi wo
+1:38 Itsuka itsuka daki shime rareru?
+1:44 Kouyatte naichau yoru ni
+1:48 Douka michibiite kure
+1:57 Shitteyuku otona ni naruno
+2:01 Sonotabi ni karappo na kokoro dake
+2:07 Demosa wasurete ha inainda
+2:12 Kasuka ni nokoru nukumori no oto
+2:17 Ah
+2:18 Yagate kuru ashita no maede
+2:22 Ima egaku kako no yo mo yume no naka
+2:28 Tada ai ga tomoru, yasashiku tomoru
+2:33 Kyo wa kyo wa waraeru youni
+2:39 Hitori ga hitori ga kowakutte
+2:41 Kokoro ni choppiri kakushiteta
+2:44 Shindoi kanjou sore suramo daki shime runo
+2:49 Ah
+2:49 Oitsukanai mama kietetta
+2:51 Nara sore demo sore demo iinja nai?
+2:54 Kowaku nai tte ieru no nara, Kyo wa
+`
+      },
+        {
+        id: '不忘',
+        title: '不忘',
+        artist: 'Jin Wenqi',
+        src: '不忘.mp3',
+        cover: "https://i.scdn.co/image/ab67616d00001e02bdde4c6c4b1e792a0ef92f17",
+     
+        isVideo: false,
+        duration: undefined,
+        keywords: ['chinese','emotional','sad','romantic','cpop','c drama','mandarin','dont forget','never forget','my girlfriend is an alien'],
+        lrcText: `00:13 每當你再靠近  
+00:18 為什麼總會覺得  
+00:22 陌生又熟悉  
+00:25 忽然間觸發了藏匿的回憶  
+00:32 畫面上微花心心跳  
+00:40 我多怕會忘記  
+00:45 你是我瀟災的理由  
+00:49 掌心裡的牽手  
+00:53 唯有你親我就能夠  
+00:58 讓我更面對這未知的命運  
+01:09 哪怕倒流時空  
+01:13 故事再從頭  
+01:17 我不望你眼中  
+01:21 深愛多溫柔  
+01:24 愛上你原來  
+01:27 只要用一時間  
+01:31 忘掉你  
+01:33 偏偏卻需要永遠  
+01:52 我多怕會忘記  
+01:58 你和我一起走過  
+02:02 一路上的步驟  
+02:05 唯有你守候著門口  
+02:11 讓我跟你這楓葉一樣執著  
+02:19 哪怕倒流時空  
+02:23 故事再從頭  
+02:27 我不望你眼中  
+02:31 深愛多溫柔  
+02:34 愛上你原來  
+02:37 只要用一時間  
+02:41 忘掉你  
+02:43 偏偏卻需要  
+02:47 永遠珍惜會是終極的保留  
+02:54 那是我別無他求的擁有  
+03:00 哪怕倒流時空  
+03:04 故事再從頭  
+03:08 我不望你眼中  
+03:12 深愛多溫柔  
+03:15 愛上你原來  
+03:18 只要用一時間  
+03:22 忘掉你  
+03:24 偏偏卻需要永遠 `,
+lrcAlt1Text:`
+00:13 Whenever you come close again  
+00:18 Why do I always feel  
+00:22 Both strange and familiar  
+00:25 Suddenly triggering the memories I hid away  
+00:32 The image blooms and my heart beats faster  
+00:40 I’m so afraid I’ll forget  
+00:45 You are the reason I stand through the storm  
+00:49 The hand I hold in my palm  
+00:53 Only when you kiss me can I  
+00:58 Face this unknown destiny with courage  
+01:09 Even if time flows backward  
+01:13 And the story starts again  
+01:17 I won’t forget the look in your eyes  
+01:21 So full of love and gentleness  
+01:24 To love you, I learned  
+01:27 It only takes a moment  
+01:31 To forget you  
+01:33 Yet it takes forever to let go  
+01:52 I’m so afraid I’ll forget  
+01:58 The path we walked together  
+02:02 Every step along the way  
+02:05 Only you waited by the door  
+02:11 Letting me be steadfast like the maple leaves  
+02:19 Even if time flows backward  
+02:23 And the story starts again  
+02:27 I won’t forget the look in your eyes  
+02:31 So full of love and gentleness  
+02:34 To love you, I learned  
+02:37 It only takes a moment  
+02:41 To forget you  
+02:43 Yet somehow it still takes  
+02:47 Forever to treasure what we had  
+02:54 That’s the only thing I’ll ever want  
+03:00 Even if time flows backward  
+03:04 And the story starts again  
+03:08 I won’t forget the look in your eyes  
+03:12 So full of love and gentleness  
+03:15 To love you, I learned  
+03:18 It only takes a moment  
+03:22 To forget you  
+03:24 Yet it still takes forever  
+
+
+`,
+lrcAlt2Text:`00:13 Měi dāng nǐ zài kàojìn  
+00:18 Wèishéme zǒng huì juéde  
+00:22 Mòshēng yòu shúxī  
+00:25 Hūrán jiān chùfā le cángnì de huíyì  
+00:32 Huàmiàn shàng wéihuā xīn xīn tiào  
+00:40 Wǒ duō pà huì wàngjì  
+00:45 Nǐ shì wǒ xiāo zāi de lǐyóu  
+00:49 Zhǎngxīn lǐ de qiānshǒu  
+00:53 Wéiyǒu nǐ qīn wǒ jiù nénggòu  
+00:58 Ràng wǒ gèng miànduì zhè wèizhī de mìngyùn  
+01:09 Nǎpà dàoliú shíkōng  
+01:13 Gùshì zài cóngtóu  
+01:17 Wǒ bú wàng nǐ yǎnzhōng  
+01:21 Shēn'ài duō wēnróu  
+01:24 Ài shàng nǐ yuánlái  
+01:27 Zhǐyào yòng yī shíjiān  
+01:31 Wàngdiào nǐ  
+01:33 Piānpiān què xūyào yǒngyuǎn  
+01:52 Wǒ duō pà huì wàngjì  
+01:58 Nǐ hé wǒ yīqǐ zǒuguò  
+02:02 Yīlù shàng de bùzhòu  
+02:05 Wéiyǒu nǐ shǒuhòu zhe ménkǒu  
+02:11 Ràng wǒ gēn nǐ zhè fēngyè yīyàng zhízhuó  
+02:19 Nǎpà dàoliú shíkōng  
+02:23 Gùshì zài cóngtóu  
+02:27 Wǒ bú wàng nǐ yǎnzhōng  
+02:31 Shēn'ài duō wēnróu  
+02:34 Ài shàng nǐ yuánlái  
+02:37 Zhǐyào yòng yī shíjiān  
+02:41 Wàngdiào nǐ  
+02:43 Piānpiān què xūyào  
+02:47 Yǒngyuǎn zhēnxī huì shì zhōngjí de bǎoliú  
+02:54 Nà shì wǒ bié wú tā qiú de yǒngyǒu  
+03:00 Nǎpà dàoliú shíkōng  
+03:04 Gùshì zài cóngtóu  
+03:08 Wǒ bú wàng nǐ yǎnzhōng  
+03:12 Shēn'ài duō wēnróu  
+03:15 Ài shàng nǐ yuánlái  
+03:18 Zhǐyào yòng yī shíjiān  
+03:22 Wàngdiào nǐ  
+03:24 Piānpiān què xūyào yǒngyuǎn  
+
+
+`
+      },
+        {
+            id: 'findingher',
+            title: 'Finding Her',
+            artist: 'Kushagra',
+            src: 'Finding Her.mp3',
+            cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVMhksRGTsuzxRCz5hrU2iTv4Qen-Sz5mlXQ&s",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['hindi','romantic','morning'],
+            lrcText: `
+[00:21.356] Jaana, tu aata nahin
+
+[00:25.669] Sapno se jaata nahin
+
+[00:29.902] Mil jaaye, kya hi baat thi
+
+[00:34.296] Qaamil ho jaata wahin
+
+[00:38.768] Jaana, mere sawaalon ka manzar tu
+
+[00:43.043] Haan, main sookha sa, saara samandar tu
+
+[00:47.276] Haan, gulaabi si surkhi jo dikhti thi
+
+[00:51.267] Phir se dikh je to jee bhar ke saans bhar loon
+
+[00:55.551] Kaati kitni thi raatein, nahin soya main
+
+[00:59.826] Tujhko kitna bulaya, phir roya main
+
+[01:04.186] Teri saari wo baatein kyun sone nahin deti
+
+[01:08.671] Sataaye mujhe, haan, phir khoya main
+
+[01:13.242] Tu aata nahin
+
+[01:16.643] Sapno se jaata nahin
+
+[01:20.930] Mil jaaye, kya hi baat thi
+
+[01:25.185] Qaamil ho jaata wahin
+
+[01:29.319] Jo bhi ho raaz tera
+
+[01:33.528] Mujhko bataata nahin
+
+[01:37.792] Mil jaaye, kya hi baat thi
+
+[01:42.066] Qaamil ho jaata wahin
+
+[02:04.115] Sambhaal ke rakha wo phool mera tu
+
+[02:08.419] Meri shayari mein zaroor raha tu
+
+[02:12.580] Jo aankhon mein pyaari si duniya basaayi
+
+[02:16.591] Wo duniya bhi tha tu, wo lamha bhi tha tu
+
+[02:20.752] Haan, lagte hain mujhko ye kisse sataane
+
+[02:25.233] Deta na dil mera tujhko bhulaane
+
+[02:29.377] Adhoore se vaade, adhoori si raatein
+
+[02:33.721] Ab hisse mein daakhil mere bas wo yaadein
+
+[02:38.120] Rehna tha ban ke humdam tera
+
+[02:41.444] Aisе jaana hi tha, phir tu kyun thehra?
+
+[02:45.794] Ab na maane mera dil kе na tere qaabil
+
+[02:50.490] Thi ik aarzu ki main kehta raha, par
+
+[02:54.704] Tu aata nahin
+
+[02:58.472] Sapno se jaata nahin
+
+[03:02.193] Mil jaaye, kya hi baat thi
+
+[03:06.500] Qaamil ho jaata wahin
+
+[03:10.937] Jo bhi ho raaz tera
+
+[03:14.987] Mujhko bataata nahin
+
+[03:19.153] Mil jaaye, kya hi baat thi
+
+[03:23.385] Qaamil ho jaata wahin
+
+
+
+
+`,
+          },
+           {
+            id: 'silence',
+            title: 'Silence',
+            artist: 'Marshmello & Khalid',  
+            src: 'Silence.mp3',
+                   
+            cover: "https://i.scdn.co/image/ab67616d0000b273f33ba583059dc2f7d08bf2b8",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','sad','emotional','morning','modern', 'romantic','clean'],
+            lrcText: `
+0:09
+Oh yeah,
+0:13
+Oh yeah,
+
+0:17
+Yeah, I'd rather be a lover than a fighter,
+0:20
+Because all my life, I've been fighting
+0:24
+Never felt a feeling of comfort,
+0:27
+All this time, I've been hiding,
+0:30
+And I never had someone to call my own,
+0:33
+oh nah, I'm so used to sharing,
+0:37
+Love only left me alone,
+0:40
+But I'm at one with the silence,
+0:45
+I found peace, in your violence,
+0:47
+Can't show me, there's no point in trying,
+0:52
+I'm at one, and I've been quiet for too long,
+0:58
+I found peace, in your violence,
+1:01
+Can't show me,
+1:02
+there's no point in trying
+1:05
+I'm at one, and I've been silent for too long,
+1:11
+(oh)
+1:11
+(music plays)
+1:14
+I've been quiet for too long,
+1:18
+(music plays)
+1:21
+I've been quiet for too long,
+1:24
+(oh)
+1:26
+I found peace, in your violence,
+1:28
+Can't show me,
+1:29
+There's no point in trying,
+1:32
+I'm at one, and I've been quiet for too long,
+1:39
+I'm in need of a savior, but I'm not asking for favors,
+1:45
+My whole life, I've felt like a burden,
+1:48
+I think too much, and I hate it,
+1:52
+I'm so used to being in the wrong,
+1:55
+I'm tired of caring
+1:58
+Loving never gave me a home,
+2:02
+So I'll sit here in the silence,
+2:06
+I found peace, in your violence,
+2:09
+Can't show me, there's no point in trying,
+2:13
+I'm at one, and I've been quiet for too long,
+2:20
+I found peace, in your violence,
+2:22
+Can't show me, there's no point in trying,
+2:26
+I'm at one, and I've been silent for too long,
+2:32
+(music plays)
+2:36
+I've been quiet for too long,
+2:39
+(music plays)
+2:42
+I've been quiet for too long,
+2:45
+(music plays)
+2:47
+I found peace, in your violence,
+2:49
+Can't show me, there's no point in trying,
+2:53
+(music plays)
+2:53
+I'm at one, and I've been quiet for too long.
+2:59
+(oh)
+`, },
+
+ {
+        id: 'kiminisaigonokuchizukewo',
+        title: 'Kimi Ni Saigo No Kuchizuke Wo',
+        artist: 'Majiko',
+        src: 'Kimi Ni Saigo No Kuchizuke Wo.mp3',
+           
+        cover: "https://i.scdn.co/image/ab67616d0000b273f672cfe50a513713ea7cdc85",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['japanese','emotional','sad','romantic','aesthetic'],
+        lrcText: `
+
+`,
+lrcAlt1Text:`
+
+
+`,
+lrcAlt2Text:`
+
+`
+      },
+       {
+        id: 'golden',
+        title: 'Golden',
+        artist: 'KPop Demon Hunters',
+        src: 'Golden.mp3',
+
+        cover: "https://upload.wikimedia.org/wikipedia/en/6/6f/Huntr-x_-_Golden.png",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['korea','emotional','sad','romantic','drama'],
+      lrcText: `
+
+`,
+lrcAlt1Text:`
+
+
+`,
+lrcAlt2Text:`
+
+`
+      },
+             {
+        id: 'goldenins',
+        title: 'Golden Instrumental',
+        artist: 'KPop Demon Hunters',
+        src: 'Golden.mp3',
+
+        cover: "https://upload.wikimedia.org/wikipedia/en/6/6f/Huntr-x_-_Golden.png",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['korea','emotional','sad','romantic','karaoke'],
+      lrcText: `
+
+`,
+lrcAlt1Text:`
+
+
+`,
+lrcAlt2Text:`
+
+`
+      },
+        {
+            id: 'youreyes',
+            title: 'Your Eyes',
+            artist: 'Barney Sku',  
+            src: 'Your Eyes.mp3',
+                   
+            cover: "https://c.saavncdn.com/912/Your-Eyes-English-2022-20220412173452-500x500.jpg",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','sad','emotional','morning','modern', 'romantic','clean','hindi','lofi','remix'],
+            lrcText: `
+`, },
+
+
+ {
+            id: 'gul',
+            title: 'Gul',
+            artist: 'Anuv Jain',
+            src: 'Gul.mp3',
+            cover: "https://c.saavncdn.com/266/Gul-Hindi-2021-20210706151615-500x500.jpg",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['hindi','classic','emotional','romantic','morning'],
+            lrcText: `
+`,
+          },
+
+          {
+            id: 'jotummereho',
+            title: 'Jo Tum Mere Ho',
+            artist: 'Anuv Jain',
+            src: 'Jo Tum Mere Ho.mp3',
+            cover: "https://c.saavncdn.com/401/Jo-Tum-Mere-Ho-Hindi-2024-20240731053953-500x500.jpg",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['hindi','classic','emotional','romantic','morning'],
+            lrcText: `
+
+`,
+          },
+{
+      
+//             [00:00:12.074] 
+
+// [00:00:15.006] 
+
+// [00:00:17.527] 
+
+// [00:00:23.327] 
+
+// [00:00:26.214] 
+
+// [00:00:29.085] 
+
+// [00:00:35.075] 
+
+// [00:00:37.972] 
+
+// [00:00:40.692] 
+
+// [00:00:43.755] 
+
+// [00:00:46.674] 
+
+// [00:00:49.515] 
+
+// [00:00:52.259] 
+
+// [00:00:58.310] 
+
+// [00:01:01.640] 
+
+// [00:01:07.150] 
+
+// [00:01:10.019] 
+
+// [00:01:13.237] 
+
+// [00:01:18.379] 
+
+// [00:01:33.040] 
+
+// [00:01:35.412] 
+
+// [00:01:38.861] 
+
+// [00:01:44.472] 
+
+// [00:01:47.245] 
+
+// [00:01:50.055] 
+
+// [00:01:56.022] 
+
+// [00:01:59.072] 
+
+// [00:02:01.584] 
+
+// [00:02:04.795] 
+
+// [00:02:06.947] 
+
+// [00:02:10.605] 
+
+// [00:02:13.353] 
+
+// [00:02:19.484] 
+
+// [00:02:22.344] 
+            id: 'atlantis',
+            title: 'Atlantis',
+            artist: 'Seafret',  
+            src: 'Atlantis.mp3',
+                   
+            cover: "https://i.scdn.co/image/ab67616d0000b2738c33272a7c77042f5eb39d75",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','sad','emotional','morning','modern', 'romantic','clean'],
+            lrcText: `
+[00:12.074] The birds have left the trees
+[00:15.006] The light pours onto me
+[00:17.527] I can feel you lying there all on your own
+[00:23.327] We got here the hard way
+[00:26.214] All those words that we exchange
+[00:29.085] Is it any wonder things get broke?
+
+[00:35.075] 'Cause in my heart and in my head
+[00:37.972] I'll never take back the things I said
+[00:40.692] So high above,
+[00:43.755] I feel it coming down
+[00:46.674] She said, in my heart and in my head
+[00:49.515] Tell me why this has to end
+[00:52.259] Oh, no, oh, no
+
+[00:58.310] I can't save us,
+[01:01.640] my Atlantis, we fall
+[01:07.150] We built this town on shaky ground
+[01:10.019] I can't save us, 
+[01:13.237] my Atlantis, oh, no
+[01:18.379] We built it up to pull it down
+
+[01:33.040] Now all the birds have fled
+ [01:35.412] The hurt just leaves me scared
+ [01:38.861] Losing everything I've ever known
+ [01:44.472] It's all become too much
+ [01:47.159] Maybe I'm not built for love
+
+[01:50.034] If I knew that I could reach you, I would go
+
+[01:55.959] It's in my heart and in my head
+
+[01:58.986] You can't take back the things you said
+
+[02:01.599] So high above, I feel it coming down
+
+[02:06.846] She said, in my heart and in my head
+
+[02:10.537] Tell me why this has to end
+
+[02:13.195] Oh, no, oh, no
+
+[02:19.441] I can't save us, my Atlantis, we fall
+
+[02:28.012] We built this town on shaky ground
+
+[02:30.968] I can't save us, my Atlantis, oh, no
+
+[02:39.368] We built it up to pull it down
+
+[02:45.004] And we build it up and we build it up
+
+[02:50.838] And we build it up to pull it down
+
+[02:56.472] And we build it up and we build it up
+
+[03:02.497] And we build it up to pull it down
+
+[03:05.771] I can't save us, my Atlantis, we fall
+
+[03:14.344] We built this town on shaky ground
+
+[03:17.301] I can't save us, my Atlantis, oh, no
+
+[03:25.724] We built it up to pull it down (ooh)
+`, },
+    {
+        id: '如願',
+        title: '如願',
+        artist: 'Faye Wong',
+        src: '如願.mp3',
+        cover: "https://i.scdn.co/image/ab67616d00001e023a8298cd57b49f124640549c",
+     
+        isVideo: false,
+        duration: undefined,
+        keywords: ['chinese','emotional','sad','romantic','cpop','mandarin'],
+     lrcText: `
+
+`,
+lrcAlt1Text:`
+
+
+`,
+lrcAlt2Text:`
+
+`
+      },
+       {
+        id: '水平線',
+        title: '水平線',
+        artist: 'Back Number',
+        src: '水平線.mp3',
+           
+        cover: "https://i1.sndcdn.com/artworks-sZdSgxkmUXYJAFQT-TPzeYQ-t500x500.jpg",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['japanese','emotional','sad','romantic','aesthetic'],
+        lrcText: `
+
+`,
+lrcAlt1Text:`
+
+
+`,
+lrcAlt2Text:`
+
+`
+      },
+ {
+        id: 'mightu',
+        title: 'Might*U',
+        artist: 'Yuki Hayashi',
+        src: 'Might U.mp3',
+           
+        cover: "https://i.scdn.co/image/ab67616d0000b273d1d6bbf22adc570c36a94d67",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['japanese','emotional','sad','romantic','aesthetic','ost','my hero academia','anime'],
+         lrcText: `
+
+`,
+lrcAlt1Text:`
+
+
+`,
+lrcAlt2Text:`
+
+`
+      }, 
+      {
+            id: 'peeloonlofimix',
+            title: 'Pee Loon LoFi Mix',
+            artist: 'Pritam & Mohit Chauhan',
+            src: 'Pee Loon LoFi Mix.mp3',
+            cover: "https://i.scdn.co/image/ab67616d0000b2730d10c65283f49dc357ffa678",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['hindi','lofi','emotional','romantic','morning','pi lu'],
+            lrcText: `
+`,
+          },
+
+          {
+            id: 'bye',
+            title: 'Bye',
+            artist: 'Aditya Bhardwaj',
+            src: 'Bye.mp3',
+            cover: "https://i.scdn.co/image/ab67616d0000b2736c1b5e6d230970e65c133afc",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['hindi','modern','emotional','romantic'],
+            lrcText: `
+
+`,
+          },
+
+             {
+            id: 'imdone',
+            title: 'I m Done',
+            artist: 'Maan Panu',
+            src: 'I m Done.mp3',
+            cover: "https://i.scdn.co/image/ab67616d0000b2734a19a9d5df24b2814242461c",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['hindi','classic','emotional','modern','morning','2025','im done'],
+            lrcText: `
+`,
+          },
+             {
+            id: 'fiqrnakaro',
+            title: 'Fiqr Na Karo',
+            artist: 'Omar Mukhtar',
+            src: 'Fiqr Na Karo.mp3',
+            cover: "https://i.scdn.co/image/ab67616d0000b2732eefb384705be36b756d4b07",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['hindi','modern','emotional','romantic'],
+            lrcText: `
+`,
+          },
+           {
+            id: 'godzilla',
+            title: 'Godzilla',
+            artist: 'Eminem',
+      
+            src: 'Godzilla.mp3',
+            cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKf7brqgGZlKdoh0XNCGoQPj1dzmHx7j3LQg&s",
+            isVideo: false,
+            duration: undefined,
+            keywords: ['english','fastest','rap god','raps','energetic'],
+            lrcText:
+`
+0:01.200  Ugh, you're a monster
+0:03.800 I can swallow a bottle of alcohol,
+0:06.430 and I'll feel like Godzilla
+ 0:07.800  Better hit the deck like the card dealer
+ 0:09.620  My whole squad's in here, walkin' around the party
+ 0:12.120 A cross between a zombie apocalypse 
+ 0:14.130 and B-Bobby 
+ "The Brain" Heenan
+ Which is probably the same reason 
+ 0:17.700 I wrestle with mania
+0:18.470 Shady's in this bitch,
+0:19.260  I'm posse'd up, consider it to cross me a costly mistake
+0:22.000 If they sleepin' on me, the hos better get insomnia
+0:24.700 ADHD, Hydroxycut, pass the Courvoisi'
+
+0:28.500 In AA with an AK, melee, finna set it like a play date
+0:31.000 Better vacate, retreat like a vacay, mayday
+0:33.360 This beat is cray-cray, Ray J, H-A-H-A-H-A
+0:36.000 Laughin' all the way to the bank, I spray flames, 
+0:37.380 they cannot tame or placate the
+0:38.600 Monster, you get in my way,
+0:40.400  I'ma feed you to the monster (yeah)
+0:42.190 I'm normal durin' the day, but at night, turn to a monster (yeah)
+0:45.120 When the moon shines like Ice Road Truckers
+0:48.090 I look like a villain outta those blockbusters
+0:50.930 Godzilla, fire spitter, monster
+0:53.050 Blood on the dance floor, and on the Louis V carpet
+0:55.900 Fire, Godzilla, fire, monster
+0:59.000 Blood on the dance floor, and on the Louis V carpet
+1:01.000 I'm just a product of Slick Rick and Onyx,
+1:02.800  told 'em lick the balls
+1:03.600 Had 'em just appalled, did so many things that pissed 'em off
+1:05.900 It's impossible to list 'em all
+1:07.400 And in the midst of all this, 
+1:08.500 I'm in a mental hospital with a crystal ball
+1:10.250 Tryna see, will I still be like this tomorrow?
+1:11.800 Risperdal, voices whisper
+1:13.000 My fist is balled back up against the wall, pencil drawn
+1:15.100 This is just the song to go ballistic on
+1:16.750 You just pulled a pistol on the guy with a missile launcher
+1:19.300 I'm just a Loch Ness, the mythological
+1:20.900 Quick to tell a bitch screw off like a fifth of vodka
+1:23.340 When you twist the top of the bottle, 
+1:24.800 I'm a Monster, you get in my way,
+1:26.500  I'ma feed you to the monster (yeah)
+1:28.500 I'm normal durin' the day, but at night, 
+1:30.000 turn to a monster (yeah)
+1:31.370 When the moon shines like Ice Road Truckers
+1:34.300 I look like a villain outta those blockbusters
+1:37.000 Godzilla, fire spitter, monster
+1:39.300 Blood on the dance floor, and on the Louis V carpet
+1:42.300 Fire, Godzilla, fire, monster
+1:45.080 Blood on the dance floor, and on the Louis V carpet
+1:47.100 If you never gave a damn, raise your hand
+1:50.000 'Cause I'm about to set trip, vacation plans
+1:52.850 I'm on point like my index is, 
+1:54.550 so all you will ever get is
+1:55.990 The motherfuckin' finger (finger), prostate exam ('xam)
+1:58.900 How can I have all these fans and perspire? 
+2:00.450 Like a liar's pants, I'm on fire
+2:01.870 And I got no plans to retire, 
+2:03.300 and I'm still the man you admire
+2:04.700 These chicks are spazzin' out,
+2:05.900 I only get more handsome and flyer
+2:07.700 I got 'em passin' out like what you 
+2:09.280 do when you hand someone flyers
+2:10.600 And what goes around comes around 
+2:11.900 just like the blades on the chainsaw
+2:13.360 'Cause I caught the flack, but my
+2:14.330  dollars stacked right off the bat like a baseball
+2:16.350 Like Kid Ink, bitch, I got 'em
+2:17.640  racks with so much ease that they call me Diddy
+2:19.690 'Cause I make bands and I call gettin'
+2:21.000  cheese a cakewalk (cheesecake, yeah)
+2:23.100 Bitch, I'm a player, I'm too
+2:23.999 motherfuckin' stingy for Cher
+2:25.000 Won't even lend you an ear, 
+2:26.140 ain't even pretendin' to care
+2:27.100 But I tell a bitch I'll marry her 
+2:28.400 if she'll bury her
+2:29.000 Face in my genital area, 
+2:30.000 the original Richard Ramirez
+2:30.850 Cristhian Rivera, 'cause my lyrics never sit well,
+2:33.090  so they wanna give me the chair
+2:34.130 Like a paraplegic, and it's scary, 
+2:35.560 call it Hari Kari
+2:36.500 'Cause e'ry Tom and Dick and Harry carry
+2:37.970  a Merriam motherfuckin' dictionary on 'em
+2:39.620 Swearin' up and down they can spit,
+2:40.700 this shit's hilarious
+2:41.420 It's time to put these bitches in the obituary column
+2:43.270 We wouldn't see eye to eye with a starin' problem
+2:44.900 Get the shaft like a steerin' column (monster)
+2:46.900 Trigger-happy, pack heat, but it's black ink
+2:48.400 Evil half of the Bad Meets, 
+2:49.150 evil, that means take a back seat
+2:50.300 Take it back to Fat Beats with a maxi single
+2:52.000 Look at my rap sheet, what attracts these people
+2:53.500 Is my 'Gangsta Bitch' like Apache 
+2:54.800 with a catchy jingle
+2:55.550 I stack chips, you barely got a half-eaten Cheeto
+2:58.800 Fill 'em with the venom and eliminate 'em, 
+2:59.990 other words, I Minute Maid 'em
+3:00.640 I don't wanna hurt 'em, but I did,
+3:01.350  I'm in a fit of rage, I'm murdering again,
+3:02.400  nobody will evade
+3:03.300 I'm finna kill 'em and dump all their 
+3:04.000 fuckin' bodies in the lake
+3:04.700 Obliteratin' everythin', incinerate a renegade
+3:06.000 I'm here to make anybody who 
+3:06.740 want it with the pen afraid
+3:07.430 But don't nobody want it,
+3:08.000  but they're gonna get it anyway
+3:09.000 'Cause I'm beginnin' to feel like 
+3:09.820 I'm mentally ill
+I'm Attila, kill or be killed,
+3:10.840  I'm a killer bee, the vanilla gorilla
+3:12.000 You bringin' the killer within me outta me
+3:13.000 You don't wanna be the enemy 
+3:13.600 of the demon who entered me
+3:14.600 And be on the receivin' end of me, 
+3:15.400 what stupidity it'd be
+3:15.900 Every bit of me's the epitome of a spitter
+3:17.400 When I'm in the vicinity, 
+3:18.300 motherfucker, you better duck
+3:18.870 Or you finna be dead the minute 
+3:19.660 you run into me
+3:20.120 A hunnid percent of you
+3:20.700  is a fifth of a percent of me
+3:21.700 I'm 'bout to fuckin' finish you, 
+3:22.200 bitch, I'm unfadable
+3:22.900 You wanna battle, I'm available,
+3:23.750  I'm blowin' up like an inflatable
+3:24.700 I'm undebatable, I'm unavoidable, 
+3:25.800 I'm unevadable
+3:26.200 I'm on the toilet bowl, I got a 
+3:26.890 trailer full of money
+3:27.570 And I'm paid in full, I'm not afraid to pull a-
+3:28.800 Man, stop, look what I'm plannin'
+`,
+          },
+           {
+            id: 'notafraid',
+            title: 'Not Afraid',
+            artist: 'Eminem',
+      
+            src: 'Not Afraid.mp3',
+            cover: "https://i.pinimg.com/564x/b0/78/8c/b0788c6dfeff0d6d8d9662186a593ade.jpg",
+            isVideo: false,
+            duration: undefined,
+            keywords: ['english','emotional','raps','energetic','im not afraid'],
+            lrcText:
+`
+`,  },
+
+
+{
+            id: 'burnitalldown',
+            title: 'Burn It All Down',
+            artist: 'League of Legends',  
+            src: 'Burn It All Down.mp3',
+                   
+            cover: "https://cdn.oneesports.gg/cdn-data/2021/09/LeagueOfLegends_Worlds2021_BurnItAllDown_Void-450x253.jpg",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','epic','korea','morning','modern','clean'],
+            lrcText: `
+
+            [00:00.000]  This ain't where the legends come from, you know what a hero looks like
+[00:15.000]  Pretty little flower won't you sit back down and go play nice
+[00:21.000]  So keep talking, keep laughing One day you'll wish you hadn't
+[00:28.000]  All the people want fire, fire Baby it's time they meet their dragon
+[00:35.000]  If you're gonna hold me down You're not gonna let me in
+[00:41.000]  Into your castle walls None of you can keep them
+[00:47.000]  Cause if I gotta, burn it all down Then we'll burn it all down
+[00:55.000]  My oh my, look at who ends up bigger this time
+[01:00.000]  And if I gotta, break it all down Then let's break it all down
+[01:08.000]  Fire, fire, fire Playing with fire and won't burn it all down
+[01:17.000]  This is where the bruises come from This is where the game gets ugly
+[01:24.000]  These blood sweats tears keep running Licking my plate cause I'm so hungry
+[01:31.000]  Keep talking, keep laughing One day you'll see what happens
+[01:38.000]  All the people want fire, fire It's about time they meet their dragon
+[01:45.000]  If you're gonna hold me down You're not gonna let me in
+[01:51.000]  Into your castle walls None of you can keep them
+[01:56.000]  Cause if I gotta, burn it all down Then we'll burn it all down
+[02:04.000]  My oh my, look at who ends up bigger this time
+[02:09.000]  And if I gotta, break it all down Then let's break it all down
+
+
+[02:18.000]  Fire, fire, fire Playing with fire and won't burn it all down
+[02:24.000]  It starts right now Baby you're surrounded
+[02:31.000]  Put your money where your mouth is Bury your doubts underground
+[02:42.000]  Then they're gonna want to step over the ashes Right now I'm taking my turn with the matches
+[02:52.000]  Cause if I gotta, burn it all down Then we'll burn it all down
+[03:01.000]  My oh my, look at who ends up bigger this time
+[03:06.000]  And if I gotta, break it all down Then let's break it all down
+[03:14.000]  Fire, fire, fire Playing with fire and won't burn it all down
+`, },
+{
+            id: 'gods',
+            title: 'GODS',
+            artist: 'League of Legends',  
+            src: 'GODS.mp3',
+                   
+            cover: "https://songsio.com/wp-content/uploads/GODS.jpg",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','epic','korea','morning','modern','clean'],
+            lrcText: `[00:00.000] Go, go, go, go, go, go, go
+[00:08.000] Go, go, go, go, go, go, go
+[00:15.000] Hey, this is what you came for
+[00:17.000] Blood on the game-bow
+[00:19.000] Everybody drop it like rainfall
+[00:22.000] This is your moment
+[00:24.000] Eyes on the public
+[00:26.000] Getting chest, chest open
+[00:28.000] And you're singing your praises la-la-la
+[00:32.000] Screaming your name out la-la-la
+[00:35.000] One more step, you're a model now
+[00:40.000] Once you play God, once you play God
+[00:43.000] They're gonna crumble one by one
+[00:47.000] Then we gonna ride, ride into the sun
+[00:50.000] Like it's the day my kingdom come
+[00:53.000] Baby, we're
+[00:55.000] Go, go, go, go, go, go, go
+[01:00.000] Oh, yeah, we
+[01:02.000] Go, go, go, go, go, go, go
+[01:08.000] Hey, welcome to the big show
+[01:10.000] Next on the ladder
+[01:12.000] Is it your name in the rafters?
+[01:14.000] Riff, riff, riff
+[01:16.000] My only silence
+[01:18.000] Bad guy woke up and shows violence
+[01:21.000] And they're singing my praises la-la-la
+[01:24.000] Screaming my name out la-la-la
+[01:28.000] This is why we're immortal now
+[01:32.000] Once you play God, once you play God
+[01:36.000] They're gonna crumble one by one
+[01:39.000] Then we gonna ride, ride into the sun
+[01:42.000] Like it's the day my kingdom come
+[01:46.000] Baby, we're
+[01:48.000] Go, go, go, go, go, go
+[01:52.000] Yeah, we
+[01:54.000] Go, go, go, go, go, go, go
+[02:12.000] All my money is praying for glory
+[02:16.000] Anyone with this underdog sorry
+[02:19.000] I can't lose myself again
+[02:22.000] Help me raise this heart
+[02:26.000] Heart unbreak
+[02:29.000] Once you play God, once you play God
+[02:32.000] They're gonna crumble one by one
+[02:35.000] Then we gonna ride, ride into the sun
+[02:38.000] Like it's the day my kingdom come
+[02:42.000] Once you play God, once you play God
+[02:45.000] They're gonna crumble one by one
+[02:48.000] Then we gonna ride, ride into the sun
+[02:51.000] Like it's the day my kingdom come
+[02:55.000] Baby, we're
+[02:57.000] Go, go, go, go, go, go
+[03:02.000] Yeah, we
+[03:04.000] Go, go, go, go, go, go
+[03:10.000] Go, go, go, go, go, go
+[03:15.000] Yeah, we
+[03:17.000] Go, go, go, go, go, go, go
+[03:35.000] Once you play
+[03:47.000] Once you play
+
+`, },
+
+{
+            id: 'godsins',
+            title: 'GODS Karaoke',
+            artist: 'League of Legends',  
+            src: 'GODSins.mp3',
+                   
+            cover: "https://songsio.com/wp-content/uploads/GODS.jpg",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','epic','korea','instrumental','modern','clean'],
+            lrcText: `[00:00.000] Go, go, go, go, go, go, go
+[00:08.000] Go, go, go, go, go, go, go
+[00:15.000] Hey, this is what you came for
+[00:17.000] Blood on the game-bow
+[00:19.000] Everybody drop it like rainfall
+[00:22.000] This is your moment
+[00:24.000] Eyes on the public
+[00:26.000] Getting chest, chest open
+[00:28.000] And you're singing your praises la-la-la
+[00:32.000] Screaming your name out la-la-la
+[00:35.000] One more step, you're a model now
+[00:40.000] Once you play God, once you play God
+[00:43.000] They're gonna crumble one by one
+[00:47.000] Then we gonna ride, ride into the sun
+[00:50.000] Like it's the day my kingdom come
+[00:53.000] Baby, we're
+[00:55.000] Go, go, go, go, go, go, go
+[01:00.000] Oh, yeah, we
+[01:02.000] Go, go, go, go, go, go, go
+[01:08.000] Hey, welcome to the big show
+[01:10.000] Next on the ladder
+[01:12.000] Is it your name in the rafters?
+[01:14.000] Riff, riff, riff
+[01:16.000] My only silence
+[01:18.000] Bad guy woke up and shows violence
+[01:21.000] And they're singing my praises la-la-la
+[01:24.000] Screaming my name out la-la-la
+[01:28.000] This is why we're immortal now
+[01:32.000] Once you play God, once you play God
+[01:36.000] They're gonna crumble one by one
+[01:39.000] Then we gonna ride, ride into the sun
+[01:42.000] Like it's the day my kingdom come
+[01:46.000] Baby, we're
+[01:48.000] Go, go, go, go, go, go
+[01:52.000] Yeah, we
+[01:54.000] Go, go, go, go, go, go, go
+[02:12.000] All my money is praying for glory
+[02:16.000] Anyone with this underdog sorry
+[02:19.000] I can't lose myself again
+[02:22.000] Help me raise this heart
+[02:26.000] Heart unbreak
+[02:29.000] Once you play God, once you play God
+[02:32.000] They're gonna crumble one by one
+[02:35.000] Then we gonna ride, ride into the sun
+[02:38.000] Like it's the day my kingdom come
+[02:42.000] Once you play God, once you play God
+[02:45.000] They're gonna crumble one by one
+[02:48.000] Then we gonna ride, ride into the sun
+[02:51.000] Like it's the day my kingdom come
+[02:55.000] Baby, we're
+[02:57.000] Go, go, go, go, go, go
+[03:02.000] Yeah, we
+[03:04.000] Go, go, go, go, go, go
+[03:10.000] Go, go, go, go, go, go
+[03:15.000] Yeah, we
+[03:17.000] Go, go, go, go, go, go, go
+[03:35.000] Once you play
+[03:47.000] Once you play
+
+`, },
+
+{
+            id: 'burnitalldownins',
+            title: 'Burn It All Down Karaoke',
+            artist: 'League of Legends',  
+            src: 'Burn It All Down ins.mp3',
+                   
+            cover: "https://cdn.oneesports.gg/cdn-data/2021/09/LeagueOfLegends_Worlds2021_BurnItAllDown_Void-450x253.jpg",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','epic','korea','morning','modern','clean','instrumental'],
+            lrcText: `
+
+            [00:00.000]  This ain't where the legends come from, you know what a hero looks like
+[00:15.000]  Pretty little flower won't you sit back down and go play nice
+[00:21.000]  So keep talking, keep laughing One day you'll wish you hadn't
+[00:28.000]  All the people want fire, fire Baby it's time they meet their dragon
+[00:35.000]  If you're gonna hold me down You're not gonna let me in
+[00:41.000]  Into your castle walls None of you can keep them
+[00:47.000]  Cause if I gotta, burn it all down Then we'll burn it all down
+[00:55.000]  My oh my, look at who ends up bigger this time
+[01:00.000]  And if I gotta, break it all down Then let's break it all down
+[01:08.000]  Fire, fire, fire Playing with fire and won't burn it all down
+[01:17.000]  This is where the bruises come from This is where the game gets ugly
+[01:24.000]  These blood sweats tears keep running Licking my plate cause I'm so hungry
+[01:31.000]  Keep talking, keep laughing One day you'll see what happens
+[01:38.000]  All the people want fire, fire It's about time they meet their dragon
+[01:45.000]  If you're gonna hold me down You're not gonna let me in
+[01:51.000]  Into your castle walls None of you can keep them
+[01:56.000]  Cause if I gotta, burn it all down Then we'll burn it all down
+[02:04.000]  My oh my, look at who ends up bigger this time
+[02:09.000]  And if I gotta, break it all down Then let's break it all down
+
+
+[02:18.000]  Fire, fire, fire Playing with fire and won't burn it all down
+[02:24.000]  It starts right now Baby you're surrounded
+[02:31.000]  Put your money where your mouth is Bury your doubts underground
+[02:42.000]  Then they're gonna want to step over the ashes Right now I'm taking my turn with the matches
+[02:52.000]  Cause if I gotta, burn it all down Then we'll burn it all down
+[03:01.000]  My oh my, look at who ends up bigger this time
+[03:06.000]  And if I gotta, break it all down Then let's break it all down
+[03:14.000]  Fire, fire, fire Playing with fire and won't burn it all down
+`, },
+ {
+            id: '当流星洒落时',
+            title: '当流星洒落时',
+            artist: '杨秉音',
+      
+            src: '当流星洒落时.mp3',
+            cover: "https://i.scdn.co/image/ab67616d0000b2730f193f1f93eb006407588910",
+            isVideo: false,
+            duration: undefined,
+            keywords: ['emotional','inst','energetic','anime','ost','opening','immortal','daily life of an immortal king','chinese'],
+            lrcText:
+`
+🎵
+🎶
+🎶
+🎵
+`,  },
+
+
+ {
+            id: 'iwillgotoyoulikethefirstsnow',
+            title: 'I Will Go To You Like the First Snow',
+            artist: 'AILEE',
+      
+            src: 'I Will Go To You Like the First Snow.mp3',
+            cover: "https://i.ytimg.com/vi/6rS7OUGXUik/maxresdefault.jpg",
+            isVideo: false,
+            duration: undefined,
+            keywords: ['korean','emotional','ost','drama','goblin','lonely and great god','k drama'],
+           lrcText: `[00:14.000] 널 품기 전 알지 못했다
+[00:20.000] 내 머문 세상 이토록 찬란한 것을
+[00:28.000] 작은 숨결로 닿은 사람
+[00:35.000] 겁 없이 나를 불러준 사랑
+[00:42.000] 몹시도 좋았다
+[00:49.000] 너를 지켜보고 설레고
+[00:49.500] 우습게 질투도 했던
+[00:50.000] 평범한 모든 순간들이
+[00:57.000] 캄캄한 영원 그 오랜 기다림 속으로
+[01:04.000] 햇살처럼 니가 내렸다
+[01:26.000] 널 놓기 전 알지 못했다
+[01:31.000] 내 머문 세상 이토록 쓸쓸한 것을
+[01:40.000] 고운 꽃이 피고 진 이 곳
+[01:46.000] 다시는 없을 너라는 계절
+[01:53.000] 욕심이 생겼다
+[01:53.500] 너와 함께 살고 늙어가
+[02:00.000] 주름진 손을 맞잡고
+[02:00.500] 내 삶은 따뜻했었다고
+[02:08.000] 단 한번 축복
+[02:12.000] 그 짧은 마주침이 지나
+[02:15.000] 빗물처럼 너는 울었다
+[02:22.000] 한번쯤은 행복하고 싶었던 바람
+[02:30.000] 너까지 울게 만들었을까
+[02:36.000] 모두 잊고 살아가라
+[02:39.000] 내가 널 찾을 테니
+[02:44.000] 니 숨결 다시 나를 부를 때
+[02:55.000] 잊지 않겠다
+[02:57.000] 너를 지켜보고 설레고
+[03:02.000] 우습게 질투도 했던
+[03:05.000] 니가 준 모든 순간들을
+[03:08.000] 언젠가 만날
+[03:13.000] 우리 가장 행복할 그날
+[03:16.000] 첫눈처럼 내가 가겠다
+[03:28.000] 너에게 내가 가겠다
+
+`,
+lrcAlt1Text:`[00:14.000] Before I held you I didn't know
+[00:20.000] That the world I was in was this bright
+[00:28.000] I reached you with a small breath of life
+[00:35.000] It’s a love that called out to me fearlessly
+[00:42.000] I liked it so much
+[00:49.000] Watching over you, my heart fluttering
+[00:49.500] Even when I was ridiculously jealous
+[00:50.000] Of all those ordinary moments
+[00:57.000] In the dark eternity, in that long wait
+[01:04.000] Like sunshine, you fell down to me
+[01:26.000] Before I let go of you, I didn’t know
+[01:31.000] That the world I was in is so lonely
+[01:40.000] Pretty flowers bloomed and withered here
+[01:46.000] The season of you will never come again
+[01:53.000] I started to become greedy
+[01:53.500] I wanted to live with you, grow old with you
+[02:00.000] To hold your wrinkled hands
+[02:00.500] And say my life was warm
+[02:08.000] It was just one blessing
+[02:12.000] After that short encounter
+[02:15.000] You cried like the rain
+[02:22.000] I wanted to be happy for once
+[02:30.000] But that made you cry
+[02:36.000] Forget everything and move on
+[02:39.000] Because I will go to you
+[02:44.000] When your breath calls out to me again
+[02:55.000] I won’t ever forget
+[02:57.000] Watching over you, my heart fluttering
+[03:02.000] Even when I was ridiculously jealous
+[03:05.000] Of all the moments you gave me
+[03:08.000] Someday, we’ll meet again
+[03:13.000] And it’ll be the happiest day
+[03:16.000] I will go to you like the first snow
+[03:28.000] I will go to you, like the first snow
+
+
+
+`,
+lrcAlt2Text:`[00:14.000] Neol pumgi jeon alji mothaetda
+[00:20.000] Nae meomun sesang itorok challanhan geoseul
+[00:28.000] Jageun sumgyeollo daeun saram
+[00:35.000] Geop eopsi nareul bulleojun sarang
+[00:42.000] Mopsido joatda
+[00:49.000] Neoreul jikyeobogo seollego
+[00:49.500] Useupge jiltudo haetdeon
+[00:50.000] Pyeongbeomhan modeun sungandeuri
+[00:57.000] Kamkamhan yeongwon geu oraen gidarim sogeuro
+[01:04.000] Haetsalcheoreom niga naeryeotda
+[01:26.000] Neol nokki jeon alji mothaetda
+[01:31.000] Nae meomun sesang itorok sseulsseulhan geoseul
+[01:40.000] Goun kkochi pigo jin i got
+[01:46.000] Dasineun eopseul neoraneun gyejeol
+[01:53.000] Yoksimi saenggyeotda
+[01:53.500] Neowa hamkke salgo neulgeoga
+[02:00.000] Jureumjin soneul matjapgo
+[02:00.500] Nae salmeun ttatteuthaesseotdago
+[02:08.000] Dan hanbeon chukbok
+[02:12.000] Geu jjalbeun majuchimi jina
+[02:15.000] Bitmulcheoreom neoneun ureotda
+[02:22.000] Hanbeonjjeumeun haengbokhago sipeotdeon baram
+[02:30.000] Neokkaji ulge mandeureosseulkka
+[02:36.000] Modu itgo saragara
+[02:39.000] Naega neol chajeul teni
+[02:44.000] Ni sumgyeol dashi nareul bureul ttae
+[02:55.000] Itji anketa
+[02:57.000] Neoreul jikyeobogo seollego
+[03:02.000] Useupge jiltudo haetdeon
+[03:05.000] Niga jun modeun sungandeureul
+[03:08.000] Eonjenga mannal
+[03:13.000] Uri gajang haengbokhal geunal
+[03:16.000] Cheotnuncheoreom naega gagetta
+[03:28.000] Neoege naega gagetta
+`,  },
+
+ {
+            id: 'yoakashi',
+            title: 'Yoakashi',
+            artist: 'Matsuri',
+      
+            src: 'Yoakashi.mp3',
+            cover: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/28/17/80/2817805b-dc94-f349-98b5-4f8dbbb64ea4/859757448135_cover.jpg/3000x3000bb.jpg",
+            isVideo: false,
+            duration: undefined,
+            keywords: ['korean','emotional','ost','drama','goblin','lonely and great god','k drama'],
+           lrcText: `00:00.000 部屋の灯はもう消した 眠れないまま時間が経った
+00:06.000 君は消えてしまったのか もう二度と会えないままなのか
+00:12.000 淡い光のさすやで ただただ連絡を待っていた
+00:18.000 二度と会えなくなったなら このまま消えてしまったほうがいいな
+00:26.000 全部さ 終わりにできたらいいのにな
+00:34.000 もう顔すら見せてくれないのね
+00:44.000 ねぇ今どこにいる?
+00:56.000 夜明けが近くなるにつれ 夜明けがさ外に思い出す
+01:02.000 もう会うことがないのなら 思い出せないほど記憶連れてもいいな
+01:10.000 全部さ 終わりにできたらいいのにな
+01:18.000 このまま声も顔も忘れてゆく
+01:26.000 ねぇもう会えないの
+01:28.000 きっと全部さ 終わりにできたらいいのにな
+01:39.000 ねぇもう会えないの
+01:41.000 きっと全部さ 終わりになる時が来るからさ
+01:50.000 夜明けが来たらもうやめにしようか
+02:00.000 ねぇもう会えないよ
+`,
+lrcAlt1Text:`00:00.000 I turned off the lights in my room, time passed as I lay awake
+00:06.000 Have you disappeared? Will I really never see you again?
+00:12.000 In the faint light, I just kept waiting for a message
+00:18.000 If I can never see you again, maybe it’s better if I disappear too
+00:26.000 I wish I could just end everything already
+00:34.000 You won’t even show me your face anymore
+00:44.000 Hey, where are you now?
+00:56.000 As dawn gets closer, it brings back memories outside my window
+01:02.000 If we’ll never meet again, maybe it's okay if my memories fade away too
+01:10.000 I wish I could just end everything already
+01:18.000 I’m slowly forgetting your voice and your face
+01:26.000 Hey… we really can’t meet again?
+01:28.000 I wish I could just end everything already
+01:39.000 Hey… we really can’t meet again?
+01:41.000 The time when everything ends will come eventually
+01:50.000 When dawn comes, maybe I should finally stop
+02:00.000 Hey… I really can’t see you anymore
+
+
+
+
+`,
+lrcAlt2Text:`00:00.000 Heya no hi wa mou keshita nemurenai mama jikan ga tatta
+00:06.000 Kimi wa kiete shimatta no ka mou nidoto aenai mama nano ka
+00:12.000 Awai hikari no sasu yade tadatada renraku o matte ita
+00:18.000 Nidoto aenaku nattanara kono mama kiete shimatta hou ga ii na
+00:26.000 Zenbu sa owari ni dekitara ii no ni na
+00:34.000 Mou kao sura misete kurenai no ne
+00:44.000 Nee ima doko ni iru?
+00:56.000 Yoake ga chikaku naru ni tsure yoake ga soto ni omoidasu
+01:02.000 Mou au koto ga nai no nara omoidasenai hodo kioku tsurete mo ii na
+01:10.000 Zenbu sa owari ni dekitara ii no ni na
+01:18.000 Kono mama koe mo kao mo wasurete yuku
+01:26.000 Nee mou aenai no
+01:28.000 Kitto zenbu sa owari ni dekitara ii no ni na
+01:39.000 Nee mou aenai no
+01:41.000 Kitto zenbu sa owari ni naru toki ga kuru kara sa
+01:50.000 Yoake ga kitara mou yame ni shiyou ka
+02:00.000 Nee mou aenai yo
+
+`,  },
+  {
+        id: '温柔风向标',
+        title: '温柔风向标',
+        artist: 'Ren Ran',
+        src: '温柔风向标.mp3',
+        cover: "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/2e/cd/92/2ecd923b-1037-f610-eaa6-b6185460957f/8721215786870.png/486x486bb.png",
+     
+        isVideo: false,
+        duration: undefined,
+        keywords: ['chinese','emotional','sad','romantic','cpop','mandarin','Fei Niao He Chan','飛鳥和蟬'],
+        lrcText: `
+`,
+lrcAlt1Text:`
+
+`,
+lrcAlt2Text:`
+`
+      },
+      
+{
+            id: 'youcanbekingagain',
+            title: 'King',
+            artist: 'Lauren Aquilina',  
+            
+                  src: 'you can be king again.mp3',
+      videoSrc: 'king.mp4',
+            cover: "https://i1.sndcdn.com/artworks-000346934499-p4ev15-t500x500.jpg",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','epic','animation','morning','modern','clean'],
+            lrcText: `
+
+       You're alone, you're on your own, so what?
+Have you gone blind?
+Have you forgotten what you have and what is yours?
+Glass half empty, glass half full
+Well either way you won't be going thirsty
+Count your blessings not your flaws
+
+You've got it all
+You lost your mind in the sound
+There's so much more
+You can reclaim your crown
+You're in control
+Rid of the monsters inside your head
+Put all your faults to bed
+You can be king again
+
+You don't get what all this is about
+You're too wrapped up in your self doubt
+You've got that young blood, set it free
+
+You've got it all
+You lost your mind in the sound
+There's so much more
+You can reclaim your crown
+You're in control
+Rid of the monsters inside your head
+Put all your faults to bed
+You can be king
+
+There's method in my madness
+There's no logic in your sadness
+You don't gain a single thing from misery
+Take it from me
+
+You've got it all
+You lost your mind in the sound
+There's so much more
+You can reclaim your crown
+You're in control
+Rid of the monsters inside your head
+Put all your faults to bed
+You can be king
+
+You've got it all
+You lost your mind in the sound
+There's so much more
+You can reclaim your crown
+You're in control
+Rid of the monsters inside your head
+Put all your faults to bed
+You can be king again
+`, },
+
+
+{
+            id: 'agartumsathho',
+            title: 'Agar Tum Sath Ho',
+            artist: 'Arijit Singh & Alka Yagnik',  
+            
+                  src: 'Agar Tum Sath Ho.mp3',
+     
+            cover: "https://i.scdn.co/image/ab67616d00001e021eaab6a6ec266192b77d0ac9",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['hindi','emotional','morning','modern','clean'],
+            lrcText: `
+
+`, },
+{
+            id: 'attention',
+            title: 'Attention',
+            artist: 'Charlie Puth',  
+            
+                  src: 'Attention.mp3',
+     
+            cover: "https://i.scdn.co/image/ab67616d00001e024fe297c018e495a97662e5ac",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','romantic','morning','modern','clean'],
+            lrcText: `
+[00:04.357] Oh-oh, ooh
+
+[00:09.333] You've been runnin' 'round, runnin' 'round,
+
+[00:10.939] runnin' 'round throwin' that dirt all on my name
+
+[00:14.239] 'Cause you knew that I, knew that I, knew that I'd call you up
+
+[00:18.992] You've been going 'round, going 'round, going 'round every party in L.A.
+
+[00:23.795] 'Cause you knew that I, knew that I, knew that I'd be at one, oh
+
+[00:29.012] I know that dress is karma, perfume regret
+
+[00:33.445] You got me thinking 'bout when you were mine, oh
+
+[00:38.765] And now I'm all up on ya, what you expect?
+
+[00:43.280] But you're not coming home with me tonight
+
+[00:46.942] You just want attention,
+
+[00:49.332] you don't want my heart
+
+[00:51.755] Maybe you just hate the thought of me with someone new
+
+[00:56.128] Yeah, you just want attention,
+
+[00:58.911] I knew from the start
+
+[01:01.316] You're just making sure I'm never gettin' over you
+
+[01:07.076] you've been runnin' 'round, runnin' 'round,
+
+[01:08.522] runnin' 'round throwing that dirt all on my name
+
+[01:11.789] 'Cause you knew that I, knew that I, knew that I'd call you up
+
+[01:16.537] Baby, now that we're, now that we're,
+
+[01:18.120] now that we're right here standing face-to-face
+
+[01:21.418] You already know, already know, already know that you won, oh
+
+[01:26.728] I know that dress is karma (dress is karma), perfume regret
+
+[01:31.043] You got me thinking 'bout when you were mine (you got me thinking 'bout when you were mine)
+
+[01:36.430] And now I'm all up on ya (all up on ya),
+
+[01:38.784] what you expect? (oh, baby)
+
+[01:40.832] But you're not coming home with me tonight (oh, no)
+
+[01:44.490] You just want attention,
+
+[01:46.884] you don't want my heart
+
+[01:49.153] Maybe you just hate the thought of me with someone new
+
+[01:53.736] Yeah, you just want attention,
+
+[01:56.554] I knew from the start
+
+[01:58.936] You're just making sure I'm never gettin' over you, oh
+
+[02:05.340] What are you doin' to me,
+
+[02:07.197] what are you doin', huh? (What are you doin'?)
+
+[02:10.233] What are you doin' to me,
+
+[02:11.915] what are you doin', huh? (What are you doin'?)
+
+[02:15.006] What are you doin' to me,
+
+[02:16.795] what are you doin', huh? (What are you doin'?)
+
+[02:19.895] What are you doin' to me,
+
+[02:21.460] what are you doin', huh?
+
+[02:24.362] I know that dress is karma,
+
+[02:26.778] perfume regret
+
+[02:28.829] You got me thinking 'bout when you were mine
+
+[02:33.992] And now I'm all up on ya,
+
+[02:36.368] what you expect?
+
+[02:38.256] But you're not coming home with me tonight
+
+[02:44.378] You just want attention,
+
+[02:46.912] you don't want my heart
+
+[02:49.542] Maybe you just hate the thought of me with someone new
+
+[02:53.739] Yeah, you just want attention,
+
+[02:56.534] I knew from the start
+
+[02:58.949] You're just making sure I'm never gettin' over you (over you)
+
+[03:05.367] What are you doin' to me? (hey) what are you doin',
+
+[03:08.487] huh? (what are you doin', what?)
+
+[03:10.294] What are you doin', huh? (what are you doin' to me?)
+
+[03:13.294] Yeah, you just want attention,
+
+[03:15.254] I knew from the start
+
+[03:18.313] You're just making sure I'm never gettin' over you
+[03:23.060] Oh-oh, ooh
+`, },
+{
+            id: 'choolo',
+            title: 'Choo Lo',
+            artist: 'The Local Train',  
+            
+                  src: 'Choo Lo.mp3',
+     
+            cover: "https://i.scdn.co/image/ab67616d00001e02c5e6c39d480479480e37b446",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['hindi','epic','morning','modern','clean','aesthatic'],
+            lrcText: `
+
+`, },
+{
+            id: '苦茶-心動版',
+            title: '苦茶 - 心動版',
+            artist: 'yihuik苡慧',  
+            
+                  src: '苦茶-心動版.mp3',
+     
+            cover: "https://m.media-amazon.com/images/I/41xSRo06ImL._UXNaN_FMjpg_QL85_.jpg",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','epic','morning','modern','clean'],
+            lrcText: `
+
+`, },
+{
+            id: 'thisiswhatheartbreakfeelslike',
+            title: 'this is what heartbreak feels like',
+            artist: 'JVKE',  
+            
+                  src: 'this is what heartbreak feels like.mp3',
+     
+            cover: "https://i.scdn.co/image/ab67616d0000b273c2504e80ba2f258697ab2954",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','epic','morning','modern','clean'],
+            lrcText: `
+
+`, },
+{
+            id: 'flower',
+            title: 'FLOWER',
+            artist: 'JISOO',  
+            
+                  src: 'FLOWER.mp3',
+     
+            cover: "https://botanicstore.in/wp-content/uploads/2024/12/1000146854.jpg",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','epic','morning','modern','clean'],
+            lrcText: `
+
+`, },
+{
+            id: 'cheatingonyou',
+            title: 'Cheating on You',
+            artist: 'Charlie Puth',  
+            
+                  src: 'Cheating on You.mp3',
+     
+            cover: "https://i.scdn.co/image/ab67616d00001e02a3b39c1651a617bb09800fd8",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','morning','modern','clean'],
+            lrcText: `
+
+`, },
+{
+            id: 'fragrance',
+            title: 'Fragrance',
+            artist: '茉ひる',  
+            
+                  src: 'Fragrance.mp3',
+     
+            cover: "https://i.scdn.co/image/ab67616d00001e02d6e3500e7f99e9bfb5375144",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['japanese','epic','morning','modern','clean'],
+        lrcText: `
+`,
+lrcAlt1Text:`
+
+`,
+lrcAlt2Text:`
+` },
+{
+            id: 'fragranceins',
+            title: 'Fragrance Instrumental',
+            artist: '茉ひる',  
+            
+                  src: 'Fragrance ins.mp3',
+     
+            cover: "https://i.scdn.co/image/ab67616d00001e02d6e3500e7f99e9bfb5375144",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['japanese','epic','morning','modern','clean','karaoke'],
+        lrcText: `
+`,
+lrcAlt1Text:`
+
+`,
+lrcAlt2Text:`
+` },
+
+{
+            id: 'spicains',
+            title: 'Spica Instrumental',
+            artist: 'Rokudenashi',  
+            
+                  src: 'Spica ins.mp3',
+     
+            cover: "https://cdn-images.dzcdn.net/images/cover/dee458a66ab300f0875a4ab9218dbf59/500x500-000000-80-0-0.jpg",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['japanese','karaoke','morning','modern','clean'],
+            lrcText: `
+
+`, },
+       {
+        id: 'tomyyouthins',
+        title: 'To My Youth Karaoke',
+        artist: 'BOL4',
+        src: 'To My Youth ins.mp3',
+        cover: "https://i.scdn.co/image/ab67616d0000b2732cfb66b63fe85ccfff4109b1",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['korean','emotional','sad','romantic','bolbbalgan4','instrumental'],
+        lrcText: `
+`
+      },
+
+      
+       {
+        id: 'ひまわりの約束ins',
+        title: 'ひまわりの約束 Instrumental',
+        artist: 'Motohiro Hata',
+        src: 'ひまわりの約束 ins.mp3',
+                artistImage: 'https://i.scdn.co/image/ab6761610000e5eb6f6868ccbecfc1ebf10f1633',
+        cover: "https://i.scdn.co/image/ab67616d0000b2732625f528f450f0a57feca986",
+        isVideo: false,
+        duration: undefined,
+        keywords: ['japanese','emotional','sad','romantic','nihon','authentic','himawari no yokusoku','karaoke'],
+        lrcText: `0:20
+どうして君が泣くの
+0:25
+まだ僕も泣いていないのに
+0:33
+自分より　悲しむから
+0:38
+つらいのがどっちか　わからなくなるよ
+0:46
+ガラクタだったはずの今日が
+0:52
+ふたりなら　宝物になる
+1:00
+そばにいたいよ
+1:03
+君のために出来ることが僕にあるかな
+1:13
+いつも君に　ずっと君に 笑っていてほしくて
+1:25
+ひまわりのような　まっすぐなその優しさを 温もりを　全部
+1:37
+これからは僕も　届けていきたい
+1:43
+ここにある幸せに　気づいたから
+2:02
+遠くで　ともる未来
+2:07
+もしも　僕らが　離れても
+2:14
+それぞれ歩いていく
+2:19
+その先で　また　出会えると信じて
+2:27
+ちぐはぐだったはずの歩幅
+2:34
+ひとつのように　今　重なる
+2:43
+そばにいること
+2:45
+なにげないこの瞬間も　忘れはしないよ
+2:55
+旅立ちの日　手を振る時 笑顔でいられるように
+3:07
+ひまわりのような　まっすぐなその優しさを 温もりを　全部
+3:19
+返したいけれど　君のことだから もう充分だよって　きっと言うかな
+3:59
+そばにいたいよ
+4:01
+君のために出来ることが僕にあるかな
+4:10
+いつも君に　ずっと君に 笑っていてほしくて
+4:23
+ひまわりのような　まっすぐなその優しさを 温もりを　全部
+4:35
+これからは僕も　届けていきたい
+4:41
+本当の幸せの意味を見つけたから
+`,
+lrcAlt1Text:`
+0:20
+Why are you crying
+0:25
+when I haven't even started crying yet
+0:33
+You take it worse than me,
+0:38
+and now I don't know who’s the one to be hurt anymore
+0:46
+Today was meant to be junk,
+0:52
+but it turns to treasure when you are around
+1:00
+I want to stay by your side
+1:03
+I wonder if there is something I can do for you
+1:13
+So you can always be smiling, now and forevermore
+1:25
+Everything about your sincere kindness, welcoming heart, just like a sunflower
+1:37
+From now on, I wish to be the one to provide too,
+1:43
+because now I see the true happiness that is here
+2:02
+The future glows in the distance,
+2:07
+even if we part ways
+2:14
+We will walk each other's paths,
+2:19
+believing that we will meet again along the way
+2:27
+Steps that were out of sync,
+2:34
+now finding their way to become one
+2:43
+To be by your side
+2:45
+I will never forget even these ordinary moments
+2:55
+So that on the day when we say goodbye and part ways, we can still be smiling
+3:07
+Everything about your sincere kindness, welcoming heart, just like a sunflower
+3:19
+I want to return to you, but knowing you, you would probably say that I have already given you enough
+3:59
+I want to stay by your side
+4:01
+I wonder if there is something I can do for you
+4:10
+So you can always be smiling, now and forevermore
+4:23
+Everything about your sincere kindness, welcoming heart, just like a sunflower
+4:35
+From now on, I wish to be the one to provide too,
+4:41
+because now I have found the meaning of true happiness
+`,
+lrcAlt2Text:`
+0:20 Doushite kimi ga naku no
+0:25 Mada boku mo naite inai noni
+0:33 Jibun yori kanashimu kara
+0:38 Tsurai no ga docchi ka wakaranaku naru yo
+0:46 Garakuta datta hazu no kyou ga
+0:52 Futari nara takaramono ni naru
+1:00 Soba ni itai yo
+1:03 Kimi no tame ni dekiru koto ga boku ni aru kana
+1:13 Itsumo kimi ni zutto kimi ni waratte ite hoshikute
+1:25 Himawari no you na massuguna sono yasashisa wo nukumori wo zenbu
+1:37 Korekara wa boku mo todokete ikitai
+1:43 Koko ni aru shiawase ni kidzuita kara
+2:02 Tooku de tomoru mirai
+2:07 Moshimo bokura ga hanarete mo
+2:14 Sorezore aruite iku
+2:19 Sono saki de mata deaeru to shinjite
+2:27 Chiguhagu datta hazu no hohaba
+2:34 Hitotsu no you ni ima kasanaru
+2:43 Soba ni iru koto
+2:45 Nanigenai kono shunkan mo wasure wa shinai yo
+2:55 Tabidachi no hi te wo furu toki egao de irareru you ni
+3:07 Himawari no you na massuguna sono yasashisa wo nukumori wo zenbu
+3:19 Kaeshitai keredo kimi no koto dakara mou juubun da yo tte kitto iu kana
+3:59 Soba ni itai yo
+4:01 Kimi no tame ni dekiru koto ga boku ni aru kana
+4:10 Itsumo kimi ni zutto kimi ni waratte ite hoshikute
+4:23 Himawari no you na massuguna sono yasashisa wo nukumori wo zenbu
+4:35 Korekara wa boku mo todokete ikitai
+4:41 Hontou no shiawase no imi wo mitsuketa kara
+`
+      },
+{
+            id: '你的答案',
+            title: '你的答案',
+            artist: '阿冗',  
+            
+                  src: '你的答案.mp3',
+     
+            cover: "https://i.scdn.co/image/ab67616d0000b2732ea8833f69f77ec4eec7ce70",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['chinese','epic','morning','mandarin','arsthatic'],
+          lrcText: `0:25
+也许世界就这样
+0:28
+我也还在路上
+0:31
+没有人能诉说
+0:35
+也许我只能沉默
+0:38
+眼泪湿润眼眶
+0:42
+可又不甘懦弱
+0:45
+低着头 期待白昼
+0:50
+接受所有的嘲讽
+0:56
+向着风 拥抱彩虹
+1:01
+勇敢地向前走
+1:06
+黎明的那道光 会越过黑暗
+1:11
+打破一切恐惧我能 找到答案
+1:17
+哪怕要逆着光 就驱散黑暗
+1:22
+丢弃所有的负担 不再孤单
+1:28
+不再孤单
+1:38
+也许世界就这样
+1:42
+我也还在路上
+1:45
+没有人能诉说
+1:49
+也许我只能沉默
+1:53
+眼泪湿润眼眶
+1:55
+可又不敢懦弱
+1:59
+低着头 期待白昼
+2:04
+接受所有的嘲讽
+2:10
+向着风 拥抱彩虹
+2:15
+勇敢的向前走
+2:20
+黎明的那道光 会越过黑暗
+2:25
+打破一切恐惧我能 找到答案
+2:31
+哪怕要逆着光 就驱散黑暗
+2:36
+丢弃所有的负担 不再孤单
+2:42
+不再孤单
+2:50
+黎明的那道光 会越过黑暗
+2:55
+打破一切恐惧我能 找到答案
+3:01
+哪怕要逆着光 就驱散黑暗
+3:06
+有一万种的力量 淹没孤单
+3:12
+不再孤单
+3:14
+（也许世界就这样）
+3:17
+（我也还在路上）
+3:19
+（没有人能诉说）
+3:25
+（也许我只能沉默）
+3:28
+（眼泪湿润眼眶）
+3:30
+（可又不甘懦弱）
+`,
+
+lrcAlt1Text:`
+0:25
+Maybe the world is just like this
+0:28
+But I am still following my path
+0:31
+With no one to confide
+0:35
+Maybe I can only remain silent
+0:38
+With tears mist over my eyes
+0:42
+But not willing to show my weakness
+0:45
+With my head down
+0:47
+Waiting for the dawn
+0:50
+Accept all of the ridicule
+0:56
+Facing the wind
+0:58
+Embrace the rainbow
+1:01
+Bravely walk forward
+1:06
+The light of dawn, will cross the darkness
+1:11
+Defeat all my fears, I will find the answer
+1:17
+Even if I need to against the light and disperse darkness
+1:22
+Discard all the burden, no longer alone
+1:28
+No longer alone
+1:38
+Maybe the world is just like this
+1:41
+But I am still following my path
+1:44
+There is no one to confide
+1:49
+Maybe I can only remain silent
+1:52
+With tears mist over my eyes
+1:55
+But not willing to show my weakness
+1:59
+With my head down
+2:01
+Waiting for the dawn
+2:04
+Accept all of the ridicule
+2:10
+Towards the wind
+2:12
+Embrace the rainbow
+2:15
+Bravely walk forward
+2:20
+The light of dawn, will cross the darkness
+2:25
+Defeat all my fears, I will find the answer
+2:31
+Even if I need to against the light and disperse darkness
+2:36
+Discard all the burden, no longer alone
+2:42
+No longer alone
+2:50
+The light of dawn, will cross the darkness
+2:55
+Defeat all my fears, I will find the answer
+3:00
+Even if I need to against the light and disperse darkness
+3:05
+There are ten thousand kinds of power to drown the loneliness
+3:11
+No longer alone
+3:14
+Maybe the world is just like this
+3:17
+But I am still following my path
+3:19
+There is no one to confide
+3:24
+Maybe I can only remain silent
+3:28
+With tears mist over my eyes
+3:31
+But not willing to show my weakness
+`,
+lrcAlt2Text:`0:25
+yě xǔ shì jiè jiù zhè yàng
+
+0:28
+wǒ yě hái zài lù shàng
+
+0:31
+méi yǒu rén néng sù shuō
+
+0:35
+yě xǔ wǒ zhǐ néng chén mò
+
+0:38
+yǎn lèi shī rùn yǎn kuàng
+
+0:42
+kě yòu bù gān nuò ruò
+
+0:45
+dī zhe tóu qī dài bái zhòu
+
+0:50
+jiē shòu suǒ yǒu de cháo fěng
+
+0:56
+xiàng zhe fēng yōng bào cǎi hóng
+
+1:01
+yǒng gǎn de xiàng qián zǒu
+
+1:06
+lí míng de nà dào guāng huì yuè guò hēi àn
+
+1:11
+dǎ pò yī qiè kǒng jù wǒ néng zhǎo dào dá àn
+
+1:17
+nǎ pà yào nì zhe guāng jiù qū sàn hēi àn
+
+1:22
+diū qì suǒ yǒu de fù dān bù zài gū dān
+
+1:28
+bù zài gū dān
+
+1:38
+yě xǔ shì jiè jiù zhè yàng
+
+1:42
+wǒ yě hái zài lù shàng
+
+1:45
+méi yǒu rén néng sù shuō
+
+1:49
+yě xǔ wǒ zhǐ néng chén mò
+
+1:53
+yǎn lèi shī rùn yǎn kuàng
+
+1:55
+kě yòu bù gǎn nuò ruò
+
+1:59
+dī zhe tóu qī dài bái zhòu
+
+2:04
+jiē shòu suǒ yǒu de cháo fěng
+
+2:10
+xiàng zhe fēng yōng bào cǎi hóng
+
+2:15
+yǒng gǎn de xiàng qián zǒu
+
+2:20
+lí míng de nà dào guāng huì yuè guò hēi àn
+
+2:25
+dǎ pò yī qiè kǒng jù wǒ néng zhǎo dào dá àn
+
+2:31
+nǎ pà yào nì zhe guāng jiù qū sàn hēi àn
+
+2:36
+diū qì suǒ yǒu de fù dān bù zài gū dān
+
+2:42
+bù zài gū dān
+
+2:50
+lí míng de nà dào guāng huì yuè guò hēi àn
+
+2:55
+dǎ pò yī qiè kǒng jù wǒ néng zhǎo dào dá àn
+
+3:01
+nǎ pà yào nì zhe guāng jiù qū sàn hēi àn
+
+3:06
+yǒu yī wàn zhǒng de lì liàng yān mò gū dān
+
+3:12
+bù zài gū dān
+
+3:14
+(yě xǔ shì jiè jiù zhè yàng)
+
+3:17
+(wǒ yě hái zài lù shàng)
+
+3:19
+(méi yǒu rén néng sù shuō)
+
+3:25
+(yě xǔ wǒ zhǐ néng chén mò)
+
+3:28
+(yǎn lèi shī rùn yǎn kuàng)
+
+3:30
+(kě yòu bù gān nuò ruò) 
+` },
+{
+            id: '虹',
+            title: '虹',
+            artist: 'SUDA MASAKI',  
+            
+                  src: '虹.mp3',
+     
+            cover: "https://i.scdn.co/image/ab67616d00001e02be499b0904a892ae4cc92d6c",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['japanese','epic','morning','modern','clean','stand by me'],
+            lrcText: `
+
+`, },
+{
+            id: 'でも',
+            title: 'Demo、',
+            artist: 'TakaseToya',  
+            
+                  src: 'でも.mp3',
+     
+            cover: "https://i1.sndcdn.com/artworks-loDlrOYvysYXjQmy-cUwlFQ-t500x500.jpg",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['japanese','epic','morning','modern','clean'],
+            lrcText: `
+
+`, },
+{
+            id: 'でもins',
+            title: 'Demo、Karaoke',
+            artist: 'TakaseToya',  
+            
+                  src: 'でもins.mp3',
+     
+            cover: "https://i1.sndcdn.com/artworks-loDlrOYvysYXjQmy-cUwlFQ-t500x500.jpg",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['japanese','epic','morning','modern','clean'],
+            lrcText: `
+
+`, },
+{
+            id: 'twinkletwinkle',
+            title: 'Twinkle Twinkle',
+            artist: 'Peder Elias',  
+            
+                  src: 'Twinkle Twinkle.mp3',
+     
+            cover: "",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','morning','modern','clean'],
+            lrcText: `
+
+`, },
+{
+            id: 'ponponpon',
+            title: 'PonPonPon',
+            artist: 'Kyary Pamyu Pamyu',  
+            
+                  src: 'PonPonPon.mp3',
+     
+            cover: "",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['japanese','morning','aesthetic','funny','nihon'],
+            lrcText: `
+
+`, },
+{
+            id: '',
+            title: '',
+            artist: '',  
+            
+                  src: '.mp3',
+     
+            cover: "",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','epic','morning','modern','clean'],
+            lrcText: `
+
+`, },
+{
+            id: '',
+            title: '',
+            artist: '',  
+            
+                  src: '.mp3',
+     
+            cover: "",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','epic','morning','modern','clean'],
+            lrcText: `
+
+`, },
+{
+            id: '',
+            title: '',
+            artist: '',  
+            
+                  src: '.mp3',
+     
+            cover: "",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','epic','morning','modern','clean'],
+            lrcText: `
+
+`, },
+{
+            id: '',
+            title: '',
+            artist: '',  
+            
+                  src: '.mp3',
+     
+            cover: "",
+            isVideo: false,
+            duration: undefined,
+                 keywords: ['english','epic','morning','modern','clean'],
+            lrcText: `
+
+`, },
+
+];
+
+
+
+
+
+
+
+
+
+
+
+//        const DEFAULT_FOLDERS = [
+//    {
+//         id: 'f_eng',
+//         name: 'Universal Rhythms',
+//         playlists: [
+//             {
+//             id: 'p_liked',
+//             name: 'All songs',
+//             cover: 'https://images.genius.com/3ea2909c0c3e9c968852273316c45a6b.890x890x1.jpg',
+//             trackIds: ['mockingbird']
+//           },]
+//       },
+//       // new category
+//       {
+//         id: 'f_emojapeng',
+//         name: 'Morning Glory',
+//         playlists: [
+//           {
+//             id: 'p_emoeng&jap',
+//             name: 'Soulful Dawn',
+//             cover: 'https://i1.sndcdn.com/artworks-SzrCLykOBNrd41Me-IP2Vng-t500x500.jpg',
+//             trackIds: ['mockingbird']
+//           }
+//         ]
+//       },
+//        ];
+//     /* ------------- DEFAULT_TRACKS ------------- */
+//     /* Add `keywords: ['tag1','tag2']` to any track to expose advanced keyword searching.
+//        Example:
+//        keywords: ['hiphop','emo','uplifting']
+//     */
+
+//   const id = (p='') => `${Date.now().toString(36)}_${Math.random().toString(36).slice(2,8)}${p}`;
+//     // Custom artist images map - add your own here!
+//     const artistImages = {
+//       'Eminem': 'https://www.stoked.de/cdn/shop/files/stoked_eminem_header_mobile_428x320_f6532d24-0154-4b49-961b-db2f84930567.jpg?v=1745335123', // Replace with actual URL
+
+//     };
+
+
+
+//     const DEFAULT_TRACKS = [
+//        {
+//             id: 'mockingbird',
+//             title: 'MOCKINGBIRD',
+//             artist: 'Eminem',
+      
+//             src: 'MOCKINGBIRD.mp3',
+//             cover: "https://source.boomplaymusic.com/group10/M00/08/27/b229ba0ef51547b389fbc61e7cdc799c_464_464.jpg",
+//             isVideo: false,
+//             duration: undefined,
+//             keywords: ['english','mockingbird','eminem','raps','energetic'],
+//             lrcText:
+// `[00:02.64]Yeah
+// [00:04.89]I know sometimes things may not always make sense to you right now
+// [00:10.89]But hey, what daddy always tell you?
+// [00:14.38]Straighten up little soldier.....many songs...
+// 2:49 Oitsukanai mama kietetta
+// 2:51 Nara sore demo sore demo iinja nai?
+// 2:54 Kowaku nai tte ieru no nara, Kyo wa
+
+// `
+//       },  //more songs
+//     ];
+   
+//https://colab.research.google.com/
+
+
+// !pip install git+https://github.com/openai/whisper.git
+// !sudo apt update && sudo apt install ffmpeg
+
+//!whisper "EXAMPLE.mp3" --model small
+
+
+
+// 1. *Tiny*
+// Command: *`whisper EXAMPLE.mp3 --model tiny`*
+// Size: 39 M parameters
+// 2. *Base*
+// Command: *`whisper EXAMPLE.mp3 --model base`*
+// Size: 74 M parameters
+// 3. *Small*
+// Command: *`whisper EXAMPLE.mp3 --model small`*
+// Size: 244 M parameters
+// 4. *Medium*
+// Command: *`whisper EXAMPLE.mp3 --model medium`*
+// Size: 769 M parameters
+// 5. *Large*
+// Command: *`whisper EXAMPLE.mp3 --model large`*
+// Size: 1550 M parameters
+// 6. *Large-v2*
+// Command: *`whisper EXAMPLE.mp3 --model large-v2`*
+// Size: 1550 M parameters (improved version
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
