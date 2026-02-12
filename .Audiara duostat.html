@@ -45,6 +45,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
         }
 
         body {
@@ -97,13 +98,17 @@
             background: var(--gradient-primary);
             -webkit-background-clip: text;
             background-clip: text;
-            color: transparent;
+            color: var(--text-secondary);
             font-weight: 700;
         }
 
         .logo-text p {
             color: var(--text-secondary);
+                color: transparent;
             font-size: 14px;
+                        background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
         }
 
         .header-controls {
@@ -1833,6 +1838,53 @@ body::after {
     box-shadow: 0 0 28px rgba(0,0,0,0.3);
     backdrop-filter: blur(12px);
 }
+
+.table-pagination-controls {
+    background: rgba(108, 99, 255, 0.08);
+}
+
+.table-pagination-controls button {
+    min-width: 130px;
+}
+
+#currentMonthDisplay {
+    font-size: 1.1rem;
+    padding: 6px 14px;
+    background: rgba(108, 99, 255, 0.12);
+    border-radius: 8px;
+}
+
+.quick-presets button,
+.range-preset-btn {
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(108,99,255,0.3);
+    background: rgba(108,99,255,0.08);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.18s;
+}
+
+.range-preset-btn.active,
+.range-preset-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 12px rgba(108,99,255,0.4);
+}
+
+.custom-range input[type="date"] {
+    color-scheme: dark; /* better dark mode look in most browsers */
+}
+
+.numeric-filters input {
+    width: 110px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-color);
+}
     </style>
 </head>
 <body>
@@ -1844,8 +1896,8 @@ body::after {
                     <i class="fas fa-chart-line"></i>
                 </div>
                 <div class="logo-text">
-                    <h1>Analytics Pro</h1>
-                    <p>Advanced Growth Intelligence Dashboard</p>
+                    <h1>*❄️Ʌ͟o͠x̴o͜ɹ̶ɒ͞☕♪</h1>
+                    <p>User Name: JUSTScience.off</p>
                 </div>
             </div>
             <div class="header-controls">
@@ -1877,32 +1929,33 @@ body::after {
         </header>
 
         <!-- Quick Stats -->
-        <div class="quick-stats">
-            <div class="quick-stat">
-                <h4>Current Streak</h4>
-                <p id="currentStreak">0 days</p>
-            </div>
-            <div class="quick-stat">
-                <h4>Max Streak</h4>
-                <p id="maxStreak">0 days</p>
-            </div>
-            <div class="quick-stat">
-                <h4>Avg Daily XP</h4>
-                <p id="avgXP">0</p>
-            </div>
-            <div class="quick-stat">
-                <h4>Total Followers Gain</h4>
-                <p id="totalFollowersGain">0</p>
-            </div>
-            <div class="quick-stat">
-                <h4>Best Day XP</h4>
-                <p id="bestDayXP">0</p>
-            </div>
-            <div class="quick-stat">
-                <h4>Streak Freezes Used</h4>
-                <p id="streakFreezes">0</p>
-            </div>
-        </div>
+ <div class="quick-stats">
+    <div class="quick-stat">
+        <h4>Current Streak</h4>
+        <p id="currentStreak">0 days</p>
+    </div>
+    <div class="quick-stat">
+        <h4>Max Streak</h4>
+        <p id="maxStreak">0 days</p>
+    </div>
+    <div class="quick-stat">
+        <h4>Avg Daily XP</h4>
+        <p id="avgXP">0</p>
+    </div>
+    <div class="quick-stat">
+        <h4>Avg Daily Followers</h4>
+        <p id="avgDailyFollowers">0</p>
+    </div>
+    <div class="quick-stat">
+        <h4>Best XP Day</h4>
+        <p id="bestDayXP">0 XP</p>
+        <small id="bestDayDate" style="color:var(--text-secondary); font-size:11px;"></small>
+    </div>
+    <div class="quick-stat">
+        <h4>Streak Freezes Used</h4>
+        <p id="streakFreezes">0</p>
+    </div>
+</div>
 
         <!-- Stats Grid -->
         <div class="stats-grid">
@@ -2126,30 +2179,33 @@ body::after {
             </div>
 
             <!-- Month-over-Month Analysis -->
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="card-title">Month-over-Month Analysis (Last 12 Months)</h2>
-                    <p class="card-subtitle">Detailed comparison of monthly performance metrics</p>
-                </div>
-                <div class="table-container">
-                    <table class="data-table" id="monthlyAnalysisTable">
-                        <thead>
-                            <tr>
-                                <th>Month</th>
-                                <th>Avg Daily XP</th>
-                                <th>Total Followers Gain</th>
-                                <th>Active Days</th>
-                                <th>Max Streak</th>
-                                <th>Growth Trend</th>
-                                <th>Change vs Prev Month</th>
-                            </tr>
-                        </thead>
-                        <tbody id="monthlyAnalysisBody">
-                            <!-- Monthly data will be inserted here -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+     <!-- Update the table header in the Monthly Analysis section -->
+<div class="card">
+    <div class="card-header">
+        <h2 class="card-title">Month-over-Month Analysis</h2>
+        <p class="card-subtitle">Detailed comparison of monthly performance metrics</p>
+    </div>
+    <div class="table-container">
+        <table class="data-table" id="monthlyAnalysisTable">
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>Total XP Gained</th>
+                    <th>Avg Daily XP</th>
+                    <th>Followers Gain</th>
+                    <th>Avg Followers</th>
+                    <th>Active Days</th>
+                    <th>Max Streak</th>
+                    <th>Growth Trend</th>
+                    <th>Change vs Prev Month</th>
+                </tr>
+            </thead>
+            <tbody id="monthlyAnalysisBody">
+                <!-- Monthly data will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+</div>
         </div>
 
         <!-- Heatmap Tab -->
@@ -2270,7 +2326,150 @@ body::after {
                 </div>
             </div>
         </div>
+<!-- Add this section after the existing predictionsTab content -->
+<div class="tab-content" id="advancedPredictionsTab">
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">📊 Advanced Pattern-Based Predictions</h2>
+            <p class="card-subtitle">AI-powered forecasts using slope analysis, cycle detection, and pattern matching</p>
+            <div class="chart-controls">
+                <button class="chart-type-btn active" data-advanced-prediction="30">30 Days</button>
+                <button class="chart-type-btn" data-advanced-prediction="90">90 Days</button>
+                <button class="chart-type-btn" data-advanced-prediction="180">180 Days</button>
+                <button class="chart-type-btn" data-advanced-prediction="365">1 Year</button>
+                <button class="chart-type-btn" data-advanced-prediction="730">2 Years</button>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="advancedPredictionChart"></canvas>
+        </div>
+    </div>
 
+    <!-- Advanced Prediction Analytics -->
+    <div class="prediction-cards">
+        <div class="card prediction-card">
+            <div class="prediction-title">📈 Linear Regression Forecast</div>
+            <div class="prediction-value" id="linearRegression30">0</div>
+            <div class="prediction-metric">
+                Confidence: <span id="linearConfidence">0%</span><br>
+                Slope: <span id="linearSlope">0</span>/day
+            </div>
+        </div>
+        
+        <div class="card prediction-card">
+            <div class="prediction-title">🔄 Seasonal Pattern Forecast</div>
+            <div class="prediction-value" id="seasonalForecast30">0</div>
+            <div class="prediction-metric">
+                Pattern Strength: <span id="patternStrength">0%</span><br>
+                Cycle Length: <span id="cycleLength">0</span> days
+            </div>
+        </div>
+        
+        <div class="card prediction-card">
+            <div class="prediction-title">🧠 Neural Network Forecast</div>
+            <div class="prediction-value" id="neuralForecast30">0</div>
+            <div class="prediction-metric">
+                Accuracy: <span id="neuralAccuracy">0%</span><br>
+                Learning Rate: <span id="learningRate">0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pattern Analysis Section -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">🔍 Pattern & Trend Analysis</h2>
+            <p class="card-subtitle">Detailed breakdown of growth patterns, cycles, and volatility</p>
+        </div>
+        
+        <div class="analytics-grid">
+            <div class="card analytics-card">
+                <div class="progress-ring">
+                    <svg width="120" height="120" viewBox="0 0 120 120">
+                        <circle class="progress-ring-bg" cx="60" cy="60" r="45"></circle>
+                        <circle class="progress-ring-fill" cx="60" cy="60" r="45" id="growthConsistencyRing"></circle>
+                    </svg>
+                    <div class="progress-ring-text" id="growthConsistencyText">0%</div>
+                </div>
+                <h3 class="analytics-label">Growth Consistency</h3>
+                <p class="analytics-desc">How consistently you've been growing vs historical patterns</p>
+            </div>
+
+            <div class="card analytics-card">
+                <div class="progress-ring">
+                    <svg width="120" height="120" viewBox="0 0 120 120">
+                        <circle class="progress-ring-bg" cx="60" cy="60" r="45"></circle>
+                        <circle class="progress-ring-fill" cx="60" cy="60" r="45" id="volatilityScoreRing"></circle>
+                    </svg>
+                    <div class="progress-ring-text" id="volatilityScoreText">0%</div>
+                </div>
+                <h3 class="analytics-label">Volatility Score</h3>
+                <p class="analytics-desc">How much your growth fluctuates (lower = more stable)</p>
+            </div>
+
+            <div class="card analytics-card">
+                <div class="progress-ring">
+                    <svg width="120" height="120" viewBox="0 0 120 120">
+                        <circle class="progress-ring-bg" cx="60" cy="60" r="45"></circle>
+                        <circle class="progress-ring-fill" cx="60" cy="60" r="45" id="momentumScoreRing"></circle>
+                    </svg>
+                    <div class="progress-ring-text" id="momentumScoreText">0%</div>
+                </div>
+                <h3 class="analytics-label">Current Momentum</h3>
+                <p class="analytics-desc">Acceleration/deceleration of your current growth rate</p>
+            </div>
+        </div>
+
+        <!-- Pattern Insights -->
+        <div class="card" style="margin-top: 20px;">
+            <div class="card-header">
+                <h3 class="card-title">🎯 Pattern Recognition Insights</h3>
+            </div>
+            <div id="patternInsights">
+                <!-- Pattern insights will be generated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Advanced Prediction Models Comparison -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">🤖 Prediction Model Comparison</h2>
+            <p class="card-subtitle">How different AI models forecast your future growth</p>
+        </div>
+        
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>30 Days</th>
+                        <th>90 Days</th>
+                        <th>180 Days</th>
+                        <th>1 Year</th>
+                        <th>Confidence</th>
+                        <th>Method Used</th>
+                    </tr>
+                </thead>
+                <tbody id="modelComparisonTable">
+                    <!-- Model comparison data will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Historical Pattern Matching -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">📅 Historical Pattern Matching</h2>
+            <p class="card-subtitle">Your current trajectory compared to past patterns</p>
+        </div>
+        <div class="chart-container" style="height: 300px;">
+            <canvas id="patternMatchChart"></canvas>
+        </div>
+    </div>
+</div>
         <!-- Achievements -->
         <div class="card">
             <div class="card-header">
@@ -2288,35 +2487,83 @@ body::after {
         </div>
 
         <!-- Data Table -->
-        <div class="card">
-            <div class="card-header">
-                <h2 class="card-title">Detailed Data Table</h2>
-                <p class="card-subtitle">Complete dataset with filtering and sorting</p>
-                <div class="table-search">
-                    <input type="text" id="tableSearch" placeholder="Search data..." style="width: 250px;">
-                    <i class="fas fa-search"></i>
-                </div>
-            </div>
-            <div class="table-container">
-                <table class="data-table" id="dataTable">
-                    <thead>
-                        <tr>
-                            <th data-sort="date">Date <i class="fas fa-sort"></i></th>
-                            <th data-sort="followers">Followers <i class="fas fa-sort"></i></th>
-                            <th data-sort="followersChange">Daily Change <i class="fas fa-sort"></i></th>
-                            <th data-sort="xp">XP <i class="fas fa-sort"></i></th>
-                            <th data-sort="xpLevel">XP Level <i class="fas fa-sort"></i></th>
-                            <th data-sort="streakDay">Streak Day <i class="fas fa-sort"></i></th>
-                            <th data-sort="status">Status <i class="fas fa-sort"></i></th>
-                            <th data-sort="activityScore">Activity Score <i class="fas fa-sort"></i></th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBody">
-                        <!-- Table data will be dynamically inserted here -->
-                    </tbody>
-                </table>
-            </div>
+<!-- Monthly segmented + paginated table -->
+<div class="day-filter-container" style="margin: 20px 0; padding: 16px; background: rgba(108,99,255,0.08); border-radius: 12px; border: 1px solid rgba(108,99,255,0.2);">
+    <div style="display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:center;">
+        <!-- Quick presets -->
+        <div class="quick-presets" style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="range-preset-btn" data-days="7">Last 7 days</button>
+            <button class="range-preset-btn" data-days="14">Last 14 days</button>
+            <button class="range-preset-btn" data-days="30">Last 30 days</button>
+            <button class="range-preset-btn" data-days="90">Last 90 days</button>
+            <button class="range-preset-btn active" data-days="all">All time</button>
         </div>
+
+        <!-- Custom range -->
+        <div class="custom-range" style="display:flex; gap:12px; align-items:center;">
+            <label>From:</label>
+            <input type="date" id="minDateFilter" style="padding:8px 12px; border-radius:8px; border:1px solid var(--border-color); background:var(--card-bg); color:var(--text-color);">
+
+            <label>To:</label>
+            <input type="date" id="maxDateFilter" style="padding:8px 12px; border-radius:8px; border:1px solid var(--border-color); background:var(--card-bg); color:var(--text-color);">
+
+            <button id="applyDateRangeBtn" class="chart-type-btn">Apply Range</button>
+            <button id="clearDateRangeBtn" class="chart-type-btn" style="background:rgba(248,114,114,0.2);">Clear</button>
+        </div>
+
+        <!-- Additional numeric filters (keep + improve) -->
+        <div class="numeric-filters" style="display:flex; gap:12px; flex-wrap:wrap;">
+            <input type="number" id="minXP" placeholder="Min XP" min="0" style="width:110px;">
+            <input type="number" id="maxXP" placeholder="Max XP" min="0" style="width:110px;">
+            <input type="number" id="minFollowersGained" placeholder="Min ΔF" min="0" style="width:110px;">
+            <input type="number" id="maxFollowersGained" placeholder="Max ΔF" min="0" style="width:110px;">
+            <button id="applyNumericFilters" class="chart-type-btn">Filter</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="card">
+    <div class="card-header">
+        <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+            <h2 class="card-title">Detailed Data Table</h2>
+            <div id="tableMonthSelector" class="chart-controls" style="margin: 0;"></div>
+        </div>
+        <div class="table-search">
+            <input type="text" id="tableSearch" placeholder="Search in current month..." style="width: 250px;">
+            <i class="fas fa-search"></i>
+        </div>
+    </div>
+
+    <div class="table-pagination-controls" style="padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid var(--border-color);">
+        <div>
+            <button id="prevMonthBtn" class="chart-type-btn">← Previous Month</button>
+            <button id="nextMonthBtn" class="chart-type-btn">Next Month →</button>
+        </div>
+        <div id="currentMonthDisplay" style="font-weight: 600; color: var(--text-color);"></div>
+        <div>
+            Showing <span id="rowCountDisplay">0</span> rows
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table class="data-table" id="dataTable">
+            <thead>
+                <tr>
+                    <th data-sort="date">Date <i class="fas fa-sort"></i></th>
+                    <th data-sort="followers">Followers <i class="fas fa-sort"></i></th>
+                    <th data-sort="followersChange">Daily Change <i class="fas fa-sort"></i></th>
+                    <th data-sort="xp">XP <i class="fas fa-sort"></i></th>
+                    <th data-sort="cumulativeXP">Total XP <i class="fas fa-sort"></i></th>
+                    <th data-sort="streakDay">Streak Day <i class="fas fa-sort"></i></th>
+                    <th data-sort="status">Status <i class="fas fa-sort"></i></th>
+                    <th data-sort="activityScore">Activity Score <i class="fas fa-sort"></i></th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+</div>
 
         <!-- Footer -->
         <footer class="footer">
@@ -2386,6 +2633,16 @@ body::after {
     </div>
 
     <script>
+
+let dateRangeFilter = { min: null, max: null };   // null = no filter
+let numericFilters = {
+    minXP: -Infinity,
+    maxXP: Infinity,
+    minDeltaF: -Infinity,
+    maxDeltaF: Infinity
+};
+let activeQuickPreset = 'all';
+
         // Raw data (same as provided)
         const rawData = [          
         { date: "2024-01-24", followers: 1, xp: 4050 },
@@ -3139,12 +3396,27 @@ body::after {
 { date: "2026-01-23", followers: 3630, xp: 12000 },
 { date: "2026-01-24", followers: 3633, xp: 11111 },
 { date: "2026-01-25", followers: 3643, xp: 9000 },
-{ date: "2026-01-26", followers: 3650, xp: 20000 },
+{ date: "2026-01-26", followers: 3650, xp: 19580 },
 { date: "2026-01-27", followers: 3658, xp: 10000 },
-{ date: "2026-01-28", followers: 3668, xp: 7000 },
+{ date: "2026-01-28", followers: 3671, xp: 17050 },
+{ date: "2026-01-29", followers: 3679, xp: 14050 },
+{ date: "2026-01-30", followers: 3693, xp: 10000 },
+{ date: "2026-01-31", followers: 3777, xp: 22090 },
+{ date: "2026-02-01", followers: 3873, xp: 15090 },
+{ date: "2026-02-02", followers: 3903, xp: 13090 },
+{ date: "2026-02-03", followers: 3998, xp: 10590 },
+{ date: "2026-02-04", followers: 4179, xp: 13790 },
+{ date: "2026-02-05", followers: 4349, xp: 19090 },
+{ date: "2026-02-06", followers: 4439, xp: 24090 },
+{ date: "2026-02-07", followers: 4549, xp: 15090 },
+{ date: "2026-02-08", followers: 4596, xp: 26090 },
+{ date: "2026-02-09", followers: 4603, xp: 17090 },
+{ date: "2026-02-10", followers: 4598, xp: 25090 },
+{ date: "2026-02-11", followers: 4628, xp: 21090 },
+{ date: "2026-02-12", followers: 4648, xp: 26090 },
         ];
-//5k  Mar 31, 2026
-
+//6,245,574 / 7,500,000 (83%) Estimated: May 5, 2026
+// Feb 20, 2026
 
         // Enhanced Data Processing
         let processedData = [];
@@ -3474,77 +3746,86 @@ body::after {
 
         // Update stats display
         function updateStats() {
-            const filteredData = getFilteredData();
-            
-            if (filteredData.length === 0) {
-                // Handle empty data
-                document.getElementById('totalFollowers').textContent = '0';
-                document.getElementById('followersChange').textContent = '+0';
-                document.getElementById('totalXP').textContent = '0';
-                document.getElementById('xpChange').textContent = '+0';
-                document.getElementById('activeStreak').textContent = '0';
-                document.getElementById('streakChange').textContent = '+0';
-                return;
-            }
-            
-            const firstItem = filteredData[0];
-            const lastItem = filteredData[filteredData.length - 1];
-            
-            // Calculate changes
-            const followersChange = lastItem.followers - firstItem.followers;
-            const xpChange = lastItem.cumulativeXP - (firstItem.cumulativeXP - firstItem.xp);
-            const streakChange = currentStreak;
-            
-            // Update followers stats
-            document.getElementById('totalFollowers').textContent = lastItem.followers.toLocaleString();
-            document.getElementById('followersChange').textContent = (followersChange >= 0 ? '+' : '') + followersChange.toLocaleString();
-            document.getElementById('followersPeriod').textContent = getPeriodLabel();
-            
-            // Update XP stats
-            document.getElementById('totalXP').textContent = lastItem.cumulativeXP.toLocaleString();
-            document.getElementById('xpChange').textContent = (xpChange >= 0 ? '+' : '') + xpChange.toLocaleString();
-            document.getElementById('xpPeriod').textContent = getPeriodLabel();
-            
-            // Update streak stats
-            document.getElementById('activeStreak').textContent = currentStreak;
-            document.getElementById('streakChange').textContent = '+' + streakChange;
-            document.getElementById('streakPeriod').textContent = getPeriodLabel();
-            
-            // Update achievement count
-            document.getElementById('achievementsCount').textContent = '18/45';
-            
-            // Update stat change colors based on positivity
-            updateStatChangeColor('followersChangeContainer', followersChange >= 0);
-            updateStatChangeColor('xpChangeContainer', xpChange >= 0);
-            updateStatChangeColor('streakChangeContainer', streakChange >= 0);
-            
-            // Quick stats
-            const avgXP = filteredData.length > 0 ? 
-                Math.round(filteredData.reduce((sum, item) => sum + item.xp, 0) / filteredData.length) : 0;
-            
-            document.getElementById('currentStreak').textContent = currentStreak + ' days';
-            document.getElementById('maxStreak').textContent = longestStreak + ' days';
-            document.getElementById('avgXP').textContent = avgXP.toLocaleString();
-            document.getElementById('totalFollowersGain').textContent = totalFollowersGain.toLocaleString();
-            document.getElementById('bestDayXP').textContent = bestDayXP.toLocaleString();
-            document.getElementById('streakFreezes').textContent = streakFreezesUsed;
-            
-            // Streak display
-            document.getElementById('currentStreakDisplay').textContent = currentStreak;
-            document.getElementById('longestStreakDisplay').textContent = longestStreak;
-            document.getElementById('totalActiveDays').textContent = activeDays;
-            const consistencyScore = processedData.length > 0 ? Math.round((activeDays / processedData.length) * 100) : 0;
-            document.getElementById('consistencyScore').textContent = consistencyScore + '%';
-            
-            // Update data count in footer
-            document.getElementById('dataCount').textContent = processedData.length;
-            document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
+    const filteredData = getFilteredData();
+    
+    if (filteredData.length === 0) {
+        // reset all
+        document.getElementById('totalFollowers').textContent = '0';
+        document.getElementById('followersChange').textContent = '+0';
+        document.getElementById('totalXP').textContent = '0';
+        document.getElementById('xpChange').textContent = '+0';
+        document.getElementById('activeStreak').textContent = '0';
+        document.getElementById('streakChange').textContent = '+0';
+        
+        document.getElementById('currentStreak').textContent = '0 days';
+        document.getElementById('maxStreak').textContent = '0 days';
+        document.getElementById('avgXP').textContent = '0';
+        document.getElementById('avgDailyFollowers').textContent = '0';
+        document.getElementById('bestDayXP').textContent = '0 XP';
+        document.getElementById('bestDayDate').textContent = '';
+        document.getElementById('streakFreezes').textContent = '0';
+        return;
+    }
+
+    const firstItem = filteredData[0];
+    const lastItem  = filteredData[filteredData.length - 1];
+
+    // ───── Main stats ─────
+    const followersChange = lastItem.followers - firstItem.followers;
+    const xpChange        = lastItem.cumulativeXP - (firstItem.cumulativeXP - firstItem.xp);
+
+    document.getElementById('totalFollowers').textContent = lastItem.followers.toLocaleString();
+    document.getElementById('followersChange').textContent = (followersChange >= 0 ? '+' : '') + followersChange.toLocaleString();
+    document.getElementById('followersPeriod').textContent = getPeriodLabel();
+
+    document.getElementById('totalXP').textContent = lastItem.cumulativeXP.toLocaleString();
+    document.getElementById('xpChange').textContent = (xpChange >= 0 ? '+' : '') + xpChange.toLocaleString();
+    document.getElementById('xpPeriod').textContent = getPeriodLabel();
+
+    document.getElementById('activeStreak').textContent = currentStreak;
+    document.getElementById('streakChange').textContent = '+' + currentStreak;
+    document.getElementById('streakPeriod').textContent = getPeriodLabel();
+
+    // ───── Quick stats ─────
+    const totalDays = filteredData.length;
+    const totalXPPeriod = filteredData.reduce((sum, d) => sum + d.xp, 0);
+    const avgXP = totalDays > 0 ? Math.round(totalXPPeriod / totalDays) : 0;
+
+    const totalFollowersGained = filteredData.reduce((sum, d) => sum + Math.max(0, d.followersChange), 0);
+    const avgDailyFollowers = totalDays > 0 ? Math.round(totalFollowersGained / totalDays) : 0;
+
+    // Best XP day in selected period
+    let bestXPInPeriod = 0;
+    let bestXPDate = '';
+    filteredData.forEach(item => {
+        if (item.xp > bestXPInPeriod) {
+            bestXPInPeriod = item.xp;
+            bestXPDate = new Date(item.date).toLocaleDateString('en-US', {
+                month: 'short', day: 'numeric', year: 'numeric'
             });
         }
+    });
+
+    document.getElementById('currentStreak').textContent = currentStreak + ' days';
+    document.getElementById('maxStreak').textContent = longestStreak + ' days';
+    document.getElementById('avgXP').textContent = avgXP.toLocaleString();
+    document.getElementById('avgDailyFollowers').textContent = avgDailyFollowers.toLocaleString();
+    document.getElementById('bestDayXP').textContent = bestXPInPeriod.toLocaleString() + ' XP';
+    document.getElementById('bestDayDate').textContent = bestXPDate ? `(${bestXPDate})` : '';
+    document.getElementById('streakFreezes').textContent = streakFreezesUsed;
+
+    // Streak display cards
+    document.getElementById('currentStreakDisplay').textContent = currentStreak;
+    document.getElementById('longestStreakDisplay').textContent = longestStreak;
+    document.getElementById('totalActiveDays').textContent = activeDays;
+    const consistency = processedData.length > 0 ? Math.round((activeDays / processedData.length) * 100) : 0;
+    document.getElementById('consistencyScore').textContent = consistency + '%';
+
+    document.getElementById('dataCount').textContent = processedData.length;
+    document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', {
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
+}
 
         // Update stat change color
         function updateStatChangeColor(containerId, isPositive) {
@@ -3606,79 +3887,113 @@ body::after {
         }
 
         // Generate month-over-month analysis
-        function generateMonthlyAnalysis() {
-            const container = document.getElementById('monthlyAnalysisBody');
-            container.innerHTML = '';
-            
-            // Group data by month
-            const monthlyData = {};
-            processedData.forEach(item => {
-                const date = new Date(item.date);
-                const monthYear = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}`;
-                const monthName = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-                
-                if (!monthlyData[monthYear]) {
-                    monthlyData[monthYear] = {
-                        month: monthName,
-                        xpData: [],
-                        followersData: [],
-                        activeDays: 0,
-                        maxStreak: 0
-                    };
-                }
-                
-                monthlyData[monthYear].xpData.push(item.xp);
-                monthlyData[monthYear].followersData.push(item.followers);
-                if (item.xp > 0) monthlyData[monthYear].activeDays++;
-                if (item.streakDay > monthlyData[monthYear].maxStreak) {
-                    monthlyData[monthYear].maxStreak = item.streakDay;
-                }
-            });
-            
-            // Sort months and get last 12
-            const sortedMonths = Object.keys(monthlyData).sort().reverse().slice(0, 12);
-            
-            sortedMonths.forEach((monthKey, index) => {
-                const monthData = monthlyData[monthKey];
-                const prevMonthKey = sortedMonths[index + 1];
-                const prevMonthData = prevMonthKey ? monthlyData[prevMonthKey] : null;
-                
-                const avgDailyXP = Math.round(monthData.xpData.reduce((a, b) => a + b, 0) / monthData.xpData.length);
-                const totalFollowersGain = monthData.followersData.length > 1 ? 
-                    monthData.followersData[monthData.followersData.length - 1] - monthData.followersData[0] : 0;
-                
-                let changeVsPrev = 'N/A';
-                let trend = 'neutral';
-                
-                if (prevMonthData) {
-                    const prevAvgDailyXP = Math.round(prevMonthData.xpData.reduce((a, b) => a + b, 0) / prevMonthData.xpData.length);
-                    const changePercent = prevAvgDailyXP > 0 ? ((avgDailyXP - prevAvgDailyXP) / prevAvgDailyXP * 100).toFixed(1) : 0;
-                    
-                    if (changePercent > 10) {
-                        trend = 'up';
-                        changeVsPrev = `<span class="trend-indicator trend-up">+${changePercent}%</span>`;
-                    } else if (changePercent < -10) {
-                        trend = 'down';
-                        changeVsPrev = `<span class="trend-indicator trend-down">${changePercent}%</span>`;
-                    } else {
-                        changeVsPrev = `<span class="trend-indicator trend-neutral">${changePercent}%</span>`;
-                    }
-                }
-                
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${monthData.month}</td>
-                    <td>${avgDailyXP.toLocaleString()}</td>
-                    <td>${totalFollowersGain > 0 ? '+' : ''}${totalFollowersGain.toLocaleString()}</td>
-                    <td>${monthData.activeDays}</td>
-                    <td>${monthData.maxStreak}</td>
-                    <td><span class="trend-indicator trend-${trend}">${trend === 'up' ? '↑' : trend === 'down' ? '↓' : '→'}</span></td>
-                    <td>${changeVsPrev}</td>
-                `;
-                container.appendChild(row);
-            });
+      // Generate month-over-month analysis
+function generateMonthlyAnalysis() {
+    const container = document.getElementById('monthlyAnalysisBody');
+    container.innerHTML = '';
+    
+    // Group data by month
+    const monthlyData = {};
+    processedData.forEach(item => {
+        const date = new Date(item.date);
+        const monthYear = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}`;
+        const monthName = date.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+        
+        if (!monthlyData[monthYear]) {
+            monthlyData[monthYear] = {
+                month: monthName,
+                monthYear: monthYear,
+                xpData: [],
+                followersChangeData: [], // NEW: Store followers change instead of followers values
+                activeDays: 0,
+                maxStreak: 0,
+                startDate: date,
+                startFollowers: item.followers,
+                endFollowers: item.followers,
+                daysInMonth: 0
+            };
         }
-
+        
+        monthlyData[monthYear].xpData.push(item.xp);
+        monthlyData[monthYear].followersChangeData.push(item.followersChange); // NEW: Use followersChange
+        monthlyData[monthYear].daysInMonth++;
+        
+        if (item.xp > 0) monthlyData[monthYear].activeDays++;
+        if (item.streakDay > monthlyData[monthYear].maxStreak) {
+            monthlyData[monthYear].maxStreak = item.streakDay;
+        }
+        
+        // Update start and end followers
+        if (date < monthlyData[monthYear].startDate) {
+            monthlyData[monthYear].startDate = date;
+            monthlyData[monthYear].startFollowers = item.followers;
+        }
+        monthlyData[monthYear].endFollowers = item.followers;
+    });
+    
+    // Sort months by date (latest first)
+    const sortedMonths = Object.keys(monthlyData).sort((a, b) => {
+        return new Date(b + '-01') - new Date(a + '-01');
+    });
+    
+    // Process each month
+    sortedMonths.forEach((monthKey, index) => {
+        const monthData = monthlyData[monthKey];
+        const prevMonthKey = sortedMonths[index + 1];
+        const prevMonthData = prevMonthKey ? monthlyData[prevMonthKey] : null;
+        
+        // Calculate metrics
+        const totalXPGained = monthData.xpData.reduce((a, b) => a + b, 0);
+        const avgDailyXP = Math.round(totalXPGained / monthData.daysInMonth);
+        const totalFollowersGain = monthData.endFollowers - monthData.startFollowers;
+        
+        // FIXED: Calculate average daily followers gain (not average followers value)
+        const avgDailyFollowersGain = monthData.followersChangeData.length > 0 
+            ? Math.round(monthData.followersChangeData.reduce((a, b) => a + b, 0) / monthData.daysInMonth)
+            : 0;
+        
+        let changeVsPrev = 'N/A';
+        let trend = 'neutral';
+        
+        if (prevMonthData) {
+            const prevTotalXPGained = prevMonthData.xpData.reduce((a, b) => a + b, 0);
+            const changePercent = prevTotalXPGained > 0 
+                ? ((totalXPGained - prevTotalXPGained) / prevTotalXPGained * 100).toFixed(1) 
+                : 0;
+            
+            if (changePercent > 10) {
+                trend = 'up';
+                changeVsPrev = `<span class="trend-indicator trend-up">+${changePercent}%</span>`;
+            } else if (changePercent < -10) {
+                trend = 'down';
+                changeVsPrev = `<span class="trend-indicator trend-down">${changePercent}%</span>`;
+            } else {
+                changeVsPrev = `<span class="trend-indicator trend-neutral">${changePercent}%</span>`;
+            }
+        }
+        
+        // Format month name to show abbreviated month and year
+        const date = new Date(monthKey + '-01');
+        const displayMonth = date.toLocaleDateString('en-US', { 
+            month: 'short', 
+            year: 'numeric' 
+        });
+        
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td><strong>${displayMonth}</strong></td>
+            <td>${totalXPGained.toLocaleString()}</td>
+            <td>${avgDailyXP.toLocaleString()}</td>
+            <td>${totalFollowersGain > 0 ? '+' : ''}${totalFollowersGain.toLocaleString()}</td>
+            <td>${avgDailyFollowersGain > 0 ? '+' : ''}${avgDailyFollowersGain.toLocaleString()}</td>
+            <td>${monthData.activeDays}</td>
+            <td>${monthData.maxStreak}</td>
+            <td><span class="trend-indicator trend-${trend}">${trend === 'up' ? '↑' : trend === 'down' ? '↓' : '→'}</span></td>
+            <td>${changeVsPrev}</td>
+        `;
+        container.appendChild(row);
+    });
+}
         // Update progress ring
         function updateProgressRing(id, percentage) {
             const circle = document.getElementById(id + 'Ring');
@@ -3856,207 +4171,450 @@ body::after {
         }
 
         // Create month heatmap
-        function createMonthHeatmap(monthName, year, monthData) {
-            const monthContainer = document.createElement('div');
-            monthContainer.className = 'heatmap-month-view';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Create month heatmap
+function createMonthHeatmap(monthName, year, monthData) {
+    const monthContainer = document.createElement('div');
+    monthContainer.className = 'heatmap-month-view';
+    
+    // Month title
+    const title = document.createElement('div');
+    title.className = 'heatmap-month-title';
+    title.textContent = `${monthName} ${year}`;
+    monthContainer.appendChild(title);
+    
+    // Day of week headers
+    const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    daysOfWeek.forEach(day => {
+        const dayEl = document.createElement('div');
+        dayEl.className = 'heatmap-day-of-week';
+        dayEl.textContent = day;
+        monthContainer.appendChild(dayEl);
+    });
+    
+    // Create data map for quick lookup
+    const dataMap = {};
+    monthData.forEach(item => {
+        const date = new Date(item.date);
+        const day = date.getDate();
+        dataMap[day] = item;
+    });
+    
+    // Get first day of month
+    const firstDay = new Date(year, monthData[0].month, 1);
+    const startingDay = firstDay.getDay(); // 0 = Sunday, 1 = Monday, etc.
+    
+    // Adjust for Monday start (0 = Monday)
+    const adjustedStart = startingDay === 0 ? 6 : startingDay - 1;
+    
+    // Add empty days for first week
+    for (let i = 0; i < adjustedStart; i++) {
+        const emptyDay = document.createElement('div');
+        emptyDay.className = 'heatmap-empty-day';
+        monthContainer.appendChild(emptyDay);
+    }
+    
+    // Get days in month
+    const daysInMonth = new Date(year, monthData[0].month + 1, 0).getDate();
+    
+    // Create color scheme based on heatmap type
+    const colorScheme = getHeatmapColorScheme();
+    
+    // Calculate ALL-TIME min and max values for intensity scaling
+    let allTimeMin = Infinity;
+    let allTimeMax = -Infinity;
+    
+    // Calculate based on all processed data, not just this month
+    processedData.forEach(item => {
+        let value;
+        if (heatmapType === 'xp') {
+            value = item.xp;
+        } else if (heatmapType === 'followers') {
+            value = item.followersChange;
+        } else {
+            value = item.activityScore;
+        }
+        
+        // For followers, we want to include negative values in the range
+        // For XP and activity score, we only consider positive values
+        if (heatmapType === 'followers') {
+            allTimeMin = Math.min(allTimeMin, value);
+            allTimeMax = Math.max(allTimeMax, value);
+        } else {
+            if (value > 0) {
+                allTimeMin = Math.min(allTimeMin, value);
+                allTimeMax = Math.max(allTimeMax, value);
+            }
+        }
+    });
+    
+    // If all values are the same or no positive values, set defaults
+    if (allTimeMin === Infinity) allTimeMin = 0;
+    if (allTimeMax === -Infinity) allTimeMax = heatmapType === 'followers' ? 100 : 
+                                              heatmapType === 'xp' ? 10000 : 100;
+    
+    // Add days
+    for (let day = 1; day <= daysInMonth; day++) {
+        const dayEl = document.createElement('div');
+        dayEl.className = 'heatmap-day';
+        
+        const dayData = dataMap[day];
+        
+        if (dayData) {
+            let value, tooltip = `${monthName} ${day}, ${year}: `;
             
-            // Month title
-            const title = document.createElement('div');
-            title.className = 'heatmap-month-title';
-            title.textContent = `${monthName} ${year}`;
-            monthContainer.appendChild(title);
-            
-            // Day of week headers
-            const daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-            daysOfWeek.forEach(day => {
-                const dayEl = document.createElement('div');
-                dayEl.className = 'heatmap-day-of-week';
-                dayEl.textContent = day;
-                monthContainer.appendChild(dayEl);
-            });
-            
-            // Create data map for quick lookup
-            const dataMap = {};
-            monthData.forEach(item => {
-                const date = new Date(item.date);
-                const day = date.getDate();
-                dataMap[day] = item;
-            });
-            
-            // Get first day of month
-            const firstDay = new Date(year, monthData[0].month, 1);
-            const startingDay = firstDay.getDay(); // 0 = Sunday, 1 = Monday, etc.
-            
-            // Adjust for Monday start (0 = Monday)
-            const adjustedStart = startingDay === 0 ? 6 : startingDay - 1;
-            
-            // Add empty days for first week
-            for (let i = 0; i < adjustedStart; i++) {
-                const emptyDay = document.createElement('div');
-                emptyDay.className = 'heatmap-empty-day';
-                monthContainer.appendChild(emptyDay);
+            if (heatmapType === 'xp') {
+                value = dayData.xp;
+                tooltip += `${value.toLocaleString()} XP`;
+            } else if (heatmapType === 'followers') {
+                value = dayData.followersChange;
+                tooltip += `${value >= 0 ? '+' : ''}${value} followers`;
+            } else {
+                value = dayData.activityScore;
+                tooltip += `Activity Score: ${value}/100`;
             }
             
-            // Get days in month
-            const daysInMonth = new Date(year, monthData[0].month + 1, 0).getDate();
-            
-            // Create color scheme based on heatmap type
-            const colorScheme = getHeatmapColorScheme();
-            
-            // Add days
-            for (let day = 1; day <= daysInMonth; day++) {
-                const dayEl = document.createElement('div');
-                dayEl.className = 'heatmap-day';
+            // Determine color based on ALL-TIME intensity
+            let color;
+            if (value === 0) {
+                color = colorScheme.no_activity;
+                if (heatmapType === 'xp') {
+                    tooltip += ' (No Activity)';
+                }
+            } else if (allTimeMax === allTimeMin) {
+                // All values are the same in all-time data
+                color = getMultiColorIntensity(0.5); // Middle color
+            } else {
+                // Calculate intensity based on all-time range
+                let intensity;
                 
-                const dayData = dataMap[day];
-                
-                if (dayData) {
-                    let color = colorScheme.no_activity;
-                    let tooltip = `${monthName} ${day}, ${year}: `;
-                    
-                    if (heatmapType === 'xp') {
-                        const value = dayData.xp;
-                        tooltip += `${value.toLocaleString()} XP`;
-                        
-                        if (value === 0) {
-                            color = colorScheme.no_activity;
-                            tooltip += ' (No Activity)';
-                        } else if (value <= 1000) {
-                            color = colorScheme.low;
-                        } else if (value <= 7000) {
-                            color = colorScheme.medium;
-                        } else if (value <= 30000) {
-                            color = colorScheme.high;
-                        } else {
-                            color = colorScheme.peak;
-                        }
-                    } else if (heatmapType === 'followers') {
-                        const value = dayData.followersChange;
-                        tooltip += `${value >= 0 ? '+' : ''}${value} followers`;
-                        
-                        if (value < 0) {
-                            color = colorScheme.downfall;
-                        } else if (value === 0) {
-                            color = colorScheme.no_activity;
-                        } else if (value <= 7) {
-                            color = colorScheme.low;
-                        } else if (value <= 20) {
-                            color = colorScheme.medium;
-                        } else if (value <= 40) {
-                            color = colorScheme.high;
-                        } else {
-                            color = colorScheme.peak;
-                        }
-                    } else {
-                        const value = dayData.activityScore;
-                        tooltip += `Activity Score: ${value}/100`;
-                        
-                        if (value === 0) {
-                            color = colorScheme.no_activity;
-                        } else if (value <= 20) {
-                            color = colorScheme.low;
-                        } else if (value <= 40) {
-                            color = colorScheme.medium;
-                        } else if (value <= 80) {
-                            color = colorScheme.high;
-                        } else {
-                            color = colorScheme.peak;
-                        }
-                    }
-                    
-                    if (dayData.xp === 0 && dayData.streakDay > 0) {
-                        tooltip += ' (Streak Freeze)';
-                    }
-                    
-                    dayEl.style.background = color;
-                    dayEl.setAttribute('data-tooltip', tooltip);
+                if (heatmapType === 'followers' && value < 0) {
+                    // For negative followers change, scale within negative range
+                    const negativeRange = Math.abs(allTimeMin);
+                    intensity = Math.min(1, Math.abs(value) / negativeRange);
+                    // Use red gradient for negative values
+                    color = getNegativeColorIntensity(intensity);
                 } else {
-                    // No data for this day
-                    dayEl.style.background = 'rgba(255, 255, 255, 0.05)';
-                    dayEl.setAttribute('data-tooltip', `${monthName} ${day}, ${year}: No data`);
+                    // For positive values, scale within positive range
+                    const positiveRange = allTimeMax - (heatmapType === 'followers' ? Math.min(0, allTimeMin) : 0);
+                    const normalizedValue = value - (heatmapType === 'followers' ? Math.min(0, allTimeMin) : 0);
+                    intensity = Math.min(1, Math.max(0, normalizedValue / positiveRange));
+                    
+                    // Use multi-color gradient for positive values
+                    color = getMultiColorIntensity(intensity);
+                }
+            }
+            
+            if (dayData.xp === 0 && dayData.streakDay > 0) {
+                tooltip += ' (Streak Freeze)';
+            }
+            
+            dayEl.style.background = color;
+            dayEl.setAttribute('data-tooltip', tooltip);
+            
+        } else {
+            // No data for this day
+            dayEl.style.background = 'rgba(255, 255, 255, 0.05)';
+            dayEl.setAttribute('data-tooltip', `${monthName} ${day}, ${year}: No data`);
+        }
+        
+        monthContainer.appendChild(dayEl);
+    }
+    
+    return monthContainer;
+}
+
+// NEW: Get multi-color intensity (0 to 1) with multiple distinct colors
+function getMultiColorIntensity(intensity) {
+    // Rainbow color palette: Red -> Orange -> Yellow -> Green -> Blue -> Purple
+    const colors = [
+        {r: 255, g: 59, b: 48, a: 0.8},     // Red
+        {r: 255, g: 149, b: 0, a: 0.85},    // Orange
+        {r: 255, g: 204, b: 0, a: 0.9},     // Yellow
+        {r: 52, g: 199, b: 89, a: 0.85},    // Green
+        {r: 0, g: 122, b: 255, a: 0.9},     // Blue
+        {r: 88, g: 86, b: 214, a: 0.95},    // Indigo
+        {r: 175, g: 82, b: 222, a: 1.0}     // Purple
+    ];
+    
+    // Map intensity (0-1) to color index
+    const colorIndex = Math.floor(intensity * (colors.length - 1));
+    const colorProgress = (intensity * (colors.length - 1)) - colorIndex;
+    
+    if (colorIndex >= colors.length - 1) {
+        return `rgba(${colors[colors.length - 1].r}, ${colors[colors.length - 1].g}, ${colors[colors.length - 1].b}, ${colors[colors.length - 1].a})`;
+    }
+    
+    const color1 = colors[colorIndex];
+    const color2 = colors[colorIndex + 1];
+    
+    const r = Math.round(color1.r + colorProgress * (color2.r - color1.r));
+    const g = Math.round(color1.g + colorProgress * (color2.g - color1.g));
+    const b = Math.round(color1.b + colorProgress * (color2.b - color1.b));
+    const a = color1.a + colorProgress * (color2.a - color1.a);
+    
+    return `rgba(${r}, ${g}, ${b}, ${a})`;
+}
+
+// NEW: Get negative color intensity (red gradient)
+function getNegativeColorIntensity(intensity) {
+    // Red gradient for negative values
+    const colors = [
+        {r: 255, g: 255, b: 255, a: 0.1},   // Almost transparent white (no activity)
+        {r: 255, g: 235, b: 235, a: 0.3},   // Very light red
+        {r: 255, g: 200, b: 200, a: 0.5},   // Light red
+        {r: 255, g: 150, b: 150, a: 0.7},   // Medium red
+        {r: 255, g: 100, b: 100, a: 0.9},   // Dark red
+        {r: 255, g: 59, b: 48, a: 1.0}      // Bright red
+    ];
+    
+    // Map intensity (0-1) to color index
+    const colorIndex = Math.floor(intensity * (colors.length - 1));
+    const colorProgress = (intensity * (colors.length - 1)) - colorIndex;
+    
+    if (colorIndex >= colors.length - 1) {
+        return `rgba(${colors[colors.length - 1].r}, ${colors[colors.length - 1].g}, ${colors[colors.length - 1].b}, ${colors[colors.length - 1].a})`;
+    }
+    
+    const color1 = colors[colorIndex];
+    const color2 = colors[colorIndex + 1];
+    
+    const r = Math.round(color1.r + colorProgress * (color2.r - color1.r));
+    const g = Math.round(color1.g + colorProgress * (color2.g - color1.g));
+    const b = Math.round(color1.b + colorProgress * (color2.b - color1.b));
+    const a = color1.a + colorProgress * (color2.a - color1.a);
+    
+    return `rgba(${r}, ${g}, ${b}, ${a})`;
+}
+
+// Helper function to interpolate between two colors (kept for compatibility)
+function interpolateColor(color1, color2, factor) {
+    // Parse RGBA colors
+    const parseColor = (color) => {
+        if (color.startsWith('rgba')) {
+            const match = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*([\d.]+))?\)/);
+            if (match) {
+                return {
+                    r: parseInt(match[1]),
+                    g: parseInt(match[2]),
+                    b: parseInt(match[3]),
+                    a: match[4] ? parseFloat(match[4]) : 1
+                };
+            }
+        }
+        return { r: 255, g: 255, b: 255, a: 0.1 };
+    };
+    
+    const c1 = parseColor(color1);
+    const c2 = parseColor(color2);
+    
+    const r = Math.round(c1.r + factor * (c2.r - c1.r));
+    const g = Math.round(c1.g + factor * (c2.g - c1.g));
+    const b = Math.round(c1.b + factor * (c2.b - c1.b));
+    const a = c1.a + factor * (c2.a - c1.a);
+    
+    return `rgba(${r}, ${g}, ${b}, ${a})`;
+}
+
+// Update the getHeatmapColorScheme function (simplified since we're using multi-color)
+function getHeatmapColorScheme() {
+    // Base colors only used for special cases
+    return {
+        'no_activity': 'rgba(255, 255, 255, 0.1)',
+        'downfall': 'rgba(255, 59, 48, 0.8)',     // Bright red for negative
+        'low': 'rgba(255, 149, 0, 0.7)',          // Orange
+        'medium': 'rgba(52, 199, 89, 0.7)',       // Green
+        'high': 'rgba(0, 122, 255, 0.8)',         // Blue
+        'peak': 'rgba(175, 82, 222, 0.9)'         // Purple
+    };
+}
+
+// Update the generateHeatmapLegend function to show multi-color gradient
+function generateHeatmapLegend() {
+    const legendContainer = document.getElementById('heatmapLegend');
+    legendContainer.innerHTML = '';
+    
+    // Calculate all-time min and max for each heatmap type
+    let allTimeMin = Infinity;
+    let allTimeMax = -Infinity;
+    
+    processedData.forEach(item => {
+        let value;
+        if (heatmapType === 'xp') {
+            value = item.xp;
+        } else if (heatmapType === 'followers') {
+            value = item.followersChange;
+        } else {
+            value = item.activityScore;
+        }
+        
+        if (heatmapType === 'followers') {
+            allTimeMin = Math.min(allTimeMin, value);
+            allTimeMax = Math.max(allTimeMax, value);
+        } else if (value > 0) {
+            allTimeMin = Math.min(allTimeMin, value);
+            allTimeMax = Math.max(allTimeMax, value);
+        }
+    });
+    
+    if (allTimeMin === Infinity) allTimeMin = 0;
+    if (allTimeMax === -Infinity) allTimeMax = 100;
+    
+    let legendItems = [];
+    
+    if (heatmapType === 'xp') {
+        // Create gradient legend for XP
+        const steps = 7; // Number of color steps
+        for (let i = 0; i < steps; i++) {
+            const intensity = i / (steps - 1);
+            const color = getMultiColorIntensity(intensity);
+            const value = Math.round(allTimeMin + intensity * (allTimeMax - allTimeMin));
+            
+            let label;
+            if (i === 0) {
+                label = `Min: ${value.toLocaleString()} XP`;
+            } else if (i === steps - 1) {
+                label = `Max: ${value.toLocaleString()} XP`;
+            } else {
+                const percentage = Math.round(intensity * 100);
+                label = `${percentage}%`;
+            }
+            
+            legendItems.push({ color, label });
+        }
+    } else if (heatmapType === 'followers') {
+        // For followers, show negative to positive
+        const negativeSteps = 3;
+        const positiveSteps = 5;
+        
+        // Negative values (red gradient)
+        if (allTimeMin < 0) {
+            for (let i = 0; i < negativeSteps; i++) {
+                const intensity = i / (negativeSteps - 1);
+                const color = getNegativeColorIntensity(intensity);
+                const value = Math.round(allTimeMin + intensity * (0 - allTimeMin));
+                
+                let label;
+                if (i === 0) {
+                    label = `Min: ${value}`;
+                } else if (i === negativeSteps - 1) {
+                    label = `No Change`;
+                } else {
+                    label = `${value}`;
                 }
                 
-                monthContainer.appendChild(dayEl);
+                legendItems.push({ color, label });
             }
-            
-            return monthContainer;
-        }
-
-        // Get heatmap color scheme
-        function getHeatmapColorScheme() {
-            if (heatmapType === 'xp') {
-                return {
-                    'no_activity': 'rgba(255, 255, 255, 0.1)',
-                    'low': 'rgba(54, 211, 153, 0.3)',
-                    'medium': 'rgba(54, 211, 153, 0.6)',
-                    'high': 'rgba(54, 211, 153, 0.9)',
-                    'peak': 'rgba(108, 99, 255, 0.9)'
-                };
-            } else if (heatmapType === 'followers') {
-                return {
-                    'downfall': 'rgba(248, 114, 114, 0.6)',
-                    'no_activity': 'rgba(255, 255, 255, 0.1)',
-                    'low': 'rgba(58, 191, 248, 0.3)',
-                    'medium': 'rgba(58, 191, 248, 0.6)',
-                    'high': 'rgba(58, 191, 248, 0.9)',
-                    'peak': 'rgba(108, 99, 255, 0.9)'
-                };
-            } else {
-                return {
-                    'no_activity': 'rgba(255, 255, 255, 0.1)',
-                    'low': 'rgba(251, 189, 35, 0.3)',
-                    'medium': 'rgba(251, 189, 35, 0.6)',
-                    'high': 'rgba(251, 189, 35, 0.9)',
-                    'peak': 'rgba(108, 99, 255, 0.9)'
-                };
-            }
-        }
-
-        // Generate heatmap legend
-        function generateHeatmapLegend() {
-            const legendContainer = document.getElementById('heatmapLegend');
-            const colorScheme = getHeatmapColorScheme();
-            
-            let legendItems = [];
-            
-            if (heatmapType === 'xp') {
-                legendItems = [
-                    { color: colorScheme.no_activity, label: 'No Activity (0 XP)' },
-                    { color: colorScheme.low, label: 'Low (1-1,000 XP)' },
-                    { color: colorScheme.medium, label: 'Medium (1,001-7,000 XP)' },
-                    { color: colorScheme.high, label: 'High (7,001-20,000 XP)' },
-                    { color: colorScheme.peak, label: 'Peak (20,000+ XP)' }
-                ];
-            } else if (heatmapType === 'followers') {
-                legendItems = [
-                    { color: colorScheme.downfall, label: 'Downfall (< 0)' },
-                    { color: colorScheme.no_activity, label: 'No Activity (0)' },
-                    { color: colorScheme.low, label: 'Low (1-7)' },
-                    { color: colorScheme.medium, label: 'Medium (7-20)' },
-                    { color: colorScheme.high, label: 'High (20-50)' },
-                    { color: colorScheme.peak, label: 'Peak (50+)' }
-                ];
-            } else {
-                legendItems = [
-                    { color: colorScheme.no_activity, label: 'No Activity' },
-                    { color: colorScheme.low, label: 'Low (0-20)' },
-                    { color: colorScheme.medium, label: 'Medium (20-40)' },
-                    { color: colorScheme.high, label: 'High (40-80)' },
-                    { color: colorScheme.peak, label: 'Peak (80-100)' }
-                ];
-            }
-            
-            legendItems.forEach(item => {
-                const legendItem = document.createElement('div');
-                legendItem.className = 'heatmap-legend-item';
-                legendItem.innerHTML = `
-                    <div class="heatmap-legend-color" style="background: ${item.color};"></div>
-                    <span>${item.label}</span>
-                `;
-                legendContainer.appendChild(legendItem);
+        } else {
+            // No negative values
+            legendItems.push({ 
+                color: 'rgba(255, 255, 255, 0.1)', 
+                label: 'No Change' 
             });
         }
+        
+        // Positive values (rainbow gradient)
+        for (let i = 0; i < positiveSteps; i++) {
+            const intensity = i / (positiveSteps - 1);
+            const color = getMultiColorIntensity(intensity);
+            const value = Math.round(intensity * allTimeMax);
+            
+            let label;
+            if (i === 0) {
+                label = `No Change`;
+            } else if (i === positiveSteps - 1) {
+                label = `Max: +${value}`;
+            } else {
+                label = `+${value}`;
+            }
+            
+            legendItems.push({ color, label });
+        }
+    } else {
+        // Activity Score
+        const steps = 7;
+        for (let i = 0; i < steps; i++) {
+            const intensity = i / (steps - 1);
+            const color = getMultiColorIntensity(intensity);
+            const value = Math.round(allTimeMin + intensity * (allTimeMax - allTimeMin));
+            
+            let label;
+            if (i === 0) {
+                label = `Min: ${value}`;
+            } else if (i === steps - 1) {
+                label = `Max: ${value}`;
+            } else {
+                const percentage = Math.round(intensity * 100);
+                label = `${percentage}%`;
+            }
+            
+            legendItems.push({ color, label });
+        }
+    }
+    
+    // Add "No Data" legend item
+    legendItems.unshift({
+        color: 'rgba(255, 255, 255, 0.05)',
+        label: 'No Data'
+    });
+    
+    legendItems.forEach(item => {
+        const legendItem = document.createElement('div');
+        legendItem.className = 'heatmap-legend-item';
+        legendItem.innerHTML = `
+            <div class="heatmap-legend-color" style="background: ${item.color}; border: 1px solid rgba(255, 255, 255, 0.2);"></div>
+            <span class="heatmap-legend-label">${item.label}</span>
+        `;
+        legendContainer.appendChild(legendItem);
+    });
+}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         // Generate progression path
         function generateProgressionPath() {
             const container = document.getElementById('progressionPath');
@@ -4502,141 +5060,146 @@ body::after {
 
         // Table sorting
         function sortTable(column, direction) {
-            const filteredData = getFilteredData();
-            
-            filteredData.sort((a, b) => {
-                let valA, valB;
-                
-                switch(column) {
-                    case 'date':
-                        valA = new Date(a.date);
-                        valB = new Date(b.date);
-                        break;
-                    case 'followers':
-                        valA = a.followers;
-                        valB = b.followers;
-                        break;
-                    case 'followersChange':
-                        valA = a.followersChange;
-                        valB = b.followersChange;
-                        break;
-                    case 'xp':
-                        valA = a.xp;
-                        valB = b.xp;
-                        break;
-                    case 'xpLevel':
-                        valA = a.xpLevel;
-                        valB = b.xpLevel;
-                        break;
-                    case 'streakDay':
-                        valA = a.streakDay;
-                        valB = b.streakDay;
-                        break;
-                    case 'status':
-                        valA = a.status;
-                        valB = b.status;
-                        break;
-                    case 'activityScore':
-                        valA = a.activityScore;
-                        valB = b.activityScore;
-                        break;
-                    default:
-                        return 0;
-                }
-                
-                if (direction === 'asc') {
-                    return valA > valB ? 1 : -1;
-                } else {
-                    return valA < valB ? 1 : -1;
-                }
-            });
-            
-            return filteredData;
+    const filteredData = getFilteredData();
+    
+    filteredData.sort((a, b) => {
+        let valA, valB;
+        
+        switch(column) {
+            case 'date':
+                valA = new Date(a.date);
+                valB = new Date(b.date);
+                break;
+            case 'followers':
+                valA = a.followers;
+                valB = b.followers;
+                break;
+            case 'followersChange':
+                valA = a.followersChange;
+                valB = b.followersChange;
+                break;
+            case 'xp':
+                valA = a.xp;
+                valB = b.xp;
+                break;
+            case 'cumulativeXP':  // NEW CASE ADDED HERE
+                valA = a.cumulativeXP;
+                valB = b.cumulativeXP;
+                break;
+            case 'xpLevel':
+                valA = a.xpLevel;
+                valB = b.xpLevel;
+                break;
+            case 'streakDay':
+                valA = a.streakDay;
+                valB = b.streakDay;
+                break;
+            case 'status':
+                valA = a.status;
+                valB = b.status;
+                break;
+            case 'activityScore':
+                valA = a.activityScore;
+                valB = b.activityScore;
+                break;
+            default:
+                return 0;
         }
-
+        
+        if (direction === 'asc') {
+            return valA > valB ? 1 : -1;
+        } else {
+            return valA < valB ? 1 : -1;
+        }
+    });
+    
+    return filteredData;
+}
         // Update table with search functionality
-        function updateTable() {
-            let filteredData = getFilteredData();
-            
-            // Apply search filter
-            if (tableSearchTerm) {
-                filteredData = filteredData.filter(item => {
-                    const searchLower = tableSearchTerm.toLowerCase();
-                    return (
-                        item.date.toLowerCase().includes(searchLower) ||
-                        item.followers.toString().includes(searchLower) ||
-                        item.followersChange.toString().includes(searchLower) ||
-                        item.xp.toString().includes(searchLower) ||
-                        item.xpLevel.toString().includes(searchLower) ||
-                        item.streakDay.toString().includes(searchLower) ||
-                        item.status.toLowerCase().includes(searchLower) ||
-                        item.activityScore.toString().includes(searchLower)
-                    );
-                });
-            }
-            
-            // Apply sorting
-            filteredData = sortTable(currentSortColumn, currentSortDirection);
-            
-            const tableBody = document.getElementById('tableBody');
-            tableBody.innerHTML = '';
-            
-            filteredData.forEach(item => {
-                const row = document.createElement('tr');
-                
-                // Format date
-                const dateObj = new Date(item.date);
-                const formattedDate = dateObj.toLocaleDateString('en-US', { 
-                    weekday: 'short', 
-                    year: 'numeric', 
-                    month: 'short', 
-                    day: 'numeric' 
-                });
-                
-                // Determine status badge
-                let statusBadge = '';
-                switch(item.status) {
-                    case 'streak_freeze':
-                        statusBadge = '<span class="trend-indicator trend-neutral">Streak Freeze</span>';
-                        break;
-                    case 'low':
-                        statusBadge = '<span class="trend-indicator trend-neutral">Low</span>';
-                        break;
-                    case 'medium':
-                        statusBadge = '<span class="trend-indicator trend-up">Medium</span>';
-                        break;
-                    case 'high':
-                        statusBadge = '<span class="trend-indicator trend-up">High</span>';
-                        break;
-                    case 'excellent':
-                        statusBadge = '<span class="trend-indicator trend-up pulse">Excellent</span>';
-                        break;
-                }
-                
-                row.innerHTML = `
-                    <td>${formattedDate}</td>
-                    <td>${item.followers.toLocaleString()}</td>
-                    <td class="${item.followersChange >= 0 ? 'positive' : 'negative'}">
-                        ${item.followersChange >= 0 ? '+' : ''}${item.followersChange}
-                    </td>
-                    <td><span class="data-point-highlight">${item.xp.toLocaleString()}</span></td>
-                    <td>Level ${item.xpLevel}</td>
-                    <td>${item.streakDay}</td>
-                    <td>${statusBadge}</td>
-                    <td>${item.activityScore}/100</td>
-                `;
-                
-                tableBody.appendChild(row);
-            });
-            
-            // Update sort indicators
-            document.querySelectorAll('#dataTable th').forEach(th => {
-                th.classList.remove('sorted-asc', 'sorted-desc');
-                if (th.dataset.sort === currentSortColumn) {
-                    th.classList.add(currentSortDirection === 'asc' ? 'sorted-asc' : 'sorted-desc');
-                }
-            });
+       // Update table with search functionality
+function updateTable() {
+    let filteredData = getFilteredData();
+    
+    // Apply search filter
+    if (tableSearchTerm) {
+        filteredData = filteredData.filter(item => {
+            const searchLower = tableSearchTerm.toLowerCase();
+            return (
+                item.date.toLowerCase().includes(searchLower) ||
+                item.followers.toString().includes(searchLower) ||
+                item.followersChange.toString().includes(searchLower) ||
+                item.xp.toString().includes(searchLower) ||
+                item.cumulativeXP.toString().includes(searchLower) || // Added this line
+                item.streakDay.toString().includes(searchLower) ||
+                item.status.toLowerCase().includes(searchLower) ||
+                item.activityScore.toString().includes(searchLower)
+            );
+        });
+    }
+    
+    
+    // Apply sorting - add cumulativeXP to the switch statement
+    filteredData = sortTable(currentSortColumn, currentSortDirection);
+    
+    const tableBody = document.getElementById('tableBody');
+    tableBody.innerHTML = '';
+    
+    filteredData.forEach(item => {
+        const row = document.createElement('tr');
+        
+        // Format date
+        const dateObj = new Date(item.date);
+        const formattedDate = dateObj.toLocaleDateString('en-US', { 
+            weekday: 'short', 
+            year: 'numeric', 
+            month: 'short', 
+            day: 'numeric' 
+        });
+        
+        // Determine status badge
+        let statusBadge = '';
+        switch(item.status) {
+            case 'streak_freeze':
+                statusBadge = '<span class="trend-indicator trend-neutral">Streak Freeze</span>';
+                break;
+            case 'low':
+                statusBadge = '<span class="trend-indicator trend-neutral">Low</span>';
+                break;
+            case 'medium':
+                statusBadge = '<span class="trend-indicator trend-up">Medium</span>';
+                break;
+            case 'high':
+                statusBadge = '<span class="trend-indicator trend-up">High</span>';
+                break;
+            case 'excellent':
+                statusBadge = '<span class="trend-indicator trend-up pulse">Excellent</span>';
+                break;
         }
+        
+        row.innerHTML = `
+            <td>${formattedDate}</td>
+            <td>${item.followers.toLocaleString()}</td>
+            <td class="${item.followersChange >= 0 ? 'positive' : 'negative'}">
+                ${item.followersChange >= 0 ? '+' : ''}${item.followersChange}
+            </td>
+            <td><span class="data-point-highlight">${item.xp.toLocaleString()}</span></td>
+            <td><span class="data-point-highlight">${item.cumulativeXP.toLocaleString()}</span></td>
+            <td>${item.streakDay}</td>
+            <td>${statusBadge}</td>
+            <td>${item.activityScore}/100</td>
+        `;
+        
+        tableBody.appendChild(row);
+    });
+    
+    // Update sort indicators
+    document.querySelectorAll('#dataTable th').forEach(th => {
+        th.classList.remove('sorted-asc', 'sorted-desc');
+        if (th.dataset.sort === currentSortColumn) {
+            th.classList.add(currentSortDirection === 'asc' ? 'sorted-asc' : 'sorted-desc');
+        }
+    });
+}
 
         // Create achievements
         function createAchievements() {
@@ -5045,26 +5608,7 @@ else {  // streaks
         });
 
         // Table search
-        document.getElementById('tableSearch').addEventListener('input', (e) => {
-            tableSearchTerm = e.target.value;
-            updateTable();
-        });
 
-        // Table sorting
-        document.querySelectorAll('#dataTable th').forEach(th => {
-            th.addEventListener('click', function() {
-                const column = this.dataset.sort;
-                
-                if (currentSortColumn === column) {
-                    currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
-                } else {
-                    currentSortColumn = column;
-                    currentSortDirection = 'desc';
-                }
-                
-                updateTable();
-            });
-        });
 
         // Function to add new data
         function addNewData(newData) {
@@ -5141,6 +5685,2173 @@ else {  // streaks
 
         // Initialize on load
         window.addEventListener('DOMContentLoaded', init);
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Update the streak freeze card to show data for selected period
+function updateStreakFreezeCard() {
+    const filteredData = getFilteredData();
+    const streakFreezesInPeriod = filteredData.filter(d => d.xp === 0 && d.streakDay > 0).length;
+    const totalDaysInPeriod = filteredData.length;
+    const streakFreezePercentage = totalDaysInPeriod > 0 ? 
+        Math.round((streakFreezesInPeriod / totalDaysInPeriod) * 100) : 0;
+    
+    // Update the streak freeze card in stats grid
+    const streakFreezeCard = document.querySelector('.stat-card:nth-child(4)');
+    if (streakFreezeCard) {
+        streakFreezeCard.querySelector('h3').textContent = streakFreezesInPeriod;
+        streakFreezeCard.querySelector('.stat-change').innerHTML = `
+            <span class="stat-change-value">${streakFreezesInPeriod}</span> ${getPeriodLabel()}
+        `;
+        
+        // Add hover tooltip
+        streakFreezeCard.title = `Streak freezes used: ${streakFreezesInPeriod} out of ${totalDaysInPeriod} days (${streakFreezePercentage}%)\nClick for details`;
+    }
+    
+    // Also update the streak freezes in quick stats if it exists
+    const streakFreezesElement = document.getElementById('streakFreezes');
+    if (streakFreezesElement) {
+        streakFreezesElement.textContent = streakFreezesInPeriod;
+    }
+}
+
+// Update achievements card to show achievements for selected period
+function updateAchievementsCard() {
+    const filteredData = getFilteredData();
+    const periodLabel = getPeriodLabel();
+    
+    // Calculate achievements for the selected period
+    let newAchievements = 0;
+    let milestonesReached = [];
+    
+    // Check XP milestones reached in this period
+    const xpMilestones = [
+        { target: 1000, label: "First 1K XP" },
+        { target: 10000, label: "10K XP" },
+        { target: 50000, label: "50K XP" },
+        { target: 100000, label: "100K XP" },
+        { target: 500000, label: "500K XP" },
+        { target: 1000000, label: "1M XP" }
+    ];
+    
+    // Check followers milestones reached in this period
+    const followersMilestones = [
+        { target: 100, label: "100 Followers" },
+        { target: 500, label: "500 Followers" },
+        { target: 1000, label: "1K Followers" },
+        { target: 2500, label: "2.5K Followers" },
+        { target: 5000, label: "5K Followers" },
+        { target: 10000, label: "10K Followers" }
+    ];
+    
+    // Check streak milestones reached in this period
+    const streakMilestones = [
+        { target: 7, label: "7-Day Streak" },
+        { target: 14, label: "14-Day Streak" },
+        { target: 30, label: "30-Day Streak" },
+        { target: 90, label: "90-Day Streak" },
+        { target: 100, label: "100-Day Streak" }
+    ];
+    
+    // Find the first and last items in the filtered period
+    if (filteredData.length > 0) {
+        const firstItem = filteredData[0];
+        const lastItem = filteredData[filteredData.length - 1];
+        
+        // Check XP achievements
+        xpMilestones.forEach(milestone => {
+            if (firstItem.cumulativeXP < milestone.target && lastItem.cumulativeXP >= milestone.target) {
+                newAchievements++;
+                milestonesReached.push(`🏆 ${milestone.label}`);
+            }
+        });
+        
+        // Check followers achievements
+        followersMilestones.forEach(milestone => {
+            if (firstItem.followers < milestone.target && lastItem.followers >= milestone.target) {
+                newAchievements++;
+                milestonesReached.push(`👥 ${milestone.label}`);
+            }
+        });
+        
+        // Check streak achievements
+        streakMilestones.forEach(milestone => {
+            // Check if maximum streak in period reached this milestone
+            const maxStreakInPeriod = Math.max(...filteredData.map(d => d.streakDay));
+            if (maxStreakInPeriod >= milestone.target) {
+                // Check if this is a new achievement by comparing with data before this period
+                const dataBeforePeriod = processedData.filter(d => 
+                    new Date(d.date) < new Date(firstItem.date)
+                );
+                const maxStreakBeforePeriod = dataBeforePeriod.length > 0 ? 
+                    Math.max(...dataBeforePeriod.map(d => d.streakDay)) : 0;
+                
+                if (maxStreakBeforePeriod < milestone.target) {
+                    newAchievements++;
+                    milestonesReached.push(`🔥 ${milestone.label}`);
+                }
+            }
+        });
+        
+        // Calculate consistency achievement
+        const activeDaysInPeriod = filteredData.filter(d => d.xp > 0).length;
+        const consistencyPercentage = Math.round((activeDaysInPeriod / filteredData.length) * 100);
+        
+        if (consistencyPercentage >= 90) {
+            newAchievements++;
+            milestonesReached.push("⭐ 90%+ Consistency");
+        } else if (consistencyPercentage >= 80) {
+            newAchievements++;
+            milestonesReached.push("⭐ 80%+ Consistency");
+        }
+        
+        // Check for best day XP in period
+        const bestXPInPeriod = Math.max(...filteredData.map(d => d.xp));
+        if (bestXPInPeriod > 20000) {
+            newAchievements++;
+            milestonesReached.push("🚀 20K+ XP Day");
+        } else if (bestXPInPeriod > 10000) {
+            newAchievements++;
+            milestonesReached.push("🚀 10K+ XP Day");
+        }
+        
+        // Check for followers growth achievement
+        const followersGrowth = lastItem.followers - firstItem.followers;
+        const avgDailyFollowersGrowth = Math.round(followersGrowth / filteredData.length);
+        
+        if (avgDailyFollowersGrowth >= 50) {
+            newAchievements++;
+            milestonesReached.push("📈 50+ Daily Followers");
+        } else if (avgDailyFollowersGrowth >= 20) {
+            newAchievements++;
+            milestonesReached.push("📈 20+ Daily Followers");
+        }
+    }
+    
+    // Update the achievements card in stats grid
+    const achievementsCard = document.querySelector('.stat-card:nth-child(4)');
+    if (achievementsCard) {
+        const totalAchievements = 25; // Total possible achievements
+        const currentAchievements = Math.min(totalAchievements, newAchievements + 5); // Example base + new
+        
+        achievementsCard.querySelector('h3').textContent = `${currentAchievements}/${totalAchievements}`;
+        
+        // Update the achievement change indicator
+        const statChange = achievementsCard.querySelector('.stat-change');
+        if (statChange) {
+            if (newAchievements > 0) {
+                statChange.className = 'stat-change positive';
+                statChange.innerHTML = `
+                    <i class="fas fa-star"></i>
+                    <span>${newAchievements} new</span> ${periodLabel}
+                `;
+            } else {
+                statChange.className = 'stat-change';
+                statChange.innerHTML = `
+                    <i class="fas fa-star"></i>
+                    <span>Keep going!</span> ${periodLabel}
+                `;
+            }
+        }
+        
+        // Create hover tooltip with achievements details
+        let tooltipText = `Achievements unlocked ${periodLabel}:\n`;
+        
+        if (milestonesReached.length > 0) {
+            tooltipText += milestonesReached.join('\n');
+        } else {
+            tooltipText += "No new achievements this period.\nComplete daily activities to unlock more!";
+        }
+        
+        // Add period statistics to tooltip
+        const activeDays = filteredData.filter(d => d.xp > 0).length;
+        const totalDays = filteredData.length;
+        const consistency = totalDays > 0 ? Math.round((activeDays / totalDays) * 100) : 0;
+        
+        tooltipText += `\n\n📊 Period Stats:\n`;
+        tooltipText += `Active Days: ${activeDays}/${totalDays} (${consistency}%)\n`;
+        if (filteredData.length > 0) {
+            const first = filteredData[0];
+            const last = filteredData[filteredData.length - 1];
+            tooltipText += `Followers Growth: +${last.followers - first.followers}\n`;
+            tooltipText += `XP Gained: ${last.cumulativeXP - (first.cumulativeXP - first.xp)}`;
+        }
+        
+        achievementsCard.title = tooltipText;
+        
+        // Add click event to show detailed achievements modal
+        achievementsCard.style.cursor = 'pointer';
+        achievementsCard.addEventListener('click', () => {
+            showAchievementsModal(milestonesReached, periodLabel, filteredData);
+        });
+    }
+}
+
+// Show detailed achievements modal
+function showAchievementsModal(milestonesReached, periodLabel, filteredData) {
+    // Create modal if it doesn't exist
+    let modal = document.getElementById('achievementsModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'achievementsModal';
+        modal.className = 'modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Achievements Details</h3>
+                    <button class="modal-close" id="closeAchievementsModal">&times;</button>
+                </div>
+                <div class="modal-body" id="achievementsModalBody">
+                    <!-- Content will be populated here -->
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        
+        // Add close event
+        document.getElementById('closeAchievementsModal').addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+        
+        // Close on outside click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+    }
+    
+    // Populate modal content
+    const modalBody = document.getElementById('achievementsModalBody');
+    
+    let content = `<h4 style="margin-bottom: 20px; color: var(--primary-color);">Achievements ${periodLabel}</h4>`;
+    
+    if (milestonesReached.length > 0) {
+        content += `<div style="margin-bottom: 20px;">`;
+        milestonesReached.forEach(milestone => {
+            content += `<div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px; padding: 10px; background: rgba(108, 99, 255, 0.1); border-radius: 8px;">
+                <div style="color: var(--success-color); font-size: 20px;">✓</div>
+                <span style="font-weight: 500;">${milestone}</span>
+            </div>`;
+        });
+        content += `</div>`;
+    } else {
+        content += `<p style="text-align: center; color: var(--text-secondary); padding: 20px;">
+            No new achievements unlocked this period.
+        </p>`;
+    }
+    
+    // Add period statistics
+    if (filteredData.length > 0) {
+        const firstItem = filteredData[0];
+        const lastItem = filteredData[filteredData.length - 1];
+        const activeDays = filteredData.filter(d => d.xp > 0).length;
+        const consistency = Math.round((activeDays / filteredData.length) * 100);
+        
+        content += `<div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+            <h5 style="margin-bottom: 15px;">📊 Period Performance</h5>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+                <div style="background: rgba(54, 211, 153, 0.1); padding: 10px; border-radius: 8px;">
+                    <div style="font-size: 12px; color: var(--text-secondary);">Active Days</div>
+                    <div style="font-weight: 600; font-size: 18px;">${activeDays}/${filteredData.length}</div>
+                </div>
+                <div style="background: rgba(108, 99, 255, 0.1); padding: 10px; border-radius: 8px;">
+                    <div style="font-size: 12px; color: var(--text-secondary);">Consistency</div>
+                    <div style="font-weight: 600; font-size: 18px;">${consistency}%</div>
+                </div>
+                <div style="background: rgba(58, 191, 248, 0.1); padding: 10px; border-radius: 8px;">
+                    <div style="font-size: 12px; color: var(--text-secondary);">Followers Growth</div>
+                    <div style="font-weight: 600; font-size: 18px;">+${lastItem.followers - firstItem.followers}</div>
+                </div>
+                <div style="background: rgba(251, 189, 35, 0.1); padding: 10px; border-radius: 8px;">
+                    <div style="font-size: 12px; color: var(--text-secondary);">XP Gained</div>
+                    <div style="font-weight: 600; font-size: 18px;">${(lastItem.cumulativeXP - (firstItem.cumulativeXP - firstItem.xp)).toLocaleString()}</div>
+                </div>
+            </div>
+        </div>`;
+        
+        // Add streak information
+        const maxStreakInPeriod = Math.max(...filteredData.map(d => d.streakDay));
+        const streakFreezes = filteredData.filter(d => d.xp === 0 && d.streakDay > 0).length;
+        
+        content += `<div style="margin-top: 20px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+            <div style="background: rgba(248, 114, 114, 0.1); padding: 10px; border-radius: 8px;">
+                <div style="font-size: 12px; color: var(--text-secondary);">Max Streak</div>
+                <div style="font-weight: 600; font-size: 18px;">${maxStreakInPeriod} days</div>
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.1); padding: 10px; border-radius: 8px;">
+                <div style="font-size: 12px; color: var(--text-secondary);">Streak Freezes</div>
+                <div style="font-weight: 600; font-size: 18px;">${streakFreezes}</div>
+            </div>
+        </div>`;
+    }
+    
+    modalBody.innerHTML = content;
+    modal.classList.add('active');
+}
+
+// Update the updateStats function to include these new updates
+function updateStats() {
+    const filteredData = getFilteredData();
+    
+    if (filteredData.length === 0) {
+        // reset all
+        document.getElementById('totalFollowers').textContent = '0';
+        document.getElementById('followersChange').textContent = '+0';
+        document.getElementById('totalXP').textContent = '0';
+        document.getElementById('xpChange').textContent = '+0';
+        document.getElementById('activeStreak').textContent = '0';
+        document.getElementById('streakChange').textContent = '+0';
+        
+        document.getElementById('currentStreak').textContent = '0 days';
+        document.getElementById('maxStreak').textContent = '0 days';
+        document.getElementById('avgXP').textContent = '0';
+        document.getElementById('avgDailyFollowers').textContent = '0';
+        document.getElementById('bestDayXP').textContent = '0 XP';
+        document.getElementById('bestDayDate').textContent = '';
+        document.getElementById('streakFreezes').textContent = '0';
+        return;
+    }
+
+    const firstItem = filteredData[0];
+    const lastItem  = filteredData[filteredData.length - 1];
+
+    // ───── Main stats ─────
+    const followersChange = lastItem.followers - firstItem.followers;
+    const xpChange        = lastItem.cumulativeXP - (firstItem.cumulativeXP - firstItem.xp);
+
+    document.getElementById('totalFollowers').textContent = lastItem.followers.toLocaleString();
+    document.getElementById('followersChange').textContent = (followersChange >= 0 ? '+' : '') + followersChange.toLocaleString();
+    document.getElementById('followersPeriod').textContent = getPeriodLabel();
+
+    document.getElementById('totalXP').textContent = lastItem.cumulativeXP.toLocaleString();
+    document.getElementById('xpChange').textContent = (xpChange >= 0 ? '+' : '') + xpChange.toLocaleString();
+    document.getElementById('xpPeriod').textContent = getPeriodLabel();
+
+    document.getElementById('activeStreak').textContent = currentStreak;
+    document.getElementById('streakChange').textContent = '+' + currentStreak;
+    document.getElementById('streakPeriod').textContent = getPeriodLabel();
+
+    // ───── Quick stats ─────
+    const totalDays = filteredData.length;
+    const totalXPPeriod = filteredData.reduce((sum, d) => sum + d.xp, 0);
+    const avgXP = totalDays > 0 ? Math.round(totalXPPeriod / totalDays) : 0;
+
+    const totalFollowersGained = filteredData.reduce((sum, d) => sum + Math.max(0, d.followersChange), 0);
+    const avgDailyFollowers = totalDays > 0 ? Math.round(totalFollowersGained / totalDays) : 0;
+
+    // Best XP day in selected period
+    let bestXPInPeriod = 0;
+    let bestXPDate = '';
+    filteredData.forEach(item => {
+        if (item.xp > bestXPInPeriod) {
+            bestXPInPeriod = item.xp;
+            bestXPDate = new Date(item.date).toLocaleDateString('en-US', {
+                month: 'short', day: 'numeric', year: 'numeric'
+            });
+        }
+    });
+
+    document.getElementById('currentStreak').textContent = currentStreak + ' days';
+    document.getElementById('maxStreak').textContent = longestStreak + ' days';
+    document.getElementById('avgXP').textContent = avgXP.toLocaleString();
+    document.getElementById('avgDailyFollowers').textContent = avgDailyFollowers.toLocaleString();
+    document.getElementById('bestDayXP').textContent = bestXPInPeriod.toLocaleString() + ' XP';
+    document.getElementById('bestDayDate').textContent = bestXPDate ? `(${bestXPDate})` : '';
+    
+    // Update streak freezes card
+    updateStreakFreezeCard();
+    
+    // Update achievements card
+    updateAchievementsCard();
+
+    // Streak display cards
+    document.getElementById('currentStreakDisplay').textContent = currentStreak;
+    document.getElementById('longestStreakDisplay').textContent = longestStreak;
+    document.getElementById('totalActiveDays').textContent = activeDays;
+    const consistency = processedData.length > 0 ? Math.round((activeDays / processedData.length) * 100) : 0;
+    document.getElementById('consistencyScore').textContent = consistency + '%';
+
+    document.getElementById('dataCount').textContent = processedData.length;
+    document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', {
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
+}
+
+// Update the date range change event to refresh these cards
+document.querySelectorAll('.date-range-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const container = this.closest('.date-range-selector');
+        if (container) {
+            container.querySelectorAll('.date-range-btn').forEach(b => b.classList.remove('active'));
+        }
+        this.classList.add('active');
+        currentDateRange = this.dataset.range;
+        updateCharts();
+        updateTable();
+        updateStats(); // This will now update both cards
+        updateAdvancedAnalytics();
+        if (document.getElementById('heatmapTab').classList.contains('active')) {
+            generateHeatmap();
+        }
+    });
+});
+
+// Initialize the cards on page load
+window.addEventListener('DOMContentLoaded', function() {
+    // Add a small delay to ensure DOM is fully loaded
+    setTimeout(() => {
+        updateStreakFreezeCard();
+        updateAchievementsCard();
+    }, 100);
+});
+
+// Also update when switching tabs or other interactions
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        setTimeout(() => {
+            updateStreakFreezeCard();
+            updateAchievementsCard();
+        }, 100);
+    });
+});
+
+// Add CSS for modal
+const modalCSS = `
+    #achievementsModal .modal-content {
+        max-width: 500px;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+    
+    #achievementsModal .modal-body {
+        padding: 20px;
+    }
+    
+    .stat-card {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    .stat-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
+    .stat-card[title] {
+        cursor: help;
+    }
+    
+    .stat-card:nth-child(4) {
+        cursor: pointer;
+    }
+    
+    .stat-card:nth-child(4):hover .stat-icon {
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
+    }
+`;
+
+// Add the CSS to the page
+const style = document.createElement('style');
+style.textContent = modalCSS;
+document.head.appendChild(style);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ────────────────────────────────────────────────────────────────
+//                  Advanced Lightweight Table Filter
+// ────────────────────────────────────────────────────────────────
+
+const tableSearch = document.getElementById('tableSearch');
+const tableBody   = document.getElementById('tableBody');
+
+let activeFilterMode = 'all';           // all | followers | xp | streak | date | activity | status
+let lastSearchValue  = '';
+let debounceTimer    = null;
+
+const FILTER_MODES = {
+    all:       { icon: '🔍', name: 'All columns',       color: '#8b5cf6' },
+    followers: { icon: '👥', name: 'Followers / Δ',     color: '#a78bfa' },
+    xp:        { icon: '⚡', name: 'XP columns',         color: '#34d399' },
+    streak:    { icon: '🔥', name: 'Streak related',     color: '#fbbf24' },
+    date:      { icon: '📅', name: 'Date only',          color: '#60a5fa' },
+    activity:  { icon: '📊', name: 'Activity score',     color: '#f472b6' },
+    status:    { icon: '🏷️', name: 'Status column',      color: '#f87171' }
+};
+
+function showFilterHint(mode) {
+    const hint = document.createElement('div');
+    hint.textContent = `${FILTER_MODES[mode].icon} ${FILTER_MODES[mode].name}`;
+    hint.style.cssText = `
+        position: absolute;
+        top: ${tableSearch.getBoundingClientRect().top - 36}px;
+        left: ${tableSearch.getBoundingClientRect().left + 4}px;
+        background: ${FILTER_MODES[mode].color}dd;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 500;
+        pointer-events: none;
+        z-index: 999;
+        box-shadow: 0 2px 10px #0003;
+    `;
+    document.body.appendChild(hint);
+    setTimeout(() => hint.remove(), 1400);
+}
+
+function cycleFilterMode() {
+    const keys = Object.keys(FILTER_MODES);
+    let idx = keys.indexOf(activeFilterMode);
+    idx = (idx + 1) % keys.length;
+    activeFilterMode = keys[idx];
+    showFilterHint(activeFilterMode);
+    filterTable(tableSearch.value);
+}
+
+function parseQuickFilters(value) {
+    const parts = value.trim().split(/\s+/);
+    let query = '';
+    let since = null;
+    let until = null;
+    let exclude = [];
+
+    for (let token of parts) {
+        if (token.startsWith('since:')) {
+            since = token.slice(6).trim();
+        } else if (token.startsWith('until:')) {
+            until = token.slice(6).trim();
+        } else if (token.startsWith('-')) {
+            exclude.push(token.slice(1).toLowerCase());
+        } else {
+            query += token + ' ';
+        }
+    }
+
+    return { query: query.trim().toLowerCase(), since, until, exclude };
+}
+
+function matchesDateRange(dateStr, since, until) {
+    if (!dateStr) return true;
+    const d = new Date(dateStr);
+    if (isNaN(d)) return true;
+
+    if (since) {
+        const s = new Date(since);
+        if (!isNaN(s) && d < s) return false;
+    }
+    if (until) {
+        const u = new Date(until);
+        if (!isNaN(u) && d > u) return false;
+    }
+    return true;
+}
+
+function filterTable(searchTerm) {
+    if (debounceTimer) clearTimeout(debounceTimer);
+
+    debounceTimer = setTimeout(() => {
+        const term = searchTerm.trim().toLowerCase();
+        if (term === lastSearchValue) return;
+        lastSearchValue = term;
+
+        const { query, since, until, exclude } = parseQuickFilters(term);
+        const rows = Array.from(tableBody.querySelectorAll('tr'));
+
+        let visibleCount = 0;
+
+        rows.forEach(row => {
+            if (row.cells.length < 8) {
+                row.style.display = '';
+                return;
+            }
+
+            const cells = row.cells;
+            const texts = [
+                cells[0].textContent.toLowerCase(),               // date
+                cells[1].textContent.replace(/[^0-9-]/g,''),      // followers
+                cells[2].textContent.replace(/[^0-9-]/g,''),      // Δ followers
+                cells[3].textContent.replace(/[^0-9]/g,''),       // daily xp
+                cells[4].textContent.replace(/[^0-9]/g,''),       // total xp
+                cells[5].textContent,                             // streak day
+                cells[6].textContent.toLowerCase(),               // status
+                cells[7].textContent                              // activity score
+            ];
+
+            let match = false;
+
+            if (query === '') {
+                match = true; // empty search → show all
+            } else {
+                switch (activeFilterMode) {
+                    case 'followers':
+                        match = texts[1].includes(query) || texts[2].includes(query);
+                        break;
+                    case 'xp':
+                        match = texts[3].includes(query) || texts[4].includes(query);
+                        break;
+                    case 'streak':
+                        match = texts[5].includes(query) || texts[6].includes('streak');
+                        break;
+                    case 'date':
+                        match = texts[0].includes(query);
+                        break;
+                    case 'activity':
+                        match = texts[7].includes(query);
+                        break;
+                    case 'status':
+                        match = texts[6].includes(query);
+                        break;
+                    default: // 'all'
+                        match = texts.some(t => t.includes(query));
+                }
+            }
+
+            // Date range filters
+            if (match && (since || until)) {
+                match = matchesDateRange(cells[0].textContent, since, until);
+            }
+
+            // Negative filters (-term)
+            if (match && exclude.length > 0) {
+                match = !exclude.some(ex => texts.some(t => t.includes(ex)));
+            }
+
+            row.style.display = match ? '' : 'none';
+            row.style.backgroundColor = match && query ? 'rgba(108,99,255,0.08)' : '';
+
+            if (match) visibleCount++;
+        });
+
+        // Show "no results" message if needed
+        let noResults = document.getElementById('no-results-row');
+        if (!noResults && visibleCount === 0 && query) {
+            noResults = document.createElement('tr');
+            noResults.id = 'no-results-row';
+            noResults.innerHTML = `<td colspan="8" style="text-align:center; padding:40px 20px; color:var(--text-secondary);">
+                No matching records for <strong>${query}</strong> (filter: ${FILTER_MODES[activeFilterMode].name})
+            </td>`;
+            tableBody.appendChild(noResults);
+        } else if (noResults && visibleCount > 0) {
+            noResults.remove();
+        }
+
+    }, 180);   // ← small debounce
+}
+
+// ─── Event listeners ───────────────────────────────────────────────
+
+tableSearch.addEventListener('input', e => {
+    filterTable(e.target.value);
+});
+
+tableSearch.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        tableSearch.value = '';
+        filterTable('');
+        activeFilterMode = 'all';
+        showFilterHint('all');
+    }
+    else if (e.key === 'Enter') {
+        e.preventDefault();
+        cycleFilterMode();
+    }
+});
+
+// Optional: small clickable filter badges above the table
+function createFilterBadges() {
+    const container = document.createElement('div');
+    container.style.cssText = 'display:flex; gap:8px; flex-wrap:wrap; margin:12px 0 8px; font-size:13px;';
+
+    Object.entries(FILTER_MODES).forEach(([key, data]) => {
+        const badge = document.createElement('div');
+        badge.textContent = `${data.icon} ${key}`;
+        badge.style.cssText = `
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: ${activeFilterMode === key ? data.color + '33' : 'rgba(255,255,255,0.08)'};
+            border: 1px solid ${activeFilterMode === key ? data.color : 'transparent'};
+            color: ${activeFilterMode === key ? data.color : 'var(--text-secondary)'};
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.13s;
+        `;
+        badge.addEventListener('click', () => {
+            activeFilterMode = key;
+            showFilterHint(key);
+            filterTable(tableSearch.value);
+
+            // visual feedback
+            container.querySelectorAll('div').forEach(b => {
+                b.style.background = 'rgba(255,255,255,0.08)';
+                b.style.borderColor = 'transparent';
+                b.style.color = 'var(--text-secondary)';
+            });
+            badge.style.background = data.color + '33';
+            badge.style.borderColor = data.color;
+            badge.style.color = data.color;
+        });
+        container.appendChild(badge);
+    });
+
+    const searchContainer = document.querySelector('.table-search');
+    if (searchContainer && !document.getElementById('filter-badges')) {
+        container.id = 'filter-badges';
+        searchContainer.parentNode.insertBefore(container, searchContainer.nextSibling);
+    }
+}
+
+// Call once after table is ready
+setTimeout(createFilterBadges, 800);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ============================================================================
+//   Multi-month selection for Heatmap — newest first + better All toggle
+// ============================================================================
+
+let selectedMonths = new Set();
+
+function updateMonthButtons() {
+    document.querySelectorAll('.month-btn').forEach(btn => {
+        const key = btn.dataset.monthKey;
+        if (key) {
+            btn.classList.toggle('active', selectedMonths.has(key));
+        }
+    });
+
+    // Special styling for "All" button
+    const allBtn = document.querySelector('.month-btn[data-all="true"]');
+    if (allBtn) {
+        allBtn.classList.toggle('active', selectedMonths.size === document.querySelectorAll('.month-btn[data-month-key]').length);
+    }
+}
+
+function renderSelectedMonthsHeatmap() {
+    const container = document.getElementById('heatmapDisplay');
+    container.innerHTML = '';
+
+    if (selectedMonths.size === 0) {
+        container.innerHTML = '<p style="text-align:center; padding:60px; color:var(--text-secondary); font-size:1.1rem;">Select one or more months</p>';
+        return;
+    }
+
+    // We sort displayed months newest → oldest
+    const sortedSelected = [...selectedMonths].sort((a,b) => {
+        return new Date(b + '-01') - new Date(a + '-01');
+    });
+
+    sortedSelected.forEach(monthKey => {
+        const monthItems = processedData.filter(d => d.monthYear === monthKey);
+        if (monthItems.length === 0) return;
+
+        const sample = monthItems[0];
+        let monthDiv = document.getElementById(`month-${monthKey.replace(/\s+/g,'-')}`);
+
+        if (!monthDiv) {
+            monthDiv = createMonthHeatmap(sample.monthName, sample.year, monthItems);
+            monthDiv.id = `month-${monthKey.replace(/\s+/g,'-')}`;
+        }
+
+        container.appendChild(monthDiv);
+    });
+}
+
+function generateHeatmap() {
+    const monthFilter = document.getElementById('monthFilter');
+    monthFilter.innerHTML = '';
+
+    // ─── All Months toggle button ─────────────────────────────────────
+    const allBtn = document.createElement('button');
+    allBtn.className = 'month-btn';
+    allBtn.textContent = 'All Months';
+    allBtn.dataset.all = 'true';
+    allBtn.addEventListener('click', () => {
+        const allKeys = [...document.querySelectorAll('.month-btn[data-month-key]')]
+            .map(btn => btn.dataset.monthKey);
+
+        if (selectedMonths.size === allKeys.length) {
+            // deselect everything
+            selectedMonths.clear();
+        } else {
+            // select everything
+            allKeys.forEach(k => selectedMonths.add(k));
+        }
+
+        updateMonthButtons();
+        renderSelectedMonthsHeatmap();
+    });
+    monthFilter.appendChild(allBtn);
+
+    // ─── Individual month buttons — newest first ──────────────────────
+    const uniqueMonths = [...new Set(processedData.map(d => d.monthYear))]
+        .sort((a,b) => new Date(b + '-01') - new Date(a + '-01'));   // newest → oldest
+
+    uniqueMonths.forEach(m => {
+        const btn = document.createElement('button');
+        btn.className = 'month-btn';
+        btn.textContent = m;
+        btn.dataset.monthKey = m;
+
+        btn.addEventListener('click', () => {
+            if (selectedMonths.has(m)) {
+                selectedMonths.delete(m);
+            } else {
+                selectedMonths.add(m);
+            }
+            updateMonthButtons();
+            renderSelectedMonthsHeatmap();
+        });
+
+        monthFilter.appendChild(btn);
+    });
+
+    // Default: show last 3 months (if available)
+    if (uniqueMonths.length > 0) {
+        const howManyDefault = Math.min(3, uniqueMonths.length);
+        uniqueMonths.slice(0, howManyDefault).forEach(m => selectedMonths.add(m));
+        updateMonthButtons();
+        renderSelectedMonthsHeatmap();
+    }
+
+    generateHeatmapLegend();
+}
+
+
+
+
+
+
+
+
+
+
+
+// ────────────────────────────────────────────────────────────────
+// Global filter & view state
+// ────────────────────────────────────────────────────────────────
+ 
+let currentTableMonth    = null;        // "2025-03", "2024-11", etc.
+let tableSortColumn      = 'date';
+let tableSortDirection   = 'desc';      // or 'asc'
+
+// ────────────────────────────────────────────────────────────────
+// 1. Get filtered & sorted data
+// ────────────────────────────────────────────────────────────────
+function getFilteredAndSortedTableData() {
+    let data = [...processedData];
+
+    // A. Quick preset or custom date range
+    if (dateRangeFilter.min || dateRangeFilter.max) {
+        data = data.filter(item => {
+            const d = new Date(item.date);
+            if (dateRangeFilter.min && d < dateRangeFilter.min) return false;
+            if (dateRangeFilter.max && d > dateRangeFilter.max) return false;
+            return true;
+        });
+    }
+
+    // B. Numeric filters
+    data = data.filter(item => 
+           item.xp          >= numericFilters.minXP
+        && item.xp          <= numericFilters.maxXP
+        && item.followersChange >= numericFilters.minDeltaF
+        && item.followersChange <= numericFilters.maxDeltaF
+    );
+
+    // C. Text search
+    if (tableSearchTerm.trim()) {
+        const term = tableSearchTerm.toLowerCase();
+        data = data.filter(item =>
+            item.date.toLowerCase().includes(term) ||
+            String(item.followers).includes(term) ||
+            String(item.followersChange).includes(term) ||
+            String(item.xp).includes(term) ||
+            String(item.cumulativeXP).includes(term) ||
+            String(item.streakDay).includes(term) ||
+            item.status.toLowerCase().includes(term) ||
+            String(item.activityScore).includes(term)
+        );
+    }
+
+    // D. Monthly view filter (overrides date range when active)
+    if (currentTableMonth) {
+        data = data.filter(item => item.monthYear === currentTableMonth);
+    }
+
+    // E. Sorting
+    data.sort((a, b) => {
+        let va, vb;
+
+        switch (tableSortColumn) {
+            case 'date':           va = new Date(a.date); vb = new Date(b.date); break;
+            case 'followers':      va = a.followers;      vb = b.followers;      break;
+            case 'followersChange':va = a.followersChange;vb = b.followersChange;break;
+            case 'xp':             va = a.xp;             vb = b.xp;             break;
+            case 'cumulativeXP':   va = a.cumulativeXP;   vb = b.cumulativeXP;   break;
+            case 'streakDay':      va = a.streakDay;      vb = b.streakDay;      break;
+            case 'activityScore':  va = a.activityScore;  vb = b.activityScore;  break;
+            case 'status':
+                const order = { excellent:5, high:4, medium:3, low:2, streak_freeze:1 };
+                va = order[a.status] || 0;
+                vb = order[b.status] || 0;
+                break;
+            default: return 0;
+        }
+
+        if (tableSortDirection === 'asc') {
+            return va > vb ? 1 : va < vb ? -1 : 0;
+        } else {
+            return va < vb ? 1 : va > vb ? -1 : 0;
+        }
+    });
+
+    return data;
+}
+
+// ────────────────────────────────────────────────────────────────
+// 2. Render the table body
+// ────────────────────────────────────────────────────────────────
+function renderTableRows() {
+    const data = getFilteredAndSortedTableData();
+    const tbody = document.getElementById('tableBody');
+    tbody.innerHTML = '';
+
+    if (data.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" class="text-center py-12 text-slate-400">
+            No matching records found
+        </td></tr>`;
+        document.getElementById('rowCountDisplay').textContent = '0';
+        return;
+    }
+
+    data.forEach(item => {
+        const dateObj = new Date(item.date);
+        const niceDate = dateObj.toLocaleDateString('en-US', {
+            weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'
+        });
+
+        let statusHTML = '';
+        switch(item.status) {
+            case 'streak_freeze': statusHTML = '<span class="trend-indicator trend-neutral">Freeze</span>'; break;
+            case 'low':           statusHTML = '<span class="trend-indicator trend-neutral">Low</span>';    break;
+            case 'medium':        statusHTML = '<span class="trend-indicator trend-up">Medium</span>';     break;
+            case 'high':          statusHTML = '<span class="trend-indicator trend-up">High</span>';       break;
+            case 'excellent':     statusHTML = '<span class="trend-indicator trend-up pulse">Excellent</span>'; break;
+        }
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${niceDate}</td>
+            <td class="font-medium">${item.followers.toLocaleString()}</td>
+            <td class="${item.followersChange >= 0 ? 'text-green-400' : 'text-red-400'}">
+                ${item.followersChange >= 0 ? '+' : ''}${item.followersChange.toLocaleString()}
+            </td>
+            <td><span class="data-point-highlight">${item.xp.toLocaleString()}</span></td>
+            <td><span class="data-point-highlight">${item.cumulativeXP.toLocaleString()}</span></td>
+            <td>${item.streakDay}</td>
+            <td>${statusHTML}</td>
+            <td>${item.activityScore}/100</td>
+        `;
+        tbody.appendChild(row);
+    });
+
+    document.getElementById('rowCountDisplay').textContent = data.length;
+}
+
+// ────────────────────────────────────────────────────────────────
+// 3. Main update function (call this after any filter change)
+// ────────────────────────────────────────────────────────────────
+function updateTable() {
+    renderTableRows();
+
+    // Update header text
+    let displayText = "All time data";
+
+    if (currentTableMonth) {
+        displayText = `Month: ${currentTableMonth}`;
+    } else if (dateRangeFilter.min || dateRangeFilter.max) {
+        let parts = [];
+        if (dateRangeFilter.min) parts.push(`from ${dateRangeFilter.min.toLocaleDateString()}`);
+        if (dateRangeFilter.max) parts.push(`to ${dateRangeFilter.max.toLocaleDateString()}`);
+        displayText = parts.join(" ");
+    } else if (activeQuickPreset !== 'all') {
+        displayText = `Last ${activeQuickPreset} days`;
+    }
+
+    document.getElementById('currentMonthDisplay').textContent = displayText;
+}
+
+// ────────────────────────────────────────────────────────────────
+// 4. Quick preset buttons
+// ────────────────────────────────────────────────────────────────
+document.querySelectorAll('.range-preset-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.range-preset-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        activeQuickPreset = btn.dataset.days;
+
+        if (activeQuickPreset === 'all') {
+            dateRangeFilter = { min: null, max: null };
+        } else {
+            const end   = new Date();
+            const start = new Date();
+            start.setDate(end.getDate() - parseInt(activeQuickPreset));
+            dateRangeFilter = { min: start, max: end };
+        }
+
+        // Reset month view when using quick/custom range
+        currentTableMonth = null;
+
+        updateTable();
+    });
+});
+
+// ────────────────────────────────────────────────────────────────
+// 5. Custom date range + clear
+// ────────────────────────────────────────────────────────────────
+document.getElementById('applyDateRangeBtn')?.addEventListener('click', () => {
+    const minStr = document.getElementById('minDateFilter').value;
+    const maxStr = document.getElementById('maxDateFilter').value;
+
+    dateRangeFilter.min = minStr ? new Date(minStr) : null;
+    dateRangeFilter.max = maxStr ? new Date(maxStr)   : null;
+
+    // deactivate quick presets when custom range is used
+    document.querySelectorAll('.range-preset-btn').forEach(b => b.classList.remove('active'));
+
+    currentTableMonth = null; // exit month view
+    updateTable();
+});
+
+document.getElementById('clearDateRangeBtn')?.addEventListener('click', () => {
+    dateRangeFilter = { min: null, max: null };
+    document.getElementById('minDateFilter').value = '';
+    document.getElementById('maxDateFilter').value = '';
+    document.querySelector('[data-days="all"]').classList.add('active');
+    activeQuickPreset = 'all';
+    updateTable();
+});
+
+// ────────────────────────────────────────────────────────────────
+// 6. Numeric filters
+// ────────────────────────────────────────────────────────────────
+document.getElementById('applyNumericFilters')?.addEventListener('click', () => {
+    numericFilters.minXP     = parseFloat(document.getElementById('minXP')?.value)                || -Infinity;
+    numericFilters.maxXP     = parseFloat(document.getElementById('maxXP')?.value)                || Infinity;
+    numericFilters.minDeltaF = parseFloat(document.getElementById('minFollowersGained')?.value)   || -Infinity;
+    numericFilters.maxDeltaF = parseFloat(document.getElementById('maxFollowersGained')?.value)   || Infinity;
+
+    updateTable();
+});
+
+// ────────────────────────────────────────────────────────────────
+// 7. Text search
+// ────────────────────────────────────────────────────────────────
+document.getElementById('tableSearch')?.addEventListener('input', e => {
+    tableSearchTerm = e.target.value;
+    updateTable();
+});
+
+// ────────────────────────────────────────────────────────────────
+// 8. Sorting headers
+// ────────────────────────────────────────────────────────────────
+document.querySelectorAll('#dataTable th[data-sort]').forEach(th => {
+    th.addEventListener('click', () => {
+        const col = th.dataset.sort;
+
+        if (tableSortColumn === col) {
+            tableSortDirection = tableSortDirection === 'desc' ? 'asc' : 'desc';
+        } else {
+            tableSortColumn = col;
+            tableSortDirection = 'desc';   // most columns want newest first
+        }
+
+        // visual feedback
+        document.querySelectorAll('#dataTable th').forEach(h => {
+            h.classList.remove('sorted-asc','sorted-desc');
+        });
+        th.classList.add(tableSortDirection === 'asc' ? 'sorted-asc' : 'sorted-desc');
+
+        updateTable();
+    });
+});
+
+// ────────────────────────────────────────────────────────────────
+// 9. Month selector + prev/next buttons
+// ────────────────────────────────────────────────────────────────
+function populateMonthSelector() {
+    const select = document.createElement('select');
+    select.className = 'chart-type-btn px-4 py-2 min-w-[160px]';
+
+    const latestOpt = document.createElement('option');
+    latestOpt.value = 'latest';
+    latestOpt.textContent = '→ Latest Month';
+    select.appendChild(latestOpt);
+
+    const months = [...new Set(processedData.map(d => d.monthYear))]
+        .sort((a,b) => new Date(b+'-01') - new Date(a+'-01'));
+
+    months.forEach(m => {
+        const opt = document.createElement('option');
+        opt.value = m;
+        opt.textContent = m;
+        select.appendChild(opt);
+    });
+
+    select.addEventListener('change', () => {
+        if (select.value === 'latest') {
+            currentTableMonth = months[0] || null;
+        } else {
+            currentTableMonth = select.value;
+        }
+        updateTable();
+    });
+
+    const container = document.getElementById('tableMonthSelector');
+    if (container) {
+        container.innerHTML = '';
+        container.appendChild(select);
+
+        // default → latest month
+        if (months.length > 0) {
+            currentTableMonth = months[0];
+            select.value = 'latest';
+        }
+    }
+}
+
+document.getElementById('prevMonthBtn')?.addEventListener('click', () => {
+    const months = [...new Set(processedData.map(d => d.monthYear))]
+        .sort((a,b) => new Date(b+'-01') - new Date(a+'-01'));
+    const idx = months.indexOf(currentTableMonth);
+    if (idx < months.length - 1) {
+        currentTableMonth = months[idx + 1];
+        updateTable();
+    }
+});
+
+document.getElementById('nextMonthBtn')?.addEventListener('click', () => {
+    const months = [...new Set(processedData.map(d => d.monthYear))]
+        .sort((a,b) => new Date(b+'-01') - new Date(a+'-01'));
+    const idx = months.indexOf(currentTableMonth);
+    if (idx > 0) {
+        currentTableMonth = months[idx - 1];
+        updateTable();
+    }
+});
+
+// ────────────────────────────────────────────────────────────────
+// Initialization (call once)
+// ────────────────────────────────────────────────────────────────
+function initTableModule() {
+    populateMonthSelector();
+    updateTable();
+
+    // Optional: reset numeric inputs on page load
+    ['minXP','maxXP','minFollowersGained','maxFollowersGained'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = '';
+    });
+}
+
+// Run after DOM is ready (or after your existing init())
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(initTableModule, 300);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ============================================================================
+// Enhanced Zoom + Pan with Reliable Double-Tap/Click Reset
+// ============================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        const canvases = document.querySelectorAll('canvas');
+        
+        canvases.forEach(canvas => {
+            const chart = Chart.getChart(canvas);
+            if (!chart) return;
+            
+            // Configure zoom plugin
+            if (!chart.options.plugins) chart.options.plugins = {};
+            
+            chart.options.plugins.zoom = {
+                zoom: {
+                    wheel: {
+                        enabled: true,
+                        speed: 0.1,
+                    },
+                    pinch: {
+                        enabled: true
+                    },
+                    mode: 'xy',
+                    drag: {
+                        enabled: true,
+                        backgroundColor: 'rgba(108, 99, 255, 0.18)',
+                        borderColor: 'rgba(108, 99, 255, 0.75)',
+                        borderWidth: 2,
+                        modifierKey: null,
+                        threshold: 10
+                    },
+                    onZoomComplete: function({ chart }) {
+                        // Save zoom state
+                        chart._isZoomed = true;
+                    },
+                    onZoomStart: function({ chart }) {
+                        // Mark as zooming
+                        chart._isZooming = true;
+                    },
+                    onZoom: function({ chart }) {
+                        chart._isZooming = false;
+                    }
+                },
+                pan: {
+                    enabled: true,
+                    mode: 'xy',
+                    speed: 10,
+                    threshold: 10,
+                    modifierKey: null
+                },
+                limits: {
+                    x: { min: 'original', max: 'original' },
+                    y: { min: 'original', max: 'original' }
+                }
+            };
+            
+            // Add reset button to zoom plugin
+            chart.options.plugins.zoom.zoom.reset = {
+                display: true,
+                text: '⟲ Reset View',
+                color: '#6C63FF',
+                backgroundColor: 'rgba(108,99,255,0.2)',
+                borderColor: 'rgba(108,99,255,0.5)',
+                borderWidth: 1,
+                borderRadius: 6,
+                font: { size: 12 },
+                padding: { x: 8, y: 4 }
+            };
+            
+            // Initialize zoom state
+            chart._isZoomed = false;
+            chart._lastTapTime = 0;
+            chart._tapCount = 0;
+            chart._tapTimeout = null;
+            
+            // Custom reset function
+            chart.resetZoomView = function() {
+                if (chart.resetZoom) {
+                    chart.resetZoom();
+                }
+                
+                // Also reset any manual scale adjustments
+                if (chart.scales) {
+                    Object.values(chart.scales).forEach(scale => {
+                        if (scale.options && scale.options.min !== undefined) {
+                            scale.options.min = undefined;
+                        }
+                        if (scale.options && scale.options.max !== undefined) {
+                            scale.options.max = undefined;
+                        }
+                    });
+                }
+                
+                chart.update('none');
+                chart._isZoomed = false;
+                
+                // Visual feedback
+                canvas.style.boxShadow = '0 0 0 2px rgba(108, 99, 255, 0.7)';
+                setTimeout(() => {
+                    canvas.style.boxShadow = 'none';
+                }, 300);
+            };
+            
+            // Enhanced double-tap detection
+            const handleDoubleTap = (e) => {
+                const now = Date.now();
+                const isDoubleTap = (now - chart._lastTapTime) < 500; // 500ms threshold
+                
+                clearTimeout(chart._tapTimeout);
+                
+                if (isDoubleTap) {
+                    // Reset zoom
+                    chart.resetZoomView();
+                    
+                    // Prevent default behaviors
+                    if (e.cancelable) {
+                        e.preventDefault();
+                    }
+                    
+                    // Reset tap state
+                    chart._tapCount = 0;
+                    chart._lastTapTime = 0;
+                    
+                    // Show visual confirmation
+                    showResetToast(canvas);
+                } else {
+                    chart._tapCount = 1;
+                    chart._lastTapTime = now;
+                    
+                    // Single tap - reset after timeout
+                    chart._tapTimeout = setTimeout(() => {
+                        chart._tapCount = 0;
+                        chart._lastTapTime = 0;
+                    }, 500);
+                }
+            };
+            
+            // Touch events for mobile
+            canvas.addEventListener('touchend', (e) => {
+                // Only handle single-finger taps
+                if (e.touches.length === 0 && e.changedTouches.length === 1) {
+                    handleDoubleTap(e);
+                }
+            }, { passive: false });
+            
+            // Mouse double-click for desktop
+            canvas.addEventListener('dblclick', (e) => {
+                chart.resetZoomView();
+                if (e.cancelable) {
+                    e.preventDefault();
+                }
+                showResetToast(canvas);
+            });
+            
+            // Also allow Ctrl/Cmd + double-click for reset
+            canvas.addEventListener('click', (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.detail === 1) {
+                    chart.resetZoomView();
+                    showResetToast(canvas);
+                }
+            });
+            
+            // Add keyboard shortcut: R to reset
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'r' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+                    const activeElement = document.activeElement;
+                    if (!activeElement || 
+                        (activeElement.tagName !== 'INPUT' && 
+                         activeElement.tagName !== 'TEXTAREA')) {
+                        chart.resetZoomView();
+                        showResetToast(canvas);
+                    }
+                }
+            });
+            
+            // Update chart
+            chart.update('none');
+        });
+        
+        console.log("Enhanced zoom/pan with reliable double-tap reset initialized ✓");
+        
+    }, 1000);
+});
+
+// Helper function to show reset confirmation
+function showResetToast(canvas) {
+    // Create toast element
+    const toast = document.createElement('div');
+    toast.textContent = '✓ View reset to full size';
+    toast.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: rgba(108, 99, 255, 0.9);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        z-index: 10000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        animation: fadeInOut 2s ease;
+        pointer-events: none;
+    `;
+    
+    // Add animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateY(10px); }
+            10% { opacity: 1; transform: translateY(0); }
+            90% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-10px); }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    document.body.appendChild(toast);
+    
+    // Remove after animation
+    setTimeout(() => {
+        if (toast.parentNode) {
+            document.body.removeChild(toast);
+        }
+    }, 2000);
+}
+
+// Alternative: Simple and reliable double-tap function
+function setupChartDoubleTapReset(chart) {
+    let lastTap = 0;
+    let tapCount = 0;
+    let tapTimer = null;
+    
+    const canvas = chart.canvas;
+    
+    const resetChartZoom = () => {
+        // Method 1: Use chart.js resetZoom if available
+        if (chart.resetZoom) {
+            chart.resetZoom();
+        }
+        
+        // Method 2: Manually reset scales
+        if (chart.scales) {
+            Object.values(chart.scales).forEach(scale => {
+                // Reset to original range
+                if (scale.id === 'x' || scale.id === 'y' || scale.id === 'y1') {
+                    const originalRange = getOriginalScaleRange(scale);
+                    if (originalRange) {
+                        scale.options.min = originalRange.min;
+                        scale.options.max = originalRange.max;
+                    } else {
+                        // Fallback: set to undefined for auto scaling
+                        scale.options.min = undefined;
+                        scale.options.max = undefined;
+                    }
+                }
+            });
+        }
+        
+        // Update chart
+        chart.update('none');
+        
+        // Visual feedback
+        canvas.style.transition = 'box-shadow 0.3s ease';
+        canvas.style.boxShadow = '0 0 0 3px rgba(52, 199, 89, 0.5)';
+        setTimeout(() => {
+            canvas.style.boxShadow = '';
+        }, 500);
+    };
+    
+    const handleTap = () => {
+        const now = Date.now();
+        const timeDiff = now - lastTap;
+        
+        clearTimeout(tapTimer);
+        
+        if (timeDiff < 300 && timeDiff > 0) {
+            // Double tap detected
+            resetChartZoom();
+            tapCount = 0;
+        } else {
+            tapCount = 1;
+            lastTap = now;
+            
+            // Reset tap count after delay
+            tapTimer = setTimeout(() => {
+                tapCount = 0;
+            }, 300);
+        }
+    };
+    
+    // Touch events
+    canvas.addEventListener('touchend', (e) => {
+        if (e.touches.length === 0) {
+            handleTap();
+        }
+    });
+    
+    // Click events
+    canvas.addEventListener('click', (e) => {
+        if (e.detail === 2) {
+            resetChartZoom();
+        }
+    });
+    
+    // Also support keyboard shortcut
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && chart._isZoomed) {
+            resetChartZoom();
+        }
+    });
+}
+
+// Helper to get original scale range (you might need to store this when chart is created)
+function getOriginalScaleRange(scale) {
+    if (!scale._originalRange) {
+        scale._originalRange = {
+            min: scale.min,
+            max: scale.max
+        };
+    }
+    return scale._originalRange;
+}
+
+// Initialize for all charts
+function initializeAllChartResets() {
+    Chart.instances.forEach(chart => {
+        setupChartDoubleTapReset(chart);
+        
+        // Store original data ranges
+        if (chart.scales) {
+            Object.values(chart.scales).forEach(scale => {
+                if (!scale._originalRange) {
+                    scale._originalRange = {
+                        min: scale.min,
+                        max: scale.max
+                    };
+                }
+            });
+        }
+    });
+}
+
+// Run initialization
+setTimeout(initializeAllChartResets, 1500);
+
+// Also initialize when new charts are created
+const originalChartConstructor = Chart.prototype.constructor;
+Chart.prototype.constructor = function(...args) {
+    const instance = new originalChartConstructor(...args);
+    setTimeout(() => setupChartDoubleTapReset(instance), 100);
+    return instance;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ============================================================================
+// Enhanced Day History Search with Streak Support
+// ============================================================================
+
+// 1. Create UI elements with improved placeholder
+function createDayHistorySearchUI() {
+    const headerControls = document.querySelector('.header-controls');
+    if (!headerControls) return;
+
+    const wrapper = document.createElement('div');
+    wrapper.style.cssText = `
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--card-bg);
+        padding: 6px 12px;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+        backdrop-filter: blur(10px);
+    `;
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.id = 'dayHistorySearch';
+    input.placeholder = 'Day (22 Jan) or streak 700 or 2025-01-22';
+    input.style.cssText = `
+        width: 260px;
+        padding: 8px 12px;
+        border: none;
+        background: transparent;
+        color: var(--text-color);
+        font-size: 14px;
+        outline: none;
+    `;
+
+    const btn = document.createElement('button');
+    btn.innerHTML = '<i class="fas fa-calendar-day"></i> Search';
+    btn.className = 'chart-type-btn';
+    btn.style.padding = '8px 16px';
+
+    wrapper.appendChild(input);
+    wrapper.appendChild(btn);
+
+    // Insert after date-range-selector
+    const dateRange = document.querySelector('.date-range-selector');
+    if (dateRange) {
+        dateRange.insertAdjacentElement('afterend', wrapper);
+    } else {
+        headerControls.insertBefore(wrapper, headerControls.firstChild);
+    }
+
+    // Events
+    const triggerSearch = () => searchDayOrStreak(input.value.trim());
+    btn.addEventListener('click', triggerSearch);
+    input.addEventListener('keypress', e => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            triggerSearch();
+        }
+    });
+}
+
+// 2. Unified search for both day history AND streak searches
+function searchDayOrStreak(query) {
+    if (!query) return;
+    query = query.trim().toLowerCase();
+
+    let streakNum = null;
+    let dayNum = null;
+    let isExplicitStreak = false;
+
+    // ─── Parse input ───────────────────────────────────────────────
+    if (query.startsWith('streak')) {
+        isExplicitStreak = true;
+        streakNum = parseInt(query.replace(/streak/i, '').trim(), 10);
+    } else if (/^\d{1,4}$/.test(query)) {
+        const num = parseInt(query, 10);
+        // Small numbers (1–31) → check both streak and day-of-month
+        // Larger numbers → treat as streak only
+        if (num >= 1) {
+            streakNum = num;
+            if (num <= 31) {
+                dayNum = num;
+            }
+        }
+    } else {
+        // Try to parse as date-like (your existing logic can stay here)
+        // For simplicity, we'll skip advanced date parsing in this rewrite
+        showToast("Try a number, 'streak 700', or date like '22 Jan'", "info");
+        return;
+    }
+
+    if (streakNum === null && dayNum === null) {
+        showToast("Invalid format — try a number or 'streak N'", "warning");
+        return;
+    }
+
+    // ─── Collect matches ───────────────────────────────────────────
+    let streakMatches = [];
+    if (streakNum !== null) {
+        streakMatches = processedData.filter(item => item.streakDay === streakNum);
+    }
+
+    let dayMatches = [];
+    if (dayNum !== null) {
+        dayMatches = processedData.filter(item => {
+            const d = new Date(item.date);
+            return d.getDate() === dayNum;
+        });
+    }
+
+    // ─── Decide display strategy ───────────────────────────────────
+    let results = [];
+    let title = "";
+    let subtitle = "";
+
+    if (isExplicitStreak || (streakMatches.length > 0 && dayMatches.length === 0)) {
+        // Explicit streak request OR only streak results exist
+        results = streakMatches;
+        title = `Days with ${streakNum}-day streak`;
+        subtitle = `${results.length} matching day${results.length !== 1 ? 's' : ''}`;
+    } 
+    else if (dayMatches.length > 0 && streakMatches.length === 0) {
+        // Only day-of-month matches
+        results = dayMatches;
+        title = `All recorded ${dayNum}${getOrdinalSuffix(dayNum)}s`;
+        subtitle = `${results.length} matching day${results.length !== 1 ? 's' : ''}`;
+    } 
+    else if (streakMatches.length > 0 && dayMatches.length > 0) {
+        // Both exist → group them
+        results = [
+            ...streakMatches.map(r => ({ ...r, group: 'streak', groupLabel: `Streak of ${streakNum} days` })),
+            ...dayMatches.map(r => ({ ...r, group: 'day', groupLabel: `Day ${dayNum} of the month` }))
+        ];
+        title = `Results for “${query}”`;
+        subtitle = `${streakMatches.length} × streak ${streakNum}   •   ${dayMatches.length} × ${dayNum}${getOrdinalSuffix(dayNum)}`;
+    } 
+    else {
+        showToast(`No matches found for "${query}"`, "info");
+        return;
+    }
+
+    // Sort newest → oldest
+    results.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // Show in modal
+    showDayHistoryModal(results, title, subtitle);
+}
+
+// Small helper for nice suffixes (1st, 2nd, 3rd, 4th...)
+function getOrdinalSuffix(n) {
+    const s = ['th', 'st', 'nd', 'rd'];
+    const v = n % 100;
+    return s[(v - 20) % 10] || s[v] || s[0];
+}
+// 3. Month name ↔ number helpers
+function monthToNumber(str) {
+    if (!str) return null;
+    const map = {
+        'jan':1, 'feb':2, 'mar':3, 'apr':4, 'may':5, 'jun':6,
+        'jul':7, 'aug':8, 'sep':9, 'oct':10,'nov':11,'dec':12,
+        'january':1, 'february':2, 'march':3, 'april':4, 'may':5, 'june':6,
+        'july':7, 'august':8, 'september':9, 'october':10,'november':11,'december':12
+    };
+    return map[str.toLowerCase().slice(0,3)] || null;
+}
+
+function numberToMonth(n) {
+    const months = ["","January","February","March","April","May","June",
+                    "July","August","September","October","November","December"];
+    return months[n] || "";
+}
+
+
+// 4. Show modal with search results
+function showDayHistoryModal(records, titleText, isStreak = false) {
+    let modal = document.getElementById('day-history-modal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'day-history-modal';
+        modal.className = 'modal';
+        modal.innerHTML = `
+            <div class="modal-content" style="max-width: 820px; width: 92%;">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="history-modal-title"></h3>
+                    <button class="modal-close">×</button>
+                </div>
+                <div class="modal-body" style="padding:0;">
+                    <div class="table-container" style="margin:0; border:none;">
+                        <table class="data-table" style="margin:0;">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Followers</th>
+                                    <th>ΔF</th>
+                                    <th>XP</th>
+                                    <th>Total XP</th>
+                                    <th>Streak</th>
+                                    <th>Activity</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history-tbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        modal.querySelector('.modal-close').onclick = () => modal.classList.remove('active');
+        modal.onclick = e => { if (e.target === modal) modal.classList.remove('active'); };
+    }
+
+    document.getElementById('history-modal-title').textContent = titleText + ` (${records.length} results)`;
+
+    const tbody = document.getElementById('history-tbody');
+    tbody.innerHTML = '';
+
+    records.forEach(r => {
+        const date = new Date(r.date);
+        const tr = document.createElement('tr');
+        tr.style.cursor = 'pointer';
+        tr.innerHTML = `
+            <td style="font-weight:500;">${date.toLocaleDateString('en-US', {
+                weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'
+            })}</td>
+            <td>${r.followers.toLocaleString()}</td>
+            <td class="${r.followersChange >= 0 ? 'positive' : 'negative'}">
+                ${r.followersChange >= 0 ? '+' : ''}${r.followersChange.toLocaleString()}
+            </td>
+            <td>${r.xp.toLocaleString()}</td>
+            <td>${r.cumulativeXP.toLocaleString()}</td>
+            <td>${r.streakDay}</td>
+            <td>${r.activityScore}/100</td>
+        `;
+        // Click on any row to show detailed view
+        tr.addEventListener('click', () => {
+            showDayDetail(r.date);
+            modal.classList.remove('active');
+        });
+        tbody.appendChild(tr);
+    });
+
+    modal.classList.add('active');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ============================================================================
+// Day Detail Modal - FIXED date parsing issue
+// ============================================================================
+
+let currentViewedDay = null;
+
+function initDayDetailModal() {
+    if (document.getElementById('day-detail-modal')) return;
+
+    const modal = document.createElement('div');
+    modal.id = 'day-detail-modal';
+    modal.className = 'modal';
+    modal.innerHTML = `
+        <div class="modal-content" style="max-width: 680px; width: 94%;">
+            <div class="modal-header">
+                <h3 class="modal-title" id="day-detail-title">Day Details</h3>
+                <button class="modal-close" id="close-day-detail">×</button>
+            </div>
+            <div class="modal-body" id="day-detail-body" style="padding: 0 20px 24px;"></div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    modal.querySelector('.modal-close').onclick = () => modal.classList.remove('active');
+    modal.onclick = e => { if (e.target === modal) modal.classList.remove('active'); };
+}
+
+// FIXED: Proper date parsing to avoid timezone issues
+function parseDateStringToISO(dateStr) {
+    try {
+        // If it's already in YYYY-MM-DD format
+        if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
+            return dateStr;
+        }
+        
+        // Parse from table format (e.g., "Mon, Jan 21, 2025")
+        const date = new Date(dateStr);
+        if (isNaN(date.getTime())) {
+            // Try alternative parsing
+            const parts = dateStr.match(/(\w+), (\w+) (\d+), (\d+)/);
+            if (parts) {
+                const monthMap = {
+                    'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
+                    'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11
+                };
+                const month = monthMap[parts[2]] || 0;
+                const day = parseInt(parts[3], 10);
+                const year = parseInt(parts[4], 10);
+                const correctedDate = new Date(year, month, day);
+                return correctedDate.toISOString().split('T')[0];
+            }
+        }
+        
+        // Return YYYY-MM-DD format
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    } catch (e) {
+        console.error('Date parsing error:', e, dateStr);
+        return null;
+    }
+}
+
+function showDayDetail(dateStr) {
+    // First try to parse if it's not already in YYYY-MM-DD format
+    const isoDate = parseDateStringToISO(dateStr);
+    if (!isoDate) {
+        showToast("Could not parse date", "warning");
+        return;
+    }
+    
+    const item = processedData.find(d => d.date === isoDate);
+    if (!item) {
+        showToast("No data found for this date", "warning");
+        return;
+    }
+
+    currentViewedDay = isoDate;
+
+    const modal = document.getElementById('day-detail-modal');
+    const titleEl = document.getElementById('day-detail-title');
+    const body = document.getElementById('day-detail-body');
+
+    const dateObj = new Date(isoDate);
+    titleEl.textContent = dateObj.toLocaleDateString('en-US', {
+        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+    });
+
+    const statBlock = (label, value, sub = '', color = '') => `
+        <div style="text-align:center; padding:12px 16px; background:rgba(108,99,255,0.08); border-radius:10px; border:1px solid var(--border-color);">
+            <div style="font-size:0.82rem; color:var(--text-secondary); margin-bottom:6px;">${label}</div>
+            <div style="font-size:1.4rem; font-weight:700; ${color ? `color:${color}` : ''}">${value}</div>
+            ${sub ? `<div style="font-size:0.78rem; color:var(--text-secondary); margin-top:4px;">${sub}</div>` : ''}
+        </div>
+    `;
+
+    const idx = processedData.findIndex(d => d.date === isoDate);
+    const prev = idx > 0 ? processedData[idx-1] : null;
+    const next = idx < processedData.length-1 ? processedData[idx+1] : null;
+
+    const windowStart = Math.max(0, idx - 3);
+    const windowEnd   = Math.min(processedData.length - 1, idx + 3);
+    const windowData  = processedData.slice(windowStart, windowEnd + 1);
+    const avgXP7d  = windowData.reduce((s,d)=>s+d.xp,0) / windowData.length;
+    const avgΔF7d  = windowData.reduce((s,d)=>s+d.followersChange,0) / windowData.length;
+
+    let statusColor = '';
+    let statusText = item.status;
+    switch(item.status) {
+        case 'excellent':     statusColor = 'var(--success-color)'; statusText = 'Excellent'; break;
+        case 'high':          statusColor = 'var(--info-color)';    statusText = 'High'; break;
+        case 'medium':        statusColor = 'var(--warning-color)'; statusText = 'Medium'; break;
+        case 'low':           statusColor = 'var(--text-secondary)'; statusText = 'Low'; break;
+        case 'streak_freeze': statusColor = 'var(--danger-color)';  statusText = 'Streak Freeze'; break;
+    }
+
+    body.innerHTML = `
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap:16px; margin:20px 0;">
+            ${statBlock("Followers", item.followers.toLocaleString(), `Δ ${item.followersChange >= 0 ? '+' : ''}${item.followersChange}`, item.followersChange >= 0 ? 'var(--success-color)' : 'var(--danger-color)')}
+            ${statBlock("Daily XP", item.xp.toLocaleString(), `Total: ${item.cumulativeXP.toLocaleString()}`, item.xp > 10000 ? 'var(--warning-color)' : '')}
+            ${statBlock("Streak Day", item.streakDay, item.xp === 0 ? '(freeze used)' : '', item.xp === 0 ? 'var(--danger-color)' : 'var(--warning-color)')}
+            ${statBlock("Activity Score", item.activityScore + '/100', '', statusColor)}
+        </div>
+
+        <div style="background:rgba(30,40,60,0.25); border-radius:12px; padding:16px; margin:20px 0; border:1px solid var(--border-color);">
+            <div style="font-weight:600; margin-bottom:12px; color:var(--primary-color);">Context</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; font-size:0.92rem;">
+                <div>7-day avg XP: <strong>${Math.round(avgXP7d).toLocaleString()}</strong></div>
+                <div>7-day avg ΔF: <strong>${Math.round(avgΔF7d)}</strong></div>
+                ${prev ? `<div>Prev: <strong>${prev.date}</strong> (${prev.xp.toLocaleString()} XP)</div>` : ''}
+                ${next ? `<div>Next: <strong>${next.date}</strong> (${next.xp.toLocaleString()} XP)</div>` : ''}
+            </div>
+        </div>
+
+        <div style="text-align:center; margin:28px 0; color:var(--text-secondary);">
+            Status: <strong style="color:${statusColor}">${statusText}</strong><br>
+            ${item.xp === 0 && item.streakDay > 0 ? '<span style="color:var(--danger-color)">Streak protected with freeze</span>' : ''}
+        </div>
+
+        <div style="display:flex; gap:12px; justify-content:center; margin-top:24px;">
+            <button class="chart-type-btn" id="jump-to-month-detail">View Month</button>
+            <button class="chart-type-btn" style="background:rgba(248,114,114,0.2);" id="close-detail">Close</button>
+        </div>
+    `;
+
+    document.getElementById('close-detail').onclick = () => modal.classList.remove('active');
+
+    document.getElementById('jump-to-month-detail')?.addEventListener('click', () => {
+        document.querySelector('[data-tab="charts"]').click();
+        currentTableMonth = item.monthYear;
+        updateTable();
+        modal.classList.remove('active');
+        showToast(`Showing ${item.monthYear}`, 'info');
+    });
+
+    modal.classList.add('active');
+}
+
+// ============================================================================
+// Click Handlers - FIXED versions
+// ============================================================================
+
+function attachTableDayClick() {
+    const tbody = document.getElementById('tableBody');
+    if (!tbody) return;
+
+    tbody.addEventListener('click', e => {
+        const tr = e.target.closest('tr');
+        if (!tr || tr.cells.length < 8) return;
+
+        const dateCell = tr.cells[0];
+        const dateText = dateCell.textContent.trim();
+
+        // Parse the displayed date back to YYYY-MM-DD
+        const isoDate = parseDateStringToISO(dateText);
+        if (isoDate) {
+            showDayDetail(isoDate);
+        } else {
+            showToast("Could not parse date from table", "warning");
+        }
+    });
+}
+
+function attachHeatmapDayClick() {
+    document.addEventListener('click', e => {
+        const dayEl = e.target.closest('.heatmap-day');
+        if (!dayEl) return;
+
+        const tooltip = dayEl.getAttribute('data-tooltip');
+        if (!tooltip) return;
+
+        // Extract date from tooltip (format: "Month DD, YYYY: ...")
+        const dateMatch = tooltip.match(/([A-Za-z]+\s+\d{1,2},\s+\d{4})/);
+        if (!dateMatch) return;
+
+        const friendlyDate = dateMatch[1];
+        const isoDate = parseDateStringToISO(friendlyDate);
+        if (isoDate) {
+            showDayDetail(isoDate);
+        } else {
+            showToast("Could not parse date from heatmap", "warning");
+        }
+    });
+}
+
+// ============================================================================
+// Initialization
+// ============================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        initDayDetailModal();
+        createDayHistorySearchUI();
+        attachTableDayClick();
+        attachHeatmapDayClick();
+    }, 800);
+});
+
+
+
+// Instead of destroy + recreate every time
+function updateCharts() {
+    const filtered = getFilteredData();
+
+    const dates = filtered.map(d => new Date(d.date).toLocaleDateString('en-US', {
+        month: 'short', day: 'numeric'
+    }));
+
+    // ─── Update EXISTING charts ────────────────────────────────────────
+    if (followersChart) {
+        followersChart.data.labels = dates;
+        followersChart.data.datasets[0].data = filtered.map(d => d.followers);
+        followersChart.update('none');   // 'none' = fastest, no animation
+    }
+
+    if (xpChart) {
+        xpChart.data.labels = dates;
+        xpChart.data.datasets[0].data = filtered.map(d => d.xp);
+        xpChart.data.datasets[1].data = filtered.map(d => d.cumulativeXP);
+        xpChart.update('none');
+    }
+
+    // same pattern for streakChart, comparativeChart, predictionChart...
+}
     </script>
+
+
+
 </body>
 </html>
